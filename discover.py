@@ -26,6 +26,7 @@ import time
 from datetime import datetime, timedelta, timezone
 
 import crowdvolt
+import primary
 from store import Store
 
 sys.stdout.reconfigure(line_buffering=True)   # so a cron log streams
@@ -182,6 +183,10 @@ def main():
         st.ensure(slug, snap["url"], now)
         st.update_meta(slug, snap, now)
         st.events[slug]["related"] = snap.get("related") or []
+        face = primary.lookup(snap)
+        if face:
+            face["checked_at"] = now
+            st.events[slug]["primary"] = face
         mirrored = st.mirror_image(slug, snap.get("img"))
         if mirrored:
             st.events[slug]["img_blob"] = mirrored
@@ -195,6 +200,9 @@ def main():
             deferred += 1
         st.save()
 
+    if not args.dry_run:
+        resolve_primary_ids(st)
+        refresh_primary(st, now)
     if not (args.dry_run or args.skip_artists):
         enrich_genres(st)
 
@@ -207,6 +215,74 @@ def main():
         if sent:
             print(f"pushed {len(sent)} file(s) to Blob")
     return st
+
+
+def resolve_primary_ids(st):
+    """Fill in DICE ids CrowdVolt did not store.
+
+    Roughly half the events CrowdVolt labels DICE carry no `dice_event_uqid`,
+    which would leave them without a face value over a missing field rather
+    than anything real. Matched on venue and local date, and only when exactly
+    one candidate survives -- three Crankdat nights at one venue is the normal
+    case, so a near-miss must yield nothing rather than the wrong night.
+    """
+    gaps = [s for s, e in st.events.items()
+            if e.get("status") == "active" and not e.get("dice_id")
+            and e.get("platform") == "DICE"]
+    if not gaps:
+        return 0
+    print(f"looking up {len(gaps)} missing DICE id(s)")
+    found = 0
+    for i, slug in enumerate(gaps):
+        if i:
+            time.sleep(0.8)
+        e = st.events[slug]
+        did = primary.dice_find(e.get("name"), e.get("venue"), e.get("local_date"))
+        if did:
+            e["dice_id"] = did
+            found += 1
+    print(f"recovered {found} id(s)")
+    return found
+
+
+def refresh_primary(st, now):
+    """Re-read face value for tracked events.
+
+    Tiers sell out as an event approaches, so the "cheapest you can still buy
+    on the primary" moves -- it is the number worth comparing a resale listing
+    against, and a stale one is worse than none. Events with no readable
+    platform are skipped without a request.
+    """
+    todo = [s for s, e in st.events.items()
+            if e.get("status") == "active" and e.get("dice_id")]
+    if not todo:
+        return 0
+    print(f"refreshing face value for {len(todo)} event(s)")
+    changed = 0
+    for i, slug in enumerate(todo):
+        if i:
+            time.sleep(0.4)          # DICE is a different host and a light call
+        face = primary.dice_tiers(st.events[slug]["dice_id"])
+        if not face:
+            continue
+        face["id"] = st.events[slug]["dice_id"]
+        face["checked_at"] = now
+        # a fair value per resale category, not just one for the whole event:
+        # comparing a VIP listing against the cheapest GA tier is worse than
+        # showing nothing
+        types = st.history(slug).get("types") or {}
+        face["by_category"] = {
+            c: primary.fair_value(face, c, t.get("linked_count"))
+            for c, t in types.items()}
+        was = (st.events[slug].get("primary") or {}).get("on_sale")
+        st.events[slug]["primary"] = face
+        # keep the dashboard's cached numbers in step
+        st._refresh_current(slug, st.history(slug))
+        if was != face.get("on_sale"):
+            changed += 1
+    st.save()
+    print(f"{changed} event(s) changed price on the primary")
+    return changed
 
 
 def enrich_genres(st):

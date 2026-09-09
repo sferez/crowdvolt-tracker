@@ -131,7 +131,8 @@ class Store:
             "lat": snap.get("lat"), "lng": snap.get("lng"),
             # cosmetics, read once and reused by every view
             "img": snap.get("img"), "performers": snap.get("performers") or [],
-            "platform": snap.get("platform"), "ticket_limit": snap.get("ticket_limit"),
+            "platform": snap.get("platform"), "dice_id": snap.get("dice_id"),
+            "ticket_limit": snap.get("ticket_limit"),
             "is_festival": snap.get("is_festival"),
             "last_ok_at": now, "last_read_at": now, "error_streak": 0,
         })
@@ -232,12 +233,23 @@ class Store:
             while len(col) < n - 1:
                 col.append(None)
             col.append((snap or {}).get(src))
+
+        # Fair value gets its own series alongside the resale price. It is not
+        # a constant: a tier sells out, the next opens dearer, and the primary
+        # climbs while a resale ask sits still -- which is the whole story of
+        # an event heating up, and invisible from a single current figure.
+        fair_col = ev.setdefault("fair", [None] * (n - 1))
+        while len(fair_col) < n - 1:
+            fair_col.append(None)
+        fair_col.append(self._fair_now(slug))
         seen = set()
         for r in rows:
             name = r["ticket_type"]
             seen.add(name)
             t = types.setdefault(name, {"uqid": r["ticket_type_uqid"],
                                         **{f: [None] * (n - 1) for f in SERIES_FIELDS}})
+            if r.get("linked_count"):
+                t["linked_count"] = r["linked_count"]
             for f in SERIES_FIELDS:
                 t[f].append(r[_FIELD_MAP[f]])
         for name, t in types.items():          # categories missing this run
@@ -248,6 +260,16 @@ class Store:
         self._store(f"events/{slug}.json", self._event_path(slug), h)
         self._refresh_current(slug, h)
         return h
+
+    def _fair_now(self, slug):
+        """Cheapest comparable ticket buyable new right now, or what the
+        primary was charging when it sold out."""
+        face = (self.events.get(slug) or {}).get("primary") or {}
+        if face.get("on_sale") is not None:
+            return face["on_sale"]
+        tiers = face.get("tiers") or []
+        return max((t["price"] for t in tiers if t.get("status") != "on-sale"),
+                   default=None)
 
     def _refresh_current(self, slug, h):
         """The dashboard's calendar and list read only index.json, so each
@@ -265,6 +287,15 @@ class Store:
                 floor = ask if floor is None else min(floor, ask)
         e = self.events.setdefault(slug, {})
         low7 = _floor_low(h, 168)
+        face = e.get("primary") or {}
+        # the cheapest way to buy this event new right now; if every tier has
+        # gone, what the primary was charging when it ran out
+        primary_now = face.get("on_sale")
+        basis = "on-sale"
+        if primary_now is None and face.get("tiers"):
+            primary_now = max((t["price"] for t in face["tiers"]
+                               if t.get("status") != "on-sale"), default=None)
+            basis = "last-sold" if primary_now is not None else None
         e["current"] = {"floor": floor, "tickets": tickets, "cats": cats,
                         "change24": _change(h, 24),
                         "change3d": _change(h, 72),
@@ -274,6 +305,13 @@ class Store:
                         "low7d": low7,
                         "at_low": floor is not None and low7 is not None and floor <= low7,
                         "last_sale": _last(ev.get("last_sale") or []),
+                        # what the same ticket costs on the platform that sold
+                        # it first -- the alternative you actually have
+                        "primary": primary_now,
+                        "primary_basis": basis,
+                        "original": face.get("original"),
+                        "vs_primary": (None if primary_now is None or floor is None
+                                       else round(floor - primary_now, 2)),
                         "bid": _last(ev.get("bid_all_in") or []),
                         "bidders": _last(ev.get("bidders") or []),
                         "readings": len(h["stamps"])}

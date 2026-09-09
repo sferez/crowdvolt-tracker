@@ -28,6 +28,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import crowdvolt
+import primary
 from store import Store
 from dashboard import build_dashboard
 
@@ -38,6 +39,13 @@ PUBLIC = HERE / "public"
 DASHBOARD = PUBLIC / "index.html"
 
 REQUEST_DELAY = 2.0      # seconds between events, be a good citizen
+
+# How stale a face value may get before it is re-read. Tiers sell out slowly
+# and then all at once as the date approaches, so the window tightens near the
+# event. These reads ride along with a price read we are making anyway.
+FACE_TTL_HOURS = 24
+FACE_TTL_HOURS_SOON = 6
+SOON_DAYS = 7
 EMPTY_RUNS_BEFORE_RETIRE = 6   # ~6h of zero listings before we call it dead
 ERROR_RUNS_BEFORE_RETIRE = 12  # ~12h of failures before we give up
 
@@ -48,6 +56,49 @@ def revive(st, slug):
         return
     st.save()
     print(f"tracking {slug} again (was {was[0]}: {was[1]})")
+
+
+def face_is_stale(e, started):
+    """True when this event's primary prices are old enough to be worth
+    re-reading. An event a week out can sell through a tier in an afternoon;
+    one three months out will not move for weeks."""
+    face = e.get("primary") or {}
+    if not e.get("dice_id"):
+        return False
+    checked = face.get("checked_at")
+    if not checked:
+        return True
+    days_out = ((e.get("starts_ts") or 0) - started.timestamp()) / 86400
+    ttl = FACE_TTL_HOURS_SOON if days_out <= SOON_DAYS else FACE_TTL_HOURS
+    try:
+        age = (started - datetime.fromisoformat(checked)).total_seconds() / 3600
+    except (ValueError, TypeError):
+        return True
+    return age >= ttl
+
+
+def refresh_face(st, slug, snap, started, now):
+    """Re-read the primary's prices when ours have gone stale.
+
+    Face value moves when a tier sells out and the next one opens dearer -- so
+    it climbs over time, and the right thing is to take the current price
+    rather than remember the cheapest we ever saw. "What would I pay to buy
+    this new today" is the question a resale price is being judged against;
+    the cheapest tier ever offered is kept separately as `original`.
+    """
+    e = st.events[slug]
+    if not face_is_stale(e, started):
+        return
+    face = primary.dice_tiers(e["dice_id"])
+    if not face:
+        return
+    face["id"] = e["dice_id"]
+    face["checked_at"] = now
+    face["by_category"] = {
+        row["ticket_type"]: primary.fair_value(face, row["ticket_type"],
+                                               row.get("linked_count"))
+        for row in snap.get("ticket_types") or []}
+    e["primary"] = face
 
 
 def retirement_reason(snap, empty_streak, ever_had_tickets):
@@ -105,6 +156,7 @@ def run(dry_run=False, delay=REQUEST_DELAY, everything=False):
 
         st.update_meta(slug, snap, now)
         st.events[slug]["related"] = snap.get("related") or []
+        refresh_face(st, slug, snap, started, now)
         if snap.get("img") and not st.events[slug].get("img_blob"):
             mirrored = st.mirror_image(slug, snap["img"])
             if mirrored:

@@ -204,7 +204,9 @@ def snapshot(url_or_slug):
                        for p in event.get("performer_bubbles") or []
                        if p.get("is_visible", True)],
         # which platform the ticket actually lives on (DICE, AXS, Posh...)
+        # and its id there, which is how face value is looked up
         "platform": event.get("app_name"),
+        "dice_id": event.get("dice_event_uqid"),
         "ticket_limit": event.get("ticket_limit"),
         "is_festival": event.get("is_festival"),
         "is_multi_day": event.get("is_multi_day"),
@@ -245,6 +247,10 @@ def snapshot(url_or_slug):
             "ticket_type": name,
             "ticket_type_uqid": uqid,
             "visible": t.get("visible"),
+            # how many of the promoter's ticket types CrowdVolt folded into
+            # this one resale category -- structural evidence for validating a
+            # tier match, and unlike price it cannot be gamed by a seller
+            "linked_count": len(t.get("linked_tt_uqids") or []),
             # tt_data is the site's own summary; the book is the raw listings.
             # They agree, but tt_data survives a truncated book.
             "best_ask": t.get("lowest_ask_price"),
