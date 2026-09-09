@@ -1,0 +1,10 @@
+__pycache__/
+.DS_Store
+
+# secrets -- the same values live in GitHub repo secrets
+.env.local
+.env
+
+# the data store: Vercel Blob is the source of truth, this is just the local
+# mirror. Keeping it out of git is what stops the repo growing hourly.
+public/data/

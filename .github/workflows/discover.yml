@@ -1,0 +1,117 @@
+name: discover
+
+# Daily sweep for new NYC events, shortly before the 05:07 reading.
+#
+# Walks the sitemap's event list, decides NYC-ness from each event's own venue
+# coordinates or city, and reads each new event exactly once. Events outside
+# the area are remembered in skipped.json and never fetched again, so a steady
+# day costs a sitemap read plus one read per genuinely new event.
+
+on:
+  schedule:
+    - cron: "40 4 * * *"
+  workflow_dispatch:
+    inputs:
+      refresh_venues:
+        description: "Ignore the 24h venue cache"
+        type: boolean
+        default: false
+
+concurrency:
+  group: crowdvolt-store      # shared with track.yml -- only one writer
+  cancel-in-progress: false
+
+permissions:
+  contents: write             # only for the monthly keepalive commit below
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check Blob credentials
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          BLOB_STORE_ID: ${{ secrets.BLOB_STORE_ID }}
+        run: |
+          python3 - <<'PY'
+          import sys, blob
+          if not blob.Remote().enabled:
+              sys.exit("BLOB_READ_WRITE_TOKEN / BLOB_STORE_ID are not set as "
+                       "repository secrets -- the run would write nowhere.")
+          PY
+
+      - name: Sweep
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          BLOB_STORE_ID: ${{ secrets.BLOB_STORE_ID }}
+        run: |
+          python3 discover.py ${{ inputs.refresh_venues && '--refresh-venues' || '' }} \
+            | tee /tmp/discover.log
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Sweep"
+            echo '```'
+            grep -E "^[0-9]+ |now tracked|pushed|artist" /tmp/discover.log 2>/dev/null | head -20 \
+              || echo "(no output)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Blob keeps no version history: one bad write and the readings are
+      # gone. A daily snapshot on an orphan `data` branch is a durable,
+      # diffable backup for ~64KB gzipped a day -- and it doubles as the
+      # keepalive, since GitHub disables scheduled workflows after 60 days
+      # with no repository activity and a workflow run does not count.
+      #
+      # It lives on its own branch so `main` stays code-only and Vercel never
+      # redeploys for a data change.
+      - name: Snapshot the store
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          BLOB_STORE_ID: ${{ secrets.BLOB_STORE_ID }}
+        run: python3 snapshot.py --out /tmp/snapshot
+
+      - name: Commit it to the data branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          URL="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          rm -rf /tmp/databranch
+
+          # the branch may not exist yet on the first ever run
+          if git clone --branch data --single-branch "$URL" /tmp/databranch 2>/dev/null; then
+            echo "data branch exists, adding a commit"
+          else
+            echo "creating the data branch"
+            git clone --depth 1 "$URL" /tmp/databranch
+            git -C /tmp/databranch checkout --orphan data
+            git -C /tmp/databranch rm -rq --cached .
+            find /tmp/databranch -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          fi
+
+          # replace wholesale: a deleted event should disappear from the backup
+          find /tmp/databranch -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -R /tmp/snapshot/. /tmp/databranch/
+
+          cd /tmp/databranch
+          git add -A
+          if git diff --staged --quiet; then
+            echo "no change since yesterday"
+          else
+            git -c user.name="github-actions[bot]" \
+                -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+                commit -m "snapshot $(date -u +%Y-%m-%d): $(python3 -c "
+          import json; m=json.load(open('MANIFEST.json'))
+          print(f\"{m['events']} events, {m['readings']} readings\")")"
+            git push origin data
+          fi

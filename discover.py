@@ -1,0 +1,267 @@
+#!/usr/bin/env python3
+"""
+Find NYC events and start tracking them, automatically.
+
+CrowdVolt has no event-list endpoint a script can reach, but the sitemap lists
+every venue, and a venue page carries its address, coordinates and links to its
+upcoming events. So:
+
+    sitemap.xml  ->  venue pages  ->  which venues are in NYC
+                                  ->  their event slugs
+                 ->  event page (once)  ->  name, date, first reading
+
+Venue -> city is cached for a day and each event page is read exactly once, so
+a daily run costs ~133 venue reads plus one read per genuinely new event.
+
+    python3 discover.py                     # every NYC event, no date limit
+    python3 discover.py --within-days 60    # only the next two months
+    python3 discover.py --dry-run
+    python3 discover.py --anywhere          # every city, not just NYC
+"""
+
+import argparse
+import re
+import sys
+import time
+from datetime import datetime, timedelta, timezone
+
+import crowdvolt
+from store import Store
+
+sys.stdout.reconfigure(line_buffering=True)   # so a cron log streams
+
+# Bounding box over the five boroughs. A box beats a list of place names --
+# venues file themselves under Brooklyn, Queens, Ridgewood, Long Island City,
+# Astoria, NYC, New York -- and the box catches all of them.
+NYC_BBOX = (40.48, 40.93, -74.30, -73.68)   # lat_min, lat_max, lng_min, lng_max
+NYC_CITIES = {"new york", "nyc", "brooklyn", "queens", "bronx", "the bronx",
+              "manhattan", "staten island", "long island city", "ridgewood",
+              "astoria", "flushing", "maspeth", "woodside", "sunnyside"}
+
+VENUE_TTL_HOURS = 24
+REQUEST_DELAY = 1.2
+
+
+def in_nyc(city, state, lat, lng):
+    """Either signal is enough; neither gets a veto.
+
+    Coordinates catch the neighbourhoods no name list would (Ridgewood, Forest
+    Hills, Long Island City). The city name catches the venues whose
+    coordinates CrowdVolt stores rounded to whole degrees -- Outer Heaven and
+    The Chocolate Factory are both filed at (41, -74), some 30km north of the
+    city -- which is why the box alone silently dropped them.
+
+    OR-ing the two is still tight: the name test reads the venue's own city
+    field, not the slug, so "anish-kumar-monarch-sat-sep-19-new-york" is
+    correctly rejected on its "San Francisco".
+    """
+    lo_la, hi_la, lo_ln, hi_ln = NYC_BBOX
+    by_box = (lat is not None and lng is not None
+              and lo_la <= lat <= hi_la and lo_ln <= lng <= hi_ln)
+    by_name = ((city or "").strip().lower() in NYC_CITIES
+               and (state or "").strip().upper() in ("NY", "NEW YORK", ""))
+    return by_box or by_name
+
+
+def read_venue(slug):
+    """Venue name, address, coordinates and the events it links to."""
+    payload = crowdvolt.to_payload(
+        crowdvolt.fetch(f"{crowdvolt.BASE}/venue/{slug}", rsc=False))
+    obj = crowdvolt._object_at(payload, "coordinates") or {}
+    coords = obj.get("coordinates") or {}
+    address = obj.get("address") or {}
+    return {
+        "slug": slug, "name": obj.get("name"),
+        "city": address.get("city"), "state": address.get("state"),
+        "lat": coords.get("lat"), "lng": coords.get("lng"),
+        "events": sorted(set(re.findall(r"/event/([a-z0-9][a-z0-9\-]+)", payload))),
+    }
+
+
+def sitemap(kind):
+    xml = crowdvolt.fetch(crowdvolt.SITEMAP, rsc=False)
+    return sorted(set(re.findall(
+        rf"<loc>https://www\.crowdvolt\.com/{kind}/([^<]+)</loc>", xml)))
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__,
+                                formatter_class=argparse.RawDescriptionHelpFormatter)
+    p.add_argument("--within-days", type=int, default=0,
+                   help="only track events this many days out (0 = no limit, the default)")
+    p.add_argument("--anywhere", action="store_true", help="skip the NYC filter")
+    p.add_argument("--dry-run", action="store_true", help="show what would be added")
+    p.add_argument("--refresh-venues", action="store_true", help="ignore the venue cache")
+    p.add_argument("--skip-artists", action="store_true",
+                   help="do not look up genres for new artists")
+    p.add_argument("--max-new", type=int, default=400,
+                   help="stop after this many new events (default 400)")
+    args = p.parse_args()
+
+    now_dt = datetime.now(timezone.utc)
+    now = now_dt.isoformat(timespec="seconds")
+    st = Store()
+    cache = st.venues()
+    venues, venue_events = cache["venues"], cache["venue_events"]
+
+    all_slugs = sitemap("venue")
+    cutoff = (now_dt - timedelta(hours=0 if args.refresh_venues else VENUE_TTL_HOURS)).isoformat()
+    stale = [s for s in all_slugs
+             if (venues.get(s) or {}).get("checked_at", "") <= cutoff]
+    print(f"{len(all_slugs)} venues in the sitemap, {len(stale)} to (re)read")
+
+    for i, slug in enumerate(stale):
+        if i:
+            time.sleep(REQUEST_DELAY)
+        try:
+            v = read_venue(slug)
+        except crowdvolt.FetchError as e:
+            print(f"  !! venue {slug}: {e}", file=sys.stderr)
+            continue
+        v["in_area"] = bool(args.anywhere or in_nyc(v["city"], v["state"], v["lat"], v["lng"]))
+        v["checked_at"] = now
+        venue_events[slug] = v.pop("events")
+        venues[slug] = v
+        if v["in_area"]:
+            print(f"  {v['city']}, {v['state']}: {v['name']} -- {len(venue_events[slug])} events")
+    if not args.dry_run:
+        st.save_venues({"venues": venues, "venue_events": venue_events})
+
+    # The sitemap is the only complete list. Venue pages miss events at venues
+    # that have no venue page of their own (Randall's Island Park, say), so the
+    # sitemap's own event list is the ground truth and the venue crawl and the
+    # "related events" strip are just extra leads on top.
+    wanted = set(sitemap("event"))
+    wanted |= {e for slug, evs in venue_events.items()
+               if (venues.get(slug) or {}).get("in_area") for e in evs}
+    for e in st.events.values():
+        wanted.update(e.get("related") or [])
+    skipped = st.skipped()
+    candidates = sorted(wanted - set(st.events) - set(skipped))
+    print(f"{len(candidates)} candidate event(s) not yet known"
+          + (f" ({len(skipped)} already checked and outside the area)" if skipped else ""))
+
+    horizon = args.within_days * 24 if args.within_days else None
+    added = deferred = rejected = 0
+    for i, slug in enumerate(candidates[:args.max_new]):
+        if i:
+            time.sleep(REQUEST_DELAY)
+        try:
+            snap = crowdvolt.snapshot(slug)
+        except crowdvolt.FetchError as e:
+            print(f"  !! {slug}: {e}", file=sys.stderr)
+            continue
+        hours = snap.get("hours_til_event")
+        days = round((hours or 0) / 24)
+        # NYC-ness comes from the event's own venue coordinates, not from
+        # whether we happened to crawl its venue page -- and not from the slug
+        # either: "anish-kumar-monarch-sat-sep-19-new-york" is in San Francisco.
+        here = args.anywhere or in_nyc(snap.get("city"), snap.get("state"),
+                                       snap.get("lat"), snap.get("lng"))
+        if not here:
+            # Record and move on before doing any metadata or artwork work --
+            # none of it would ever be used. One line in skipped.json is the
+            # whole memory we need to never read this page again.
+            print(f"    {slug[:56]:56} {snap.get('city') or 'unknown city'} — skipped")
+            if not args.dry_run:
+                skipped[slug] = {"city": snap.get("city"), "state": snap.get("state"),
+                                 "checked_at": now}
+                st.save_skipped(skipped)
+            rejected += 1
+            continue
+
+        if snap["is_past"] or (hours is not None and hours <= 0):
+            status, note = "past", "already happened"
+        elif horizon and hours is not None and hours > horizon:
+            status, note = "deferred", f"{days}d out, outside the {args.within_days}d window"
+        else:
+            status, note = "active", f"in {days}d"
+        print(f"  {'+ ' if status == 'active' else '  '}{slug[:56]:56} {note}")
+        if args.dry_run:
+            continue
+        st.ensure(slug, snap["url"], now)
+        st.update_meta(slug, snap, now)
+        st.events[slug]["related"] = snap.get("related") or []
+        mirrored = st.mirror_image(slug, snap.get("img"))
+        if mirrored:
+            st.events[slug]["img_blob"] = mirrored
+        if status == "active":
+            # the page is already in hand -- store the reading rather than
+            # making track.py fetch it again an hour from now
+            st.add_snapshot(slug, snap["fetched_at"], snap["ticket_types"], snap)
+            added += 1
+        else:
+            st.retire(slug, f"{status}: {note}", now)
+            deferred += 1
+        st.save()
+
+    if not (args.dry_run or args.skip_artists):
+        enrich_genres(st)
+
+    promoted = 0 if args.dry_run else promote_deferred(st, horizon, now)
+    print(f"\n{added} now tracked, {deferred} deferred, {rejected} outside NYC"
+          + (f", {promoted} deferred event(s) came into range" if promoted else ""))
+    if not args.dry_run:
+        st.save()
+        sent = st.push()
+        if sent:
+            print(f"pushed {len(sent)} file(s) to Blob")
+    return st
+
+
+def enrich_genres(st):
+    """Genre lives on the artist page, so read each artist once and hang the
+    result on every event they play."""
+    cache = st.artists()
+    wanted = {p["slug"] for e in st.events.values()
+              for p in e.get("performers") or [] if p.get("slug")}
+    missing = sorted(wanted - set(cache))
+    if missing:
+        print(f"{len(missing)} artist(s) to look up")
+    for i, slug in enumerate(missing):
+        if i:
+            time.sleep(REQUEST_DELAY)
+        try:
+            cache[slug] = crowdvolt.performer(slug)
+        except crowdvolt.FetchError as e:
+            print(f"  !! artist {slug}: {e}", file=sys.stderr)
+            cache[slug] = {"slug": slug, "genres": []}
+    st.save_artists(cache)
+
+    tagged = 0
+    for e in st.events.values():
+        genres, listeners = [], None
+        for p in e.get("performers") or []:
+            a = cache.get(p.get("slug")) or {}
+            for g in a.get("genres") or []:
+                if g not in genres:
+                    genres.append(g)
+            if a.get("monthly_listeners"):
+                listeners = max(listeners or 0, a["monthly_listeners"])
+        if genres:
+            e["genres"] = genres
+            tagged += 1
+        if listeners:
+            e["monthly_listeners"] = listeners
+    print(f"{tagged} event(s) tagged with a genre")
+    return tagged
+
+
+def promote_deferred(st, horizon_hours, now):
+    """Events parked outside the window start tracking once they come into it.
+    Their date is already stored, so this costs no requests."""
+    if not horizon_hours:
+        horizon_hours = 1 << 20
+    limit = (datetime.now(timezone.utc) + timedelta(hours=horizon_hours)).timestamp()
+    n = 0
+    for slug, e in st.events.items():
+        if e.get("status") != "deferred" or not e.get("starts_ts"):
+            continue
+        if datetime.now(timezone.utc).timestamp() < e["starts_ts"] <= limit:
+            st.revive(slug)
+            n += 1
+    return n
+
+
+if __name__ == "__main__":
+    main()

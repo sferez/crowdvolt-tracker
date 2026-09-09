@@ -1,0 +1,7 @@
+# CrowdVolt watchlist -- paste event URLs here, one per line.
+# New lines are picked up on the next run. Lines starting with # are ignored.
+# Events that are past or have stopped selling retire themselves; you do not
+# need to clean this file out.
+
+https://www.crowdvolt.com/event/crankdat-brooklyn-storehouse-new-york-brooklyn-october-25-2026
+https://www.crowdvolt.com/event/skrillex-navy-pier-fri-sep-11-chicago

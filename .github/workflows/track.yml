@@ -1,0 +1,77 @@
+name: track
+
+# Hourly reading of every event that is due. Which events those are is decided
+# by store.TIERS: a show this week is re-read every hour, one this month every
+# 3 hours, anything further out every 6 -- roughly a third of the requests a
+# flat hourly sweep would make, with full resolution where prices actually move.
+#
+# State lives in Vercel Blob, not in this repo. The job pulls what it needs,
+# appends one reading, and writes back; nothing is ever committed.
+
+on:
+  schedule:
+    - cron: "7 * * * *"       # :07 every hour, UTC. GitHub's scheduler is
+                              # best-effort and often runs minutes late; a
+                              # missed hour is just a gap in the chart.
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Ignore the read-frequency tiers and read every event"
+        type: boolean
+        default: false
+
+concurrency:
+  group: crowdvolt-store      # shared with discover.yml -- only one writer
+  cancel-in-progress: false    # never kill a run mid-write
+
+permissions:
+  contents: read
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Fail loudly rather than "succeeding" while writing to a local mirror
+      # that this runner throws away thirty seconds later.
+      - name: Check Blob credentials
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          BLOB_STORE_ID: ${{ secrets.BLOB_STORE_ID }}
+        run: |
+          python3 - <<'PY'
+          import sys, blob
+          r = blob.Remote()
+          if not r.enabled:
+              sys.exit("BLOB_READ_WRITE_TOKEN / BLOB_STORE_ID are not set as "
+                       "repository secrets -- the run would write nowhere.")
+          print(f"Blob reachable at {r.base}")
+          PY
+
+      - name: Take a reading
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          BLOB_STORE_ID: ${{ secrets.BLOB_STORE_ID }}
+        run: |
+          python3 track.py --delay 1.5 ${{ inputs.all && '--all' || '' }} \
+            | tee /tmp/track.log
+
+      - name: Summary
+        if: always()
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          BLOB_STORE_ID: ${{ secrets.BLOB_STORE_ID }}
+        run: |
+          {
+            echo "### Reading"
+            echo '```'
+            head -1 /tmp/track.log 2>/dev/null || echo "(no output)"
+            grep -E "retired|pushed|!!" /tmp/track.log 2>/dev/null | head -20 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
