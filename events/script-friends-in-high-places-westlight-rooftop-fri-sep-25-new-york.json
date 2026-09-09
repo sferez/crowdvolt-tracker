@@ -1,0 +1,96 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   0
+  ],
+  "bidders": [
+   null,
+   0
+  ],
+  "high": [
+   null,
+   27
+  ],
+  "last_sale": [
+   null,
+   null
+  ],
+  "listings": [
+   null,
+   1
+  ],
+  "tickets": [
+   null,
+   2
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:50:04+00:00",
+  "2026-09-09T02:55:25+00:00"
+ ],
+ "types": {
+  "General Admission": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "b722fd7a-994b-4249-ba01-389d87954bbb"
+  },
+  "Rooftop": {
+   "all_in": [
+    27,
+    27
+   ],
+   "ask": [
+    26,
+    26
+   ],
+   "ask_qty": [
+    2,
+    2
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    1,
+    1
+   ],
+   "qty": [
+    2,
+    2
+   ],
+   "uqid": "28b5492f-ff36-4259-aa43-b7c156841931"
+  }
+ }
+}

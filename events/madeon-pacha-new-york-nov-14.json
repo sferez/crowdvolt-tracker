@@ -1,0 +1,147 @@
+{
+ "event": {
+  "bid_all_in": [
+   59
+  ],
+  "bidders": [
+   2
+  ],
+  "high": [
+   129
+  ],
+  "last_sale": [
+   62.0
+  ],
+  "listings": [
+   3
+  ],
+  "tickets": [
+   5
+  ]
+ },
+ "stamps": [
+  "2026-09-09T03:13:28+00:00"
+ ],
+ "types": {
+  "GA (Before 12AM)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "4822aa6e-aa0e-4723-aa87-6b762c9a589a"
+  },
+  "General Admission": {
+   "all_in": [
+    89
+   ],
+   "ask": [
+    86
+   ],
+   "ask_qty": [
+    1
+   ],
+   "bid": [
+    62
+   ],
+   "bid_qty": [
+    2
+   ],
+   "listings": [
+    3
+   ],
+   "qty": [
+    5
+   ],
+   "uqid": "3d593297-e7c9-48b8-b0b4-d742e5c07b2e"
+  },
+  "Standing VIP": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "dc93f37b-8c19-403c-8cda-2a38cd4681b1"
+  },
+  "Super Platinum Soundcheck VIP": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "279ab0ed-085b-413e-be85-e7e1ff2a0d5f"
+  },
+  "Victory VIP": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "38b6a664-3915-4b5a-9bd5-6fdefd900b1c"
+  }
+ }
+}

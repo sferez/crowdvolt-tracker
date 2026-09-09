@@ -1,0 +1,127 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   67
+  ],
+  "bidders": [
+   null,
+   3
+  ],
+  "high": [
+   null,
+   173
+  ],
+  "last_sale": [
+   null,
+   79.0
+  ],
+  "listings": [
+   null,
+   18
+  ],
+  "tickets": [
+   null,
+   33
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:47:10+00:00",
+  "2026-09-09T02:52:27+00:00"
+ ],
+ "types": {
+  "GA (2-Day Access)": {
+   "all_in": [
+    145,
+    145
+   ],
+   "ask": [
+    140,
+    140
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    2,
+    2
+   ],
+   "qty": [
+    2,
+    2
+   ],
+   "uqid": "46e6fc64-da94-49c6-acd6-33dfaa71054e"
+  },
+  "General Admission": {
+   "all_in": [
+    79,
+    79
+   ],
+   "ask": [
+    76,
+    76
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    70,
+    70
+   ],
+   "bid_qty": [
+    2,
+    2
+   ],
+   "listings": [
+    16,
+    16
+   ],
+   "qty": [
+    31,
+    31
+   ],
+   "uqid": "352413b4-0186-4f44-afa5-e9d0c7ba521e"
+  },
+  "VIP": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "1724916e-ab24-4d98-a030-8d852518cea5"
+  }
+ }
+}

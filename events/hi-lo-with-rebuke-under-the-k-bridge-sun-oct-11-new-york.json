@@ -1,0 +1,158 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   0
+  ],
+  "bidders": [
+   null,
+   0
+  ],
+  "high": [
+   null,
+   135
+  ],
+  "last_sale": [
+   null,
+   null
+  ],
+  "listings": [
+   null,
+   3
+  ],
+  "tickets": [
+   null,
+   7
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:47:58+00:00",
+  "2026-09-09T02:53:16+00:00"
+ ],
+ "types": {
+  "Artist\u2019s Guest": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "6ae738ea-4e5f-4a9f-952c-11729516206e"
+  },
+  "GA (Before 4:30PM)": {
+   "all_in": [
+    135,
+    135
+   ],
+   "ask": [
+    130,
+    130
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    1,
+    1
+   ],
+   "qty": [
+    1,
+    1
+   ],
+   "uqid": "f56d5a3e-4f64-48b4-8b9e-9e2f4fb60e4e"
+  },
+  "General Admission": {
+   "all_in": [
+    104,
+    104
+   ],
+   "ask": [
+    100,
+    100
+   ],
+   "ask_qty": [
+    4,
+    4
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    2,
+    2
+   ],
+   "qty": [
+    6,
+    6
+   ],
+   "uqid": "5ed23a2a-88d0-4f2c-83a6-a6c48d199f27"
+  },
+  "VIP": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "bffbc771-d52f-4b37-ba93-67d88abf1e3a"
+  }
+ }
+}

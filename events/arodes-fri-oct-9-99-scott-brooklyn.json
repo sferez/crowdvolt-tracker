@@ -1,0 +1,158 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   0
+  ],
+  "bidders": [
+   null,
+   0
+  ],
+  "high": [
+   null,
+   57
+  ],
+  "last_sale": [
+   null,
+   37.0
+  ],
+  "listings": [
+   null,
+   5
+  ],
+  "tickets": [
+   null,
+   9
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:46:39+00:00",
+  "2026-09-09T02:51:55+00:00"
+ ],
+ "types": {
+  "GA (Anytime)": {
+   "all_in": [
+    34,
+    34
+   ],
+   "ask": [
+    32,
+    32
+   ],
+   "ask_qty": [
+    2,
+    2
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    4,
+    4
+   ],
+   "qty": [
+    8,
+    8
+   ],
+   "uqid": "c160b90b-4487-42ce-8943-12ca9dcd2266"
+  },
+  "GA (Before 11PM)": {
+   "all_in": [
+    26,
+    26
+   ],
+   "ask": [
+    25,
+    25
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    1,
+    1
+   ],
+   "qty": [
+    1,
+    1
+   ],
+   "uqid": "0fe7951a-7539-4fa1-8e3c-0689d516bfc9"
+  },
+  "VIP (Backstage access)": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "1d0f1d73-cb07-491b-abc0-4e0bfc15bc04"
+  },
+  "VIP (No Backstage)": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "764c0a58-b7f0-46b7-a4d6-2946fe5c65b4"
+  }
+ }
+}

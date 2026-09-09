@@ -1,0 +1,65 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   72
+  ],
+  "bidders": [
+   null,
+   2
+  ],
+  "high": [
+   null,
+   0
+  ],
+  "last_sale": [
+   null,
+   31.0
+  ],
+  "listings": [
+   null,
+   0
+  ],
+  "tickets": [
+   null,
+   0
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:48:34+00:00",
+  "2026-09-09T02:53:53+00:00"
+ ],
+ "types": {
+  "General Admission": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    75,
+    75
+   ],
+   "bid_qty": [
+    1,
+    1
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "f6de9346-ef9f-4985-9a91-126f2249f832"
+  }
+ }
+}

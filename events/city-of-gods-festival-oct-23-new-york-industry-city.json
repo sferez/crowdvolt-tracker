@@ -1,0 +1,344 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   77
+  ],
+  "bidders": [
+   null,
+   2
+  ],
+  "high": [
+   null,
+   465
+  ],
+  "last_sale": [
+   null,
+   78.0
+  ],
+  "listings": [
+   null,
+   11
+  ],
+  "tickets": [
+   null,
+   17
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:47:08+00:00",
+  "2026-09-09T02:52:25+00:00"
+ ],
+ "types": {
+  "2-Night Pass": {
+   "all_in": [
+    216,
+    216
+   ],
+   "ask": [
+    209,
+    209
+   ],
+   "ask_qty": [
+    2,
+    2
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    2,
+    2
+   ],
+   "qty": [
+    3,
+    3
+   ],
+   "uqid": "038b255e-4d26-467d-82f9-c749a3934fb3"
+  },
+  "GA (Before 10PM Friday)": {
+   "all_in": [
+    115,
+    115
+   ],
+   "ask": [
+    111,
+    111
+   ],
+   "ask_qty": [
+    2,
+    2
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    2,
+    2
+   ],
+   "qty": [
+    3,
+    3
+   ],
+   "uqid": "e30a4d35-2edc-4baa-b5aa-3b849c630b95"
+  },
+  "GA (Before 10PM Saturday)": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "7d7755c7-f7fc-42b8-ae49-74cd9cbdf961"
+  },
+  "GA (Before 9:30PM Friday)": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "091cc54a-5fdb-42fa-92a9-32a3819d50a9"
+  },
+  "GA (Before 9:30PM Saturday)": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    80,
+    80
+   ],
+   "bid_qty": [
+    2,
+    2
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "e1aca657-1952-4b33-a649-194d5bbbd6d7"
+  },
+  "GA (Friday)": {
+   "all_in": [
+    183,
+    183
+   ],
+   "ask": [
+    177,
+    177
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    4,
+    4
+   ],
+   "qty": [
+    7,
+    7
+   ],
+   "uqid": "dc0e9bf3-7cc4-410e-80a9-0e22e803a573"
+  },
+  "GA (Saturday)": {
+   "all_in": [
+    192,
+    192
+   ],
+   "ask": [
+    186,
+    186
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    2,
+    2
+   ],
+   "qty": [
+    3,
+    3
+   ],
+   "uqid": "616dfbdc-94b6-4eb9-8b9d-3518456ae9e4"
+  },
+  "Premium 2-Night Pass": {
+   "all_in": [
+    465,
+    465
+   ],
+   "ask": [
+    450,
+    450
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    1,
+    1
+   ],
+   "qty": [
+    1,
+    1
+   ],
+   "uqid": "de0b2268-5838-4498-9c73-71c6930cde33"
+  },
+  "Premium Backstage (Friday)": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "43d8ffa2-7af4-4727-ba7f-c59d0de43aa8"
+  },
+  "Premium Backstage (Saturday)": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "57641604-08c1-4474-ba11-0995852c442d"
+  }
+ }
+}

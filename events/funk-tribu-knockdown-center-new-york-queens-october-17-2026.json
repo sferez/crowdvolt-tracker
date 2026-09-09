@@ -1,0 +1,127 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   0
+  ],
+  "bidders": [
+   null,
+   0
+  ],
+  "high": [
+   null,
+   135
+  ],
+  "last_sale": [
+   null,
+   40.0
+  ],
+  "listings": [
+   null,
+   32
+  ],
+  "tickets": [
+   null,
+   54
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:47:46+00:00",
+  "2026-09-09T02:53:05+00:00"
+ ],
+ "types": {
+  "Day (3PM-10PM)": {
+   "all_in": [
+    42,
+    42
+   ],
+   "ask": [
+    40,
+    40
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    12,
+    12
+   ],
+   "qty": [
+    24,
+    24
+   ],
+   "uqid": "a9b093b5-f133-4955-a744-13c312c55d8f"
+  },
+  "Day + Night": {
+   "all_in": [
+    73,
+    73
+   ],
+   "ask": [
+    70,
+    70
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    11,
+    11
+   ],
+   "qty": [
+    17,
+    17
+   ],
+   "uqid": "9228bbff-077c-43ba-8509-a5a288bb590b"
+  },
+  "Night (10PM-5AM)": {
+   "all_in": [
+    44,
+    44
+   ],
+   "ask": [
+    42,
+    42
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    9,
+    9
+   ],
+   "qty": [
+    13,
+    13
+   ],
+   "uqid": "da33ac20-1f6a-426a-9d6b-909c73c9664d"
+  }
+ }
+}

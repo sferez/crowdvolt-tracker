@@ -1,0 +1,127 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   168
+  ],
+  "bidders": [
+   null,
+   14
+  ],
+  "high": [
+   null,
+   362
+  ],
+  "last_sale": [
+   null,
+   168.0
+  ],
+  "listings": [
+   null,
+   28
+  ],
+  "tickets": [
+   null,
+   64
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:49:04+00:00",
+  "2026-09-09T02:54:24+00:00"
+ ],
+ "types": {
+  "GA (Fast Pass)": {
+   "all_in": [
+    168,
+    168
+   ],
+   "ask": [
+    162,
+    162
+   ],
+   "ask_qty": [
+    3,
+    3
+   ],
+   "bid": [
+    135,
+    135
+   ],
+   "bid_qty": [
+    4,
+    4
+   ],
+   "listings": [
+    7,
+    7
+   ],
+   "qty": [
+    15,
+    15
+   ],
+   "uqid": "233f4bf3-a8d6-465e-9801-6fdc58b1a19b"
+  },
+  "General Admission": {
+   "all_in": [
+    172,
+    172
+   ],
+   "ask": [
+    166,
+    166
+   ],
+   "ask_qty": [
+    4,
+    4
+   ],
+   "bid": [
+    140,
+    140
+   ],
+   "bid_qty": [
+    2,
+    2
+   ],
+   "listings": [
+    20,
+    20
+   ],
+   "qty": [
+    47,
+    47
+   ],
+   "uqid": "bff39b96-90f1-4b36-bd5d-cbe613285b17"
+  },
+  "Mastercard VIP": {
+   "all_in": [
+    326,
+    326
+   ],
+   "ask": [
+    315,
+    315
+   ],
+   "ask_qty": [
+    2,
+    2
+   ],
+   "bid": [
+    175,
+    175
+   ],
+   "bid_qty": [
+    1,
+    1
+   ],
+   "listings": [
+    1,
+    1
+   ],
+   "qty": [
+    2,
+    2
+   ],
+   "uqid": "6bf03579-0e81-4e14-90ce-06015df6e963"
+  }
+ }
+}

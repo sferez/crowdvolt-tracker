@@ -1,0 +1,96 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   35
+  ],
+  "bidders": [
+   null,
+   11
+  ],
+  "high": [
+   null,
+   155
+  ],
+  "last_sale": [
+   null,
+   44.0
+  ],
+  "listings": [
+   null,
+   79
+  ],
+  "tickets": [
+   null,
+   142
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:50:51+00:00",
+  "2026-09-09T02:56:11+00:00"
+ ],
+ "types": {
+  "GA Day (3pm-10pm)": {
+   "all_in": [
+    30,
+    30
+   ],
+   "ask": [
+    29,
+    29
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    38,
+    38
+   ],
+   "qty": [
+    62,
+    62
+   ],
+   "uqid": "6266fce7-8f2e-4c93-b5fe-0a7f116174b1"
+  },
+  "GA Night (10pm-5am)": {
+   "all_in": [
+    44,
+    44
+   ],
+   "ask": [
+    42,
+    42
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    37,
+    37
+   ],
+   "bid_qty": [
+    1,
+    1
+   ],
+   "listings": [
+    41,
+    41
+   ],
+   "qty": [
+    80,
+    80
+   ],
+   "uqid": "3db85968-10a6-4d91-b70f-dd2ff940c4d1"
+  }
+ }
+}

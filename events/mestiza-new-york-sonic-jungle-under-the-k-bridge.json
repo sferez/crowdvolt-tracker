@@ -1,0 +1,127 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   77
+  ],
+  "bidders": [
+   null,
+   1
+  ],
+  "high": [
+   null,
+   109
+  ],
+  "last_sale": [
+   null,
+   98.0
+  ],
+  "listings": [
+   null,
+   2
+  ],
+  "tickets": [
+   null,
+   7
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:49:08+00:00",
+  "2026-09-09T02:54:27+00:00"
+ ],
+ "types": {
+  "Full Experience": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "fb09a578-6caf-4590-a68a-e72390175279"
+  },
+  "General Admission": {
+   "all_in": [
+    104,
+    104
+   ],
+   "ask": [
+    100,
+    100
+   ],
+   "ask_qty": [
+    6,
+    6
+   ],
+   "bid": [
+    80,
+    80
+   ],
+   "bid_qty": [
+    1,
+    1
+   ],
+   "listings": [
+    2,
+    2
+   ],
+   "qty": [
+    7,
+    7
+   ],
+   "uqid": "327e3df5-ddfc-472c-abf5-0e768cb280f8"
+  },
+  "VIP Backstage": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "58fb541c-d088-4091-9481-770768de2d3b"
+  }
+ }
+}

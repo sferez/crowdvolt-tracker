@@ -1,0 +1,158 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   11
+  ],
+  "bidders": [
+   null,
+   1
+  ],
+  "high": [
+   null,
+   78
+  ],
+  "last_sale": [
+   null,
+   29.0
+  ],
+  "listings": [
+   null,
+   4
+  ],
+  "tickets": [
+   null,
+   15
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:50:59+00:00",
+  "2026-09-09T02:56:19+00:00"
+ ],
+ "types": {
+  "General Admission": {
+   "all_in": [
+    52,
+    52
+   ],
+   "ask": [
+    50,
+    50
+   ],
+   "ask_qty": [
+    5,
+    5
+   ],
+   "bid": [
+    12,
+    12
+   ],
+   "bid_qty": [
+    1,
+    1
+   ],
+   "listings": [
+    3,
+    3
+   ],
+   "qty": [
+    13,
+    13
+   ],
+   "uqid": "8923ac35-d7c6-4320-885b-7c2e6d919b5b"
+  },
+  "Stage VIP": {
+   "all_in": [
+    62,
+    62
+   ],
+   "ask": [
+    60,
+    60
+   ],
+   "ask_qty": [
+    2,
+    2
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    1,
+    1
+   ],
+   "qty": [
+    2,
+    2
+   ],
+   "uqid": "33e91e11-273d-4d1c-aae7-3fa7d2014c55"
+  },
+  "The Room & The Roof": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "769f7372-ac25-42d4-bda2-e297fd5a4e48"
+  },
+  "VIP - All in": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "11edb94b-04ab-4b3b-9fa6-3f188b316280"
+  }
+ }
+}

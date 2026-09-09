@@ -1,0 +1,189 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   0
+  ],
+  "bidders": [
+   null,
+   0
+  ],
+  "high": [
+   null,
+   57
+  ],
+  "last_sale": [
+   null,
+   23.0
+  ],
+  "listings": [
+   null,
+   12
+  ],
+  "tickets": [
+   null,
+   24
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:50:57+00:00",
+  "2026-09-09T02:56:17+00:00"
+ ],
+ "types": {
+  "Artist Guest": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "370f4ba1-3f9d-4159-8dd3-46d64ab45bbb"
+  },
+  "General Admission": {
+   "all_in": [
+    23,
+    23
+   ],
+   "ask": [
+    22,
+    22
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    12,
+    12
+   ],
+   "qty": [
+    24,
+    24
+   ],
+   "uqid": "ce9605de-1a69-4729-ad02-18a5a0ba100d"
+  },
+  "Skip & Drinks VIP All In": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "b14802db-a748-4dcc-8511-a546d856c39e"
+  },
+  "Super Fan Package": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "f1c21cf0-d5f1-4536-bf3f-5aef78ac75dd"
+  },
+  "VIP Experience": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "04dcb784-39ed-4f13-91a2-df65f17b4f5a"
+  }
+ }
+}

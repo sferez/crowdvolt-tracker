@@ -1,0 +1,96 @@
+{
+ "event": {
+  "bid_all_in": [
+   0,
+   0
+  ],
+  "bidders": [
+   0,
+   0
+  ],
+  "high": [
+   0,
+   0
+  ],
+  "last_sale": [
+   null,
+   null
+  ],
+  "listings": [
+   0,
+   0
+  ],
+  "tickets": [
+   0,
+   0
+  ]
+ },
+ "stamps": [
+  "2026-09-09T03:09:19+00:00",
+  "2026-09-09T03:10:32+00:00"
+ ],
+ "types": {
+  "Backstage": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "40e3363a-4e3a-41fe-91bb-013cd15fd0f8"
+  },
+  "General Admission": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "cc6a5ee6-bc80-4b2e-b7de-69e41b22233d"
+  }
+ }
+}

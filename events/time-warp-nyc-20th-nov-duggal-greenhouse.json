@@ -1,0 +1,99 @@
+{
+ "event": {
+  "bid_all_in": [
+   0
+  ],
+  "bidders": [
+   0
+  ],
+  "high": [
+   310
+  ],
+  "last_sale": [
+   165.0
+  ],
+  "listings": [
+   30
+  ],
+  "tickets": [
+   58
+  ]
+ },
+ "stamps": [
+  "2026-09-09T03:16:11+00:00"
+ ],
+ "types": {
+  "2 Day - Backstage": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "abe5ddb7-c721-48e3-b44c-fef5af6af4b4"
+  },
+  "2 Day - GA": {
+   "all_in": [
+    166
+   ],
+   "ask": [
+    160
+   ],
+   "ask_qty": [
+    1
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "listings": [
+    30
+   ],
+   "qty": [
+    58
+   ],
+   "uqid": "2bdeb3c4-9ff6-4c9b-bd68-7cf57b92ec5b"
+  },
+  "2 Day - Stage": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "720f27e6-b989-4b1f-bb4f-7cb57796d4dc"
+  }
+ }
+}

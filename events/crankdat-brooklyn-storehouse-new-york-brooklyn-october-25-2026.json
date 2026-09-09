@@ -1,0 +1,239 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   70
+  ],
+  "bidders": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   3
+  ],
+  "high": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   1548
+  ],
+  "last_sale": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   87.0
+  ],
+  "listings": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   27
+  ],
+  "tickets": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   56
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:19:46+00:00",
+  "2026-09-09T02:22:36+00:00",
+  "2026-09-09T02:23:12+00:00",
+  "2026-09-09T02:32:24+00:00",
+  "2026-09-09T02:47:12+00:00",
+  "2026-09-09T02:52:29+00:00"
+ ],
+ "types": {
+  "GA (2-Day Access)": {
+   "all_in": [
+    150.0,
+    150.0,
+    150.0,
+    150.0,
+    150,
+    150
+   ],
+   "ask": [
+    145.0,
+    145.0,
+    145.0,
+    145.0,
+    145,
+    145
+   ],
+   "ask_qty": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "bid": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "listings": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "qty": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "uqid": "6b54cece-3bef-4c5e-b1d0-554e68efbee0"
+  },
+  "General Admission": {
+   "all_in": [
+    87.0,
+    87.0,
+    87.0,
+    87.0,
+    87,
+    87
+   ],
+   "ask": [
+    84.0,
+    84.0,
+    84.0,
+    84.0,
+    84,
+    84
+   ],
+   "ask_qty": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "bid": [
+    73.0,
+    73.0,
+    73.0,
+    73.0,
+    73,
+    73
+   ],
+   "bid_qty": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "listings": [
+    26,
+    26,
+    26,
+    26,
+    26,
+    26
+   ],
+   "qty": [
+    55,
+    55,
+    55,
+    55,
+    55,
+    55
+   ],
+   "uqid": "3c0e3224-b3ad-45da-9754-7775de3869f6"
+  },
+  "VIP": {
+   "all_in": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "uqid": "f0cff1ed-c7de-41fc-b89b-48dc159399f6"
+  }
+ }
+}

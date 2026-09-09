@@ -1,0 +1,99 @@
+{
+ "event": {
+  "bid_all_in": [
+   96
+  ],
+  "bidders": [
+   3
+  ],
+  "high": [
+   166
+  ],
+  "last_sale": [
+   72.0
+  ],
+  "listings": [
+   17
+  ],
+  "tickets": [
+   34
+  ]
+ },
+ "stamps": [
+  "2026-09-09T03:16:41+00:00"
+ ],
+ "types": {
+  "GA (Courtside)": {
+   "all_in": [
+    70
+   ],
+   "ask": [
+    67
+   ],
+   "ask_qty": [
+    2
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "listings": [
+    14
+   ],
+   "qty": [
+    30
+   ],
+   "uqid": "95752bc9-4eb3-4d7c-8cc7-eb7f7bc4b93a"
+  },
+  "GA (Floor)": {
+   "all_in": [
+    166
+   ],
+   "ask": [
+    160
+   ],
+   "ask_qty": [
+    2
+   ],
+   "bid": [
+    100
+   ],
+   "bid_qty": [
+    2
+   ],
+   "listings": [
+    1
+   ],
+   "qty": [
+    2
+   ],
+   "uqid": "52f9c37a-827e-4026-aa49-d5cd706c92a4"
+  },
+  "GA (Loge)": {
+   "all_in": [
+    52
+   ],
+   "ask": [
+    50
+   ],
+   "ask_qty": [
+    1
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "listings": [
+    2
+   ],
+   "qty": [
+    2
+   ],
+   "uqid": "f655e018-7607-46c4-a92a-7faf9286e123"
+  }
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "stamps": [
+  "2026-09-09T02:47:44+00:00"
+ ],
+ "types": {
+  "GA (Anytime Entry)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "55c1982e-73f0-4e47-aab8-7337a885caf0"
+  },
+  "GA (Before 5PM)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "d36e1e82-ea4b-48e8-9a3f-a3c73f468ef8"
+  }
+ }
+}

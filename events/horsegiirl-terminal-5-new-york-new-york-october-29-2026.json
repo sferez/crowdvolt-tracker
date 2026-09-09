@@ -1,0 +1,96 @@
+{
+ "event": {
+  "bid_all_in": [
+   null,
+   0
+  ],
+  "bidders": [
+   null,
+   0
+  ],
+  "high": [
+   null,
+   59
+  ],
+  "last_sale": [
+   null,
+   64.0
+  ],
+  "listings": [
+   null,
+   1
+  ],
+  "tickets": [
+   null,
+   1
+  ]
+ },
+ "stamps": [
+  "2026-09-09T02:48:03+00:00",
+  "2026-09-09T02:53:22+00:00"
+ ],
+ "types": {
+  "General Admission": {
+   "all_in": [
+    59,
+    59
+   ],
+   "ask": [
+    57,
+    57
+   ],
+   "ask_qty": [
+    1,
+    1
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    1,
+    1
+   ],
+   "qty": [
+    1,
+    1
+   ],
+   "uqid": "f0344f92-e8d6-442e-8c68-6de09b9467c8"
+  },
+  "Preferred Balcony": {
+   "all_in": [
+    null,
+    null
+   ],
+   "ask": [
+    null,
+    null
+   ],
+   "ask_qty": [
+    null,
+    null
+   ],
+   "bid": [
+    null,
+    null
+   ],
+   "bid_qty": [
+    null,
+    null
+   ],
+   "listings": [
+    0,
+    0
+   ],
+   "qty": [
+    0,
+    0
+   ],
+   "uqid": "33b15bba-a04d-4688-bc85-0e3dc5fce0cf"
+  }
+ }
+}

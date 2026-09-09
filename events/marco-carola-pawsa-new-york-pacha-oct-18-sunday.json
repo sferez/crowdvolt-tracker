@@ -1,0 +1,99 @@
+{
+ "event": {
+  "bid_all_in": [
+   77
+  ],
+  "bidders": [
+   1
+  ],
+  "high": [
+   258
+  ],
+  "last_sale": [
+   116.0
+  ],
+  "listings": [
+   5
+  ],
+  "tickets": [
+   7
+  ]
+ },
+ "stamps": [
+  "2026-09-09T03:13:40+00:00"
+ ],
+ "types": {
+  "Backstage Dancing VIP": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "450e0e19-f4ce-47bc-9076-e6d4479ba9c2"
+  },
+  "GA (Before 9:30PM)": {
+   "all_in": [
+    155
+   ],
+   "ask": [
+    150
+   ],
+   "ask_qty": [
+    1
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "listings": [
+    2
+   ],
+   "qty": [
+    2
+   ],
+   "uqid": "6f160b10-595c-4f27-996c-afc4fb2750e4"
+  },
+  "General Admission": {
+   "all_in": [
+    207
+   ],
+   "ask": [
+    200
+   ],
+   "ask_qty": [
+    2
+   ],
+   "bid": [
+    80
+   ],
+   "bid_qty": [
+    1
+   ],
+   "listings": [
+    3
+   ],
+   "qty": [
+    5
+   ],
+   "uqid": "467f7aca-5c2d-4918-a8b8-a7659b260af0"
+  }
+ }
+}
