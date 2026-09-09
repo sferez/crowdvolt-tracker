@@ -731,6 +731,9 @@ function renderAgenda(host) {
 
 function renderCalendar() {
   const host = $('#calendar');
+  // the month buttons live in the static control bar, so they outlive a failed
+  // boot -- which replaces <main> wholesale with the "could not load" message
+  if (!host) return;
   if (isPhone()) return renderAgenda(host);
   const first = new Date(month), y = first.getFullYear(), m = first.getMonth();
   const offset = (first.getDay() + 6) % 7;                        // weeks start Monday
