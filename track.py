@@ -2,13 +2,14 @@
 """
 Hourly CrowdVolt tracker.
 
-  1. reads watchlist.txt (paste event URLs in there, one per line)
-  2. reads every event that is due -- a show this week every hour, one this
+  1. reads every event that is due -- a show this week every hour, one this
      month every 3 hours, anything further out every 6 (see store.TIERS)
-  3. appends best ask + tickets available, per ticket category, to
-     public/data/events/<slug>.json
-  4. retires events that are past or have stopped selling
-  5. rebuilds public/index.html
+  2. appends best ask + tickets available, per ticket category, to
+     events/<slug>.json
+  3. retires events that are past or have stopped selling
+  4. rebuilds public/index.html
+
+discover.py is what puts events in the store in the first place.
 
 Run it hourly (see README). Safe to run by hand any time.
 
@@ -33,53 +34,12 @@ from dashboard import build_dashboard
 sys.stdout.reconfigure(line_buffering=True)   # so a cron / CI log streams
 
 HERE = Path(__file__).parent
-WATCHLIST = HERE / "watchlist.txt"
 PUBLIC = HERE / "public"
 DASHBOARD = PUBLIC / "index.html"
 
 REQUEST_DELAY = 2.0      # seconds between events, be a good citizen
 EMPTY_RUNS_BEFORE_RETIRE = 6   # ~6h of zero listings before we call it dead
 ERROR_RUNS_BEFORE_RETIRE = 12  # ~12h of failures before we give up
-
-WATCHLIST_TEMPLATE = """\
-# CrowdVolt watchlist -- paste event URLs here, one per line.
-# Anything added is picked up on the next run; lines starting with # are ignored.
-# Events that are past or have stopped selling are retired automatically,
-# you do not need to remove them from this file.
-#
-# https://www.crowdvolt.com/event/crankdat-brooklyn-storehouse-new-york-brooklyn-october-25-2026
-"""
-
-
-def read_watchlist():
-    if not WATCHLIST.exists():
-        WATCHLIST.write_text(WATCHLIST_TEMPLATE)
-        print(f"created {WATCHLIST.name} -- paste event URLs into it", file=sys.stderr)
-        return []
-    out = []
-    for line in WATCHLIST.read_text().splitlines():
-        line = line.strip()
-        if line and not line.startswith("#"):
-            out.append(crowdvolt.url_of(line))
-    return list(dict.fromkeys(out))
-
-
-def sync_watchlist(st, now, write=True):
-    """New URLs in the file start being tracked. A retired event is NOT revived
-    just because its line is still in the file -- the file is meant to be left
-    alone, so auto-revival would put a dead or mistyped URL into an endless
-    retire/revive loop. Use --revive <slug> to pick one back up."""
-    added = []
-    for url in read_watchlist():
-        slug = crowdvolt.slug_of(url)
-        if slug not in st.events:
-            added.append(slug)
-            if write:
-                st.ensure(slug, url, now)
-    if write:
-        st.save()
-    return added
-
 
 def revive(st, slug):
     was = st.revive(slug)
@@ -107,15 +67,10 @@ def run(dry_run=False, delay=REQUEST_DELAY, everything=False):
     started = datetime.now(timezone.utc)
     now = started.isoformat(timespec="seconds")
     st = Store()
-
-    added = sync_watchlist(st, now, write=not dry_run)
-    for slug in added:
-        print(f"+ now tracking {slug}")
-
     active = st.active()
     slugs = active if everything else st.due(started)
     if not active:
-        print("nothing to track -- add event URLs to watchlist.txt or run discover.py")
+        print("nothing to track -- run discover.py first")
         return st
     if not slugs:
         print(f"[{now}] {len(active)} active, none due this run")

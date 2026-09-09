@@ -14,9 +14,8 @@ Server Component payload -- no login, no bearer token, no API key:
 So "best ask per category" and "tickets available per category" both come out
 of one plain GET.
 
-Standalone use:
+Standalone use, for a one-off look at any event:
     ./crowdvolt.py <slug-or-url> [more...]
-    ./crowdvolt.py --sitemap --limit 20
 """
 
 import json
@@ -33,9 +32,6 @@ SITEMAP = f"{BASE}/sitemap.xml"
 # crawlers and disallows everything else -- see README before running at volume.
 UA = "crowdvolt-price-watch/1.0 (personal price monitor)"
 
-# The CDN caches the event page ~30s (cdn-cache-control: public, max-age=30),
-# so polling faster than that returns identical bytes.
-MIN_POLL_SECONDS = 30
 
 
 class FetchError(Exception):
@@ -286,12 +282,6 @@ def performer(slug):
     }
 
 
-def sitemap_event_urls(limit=None):
-    xml = fetch(SITEMAP, rsc=False)
-    urls = re.findall(r"<loc>(https://www\.crowdvolt\.com/event/[^<]+)</loc>", xml)
-    return urls[:limit] if limit else urls
-
-
 # --------------------------------------------------------------------------
 # CLI
 # --------------------------------------------------------------------------
@@ -312,12 +302,7 @@ def main(argv):
     if not args or args[0] in ("-h", "--help"):
         print(__doc__)
         return 0
-    if args[0] == "--sitemap":
-        limit = int(args[args.index("--limit") + 1]) if "--limit" in args else 10
-        targets = sitemap_event_urls(limit)
-    else:
-        targets = args
-    for t in targets:
+    for t in args:
         try:
             _print(snapshot(t))
         except FetchError as e:

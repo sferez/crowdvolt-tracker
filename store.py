@@ -25,9 +25,6 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 import blob
 
 ROOT = Path(__file__).parent / "public" / "data"
-INDEX_PATH = ROOT / "index.json"
-EVENTS_DIR = ROOT / "events"
-VENUES_PATH = ROOT / "venues.json"
 
 SERIES_FIELDS = ["ask", "all_in", "ask_qty", "bid", "bid_qty", "qty", "listings"]
 

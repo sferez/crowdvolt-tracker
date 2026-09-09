@@ -139,13 +139,3 @@ class Remote:
         with urllib.request.urlopen(req, timeout=60) as r:
             return json.loads(r.read().decode())["url"]
 
-    def delete(self, rels):
-        if not self.enabled or not rels:
-            return
-        body = json.dumps({"urls": [self.base + self.prefix + r for r in rels]}).encode()
-        req = urllib.request.Request(
-            f"{API}/delete", data=body, method="POST",
-            headers={"authorization": f"Bearer {self.tok}",
-                     "x-api-version": API_VERSION,
-                     "content-type": "application/json"})
-        urllib.request.urlopen(req, timeout=30).read()

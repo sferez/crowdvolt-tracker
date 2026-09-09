@@ -5,10 +5,9 @@ New York City, with a static dashboard. No account, no bearer token, no API
 key, no database server.
 
 ```
-                 ┌── watchlist.txt (paste a URL)
- crowdvolt.com ──┤                                    Vercel Blob        Vercel
-    (SSR page)   └── discover.py (daily, NYC)  ──>   index.json     ──>  static page
-                     track.py   (hourly, tiered)     events/*.json       calendar · list · charts
+ crowdvolt.com      discover.py (daily, NYC sweep)     Vercel Blob        Vercel
+   (SSR page)  ──>  track.py   (hourly, tiered)   ──>  index.json    ──>  static page
+                                                       events/*.json      calendar · list · charts
 ```
 
 The site is static and never redeploys. An hourly reading replaces two or three
@@ -82,7 +81,7 @@ dropped.
 
 | | Verdict |
 |---|---|
-| **Your Mac** (`launchd`, plist included) | No third-party terms in play. Misses readings while asleep, which is only a gap in the chart. |
+| **Your Mac** (a `cron` or `launchd` entry calling `track.py`) | No third-party terms in play. Misses readings while asleep, which is only a gap in the chart. |
 | **GitHub Actions** (workflows included, schedules live once secrets are set) | Works, and scheduled scrapers are a very common pattern. Strictly read, the Actions terms cover "your software development workflow" and prohibit using Actions as general-purpose compute; a pure data-collection cron sits in that grey area. Nobody appears to get enforced against for a small hourly job, but it is not squarely inside the terms. Free minutes: unlimited on a public repo, 2,000/month on a private one — the tiered schedule below keeps a private repo inside that. |
 | **Vercel Cron** | Not viable here. Hobby allows cron **once per day**, and a function tops out well short of a 139-event crawl. Vercel is the right place for the page and Blob, not the crawler. |
 
@@ -114,7 +113,7 @@ ignores the tiers for a one-off full sweep.
 Python 3.9+ standard library only. Chart.js is vendored, so no CDN at runtime.
 
 ```bash
-# secrets (gitignored) -- same two values go into GitHub repo secrets
+# secrets (gitignored) -- the same two values are GitHub repo secrets
 cat > .env.local <<'ENV'
 BLOB_READ_WRITE_TOKEN=...
 BLOB_STORE_ID=store_...
@@ -124,6 +123,9 @@ python3 discover.py          # find every NYC event  (~5 min, once a day)
 python3 track.py             # read the ones that are due, push to Blob
 python3 track.py --serve     # open the dashboard locally
 ```
+
+Events enter the store through `discover.py` only — there is no manual list to
+curate. It sweeps the sitemap daily and adds anything new in the city.
 
 Without `.env.local` everything still works — the store just stays in
 `public/data/` and the page reads it from there.
@@ -153,6 +155,8 @@ decoupled — the site only redeploys when you change the code.
 | `python3 track.py --status` | what is tracked, what is due, what was retired |
 | `python3 track.py --serve` | serve `public/` and open it |
 | `python3 track.py --revive SLUG` | resume a retired event |
+| `python3 snapshot.py` | back the store up locally |
+| `python3 snapshot.py --restore DIR` | push a snapshot back into Blob (confirmed) |
 | `python3 discover.py` | find NYC events and start tracking them |
 | `python3 discover.py --within-days 60` | only the next two months |
 | `python3 discover.py --anywhere` | every city, not just NYC |
@@ -180,10 +184,7 @@ read per genuinely new event. There is no date limit by default.
 
 ## 7. Adding and retiring events
 
-Add: paste a URL into `watchlist.txt` (picked up next run), or let
-`discover.py` do it.
-
-Retire: automatic. You never have to prune anything.
+Add: `discover.py` does it. Retire: automatic. You never have to prune anything.
 
 | Rule | Status |
 |---|---|
@@ -317,7 +318,5 @@ S3 bucket, would be a drop-in replacement.
 | `track.py` | the hourly reading |
 | `discover.py` | the daily NYC sweep |
 | `dashboard.py` | renders `public/index.html` |
-| `watchlist.txt` | events you added by hand |
 | `snapshot.py` | pulls the store out of Blob for backup |
 | `.github/workflows/` | hourly reading, daily sweep + snapshot |
-| `com.sferez.crowdvolt-tracker.plist` | launchd agent, to run it from this Mac |
