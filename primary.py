@@ -31,10 +31,16 @@ DICE_SEARCH = "https://api.dice.fm/unified_search"
 UA = "crowdvolt-price-watch/1.0 (personal price monitor)"
 
 
-def dice_tiers(dice_id, timeout=20):
+def dice_tiers(dice_id, timeout=20, expect_date=None):
     """Every tier DICE lists for an event, cheapest first.
 
     Prices come back in minor units (cents), hence the /100.
+
+    `expect_date` guards against an id that points somewhere else: one event's
+    stored id resolved to a CANCELLED show a month earlier, whose single tier
+    was then presented as "what it was going for when it ran out", complete
+    with a bargain badge. The date and status arrive in the same response, so
+    checking costs nothing.
     """
     if not dice_id:
         return None
@@ -45,6 +51,12 @@ def dice_tiers(dice_id, timeout=20):
             data = json.loads(r.read().decode())
     except (urllib.error.HTTPError, urllib.error.URLError,
             json.JSONDecodeError, TimeoutError):
+        return None
+
+    start = ((data.get("dates") or {}).get("event_start_date") or "")[:10]
+    if expect_date and start and start != expect_date:
+        return None
+    if (data.get("status") or "").lower() in ("cancelled", "canceled"):
         return None
 
     tiers = []
@@ -65,12 +77,15 @@ def dice_tiers(dice_id, timeout=20):
         return None
     tiers.sort(key=lambda t: t["price"])
 
-    on_sale = [t["price"] for t in tiers
-               if t["status"] == "on-sale" and (t.get("min_qty") or 1) == 1]
+    singles = [t for t in tiers if (t.get("min_qty") or 1) == 1]
+    on_sale = [t["price"] for t in singles if t["status"] == "on-sale"]
     return {
         "platform": "DICE",
         "tiers": tiers,
-        "original": tiers[0]["price"],
+        # same single-ticket rule as the fair value: one event's cheapest tier
+        # is $0.00 and another's is a four-person pass, and neither is a price
+        # anyone could have paid for one ticket
+        "original": min((t["price"] for t in singles), default=None),
         "on_sale": min(on_sale) if on_sale else None,
         "sold_out": not on_sale,
     }
@@ -93,6 +108,10 @@ def _norm(name, strict=False):
         n = re.sub(r"\(.*?\)|\[.*?\]", " ", n)
     n = n.replace("general admission", "ga")
     n = re.sub(r"\btier\s*\d+\b|\bfinal tier\b|\btier\b", " ", n)
+    # "+" distinguishes a product, so it must survive the punctuation strip:
+    # otherwise "GA+ Sunday" and "GA Sunday" are the same ticket and the
+    # dearer one gets priced at the cheaper one's face value.
+    n = n.replace("+", " plus ")
     n = re.sub(r"[^a-z0-9 ]", " ", n)
     return " ".join(n.split())
 
@@ -100,8 +119,13 @@ def _norm(name, strict=False):
 def _family(name):
     """Which broad product a tier belongs to. Deliberately coarse: the useful
     question is "what is the cheapest comparable ticket I could buy new", and
-    promoters name tiers far too freely to match them one to one."""
-    n = _norm(name)
+    promoters name tiers far too freely to match them one to one.
+
+    Strict, because the loose form throws bracket contents away and that is
+    exactly where the product marker often lives: "All-In Pass (VIP)" collapses
+    to "all in pass", reads as GA, and gets priced against the cheapest
+    late-entry tier on the event."""
+    n = _norm(name, strict=True)
     if "vip" in n or "backstage" in n or "table" in n or "cabana" in n:
         return "vip"
     return "ga"
@@ -197,6 +221,16 @@ def fair_value(face, category, linked_count=None):
                      and exact_value != chosen_value)
     alternatives = sorted({chosen_value, exact_value}) if ambiguous else None
 
+    # A family-only match cannot reach the test above -- there is no exact
+    # match to disagree with -- which left it silent exactly where it is least
+    # trustworthy. A festival category matching a fourteen-tier pool spanning
+    # two nights and three grades is a guess, and should say so.
+    if not ambiguous and how == "family" and len(usable) > 1:
+        prices = [t["price"] for t in usable]
+        if max(prices) >= 2 * min(prices):
+            ambiguous = True
+            alternatives = [min(prices), max(prices)]
+
     verified = None if not linked_count else (len(pool) == linked_count)
     on_sale_price = min((t["price"] for t in on_sale), default=None)
     # The last tier to sell out is the dearest one, so its price is what the
@@ -267,10 +301,10 @@ def dice_find(name, venue, local_date, timeout=20):
     return hits[0] if len(hits) == 1 else None
 
 
-def lookup(snap):
+def lookup(snap, expect_date=None):
     """Face value for one CrowdVolt event, or None if its platform is not one
     we can read. Adds a per-category fair value alongside the event-wide one."""
-    face = dice_tiers(snap.get("dice_id"))
+    face = dice_tiers(snap.get("dice_id"), expect_date=expect_date)
     if not face:
         return None
     face["id"] = snap.get("dice_id")

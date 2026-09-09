@@ -131,7 +131,11 @@ class Store:
             "lat": snap.get("lat"), "lng": snap.get("lng"),
             # cosmetics, read once and reused by every view
             "img": snap.get("img"), "performers": snap.get("performers") or [],
-            "platform": snap.get("platform"), "dice_id": snap.get("dice_id"),
+            "platform": snap.get("platform"),
+            # CrowdVolt does not store this for about half its DICE events;
+            # discover.py recovers it by search. Overwriting unconditionally
+            # erased that on the next hourly run and froze the face value.
+            "dice_id": snap.get("dice_id") or e.get("dice_id"),
             "ticket_limit": snap.get("ticket_limit"),
             "is_festival": snap.get("is_festival"),
             "last_ok_at": now, "last_read_at": now, "error_streak": 0,
@@ -241,7 +245,11 @@ class Store:
         fair_col = ev.setdefault("fair", [None] * (n - 1))
         while len(fair_col) < n - 1:
             fair_col.append(None)
-        fair_col.append(self._fair_now(slug))
+        # cheapest category in this reading -- the one the floor comes from
+        priced = [r for r in rows if r.get("best_ask_all_in") is not None]
+        floor_name = (min(priced, key=lambda r: r["best_ask_all_in"])["ticket_type"]
+                      if priced else None)
+        fair_col.append(self._fair_now(slug, floor_name))
         seen = set()
         for r in rows:
             name = r["ticket_type"]
@@ -261,15 +269,22 @@ class Store:
         self._refresh_current(slug, h)
         return h
 
-    def _fair_now(self, slug):
-        """Cheapest comparable ticket buyable new right now, or what the
-        primary was charging when it sold out."""
+    def _fair_now(self, slug, floor_cat=None):
+        """Fair value for the category that sets the floor, to record alongside
+        it.
+
+        This has to use the same category as `_refresh_current`, or the series
+        and the table disagree: the event-wide fallback recorded ZHU's $321 VIP
+        tier next to its $90 GA floor -- the very comparison the rest of this
+        file exists to avoid -- and every run appended another one.
+        """
         face = (self.events.get(slug) or {}).get("primary") or {}
+        by_cat = face.get("by_category") or {}
+        if floor_cat and by_cat.get(floor_cat):
+            return by_cat[floor_cat].get("value")
         if face.get("on_sale") is not None:
             return face["on_sale"]
-        tiers = face.get("tiers") or []
-        return max((t["price"] for t in tiers if t.get("status") != "on-sale"),
-                   default=None)
+        return None
 
     def _refresh_current(self, slug, h):
         """The dashboard's calendar and list read only index.json, so each
@@ -286,16 +301,32 @@ class Store:
             if ask is not None:
                 floor = ask if floor is None else min(floor, ask)
         e = self.events.setdefault(slug, {})
+        bidders_now = _last(ev.get("bidders") or [])
+
         low7 = _floor_low(h, 168)
         face = e.get("primary") or {}
-        # the cheapest way to buy this event new right now; if every tier has
-        # gone, what the primary was charging when it ran out
-        primary_now = face.get("on_sale")
-        basis = "on-sale"
-        if primary_now is None and face.get("tiers"):
-            primary_now = max((t["price"] for t in face["tiers"]
-                               if t.get("status") != "on-sale"), default=None)
-            basis = "last-sold" if primary_now is not None else None
+        # Both ends of this subtraction must describe the SAME ticket. Taking
+        # the floor from one category and the fair value from an event-wide
+        # min/max compared a $90 GA ask against a $321 VIP tier and reported a
+        # $231 bargain. The floor is set by one category, so the fair value has
+        # to be that category's.
+        floor_cat = min((c for c in cats if c["ask"] is not None),
+                        key=lambda c: c["ask"], default=None)
+        fv = ((face.get("by_category") or {}).get(floor_cat["name"])
+              if floor_cat else None) or {}
+        primary_now = fv.get("value")
+        basis = fv.get("basis")
+
+        # The bid shown beside the floor has to belong to the same ticket. The
+        # event-wide maximum belongs to whichever category is dearest, so ZHU
+        # displayed a $192 VIP bid next to a spread computed from its $90 GA --
+        # two different tickets, presented as one market.
+        # Trust the concrete bid over the count. CrowdVolt's event-level
+        # bidder count lags for a few events, reading 0 while that category
+        # plainly has a live bid -- nulling the bid on the strength of the
+        # count then left a spread on the page with nothing to explain it.
+        bid_now = _bid_of(h, floor_cat)
+        bidders_now = bidders_now or None
         e["current"] = {"floor": floor, "tickets": tickets, "cats": cats,
                         "change24": _change(h, 24),
                         "change3d": _change(h, 72),
@@ -312,8 +343,20 @@ class Store:
                         "original": face.get("original"),
                         "vs_primary": (None if primary_now is None or floor is None
                                        else round(floor - primary_now, 2)),
-                        "bid": _last(ev.get("bid_all_in") or []),
-                        "bidders": _last(ev.get("bidders") or []),
+                        # relative, because a flat dollar threshold is wrong at
+                        # both ends: $5 off is 12% of a $41 ticket and 1% of a
+                        # $400 one. Massano sat $2.32 under fair value -- 5.6%,
+                        # plainly a deal -- and an absolute cutoff hid it.
+                        "vs_primary_pct": (None if primary_now in (None, 0) or floor is None
+                                           else round((floor - primary_now) / primary_now, 4)),
+                        "bid": bid_now,
+                        "bidders": bidders_now,
+                        # Within one category and on one basis. The event-wide
+                        # max bid belongs to whichever category is dearest --
+                        # against the cheapest category's ask that produced
+                        # "spread -$284", a book that would have cleared.
+                        "spread": (None if bid_now is None
+                                   else _spread(h, floor_cat)),
                         "readings": len(h["stamps"])}
         if tickets:
             e["ever_had_tickets"] = True
@@ -399,6 +442,29 @@ def _is_stale(remote, local):
     return bool(r and l and r < l)
 
 
+def _bid_of(h, floor_cat):
+    """Best bid for the category that sets the floor."""
+    if not floor_cat:
+        return None
+    t = (h.get("types") or {}).get(floor_cat["name"]) or {}
+    return _last(t.get("bid") or []) or None
+
+
+def _spread(h, floor_cat):
+    """Ask minus bid for the category that sets the floor, both pre-fee.
+
+    CrowdVolt adds fees to an ask and subtracts them from a bid, so mixing
+    all-in and base across the two sides inverts the sign on top of the
+    cross-category error.
+    """
+    bid = _bid_of(h, floor_cat)
+    if bid is None:
+        return None
+    t = (h.get("types") or {}).get(floor_cat["name"]) or {}
+    ask = _last(t.get("ask") or [])
+    return None if ask is None else round(ask - bid, 2)
+
+
 def _last(a):
     for v in reversed(a):
         if v is not None:
@@ -460,12 +526,35 @@ def _floor_low(h, hours):
 
 
 def _thin(h):
-    """Recent readings stay hourly; older ones drop to every sixth."""
+    """Recent readings stay hourly; older ones drop to every sixth.
+
+    Thinning by index was wrong: it runs on every append, so the cut point
+    advanced one step at a time and `i % 6` was evaluated against an ever
+    shifting origin -- the result deleted the old readings outright instead of
+    downsampling them. Age is a stable property of a reading, so deciding by
+    stamp is idempotent however many times it runs.
+    """
     n = len(h["stamps"])
-    cut = n - FULL_RESOLUTION
-    if cut <= 0:
+    if n <= FULL_RESOLUTION:
         return
-    keep = [i for i in range(cut) if i % OLDER_STRIDE == 0] + list(range(cut, n))
+    try:
+        newest = datetime.fromisoformat(h["stamps"][-1])
+    except (ValueError, IndexError):
+        return
+    cutoff = newest - timedelta(hours=FULL_RESOLUTION)
+
+    keep, last_kept = [], None
+    for i, ts in enumerate(h["stamps"]):
+        try:
+            when = datetime.fromisoformat(ts)
+        except ValueError:
+            keep.append(i)
+            continue
+        if when >= cutoff:
+            keep.append(i)
+        elif last_kept is None or (when - last_kept) >= timedelta(hours=OLDER_STRIDE):
+            keep.append(i)
+            last_kept = when
     if len(keep) == n:
         return
     h["stamps"] = [h["stamps"][i] for i in keep]

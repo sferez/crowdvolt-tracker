@@ -89,7 +89,7 @@ def refresh_face(st, slug, snap, started, now):
     e = st.events[slug]
     if not face_is_stale(e, started):
         return
-    face = primary.dice_tiers(e["dice_id"])
+    face = primary.dice_tiers(e["dice_id"], expect_date=e.get("local_date"))
     if not face:
         return
     face["id"] = e["dice_id"]
@@ -202,7 +202,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--dry-run", action="store_true", help="fetch and print, write nothing")
-    p.add_argument("--dashboard", action="store_true", help="rebuild dashboard.html only")
+    p.add_argument("--dashboard", action="store_true", help="rebuild public/index.html only")
     p.add_argument("--status", action="store_true", help="list what is tracked")
     p.add_argument("--revive", metavar="SLUG", help="resume tracking a retired event")
     p.add_argument("--delay", type=float, default=REQUEST_DELAY,

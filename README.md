@@ -62,6 +62,48 @@ so this project does not go near it. It also does not need to: the SSR page
 returns the same numbers unauthenticated, in one request, and there is no token
 to expire, rotate, or get invalidated at 3am.
 
+### Fair value: what the same ticket costs new
+
+A resale price alone cannot tell you whether $91 is a bargain. CrowdVolt is an
+order book — it knows what people are asking, not what a ticket originally cost
+— so the tracker fetches the primary platform's own prices and compares.
+
+Every event carries the id it holds on whichever platform sold the tickets
+first. DICE, the largest of them here, serves its tiers from a public
+unauthenticated endpoint, giving two numbers per ticket category:
+
+- **fair value** — the cheapest comparable tier you could still buy right now.
+  This is the number a resale ask is judged against, because it is the
+  alternative you actually have. When every tier has sold out it falls back to
+  what the primary was charging when it ran out, marked as such — that is the
+  case where resale premiums are largest, so a blank there would hide the most
+  interesting answer.
+- **original** — the cheapest tier ever offered, the anchor for how far an
+  event has run up since it went on sale.
+
+Roughly half of CrowdVolt's DICE events do not store the DICE id. Those are
+recovered by searching DICE for the name and venue and accepting a result only
+when the venue **and** the local date agree and exactly one candidate survives:
+three nights of the same act at one venue is the normal case, so a near miss
+must return nothing rather than the wrong night's price.
+
+Matching a resale category to a primary tier is the fiddly part, and the
+lessons are written into `primary.fair_value`:
+
+| | |
+|---|---|
+| exact name match wins | "GA (2-Day Access)" is DICE's "GA 2-Day Access", not its one-night GA |
+| `increment` is a minimum purchase | a $30 tier you must buy two of is not a $30 ticket |
+| CrowdVolt's own grouping breaks ties | it folds four GA tiers into one resale category; a GA listing competes with all four |
+| `+` is a product, not punctuation | "GA+" priced as "GA" undercharges the dearer ticket |
+| the whole-event tier pool is a last resort | it once priced a $467 VIP ticket at $122 |
+
+Where a different reading would give a different price, the value is flagged
+ambiguous and the alternative is shown rather than quietly picking one. Where
+the platform is not one we can read — AXS, Ticketmaster, Eventbrite and the
+rest, for which CrowdVolt stores no id at all — the fair value is blank, never
+a guess.
+
 ---
 
 ## 2. Read this before running it wide
@@ -93,7 +135,7 @@ store, so you can switch without changing anything else.
 
 ## 3. Read frequency (tiers)
 
-Reading 139 events hourly is ~3,300 requests a day for information that mostly
+Reading 172 events hourly is ~3,300 requests a day for information that mostly
 has not changed. `store.TIERS` reads by distance instead:
 
 | Event is | Re-read every |
@@ -102,9 +144,9 @@ has not changed. `store.TIERS` reads by distance instead:
 | within 30 days | 3 hours |
 | further out | 6 hours |
 
-That is ~54 requests an hour instead of 139 — about a third of the traffic, with
-full hourly resolution exactly where prices actually move. `track.py --all`
-ignores the tiers for a one-off full sweep.
+That is ~62 requests an hour instead of 172 — 36% of the traffic, with full
+hourly resolution exactly where prices actually move. `track.py --all` ignores
+the tiers for a one-off full sweep.
 
 ---
 
@@ -140,7 +182,7 @@ Without `.env.local` everything still works — the store just stays in
    `launchd` locally instead.
 
 The page fetches from the Blob public base, which is CORS-open and CDN-cached
-(60 s for `index.json`, 5 min for event history). Deploys and data are fully
+(state files are not cached at all, 5 min for event history). Deploys and data are fully
 decoupled — the site only redeploys when you change the code.
 
 ---
@@ -206,8 +248,8 @@ yet is never mistaken for sold out. Retired events keep their history — tick
   its own timezone*, with artwork, floor price and ticket count. Days scroll
   inside their own cell, so a busy Saturday cannot stretch the row. On a phone
   the same events become a scrolling agenda instead of a squashed 7-column grid.
-- **List** — sortable: date, days out, last sale, venue, city, genre, floor,
-  24 h / 3 d / 7 d change, tickets, categories.
+- **List** — sortable: date, days out, last sale, vs sale, venue, city, genre,
+  floor, fair value, vs fair, 24 h / 3 d / 7 d change, tickets, categories.
 - **Charts** — a card per event, fetched and drawn as you scroll.
 
 **Genre** comes from the artists on the bill. The seven most common genres take
@@ -215,13 +257,24 @@ the seven leading palette slots, everything else folds into a neutral "other" �
 the map is built once from every tracked event, so filtering never repaints the
 genres that survive it. The chips above the calendar and list are the filter.
 
+There is also a **Deals** tab: every event currently priced below fair value,
+best first, showing both the percentage and the dollar saving — $20 off a $40
+ticket and off a $400 one are very different claims. It states plainly when a
+saving is measured against a primary that has already sold out, since nobody
+can pay that price any more.
+
+Opening an event gives one table per ticket category that is simultaneously the
+chart legend, the fair-value comparison and the category filter: click a row to
+isolate that category.
+
 **Signals** on the calendar and list, only when the data says something:
 
 | | |
 |---|---|
+| ⚡ | 20%+ below fair value |
+| ★ | below fair value at all |
 | 🔥 | floor is the cheapest it has been in 7 days, and falling |
-| ▾ | down 3%+ recently |
-| ▴ | up 3%+ recently |
+| ▾ ▴ | down / up 3%+ recently |
 
 Price changes are measured **by timestamp, not by reading count** — an event on
 the 6-hourly tier has four readings a day, so "24 readings ago" would be six
@@ -230,12 +283,10 @@ than inventing one.
 
 An open event shows a line per ticket category (best ask, all-in, left axis)
 over a bar per category (tickets available, right axis) on a shared hourly
-x-axis, a clickable chip per category — click one to isolate it, click again for
-all — and a data table.
+x-axis, and a data table.
 
-**Padded axis** (default) leaves headroom below the floor price. **From $0**
-anchors the price axis at zero so bar height and line height share a baseline,
-at the cost of flattening the movement. Two scales on one frame is what makes
+The price axis leaves headroom below the floor price rather than anchoring at
+zero, which would flatten the movement. Two scales on one frame is what makes
 the price/supply relationship readable, but the choice of scales can imply a
 correlation — **Split axes** stacks the two measures as separate panels over a
 shared x-axis if you would rather read them uncoupled.
@@ -261,7 +312,7 @@ days are thinned to 6-hourly, which bounds each file at a few hundred points.
 
 The same files live in `public/data/` locally and in Vercel Blob when
 credentials are present; Blob is the source of truth for the hosted site. Total
-size at 139 events is single-digit MB — well inside the Hobby free allowance.
+size at 172 events is single-digit MB — well inside the Hobby free allowance.
 
 **Backups.** Blob keeps no version history, so one bad write would be
 unrecoverable. The daily sweep ends by pushing a pretty-printed copy of the
@@ -302,8 +353,8 @@ vanished from the roster.
 **One writer at a time.** The two workflows share a `concurrency` group, so CI
 cannot race itself. If you also run `launchd` locally, pick one or the other.
 
-**Swapping the backend** is one file: `blob.py` exposes `get` / `put` / `list` /
-`delete`, and `store.py` calls nothing else. Committing JSON to the repo, or an
+**Swapping the backend** is one file: `blob.py` exposes `get` / `put` /
+`put_bytes` / `list`, and `store.py` calls nothing else. Committing JSON to the repo, or an
 S3 bucket, would be a drop-in replacement.
 
 ---
@@ -318,5 +369,6 @@ S3 bucket, would be a drop-in replacement.
 | `track.py` | the hourly reading |
 | `discover.py` | the daily NYC sweep |
 | `dashboard.py` | renders `public/index.html` |
+| `primary.py` | face value from the primary platform, and category matching |
 | `snapshot.py` | pulls the store out of Blob for backup |
 | `.github/workflows/` | hourly reading, daily sweep + snapshot |

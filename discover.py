@@ -183,7 +183,7 @@ def main():
         st.ensure(slug, snap["url"], now)
         st.update_meta(slug, snap, now)
         st.events[slug]["related"] = snap.get("related") or []
-        face = primary.lookup(snap)
+        face = primary.lookup(snap, expect_date=st.events.get(slug, {}).get("local_date"))
         if face:
             face["checked_at"] = now
             st.events[slug]["primary"] = face
@@ -226,8 +226,13 @@ def resolve_primary_ids(st):
     one candidate survives -- three Crankdat nights at one venue is the normal
     case, so a near-miss must yield nothing rather than the wrong night.
     """
+    # a stored id that is not a 24-character ObjectId never resolves -- two
+    # events carry 6-character codes the API rejects outright -- so treat those
+    # as missing and let the search have a go
+    def usable(i):
+        return bool(i) and len(str(i)) == 24
     gaps = [s for s, e in st.events.items()
-            if e.get("status") == "active" and not e.get("dice_id")
+            if e.get("status") == "active" and not usable(e.get("dice_id"))
             and e.get("platform") == "DICE"]
     if not gaps:
         return 0
@@ -262,7 +267,8 @@ def refresh_primary(st, now):
     for i, slug in enumerate(todo):
         if i:
             time.sleep(0.4)          # DICE is a different host and a light call
-        face = primary.dice_tiers(st.events[slug]["dice_id"])
+        face = primary.dice_tiers(st.events[slug]["dice_id"],
+                                  expect_date=st.events[slug].get("local_date"))
         if not face:
             continue
         face["id"] = st.events[slug]["dice_id"]
@@ -270,14 +276,14 @@ def refresh_primary(st, now):
         # a fair value per resale category, not just one for the whole event:
         # comparing a VIP listing against the cheapest GA tier is worse than
         # showing nothing
-        types = st.history(slug).get("types") or {}
+        h = st.history(slug)
         face["by_category"] = {
             c: primary.fair_value(face, c, t.get("linked_count"))
-            for c, t in types.items()}
+            for c, t in (h.get("types") or {}).items()}
         was = (st.events[slug].get("primary") or {}).get("on_sale")
         st.events[slug]["primary"] = face
         # keep the dashboard's cached numbers in step
-        st._refresh_current(slug, st.history(slug))
+        st._refresh_current(slug, h)
         if was != face.get("on_sale"):
             changed += 1
     st.save()

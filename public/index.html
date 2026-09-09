@@ -60,6 +60,9 @@ main { padding:20px 28px 70px; max-width:1280px; }
 /* the calendar is the one view that wants the whole window: full width, and
    tall enough that a month fits on one screen without the page scrolling */
 body.tab-calendar main { max-width:none; padding:12px 28px 20px; }
+/* the table carries sixteen columns now; the extra width is what keeps it out
+   of a horizontal scrollbar on a normal laptop screen */
+body.tab-list main { max-width:1420px; }
 #calendar { display:flex; flex-direction:column; min-height:0; }
 .hide { display:none !important; }
 .empty { color:var(--muted); padding:44px 0; }
@@ -135,7 +138,12 @@ tbody tr:hover { background:var(--wash); }
    column rather than pushing the page sideways */
 #list td.ev { max-width:255px; }
 #list td.vn { max-width:155px; }
-#list td.ev, #list td.vn { overflow:hidden; text-overflow:ellipsis; }
+/* Deals carries one more numeric column, and buys the room back from the two
+   free-text ones -- its rows are few and every name keeps its full tooltip */
+#deals td.ev { max-width:195px; }
+#deals td.vn { max-width:115px; }
+#list td.ev, #list td.vn, #deals td.ev, #deals td.vn { overflow:hidden; text-overflow:ellipsis; }
+.dealnote { color:var(--muted); font-size:12.5px; max-width:88ch; margin:0 0 12px; }
 .up { color:var(--crit); } .down { color:var(--good); }
 .sig { font-size:11px; margin-right:4px; font-style:normal; }
 td .sig { margin-left:6px; margin-right:0; }
@@ -157,23 +165,79 @@ td .sig { margin-left:6px; margin-right:0; }
 .pills { display:flex; gap:6px; flex-wrap:wrap; margin-top:5px; }
 .pill { font-size:11.5px; color:var(--muted); border:1px solid var(--border);
         border-radius:999px; padding:1px 8px; }
+/* the descriptive half of the old pill wall: no border, no chrome, just a
+   quiet line of words under the numbers that matter */
+.tags { display:flex; flex-wrap:wrap; gap:3px 12px; margin-top:6px;
+        color:var(--muted); font-size:11.5px; }
+.qtag { display:inline-flex; align-items:center; white-space:nowrap; }
+/* an author `display` outranks the UA rule for [hidden], so the collapsed
+   tags need saying again here or "+n more" hides nothing */
+.qtag[hidden] { display:none; }
+.qtag .gdot { width:7px; height:7px; margin-right:5px; }
+.qmore { background:transparent; border:0; padding:0; font-size:11.5px;
+         color:var(--ink-2); cursor:pointer; text-decoration:underline; }
+.qmore:hover { color:var(--ink); }
+
+/* The tier ladder. When the category table above already carries the fair
+   value the ladder is folded away -- its remaining job is the run-up, and its
+   summary line alone says how hard the event sold. When no category could be
+   matched it is opened instead and becomes the comparison. */
+details.ladder { margin:0 0 14px; border-top:0; padding-top:0; }
+div.ladder { margin:0 0 14px; }
+.ladder > summary { color:var(--muted); font-size:12px; }
+.ladder .lnote { color:var(--muted); font-size:12px; max-width:56ch; }
+.ladder .lad { margin-top:6px; max-width:400px; max-height:196px;
+               overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin;
+               scrollbar-color:var(--axis) transparent; }
+.ladder .lad::-webkit-scrollbar { width:6px; }
+.ladder .lad::-webkit-scrollbar-thumb { background:var(--axis); border-radius:3px; }
 td .thumb, .lthumb { width:22px; height:22px; border-radius:5px; object-fit:cover;
                      vertical-align:-6px; margin-right:8px; background:var(--wash); }
 /* artless events keep the same footprint so names stay on one left edge */
 .ph { display:inline-block; background:var(--wash); }
 .gdot { display:inline-block; width:9px; height:9px; border-radius:50%;
         margin-right:7px; vertical-align:0; }
-.now { display:flex; flex-wrap:wrap; gap:8px 10px; margin:0 0 14px; padding:0; list-style:none; }
-.now li { display:flex; }
-.chip { display:flex; align-items:center; gap:8px; padding:7px 11px;
-        border:1px solid var(--border); border-radius:9px; font-size:13px;
-        background:transparent; cursor:pointer; transition:opacity .12s; }
-.chip:hover { border-color:var(--axis); }
-.chip[aria-pressed="true"] { box-shadow:inset 0 0 0 1px var(--ink-2); border-color:var(--ink-2); }
-.chip[data-off] { opacity:.4; }
 .swatch { width:10px; height:10px; border-radius:3px; flex:none; }
-.chip b { font-weight:600; font-variant-numeric:tabular-nums; }
-.chip span { color:var(--muted); font-variant-numeric:tabular-nums; }
+/* One small table doing three jobs at once: the chart's legend -- the swatch
+   is the series colour -- the fair-value comparison, and the category filter,
+   since every row is a button that isolates its category. As three separate
+   widgets they said the same thing three times and none of them lined up. */
+.cats { width:100%; font-size:12.5px; margin:2px 0 14px; }
+.cats th, .cats td { padding:5px 9px; border-bottom:1px solid var(--grid); }
+.cats th { position:static; background:transparent; cursor:default;
+           font-weight:500; font-size:11.5px; }
+.cats th:first-child, .cats td:first-child { padding-left:0; }
+.cats th:last-child, .cats td:last-child { padding-right:0; }
+/* the name takes whatever is left over and clips, so four numeric columns and
+   a long category name still fit a phone without the modal scrolling sideways */
+.cats .nm { width:100%; max-width:0; overflow:hidden; text-overflow:ellipsis; }
+.cats .swatch { display:inline-block; margin-right:8px; vertical-align:0; }
+.cats tbody tr { transition:opacity .12s; }
+.cats tbody tr[aria-pressed="true"] { background:var(--wash); }
+.cats tbody tr[data-off] { opacity:.42; }
+.cats tbody tr:focus-visible { outline:2px solid var(--ink-2); outline-offset:-2px; }
+/* the number the whole comparison exists for, so it carries the weight */
+.cats td.d { font-weight:650; }
+/* a fair value we could not confirm is still worth showing, but it must not
+   read with the same confidence as one we could */
+.cats td.soft { color:var(--muted); text-decoration:underline dotted;
+                text-underline-offset:3px; cursor:help; }
+/* a face value nobody can buy at any more: struck the way a gone tier is in
+   the ladder, but never hidden -- the delta against it is the whole point */
+td.past { color:var(--ink-2); text-decoration:line-through; }
+.cats td.past.soft { color:var(--muted); cursor:help; text-underline-offset:3px;
+                     text-decoration:line-through underline dotted; }
+.cats .out { color:var(--muted); font-size:11.5px; }
+/* a caveat that belongs to one figure, under it rather than beside it, so it
+   costs a row's height and not the column's width */
+.note { display:block; font-style:normal; font-size:10.5px;
+        color:var(--muted); line-height:1.3; }
+/* the ladder in the same table language, minus the interactivity */
+.tiers { margin:0; }
+.tiers tbody tr { cursor:default; }
+.tiers tbody tr:hover { background:transparent; }
+.tiers tbody tr.gone { opacity:.55; }
+.tiers tbody tr.gone .nm, .tiers tbody tr.gone .pr { text-decoration:line-through; }
 .wrap { position:relative; height:320px; }
 .wrap.qty { display:none; height:150px; }
 .split .wrap.price { height:220px; }
@@ -241,17 +305,17 @@ dialog .card { border:0; margin:0; background:transparent; }
   .modalctl { padding:14px 96px 0 14px; }           /* clears the fixed Close */
   .axisnote { font-size:11px; gap:10px; }
   .card { padding:14px 14px 10px; }
-  .now li, .chip { max-width:100%; }
-  .chip { min-width:0; }
+  .cats th, .cats td { padding:6px 6px; }        /* four numeric columns on a phone */
 }
-/* Fourteen columns need about 1224px. Narrower than that the table takes its
+/* Sixteen columns need about 1364px, which is why the list view is allowed a
+   wider main than the rest of the page. Narrower than that the table takes its
    own horizontal scrollbar rather than widening the document -- and since it
    is scrolling anyway, the clipped columns get their full text back. Above it
    the table fits and the sticky header floats against the viewport. */
-@media (max-width:1300px) {
-  #list table { display:block; overflow-x:auto; white-space:nowrap; max-width:100%;
-                overscroll-behavior-x:contain; }
-  #list td.ev, #list td.vn { max-width:none; }
+@media (max-width:1440px) {
+  #list table, #deals table { display:block; overflow-x:auto; white-space:nowrap;
+                              max-width:100%; overscroll-behavior-x:contain; }
+  #list td.ev, #list td.vn, #deals td.ev, #deals td.vn { max-width:none; }
 }
 @media (max-width:420px) {
   .stats .stat:nth-child(n+4) { display:none; }
@@ -272,6 +336,7 @@ dialog .card { border:0; margin:0; background:transparent; }
   <span class="seg" role="group" aria-label="View">
     <button data-tab="calendar" aria-pressed="true">Calendar</button>
     <button data-tab="list" aria-pressed="false">List</button>
+    <button data-tab="deals" aria-pressed="false">Deals</button>
     <button data-tab="charts" aria-pressed="false">Charts</button>
   </span>
   <span class="calctl seg" id="monthNav" role="group" aria-label="Month">
@@ -297,6 +362,7 @@ dialog .card { border:0; margin:0; background:transparent; }
 <main>
   <section id="calendar"></section>
   <section id="list" class="hide"></section>
+  <section id="deals" class="hide"></section>
   <section id="charts" class="hide"></section>
 </main>
 
@@ -323,14 +389,31 @@ const delta = v => {
   const n = Math.round(v);
   return n === 0 ? '—' : (n > 0 ? '+$' : '−$') + Math.abs(n);
 };
+/* Tier prices come off the primary platform with the fees baked in, so they
+   are rarely round. The ladder is the one place that shows them exactly --
+   everywhere else a price is rounded like every other price on the page. */
+const exact = v => v == null ? '—' : '$' + (Number.isInteger(v) ? v : v.toFixed(2));
 const lastDefined = a => { for (let i = a.length - 1; i >= 0; i--) if (a[i] != null) return a[i]; return null; };
+/* Below fair value at all is the signal: it is a binary fact -- you can buy
+   the same ticket for less than the platform that sold it first is charging --
+   and it needs no minimum to be true. A fifth or more below is a different
+   claim, loud enough to earn its own glyph. Both are fractions rather than
+   sums, because five dollars is a tenth of a $41 ticket and a rounding error
+   on a $400 one. */
+const STANDOUT = -0.20;
+const pctOf = v => {
+  const p = Math.abs(v) * 100;
+  return (p < 1 ? p.toFixed(1) : Math.round(p)) + '%';
+};
 
 let INDEX = {}, ORDER = [], GENERATED = null;
 let GENRE_SLOT = {}, GENRE_RANK = [];   // genre -> palette slot, computed once
 const pickedGenres = new Set();
 const HIST = {};                    // slug -> history, fetched on demand
 let tab = 'calendar', range = 0, view = 'combined';
-let showRetired = false, query = '', sortKey = 'date', sortDir = 1;
+let showRetired = false, query = '';
+const listSort = {key: 'date', dir: 1};
+const dealSort = {key: 'vsfpct', dir: 1};   // deepest discount first
 let month = new Date(); month.setDate(1);
 const filters = {};                 // slug -> category name
 const charts = [];
@@ -372,14 +455,36 @@ const evOf = slug => ({slug, ...INDEX[slug]});
 const imgOf = e => e.img_blob || e.img || null;
 const genreOf = e => (e.genres && e.genres[0]) || null;
 
-/* One glyph, three states, only when the data actually says something:
-   at its cheapest all week, drifting down, or drifting up. */
+/* One glyph, five states, only when the data actually says something: a
+   standout deal, a deal, at its cheapest all week, drifting down, drifting up.
+
+   The two deal tiers outrank the flame deliberately. "Cheapest in 7 days" is a
+   claim about the event's own recent history, and can still be a bad price;
+   "below what the same ticket costs on the platform that sold it first" is
+   measured against the alternative you actually have, which is the harder
+   fact. Any amount below counts -- it is a binary claim, not a big one.
+
+   A signal marked `badge` stands on its own and takes the calendar's
+   right-hand slot outright, where the arrows share it with the amount. Flagged
+   rather than listed by name, so a new signal cannot be forgotten there. */
 function signalOf(e) {
   const c = e.current || {};
   const d = c.change24 ?? c.change3d ?? null;
   const pct = d != null && c.floor ? d / (c.floor - d) : null;
+  // No reading count to satisfy: this compares two current numbers, so unlike
+  // the flame it needs no history to be true. Below a sold-out primary counts
+  // too -- under what the last buyer paid at face, with resale the only way
+  // left in, is exactly the bargain worth flagging.
+  const under = vsPrimaryPct(e);
+  // The bolt is not the star in a brighter green: at 11px in a calendar cell
+  // colour is the first thing to go, so the two tiers differ in shape before
+  // they differ in anything else.
+  if (under != null && under <= STANDOUT) return {
+    icon: '⚡', cls: 'down', badge: true, title: dealTitle(c, under)};
+  if (under != null && under < 0) return {
+    icon: '★', cls: 'down', badge: true, title: dealTitle(c, under)};
   if (c.at_low && c.readings > 3 && (c.change7d ?? 0) < 0) return {
-    icon: '🔥', cls: 'down', title: `cheapest in 7 days (${money(c.floor)})`};
+    icon: '🔥', cls: 'down', badge: true, title: `cheapest in 7 days (${money(c.floor)})`};
   if (pct != null && pct <= -0.03) return {
     icon: '▾', cls: 'down', title: `down ${money(Math.abs(d))} recently`};
   if (pct != null && pct >= 0.03) return {
@@ -399,7 +504,7 @@ const signal = e => {
 function move24(e) {
   const s = signalOf(e), d = Math.round(e.current?.change24 ?? 0);
   let cls = '', txt = '', tip = '';
-  if (s && s.icon === '🔥') { cls = 'down'; txt = '🔥'; tip = s.title; }
+  if (s && s.badge) { cls = s.cls; txt = s.icon; tip = s.title; }
   else if (d) {
     cls = d > 0 ? 'up' : 'down';
     txt = (d > 0 ? '▴' : '▾') + money(Math.abs(d));
@@ -447,6 +552,39 @@ const vsSale = e => {
   const c = e.current || {};
   return c.floor != null && c.last_sale != null ? Math.round(c.floor - c.last_sale) : null;
 };
+/* The event-wide fair value -- the cheapest way to buy this new, or once the
+   primary has sold out, what it was going for when it ran out -- and how the
+   resale floor compares. Negative is the good side again: below the fair value
+   the listing is a real saving. Events on a platform we cannot read carry no
+   number at all: a blank, never a zero. */
+const primaryOf = e => e.current?.primary ?? null;
+const primaryGone = e => e.current?.primary_basis === 'last-sold';
+const vsPrimary = e => {
+  const v = e.current?.vs_primary;
+  return v == null ? null : Math.round(v);
+};
+/* The same comparison as a fraction of what the ticket is worth. (Derived
+   here when the reading predates the field: it is exactly `vs_primary` over
+   `primary`, so the two agree to the last decimal.) */
+const vsPrimaryPct = e => {
+  const c = e.current || {};
+  if (c.vs_primary_pct != null) return c.vs_primary_pct;
+  return c.vs_primary != null && c.primary ? c.vs_primary / c.primary : null;
+};
+/* Under a dollar, say the cents: "$0 below fair value" reads as no saving at
+   all when the point is that there is one. */
+const dealTitle = (c, under) => {
+  const v = Math.abs(c.vs_primary);
+  return `${v < 1 ? exact(v) : money(v)} (${pctOf(under)}) below ${
+    c.primary_basis === 'last-sold'
+      ? `the last face value — ${money(c.primary)} before the primary sold out`
+      : `fair value${c.primary != null ? ` — ${money(c.primary)} to buy direct` : ''}`}`;
+};
+const vsPrimaryTip = (v, gone) => v > 0
+  ? (gone ? `resale asks ${money(v)} more than the last face value before it sold out`
+          : `resale is ${money(v)} more than buying direct — buy from the primary instead`)
+  : (gone ? `resale floor is ${money(Math.abs(v))} below the last face value`
+          : `resale floor is ${money(Math.abs(v))} below buying direct`);
 function eventDate(e) {
   if (!e.local_date) return null;
   const [y, m, d] = e.local_date.split('-').map(Number);
@@ -466,6 +604,8 @@ function slice(h) {
   const n = (h.stamps || []).length, from = range ? Math.max(0, n - range) : 0;
   return {
     labels: (h.stamps || []).slice(from).map(label),
+    // event-level, and parallel to stamps like the other event series
+    fair: ((h.event || {}).fair || []).slice(from),
     series: seriesOf(h).map(s => ({
       name: s.name, idx: s.idx,
       ask: s.all_in.slice(from), base: s.ask.slice(from),
@@ -477,6 +617,53 @@ const shownSeries = (slug, d) =>
   filters[slug] ? d.series.filter(s => s.name === filters[slug]) : d.series;
 
 /* ---------------- chart plumbing ---------------- */
+
+const FAIR = 'fair value';
+
+/* Fair value over time, drawn against the resale line it belongs to.
+
+   Colour normally names a series, but the entity here is the ticket category:
+   its resale ask and its fair value are two measures of the same thing, so the
+   hue says "same ticket" and the dash says "different source". A neutral line
+   would read as an unrelated third series, which is the opposite of the point.
+
+   The shape is what a single figure cannot show. A tier sells out, the next
+   opens dearer, the primary climbs while an ask sits still -- an event heating
+   up is exactly those two lines diverging.
+
+   `spanGaps` because the series only reaches back as far as the readings do,
+   and a visible point when there is only one of them, since a one-point line
+   drawn with no point markers is a line you cannot see. */
+function fairSets(e, series, fair, n) {
+  const pal = colors();
+  return series.map(s => {
+    const val = fairVal(fairOf(e, s.name));
+    if (val == null) return null;
+    // real shape where the event-level series is honestly this category's own
+    // history, and otherwise its own level, flat -- never somebody else's shape
+    const data = fairTracks(e, s.name, fair) ? fair : new Array(n).fill(val);
+    return {
+      type: 'line', label: `${s.name} — ${FAIR}`, data,
+      borderColor: pal[s.idx % pal.length], backgroundColor: pal[s.idx % pal.length],
+      borderWidth: 1.5, borderDash: [5, 4], tension: 0, spanGaps: true,
+      pointRadius: data.filter(v => v != null).length === 1 ? 3 : 0,
+      pointHoverRadius: 4, yAxisID: 'y', order: 1,
+    };
+  }).filter(Boolean);
+}
+
+/* Whether the event-level series is honestly this category's own history. It
+   records the cheapest comparable ticket across the whole event, so on a VIP
+   row it would sit at the GA price and quietly contradict the number in the
+   table beside it. Where the two agree the series is that category's own past;
+   where they do not, the category keeps its own figure and simply has no
+   movement to show, which a flat line says accurately. */
+function fairTracks(e, cat, fair) {
+  const last = lastDefined(fair), val = fairVal(fairOf(e, cat));
+  // within a dollar -- rounding, nothing more. Any further apart and the line
+  // would end somewhere other than the figure in the row beside it
+  return last != null && val != null && Math.abs(last - val) <= 1;
+}
 
 function datasets(series, kind) {
   const pal = colors(), hue = s => pal[s.idx % pal.length], out = [];
@@ -497,8 +684,11 @@ function datasets(series, kind) {
   return out;
 }
 
-function priceBounds(series) {
-  const vals = series.flatMap(s => s.ask).filter(v => v != null);
+function priceBounds(series, extra) {
+  // the fair-value line is a real series now, so its values belong on the axis
+  // like any other -- an ask sitting at twice the face is the whole story
+  const vals = series.flatMap(s => s.ask)
+    .concat(extra || []).filter(v => v != null);
   if (!vals.length) return {};
   const lo = Math.min(...vals), hi = Math.max(...vals);
   // headroom below the floor price so the line is not glued to the axis,
@@ -540,7 +730,9 @@ function options(kind, bounds) {
     responsive: true, maintainAspectRatio: false, animation: false,
     interaction: {mode: 'index', intersect: false}, scales,
     plugins: {
-      legend: {display: kind !== 'qty-only',
+      // the category table is the legend now -- its swatch is the series
+      // colour -- so the price chart does not need a second one
+      legend: {display: kind === 'qty-only',
         labels: {color: css('--ink-2'), boxWidth: 10, boxHeight: 10, usePointStyle: true,
                  font: {size: tight ? 11 : 12}, padding: tight ? 10 : 16,
                  filter: it => !it.text.endsWith('— tickets') || kind === 'qty-only'}},
@@ -548,7 +740,9 @@ function options(kind, bounds) {
         backgroundColor: css('--surface'), titleColor: css('--ink'), bodyColor: css('--ink-2'),
         borderColor: css('--border'), borderWidth: 1, padding: 10, boxPadding: 4,
         usePointStyle: true,
-        callbacks: {label: c => c.dataset.label.endsWith('— tickets')
+        callbacks: {label: c => c.dataset.label.endsWith(FAIR)
+          ? `${c.dataset.label.replace(` — ${FAIR}`, '')} — ${FAIR}: ${money(c.parsed.y)}`
+          : c.dataset.label.endsWith('— tickets')
           ? `${c.dataset.label.replace(' — tickets','')}: ${c.parsed.y} available`
           : `${c.dataset.label.replace(' — ask','')}: ${money(c.parsed.y)} all-in`},
       },
@@ -558,15 +752,88 @@ function options(kind, bounds) {
 
 /* ---------------- one event ---------------- */
 
-function nowStrip(slug, cats) {
-  const pal = colors(), picked = filters[slug];
-  return cats.map((c, i) =>
-    `<li><button class="chip" data-cat="${esc(c.name)}"
-      aria-pressed="${picked === c.name}" ${!picked || picked === c.name ? '' : 'data-off="1"'}
-      title="${picked === c.name ? 'Show all categories' : 'Show only ' + esc(c.name)}">
-      <i class="swatch" style="background:${pal[i % pal.length]}"></i>
-      ${esc(c.name)} <b>${c.ask == null ? 'no asks' : money(c.ask)}</b>
-      <span>· ${c.qty} ticket${c.qty === 1 ? '' : 's'}</span></button></li>`).join('');
+/* The fair value for one resale category: the cheapest comparable ticket still
+   buyable on the platform that sold the event first. Per category, because
+   "GA" and "VIP" are not the same question. */
+const fairOf = (e, cat) => ((e.primary || {}).by_category || {})[cat] || null;
+
+/* The number to compare against. A primary that has sold out is not "no fair
+   value" -- it is the case where the comparison matters most, because resale
+   is then the only way in and the markup can be enormous. So when nothing is
+   on sale any more the figure falls back to what the primary was charging when
+   it ran out, and `basis` records which of the two it is. (`value` postdates
+   the first version of this field, hence the fall back to `fair`.) */
+const fairVal = fv => {
+  if (!fv) return null;
+  if (fv.value !== undefined) return fv.value;
+  // written before `value` existed: make the same fall back here, so a
+  // half-backfilled reading still answers instead of showing a dash
+  return fv.fair != null ? fv.fair : fv.last_face ?? null;
+};
+const isPast = fv => fairVal(fv) != null &&
+  (fv.basis === 'last-sold' || (fv.basis === undefined && fv.fair == null));
+const PAST_NOTE = v => `every tier has sold out — ${money(v)} is what it was going for `
+  + 'when it ran out, not a price you can still buy at';
+
+/* The honest test of confidence is not whether two counts of different things
+   agree -- CrowdVolt's ticket types and DICE's tiers are not the same objects,
+   and comparing them cries wolf. It is whether picking a different plausible
+   pool of tiers would have produced a different price. When every candidate
+   lands on the same number there is nothing to warn about, so most rows say
+   nothing at all: silence is the signal for a value we are sure of. */
+function fairNote(fv) {
+  if (!fv || !fv.ambiguous) return null;
+  const val = fairVal(fv);
+  const alts = (fv.alternatives || []).filter(v => v != null && v !== val);
+  return 'more than one primary tier could be this ticket'
+    + (alts.length ? ` — it could also be read as ${alts.map(exact).join(' or ')}` : '');
+}
+
+/* One row per resale category: the chart's legend, the fair-value comparison
+   and the category filter in a single small table. A row is a button -- click
+   to isolate that category, click again for all of them back. */
+function catTable(e) {
+  const cats = e.current?.cats || [];
+  if (!cats.length) return '';
+  const pal = colors(), picked = filters[e.slug];
+  const rows = cats.map((c, i) => {
+    const fv = fairOf(e, c.name), fair = fairVal(fv), past = isPast(fv);
+    // struck, not hidden: the same treatment the ladder gives a gone tier, and
+    // the delta against it stays the loudest thing in the row
+    // a fair value you can only reach by buying two tickets is not a
+    // per-ticket price, and saying so is cheaper than quietly overstating it
+    const bundle = fair != null && fv.bundles_only;
+    const notes = fair == null ? [] : [
+      past && PAST_NOTE(fair),
+      bundle && 'every comparable tier on the primary is sold as a bundle — '
+        + 'this is not a price you can pay for a single ticket',
+      fairNote(fv),
+    ].filter(Boolean);
+    const cls = [past && 'past', fair != null && fairNote(fv) && 'soft'].filter(Boolean).join(' ');
+    const face = (fair != null ? money(fair)
+      : fv && fv.sold_out ? '<span class="out">sold out</span>' : '—')
+      + (bundle ? '<i class="note">bundle only</i>' : '');
+    const d = fair != null && c.ask != null ? Math.round(c.ask - fair) : null;
+    const on = picked === c.name;
+    return `<tr class="crow" data-cat="${esc(c.name)}" role="button" tabindex="0"
+      aria-pressed="${on}"${!picked || on ? '' : ' data-off="1"'}
+      title="${on ? 'Show all categories' : 'Show only ' + esc(c.name)}">
+      <td class="l nm"><i class="swatch" style="background:${pal[i % pal.length]}"></i>${esc(c.name)}</td>
+      <td>${c.ask == null ? '—' : money(c.ask)}</td>
+      <td${cls ? ` class="${cls}"` : ''}${notes.length ? ` title="${esc(notes.join(' · '))}"` : ''}>${face}</td>
+      <td class="d ${!d ? '' : d > 0 ? 'up' : 'down'}"${d ? ` title="${
+        esc(d > 0 ? `${money(d)} more than buying this new — buy from the primary instead`
+                  : `${money(Math.abs(d))} cheaper than buying this new`)}"` : ''}>${
+        d ? delta(d) : '—'}</td>
+      <td>${c.qty}</td>
+    </tr>`;
+  }).join('');
+  return `<table class="cats"><thead><tr>
+    <th class="l nm">Category</th>
+    <th title="cheapest ask right now, all-in">Ask</th>
+    <th title="cheapest comparable ticket still on sale on the platform that sold it first — or, once every tier has gone, what it was going for when it sold out">Fair value</th>
+    <th title="the ask against that fair value — below it is the good side">vs fair</th>
+    <th>Tickets</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
 function dataTable(slug, h) {
@@ -580,46 +847,144 @@ function dataTable(slug, h) {
           <tbody>${body}</tbody></table>`;
 }
 
+/* The primary platform's tiers, cheapest first. Deliberately text and not a
+   chart: four numbers and a strike-through say "Tier 1 gone, Tier 2 gone, only
+   the Final is left" faster than any plot of four points could, and the plot
+   the card already has is about the resale.
+
+   Only the modal gets it. It is context for an event you have chosen to look
+   at, and the Charts view is already a hundred cards deep. */
+/* Whether the fair-value column actually answered anything. When it did not --
+   no category could be matched to a tier -- the ladder is the fallback, and it
+   is opened rather than folded away: reading a $91 ask against a real ladder
+   by eye is far better than a column of dashes. */
+const mapped = e => (e.current?.cats || []).some(c => fairVal(fairOf(e, c.name)) != null);
+
+function tierLadder(e) {
+  const p = e.primary || {}, tiers = p.tiers || [];
+  if (!tiers.length) return '';
+  const gone = tiers.filter(t => t.status !== 'on-sale').length;
+  const rows = tiers.map(t => {
+    const live = t.status === 'on-sale';
+    return `<tr class="${live ? 'live' : 'gone'}">
+      <td class="l nm">${esc(t.name || 'Tier')}</td>
+      <td class="pr">${exact(t.price)}</td>
+      <td class="${live ? '' : 'out'}">${live ? 'on sale'
+        : esc(String(t.status || 'sold out').replace(/[-_]/g, ' '))}</td></tr>`;
+  }).join('');
+  const table = `<div class="lad"><table class="cats tiers"><thead><tr>
+    <th class="l nm">Tier</th><th>Price</th><th>Status</th>
+    </tr></thead><tbody>${rows}</tbody></table></div>`;
+  // the two facts worth having without opening it: what the event first went
+  // on sale at, and how much of the ladder is already gone
+  const sum = `${esc(p.platform || 'Primary')} tiers — from ${exact(tiers[0].price)}, ${
+    gone ? `${gone} of ${tiers.length} sold out` : `all ${tiers.length} on sale`}`;
+  return mapped(e)
+    ? `<details class="ladder"><summary>${sum}</summary>${table}</details>`
+    : `<div class="ladder"><div class="lnote">${sum}. No resale category could be `
+      + `matched to a tier, so compare the asks above against the ladder itself.`
+      + `</div>${table}</div>`;
+}
+
 function cardShell(e, id) {
   const where = [e.venue, e.city].filter(Boolean).join(' · ');
   const tag = e.status === 'active' ? '' :
     `<span class="tag">${esc(String(e.status).replace('_',' '))}${e.retired_reason
       ? ' — ' + esc(e.retired_reason.split(': ').pop()) : ''}</span>`;
   const c = e.current || {};
-  const spread = c.floor != null && c.bid != null ? c.floor - c.bid : null;
+  // a bid of zero is not a bid: CrowdVolt reports 0 where nobody has bid at
+  // all, and a spread measured against it is a spread against nothing. The
+  // spread arrives precomputed, and is null unless there is a real bid
+  const spread = c.spread ?? (c.floor != null && c.bid ? c.floor - c.bid : null);
   const vs = vsSale(e);
+  /* Two groups, not one wall. The market numbers are what the page is for, so
+     they keep the bordered pill and come first; the descriptive tags are
+     context and drop to a quiet line under them, with anything past the first
+     few behind a "+n more" rather than spending a second row on a cast list.
+
+     No primary pills here: the category table below states that comparison per
+     category and more precisely, and the ladder's summary carries the face
+     value. A pill repeating either would be the same number twice. */
   const pills = [
     c.at_low && c.readings > 3 && '🔥 cheapest in 7 days',
     c.last_sale != null && `last sale ${money(c.last_sale)}`,
     vs ? `${money(Math.abs(vs))} ${vs > 0 ? 'above' : 'below'} last sale` : null,
-    c.bid != null && `best bid ${money(c.bid)}`,
+    c.bid ? `best bid ${money(c.bid)}` : null,
     spread != null && `spread ${money(spread)}`,
     c.bidders ? `${c.bidders} bidder${c.bidders === 1 ? '' : 's'}` : null,
-    ...(e.genres || []).slice(0, 3),
-    e.platform, e.ticket_limit && `limit ${e.ticket_limit}`,
-    (e.performers || []).map(p => p.name).join(', ') || null,
   ].filter(Boolean).map(t => `<span class="pill">${esc(t)}</span>`).join('');
+  // genres keep the coloured dot they carry everywhere else on the page
+  const tags = [
+    ...(e.genres || []).map(g => [g, genreColor(g)]),
+    e.platform && [e.platform],
+    e.ticket_limit && [`limit ${e.ticket_limit}`],
+    ...(e.performers || []).map(p => [p.name]),
+  ].filter(Boolean);
+  const KEEP = 4;
+  const tagRow = !tags.length ? '' : `<div class="tags">${
+    tags.map(([t, dot], i) => `<span class="qtag"${i < KEEP ? '' : ' hidden'}>${
+      dot ? `<i class="gdot" style="background:${dot}"></i>` : ''}${esc(t)}</span>`).join('')}${
+    tags.length > KEEP ? `<button class="qmore">+${tags.length - KEEP} more</button>` : ''}</div>`;
   const art = imgOf(e)
     ? `<img src="${esc(imgOf(e))}" alt="" loading="lazy" decoding="async">` : '';
   return `<div class="head">${art}<div class="txt">
       <h3><a href="${esc(e.url)}" target="_blank" rel="noreferrer">${esc(e.name || e.slug)}</a>${tag}</h3>
       <div class="meta">${esc(where)}${where && e.doors ? '<span class="sep">·</span>' : ''}${esc(e.doors || '')}</div>
-      <div class="pills">${pills}</div>
+      <div class="pills">${pills}</div>${tagRow}
     </div></div>
-    <ul class="now">${nowStrip(e.slug, e.current?.cats || [])}</ul>
+    ${catTable(e)}${id === 'modal' ? tierLadder(e) : ''}
     <div class="wrap price"><canvas id="c-${id}"></canvas></div>
     <div class="wrap qty"><canvas id="q-${id}"></canvas></div>
     <div class="axisnote"><span>Left: best ask (all-in)</span><span>Right: tickets available</span></div>
     <details class="tbl"><summary>Data table</summary><div></div></details>`;
 }
 
+/* The modal is one long-lived element that gets rewritten, so two opens in
+   quick succession can leave a superseded wireCard still waiting on its
+   history fetch. When it wakes it draws onto the canvas the newer open has
+   since put there, and Chart.js refuses a canvas that already carries a chart.
+   Whichever of the two lands last is reading the same state and draws the same
+   picture, so clearing the canvas first is enough -- and it costs nothing in
+   the ordinary case, where there is no chart to clear. */
+function free(canvas) {
+  const old = canvas && Chart.getChart(canvas);
+  if (old) {
+    const i = charts.indexOf(old);
+    if (i >= 0) charts.splice(i, 1);
+    old.destroy();
+  }
+  return canvas;
+}
+
 async function wireCard(root, e, id) {
+  // wired before the history fetch: revealing the rest of a cast list should
+  // not wait on a network round trip it has nothing to do with
+  const more = $('.qmore', root);
+  if (more) more.onclick = () => {
+    $$('.qtag[hidden]', root).forEach(t => t.hidden = false);
+    more.remove();
+  };
+  // the canvas this call set out to draw on. The modal is one long-lived
+  // element that gets rewritten, so a second open while this one is still
+  // waiting on its history leaves the first drawing onto a canvas that is no
+  // longer on the page -- and the newer canvas blank
+  const canvas = $(`#c-${id}`, root);
   const h = await history(e.slug);
   if (!root.isConnected) return;
   const d = slice(h), series = shownSeries(e.slug, d);
+  // The table is the chart's legend, so its swatches have to be the chart's
+  // colours. It is built from `current.cats`, which drops a category that has
+  // never had an ask or a ticket, while the chart colours by position in the
+  // history -- so past such a gap the two would disagree. Restyle from the
+  // series the chart will actually use.
+  const pal = colors();
+  $$('.crow', root).forEach(row => {
+    const s = d.series.find(x => x.name === row.dataset.cat), sw = $('.swatch', row);
+    if (s && sw) sw.style.background = pal[s.idx % pal.length];
+  });
   const combined = view === 'combined';
   const c = $(`#c-${id}`, root);
-  if (!c) return;
+  if (!c || c !== canvas) return;    // superseded while the fetch was in flight
   // plenty of events are tracked before anything is ever listed on them. An
   // axis running $0 to $1 over an empty plot says less than one line of text.
   const live = series.some(s => s.ask.some(v => v != null) || s.qty.some(v => v));
@@ -629,24 +994,45 @@ async function wireCard(root, e, id) {
       ? 'Nothing listed yet — no asks and no tickets in any reading so far.'
       : 'No readings yet.'}</span>`;
   } else {
-    charts.push(new Chart(c, {
-      data: {labels: d.labels, datasets: datasets(series, combined ? 'both' : 'ask-only')},
-      options: options(combined ? 'both' : 'ask-only', priceBounds(series)),
+    const sets = datasets(series, combined ? 'both' : 'ask-only');
+    // two categories is four lines and readable; five would be ten and a mess.
+    // Counted over the categories that actually drew an ask line, not every one
+    // the history has ever seen -- and isolating a category leaves exactly one.
+    // A category with nothing listed gets no fair line either: there is no
+    // resale price there for it to be the reference for
+    const drawn = series.filter(s => s.ask.some(v => v != null));
+    const fairs = drawn.length <= 2 ? fairSets(e, drawn, d.fair, d.labels.length) : [];
+    sets.push(...fairs);
+    const withFair = fairs.length > 0;
+    charts.push(new Chart(free(c), {
+      data: {labels: d.labels, datasets: sets},
+      options: options(combined ? 'both' : 'ask-only',
+                       priceBounds(series, fairs.flatMap(f => f.data))),
     }));
-    if (!combined) charts.push(new Chart($(`#q-${id}`, root), {
+    if (!combined) charts.push(new Chart(free($(`#q-${id}`, root)), {
       data: {labels: d.labels, datasets: datasets(series, 'qty-only')},
       options: options('qty-only'),
     }));
     $('.axisnote', root).style.display = combined ? 'flex' : 'none';
+    // there is no chart legend any more, so the dashed line says its own name
+    if (withFair) $('.axisnote span:last-child', root)
+      .insertAdjacentHTML('beforebegin', `<span>Dashed: ${FAIR}</span>`);
   }
   // the table is built on first open -- rendering every row of every event up
   // front is what turns a hundred tracked events into a heavy page
   const det = $('.tbl', root);
   const fill = () => { if (det.open) $('div', det).innerHTML = dataTable(e.slug, h); };
   det.ontoggle = fill; fill();
-  $$('.chip', root).forEach(chip => chip.onclick = () => {
-    filters[e.slug] = filters[e.slug] === chip.dataset.cat ? undefined : chip.dataset.cat;
-    render();
+  $$('.crow', root).forEach(row => {
+    const pick = () => {
+      filters[e.slug] = filters[e.slug] === row.dataset.cat ? undefined : row.dataset.cat;
+      render();
+    };
+    row.onclick = pick;
+    // a table row is not a button by default, so it has to answer the keys one
+    row.onkeydown = ev => {
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); pick(); }
+    };
   });
 }
 
@@ -776,66 +1162,146 @@ function renderCalendar() {
   fitCalendar();
 }
 
+/* Each column says how to sort by it and how to draw its cell, so the Deals
+   view is a different column list over the same rows rather than a second copy
+   of the markup. */
+const cellDate = e => {
+  const d = eventDate(e);
+  return `<td class="l">${d ? d.toLocaleDateString([], {month:'short', day:'numeric'}) : '—'}</td>`;
+};
+const cellIn = e => {
+  const d = eventDate(e), days = d ? Math.round((d - startOfToday()) / 86400000) : null;
+  return `<td class="l">${days == null ? '' : days < 0 ? 'past'
+    : days === 0 ? 'today' : days + 'd'}</td>`;
+};
+const cellName = e => `<td class="l ev" title="${esc(e.name || e.slug)}">${
+  thumb(e, 'lthumb')}${esc(e.name || e.slug)}${signal(e)}</td>`;
+const cellVsSale = e => {
+  const vs = vsSale(e);
+  return `<td class="${!vs ? '' : vs > 0 ? 'up' : 'down'}"${vs ? ` title="floor is ${
+    money(Math.abs(vs))} ${vs > 0 ? 'above' : 'below'} the last sale"` : ''}>${
+    vs ? delta(vs) : '—'}</td>`;
+};
+const cellFair = (e, plain) => {
+  const pr = primaryOf(e), gone = pr != null && primaryGone(e);
+  return `<td${gone ? ` class="past" title="${esc(PAST_NOTE(pr))}"` : ''}>${
+    pr == null ? '—' : money(pr)}${
+    gone && plain ? '<i class="note">primary sold out</i>' : ''}</td>`;
+};
+const cellVsFair = e => {
+  const vp = vsPrimary(e), gone = primaryGone(e);
+  return `<td class="${!vp ? '' : vp > 0 ? 'up' : 'down'}"${
+    vp ? ` title="${esc(vsPrimaryTip(vp, gone))}"` : ''}>${vp ? delta(vp) : '—'}</td>`;
+};
+/* The same saving as a share of the price. Twenty dollars off a $40 ticket and
+   off a $400 one are not the same news, and only this column says so. */
+const cellVsFairPct = e => {
+  const v = vsPrimaryPct(e);
+  return `<td class="${!v ? '' : v > 0 ? 'up' : 'down'}">${
+    v == null ? '—' : (v > 0 ? '+' : '−') + pctOf(v)}</td>`;
+};
+const cellChange = k => e => {
+  const v = e.current?.[k];
+  return `<td class="${!v || !Math.round(v) ? '' : v > 0 ? 'up' : 'down'}">${delta(v)}</td>`;
+};
+const plainTd = (cls, txt) => `<td class="${cls}">${txt}</td>`;
+
 const COLUMNS = [
-  ['date',    'Date',    'l', e => e.starts_ts ?? Infinity],
-  ['in',      'In',      'l', e => e.starts_ts ?? Infinity],
-  ['name',    'Event',   'l', e => (e.name || e.slug).toLowerCase()],
-  ['sale',    'Last sale', '', e => e.current?.last_sale ?? -1],
+  ['date',    'Date',    'l', e => e.starts_ts ?? Infinity, cellDate],
+  ['in',      'In',      'l', e => e.starts_ts ?? Infinity, cellIn],
+  ['name',    'Event',   'l', e => (e.name || e.slug).toLowerCase(), cellName],
+  ['sale',    'Last sale', '', e => e.current?.last_sale ?? -1,
+    e => `<td>${e.current?.last_sale == null ? '—' : money(e.current.last_sale)}</td>`],
   // nothing to compare sorts to the end rather than reading as a big discount
-  ['vsale',   'vs sale', '', e => vsSale(e) ?? Infinity],
-  ['venue',   'Venue',   'l', e => (e.venue || '').toLowerCase()],
-  ['city',    'City',    'l', e => (e.city || '').toLowerCase()],
-  ['genre',   'Genre',   'l', e => genreLabel(e).toLowerCase()],
-  ['floor',   'Floor',   '',  e => floorOf(e) ?? Infinity],
-  ['change',  '24h',     '',  e => e.current?.change24 ?? 0],
-  ['change3', '3d',      '',  e => e.current?.change3d ?? 0],
-  ['change7', '7d',      '',  e => e.current?.change7d ?? 0],
-  ['tickets', 'Tickets', '',  e => ticketsOf(e)],
-  ['cats',    'Cats',    '',  e => (e.current?.cats || []).length],
+  ['vsale',   'vs sale', '', e => vsSale(e) ?? Infinity, cellVsSale],
+  // the same two questions asked of the primary platform instead of the last
+  // resale: what this ticket is worth new, and whether the resale beats it
+  ['prim',    'Fair value', '', e => primaryOf(e) ?? Infinity, e => cellFair(e, false)],
+  ['vsprim',  'vs fair', '', e => vsPrimary(e) ?? Infinity, cellVsFair],
+  ['venue',   'Venue',   'l', e => (e.venue || '').toLowerCase(),
+    e => `<td class="l vn" title="${esc(e.venue || '')}">${esc(e.venue || '')}</td>`],
+  ['city',    'City',    'l', e => (e.city || '').toLowerCase(),
+    e => plainTd('l', esc(e.city || ''))],
+  ['genre',   'Genre',   'l', e => genreLabel(e).toLowerCase(),
+    e => plainTd('l', `<i class="gdot" style="background:${
+      genreColor(genreOf(e))}"></i>${esc(genreLabel(e))}`)],
+  ['floor',   'Floor',   '',  e => floorOf(e) ?? Infinity,
+    e => `<td>${floorOf(e) == null ? '—' : money(floorOf(e))}</td>`],
+  ['change',  '24h',     '',  e => e.current?.change24 ?? 0, cellChange('change24')],
+  ['change3', '3d',      '',  e => e.current?.change3d ?? 0, cellChange('change3d')],
+  ['change7', '7d',      '',  e => e.current?.change7d ?? 0, cellChange('change7d')],
+  ['tickets', 'Tickets', '',  e => ticketsOf(e), e => `<td>${ticketsOf(e)}</td>`],
+  ['cats',    'Cats',    '',  e => (e.current?.cats || []).length,
+    e => `<td>${(e.current?.cats || []).length}</td>`],
 ];
 
-function renderList() {
-  const get = Object.fromEntries(COLUMNS.map(c => [c[0], c[3]]));
-  const rows = visible().sort((a, b) => {
-    const x = get[sortKey](a), y = get[sortKey](b);
-    return (x > y ? 1 : x < y ? -1 : 0) * sortDir;
+/* The Deals view carries the List's columns so a row still reads the same and
+   still opens the same modal, plus the percentage it is sorted by, and it says
+   in words when a fair value belongs to a primary that has sold out. */
+const DEAL_COLUMNS = COLUMNS.flatMap(c =>
+  c[0] === 'prim' ? [[...c.slice(0, 4), e => cellFair(e, true)]] :
+  c[0] === 'vsprim' ? [c, ['vsfpct', 'vs fair %', '',
+                           e => vsPrimaryPct(e) ?? Infinity, cellVsFairPct]] : [c]);
+
+function sortRows(rows, cols, sort) {
+  const get = Object.fromEntries(cols.map(c => [c[0], c[3]]));
+  return rows.slice().sort((a, b) => {
+    const x = get[sort.key](a), y = get[sort.key](b);
+    return (x > y ? 1 : x < y ? -1 : 0) * sort.dir;
   });
-  const t0 = startOfToday();
-  const body = rows.map(e => {
-    const c = e.current || {}, d = eventDate(e), p = floorOf(e), vs = vsSale(e);
-    const days = d ? Math.round((d - t0) / 86400000) : null;
-    return `<tr data-slug="${esc(e.slug)}">
-      <td class="l">${d ? d.toLocaleDateString([], {month:'short', day:'numeric'}) : '—'}</td>
-      <td class="l">${days == null ? '' : days < 0 ? 'past' : days === 0 ? 'today' : days + 'd'}</td>
-      <td class="l ev" title="${esc(e.name || e.slug)}">${thumb(e, 'lthumb')}${esc(e.name || e.slug)}${signal(e)}</td>
-      <td>${e.current?.last_sale == null ? '—' : money(e.current.last_sale)}</td>
-      <td class="${!vs ? '' : vs > 0 ? 'up' : 'down'}"${vs ? ` title="floor is ${
-        money(Math.abs(vs))} ${vs > 0 ? 'above' : 'below'} the last sale"` : ''}>${
-        vs ? delta(vs) : '—'}</td>
-      <td class="l vn" title="${esc(e.venue || '')}">${esc(e.venue || '')}</td>
-      <td class="l">${esc(e.city || '')}</td>
-      <td class="l"><i class="gdot" style="background:${genreColor(genreOf(e))}"></i>${esc(genreLabel(e))}</td>
-      <td>${p == null ? '—' : money(p)}</td>
-      ${[c.change24, c.change3d, c.change7d].map(v =>
-        `<td class="${!v || !Math.round(v) ? '' : v > 0 ? 'up' : 'down'}">${delta(v)}</td>`).join('')}
-      <td>${ticketsOf(e)}</td>
-      <td>${(e.current?.cats || []).length}</td>
-      <td class="l">${e.status === 'active' ? '' : `<span class="badge">${esc(e.status)}</span>`}</td>
-    </tr>`;
-  }).join('');
-  $('#list').innerHTML = genreBar() + (rows.length ? `<table><thead><tr>${
-    COLUMNS.map(([k, t, cls]) => `<th data-sort="${k}" class="${cls}"${
-      sortKey === k ? ` aria-sort="${sortDir > 0 ? 'ascending' : 'descending'}"` : ''}>${t}</th>`).join('')
-    }<th class="l"></th></tr></thead><tbody>${body}</tbody></table>`
-    : '<p class="empty">Nothing matches.</p>');
-  wireGenreBar($('#list'));
-  $$('#list th[data-sort]').forEach(th => th.onclick = () => {
+}
+
+function tableFor(cols, rows, sort) {
+  const body = rows.map(e => `<tr data-slug="${esc(e.slug)}">${
+    cols.map(c => c[4](e)).join('')}<td class="l">${e.status === 'active' ? ''
+      : `<span class="badge">${esc(e.status)}</span>`}</td></tr>`).join('');
+  return `<table><thead><tr>${cols.map(([k, t, cls]) =>
+    `<th data-sort="${k}" class="${cls}"${sort.key === k
+      ? ` aria-sort="${sort.dir > 0 ? 'ascending' : 'descending'}"` : ''}>${t}</th>`).join('')
+    }<th class="l"></th></tr></thead><tbody>${body}</tbody></table>`;
+}
+
+function wireTable(host, sort, redraw) {
+  wireGenreBar(host);
+  $$('th[data-sort]', host).forEach(th => th.onclick = () => {
     const k = th.dataset.sort;
-    sortDir = sortKey === k ? -sortDir : 1;
-    sortKey = k;
-    renderList();
+    sort.dir = sort.key === k ? -sort.dir : 1;
+    sort.key = k;
+    redraw();
   });
-  $$('#list tbody tr').forEach(tr => tr.onclick = () => openEvent(tr.dataset.slug));
+  $$('tbody tr', host).forEach(tr => tr.onclick = () => openEvent(tr.dataset.slug));
+}
+
+function renderList() {
+  const rows = sortRows(visible(), COLUMNS, listSort);
+  $('#list').innerHTML = genreBar() + (rows.length
+    ? tableFor(COLUMNS, rows, listSort) : '<p class="empty">Nothing matches.</p>');
+  wireTable($('#list'), listSort, renderList);
+}
+
+/* Everything currently asking less than it would cost to buy new, dearest
+   discount first. A view rather than a filter on the List: it wants its own
+   default sort, a column the List has no room for, and a sentence of its own
+   about what the comparison is worth -- none of which belong in the List's
+   toolbar, and none of which disturb the List by being here. */
+function renderDeals() {
+  const host = $('#deals');
+  const deals = visible().filter(e => (vsPrimaryPct(e) ?? 0) < 0);
+  const rows = sortRows(deals, DEAL_COLUMNS, dealSort);
+  const priced = ORDER.map(evOf).filter(e => primaryOf(e) != null).length;
+  const gone = rows.filter(primaryGone).length;
+  const note = !rows.length
+    ? `Nothing is asking below its fair value right now, out of the ${priced} event${
+        priced === 1 ? '' : 's'} we can price at all.`
+    : `${rows.length} of the ${priced} events we can price ${rows.length === 1 ? 'is' : 'are'
+      } asking below fair value, biggest saving first.`
+      + (gone ? ` ${gone} of ${rows.length === 1 ? 'them' : 'those'} compare${
+          gone === 1 ? 's' : ''} against a primary that has already sold out — nobody can pay`
+          + ' that price any more, so the saving is against history rather than against a'
+          + ' ticket you could still buy instead.' : '');
+  host.innerHTML = genreBar() + `<p class="dealnote">${note}</p>`
+    + (rows.length ? tableFor(DEAL_COLUMNS, rows, dealSort) : '');
+  wireTable(host, dealSort, renderDeals);
 }
 
 function renderCharts() {
@@ -885,7 +1351,8 @@ function render() {
   charts.splice(0).forEach(c => c.destroy());
   document.body.classList.toggle('split', view === 'split');
   document.body.classList.toggle('tab-calendar', tab === 'calendar');
-  ['calendar','list','charts'].forEach(t => $('#' + t).classList.toggle('hide', t !== tab));
+  document.body.classList.toggle('tab-list', tab === 'list' || tab === 'deals');
+  ['calendar','list','deals','charts'].forEach(t => $('#' + t).classList.toggle('hide', t !== tab));
   $$('.chartctl').forEach(el => el.classList.toggle('hide', tab !== 'charts'));
   $$('.calctl').forEach(el => el.classList.toggle('hide', tab !== 'calendar'));
   // the agenda is one continuous upcoming list, so a month stepper means
@@ -893,6 +1360,7 @@ function render() {
   $('#monthNav').classList.toggle('hide', tab !== 'calendar' || isPhone());
   if (tab === 'calendar') renderCalendar();
   if (tab === 'list') renderList();
+  if (tab === 'deals') renderDeals();
   if (tab === 'charts') renderCharts();
   if ($('#modal').open && openSlug) openEvent(openSlug);
 }
