@@ -15,6 +15,7 @@ the static page never redeploys, the hourly job just replaces two or three
 JSON objects. Without credentials everything still works, purely local.
 """
 
+import hashlib
 import json
 import urllib.error
 import urllib.request
@@ -55,6 +56,13 @@ def _read(path, default):
 def _write(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, separators=(",", ":"), sort_keys=True))
+
+
+def _slot(slug, every):
+    """Which hour-of-the-cycle this event belongs to. Stable across runs."""
+    if every <= 1:
+        return 0
+    return int(hashlib.md5(slug.encode()).hexdigest()[:8], 16) % every
 
 
 def _parse(ts):
@@ -155,18 +163,34 @@ class Store:
         return sorted(s for s, e in self.events.items() if e.get("status") == "active")
 
     def due(self, now):
-        """Active events whose tier says they are ready for another reading."""
+        """Active events whose tier says they are ready for another reading.
+
+        Each event gets a fixed slot within its tier, derived from its slug, so
+        a tier's events spread evenly across its window instead of all coming
+        due in the same hour. Without this the cohorts stay synchronised
+        forever -- everything was seeded within a few minutes of each other, so
+        an hourly run would alternate between 26 events and 140, which is both
+        a burst of traffic and a bill.
+        """
         out = []
         for slug in self.active():
             e = self.events[slug]
+            days = ((e.get("starts_ts") or 0) - now.timestamp()) / 86400
+            every = next(h for limit, h in TIERS if limit is None or days <= limit)
             last = _parse(e.get("last_read_at"))
             if last is None:
                 out.append(slug)
                 continue
-            days = ((e.get("starts_ts") or 0) - now.timestamp()) / 86400
-            every = next(h for limit, h in TIERS if limit is None or days <= limit)
+            elapsed = now - last
+            # a missed run (GitHub's scheduler is best-effort) should not cost a
+            # whole extra window -- catch up once we are well past due
+            if elapsed >= timedelta(hours=every * 2):
+                out.append(slug)
+                continue
+            if now.hour % every != _slot(slug, every):
+                continue
             # a little slack so an 07:03 run still counts as "an hour later"
-            if now - last >= timedelta(hours=every, minutes=-10):
+            if elapsed >= timedelta(hours=every, minutes=-10):
                 out.append(slug)
         return out
 
