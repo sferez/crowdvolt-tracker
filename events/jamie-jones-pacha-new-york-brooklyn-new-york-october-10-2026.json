@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    null,
+   49,
+   49,
    49
   ],
   "bidders": [
    null,
+   1,
+   1,
    1
+  ],
+  "fair": [
+   null,
+   null,
+   null,
+   68.96
   ],
   "high": [
    null,
+   413,
+   413,
    413
   ],
   "last_sale": [
    null,
+   52.0,
+   52.0,
    52.0
   ],
   "listings": [
    null,
+   36,
+   36,
    36
   ],
   "tickets": [
    null,
+   80,
+   80,
    80
   ]
  },
  "stamps": [
   "2026-09-09T02:48:14+00:00",
-  "2026-09-09T02:53:32+00:00"
+  "2026-09-09T02:53:32+00:00",
+  "2026-09-09T04:14:54+00:00",
+  "2026-09-09T04:22:32+00:00"
  ],
  "types": {
   "Backstage Dancing VIP": {
    "all_in": [
     413,
+    413,
+    413,
     413
    ],
    "ask": [
+    400,
+    400,
     400,
     400
    ],
    "ask_qty": [
     4,
+    4,
+    4,
     4
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 2,
    "listings": [
+    1,
+    1,
     1,
     1
    ],
    "qty": [
+    4,
+    4,
     4,
     4
    ],
@@ -64,29 +99,44 @@
   "GA (Before 12AM)": {
    "all_in": [
     52,
+    52,
+    52,
     52
    ],
    "ask": [
+    50,
+    50,
     50,
     50
    ],
    "ask_qty": [
     1,
+    1,
+    1,
     1
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 2,
    "listings": [
+    9,
+    9,
     9,
     9
    ],
    "qty": [
+    15,
+    15,
     15,
     15
    ],
@@ -95,29 +145,44 @@
   "General Admission": {
    "all_in": [
     52,
-    52
+    52,
+    70,
+    70
    ],
    "ask": [
     50,
-    50
+    50,
+    67,
+    67
    ],
    "ask_qty": [
+    1,
+    1,
     1,
     1
    ],
    "bid": [
     51,
+    51,
+    51,
     51
    ],
    "bid_qty": [
     1,
+    1,
+    1,
     1
    ],
+   "linked_count": 2,
    "listings": [
+    26,
+    26,
     26,
     26
    ],
    "qty": [
+    61,
+    61,
     61,
     61
    ],

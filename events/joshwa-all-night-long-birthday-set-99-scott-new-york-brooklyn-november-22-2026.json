@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    null,
+   0,
+   0,
    0
   ],
   "bidders": [
    null,
+   0,
+   0,
    0
+  ],
+  "fair": [
+   null,
+   null,
+   null,
+   null
   ],
   "high": [
    null,
+   200,
+   200,
    200
   ],
   "last_sale": [
+   null,
+   null,
    null,
    null
   ],
   "listings": [
    null,
+   15,
+   15,
    15
   ],
   "tickets": [
    null,
+   34,
+   34,
    34
   ]
  },
  "stamps": [
   "2026-09-09T02:48:26+00:00",
-  "2026-09-09T02:53:44+00:00"
+  "2026-09-09T02:53:44+00:00",
+  "2026-09-09T04:15:07+00:00",
+  "2026-09-09T04:22:44+00:00"
  ],
  "types": {
   "Artist\u2019s Guest (VIP)": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -64,29 +99,44 @@
   "GA (Before 11PM)": {
    "all_in": [
     25,
+    25,
+    25,
     25
    ],
    "ask": [
+    24,
+    24,
     24,
     24
    ],
    "ask_qty": [
     1,
+    1,
+    1,
     1
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    4,
+    4,
     4,
     4
    ],
    "qty": [
+    6,
+    6,
     6,
     6
    ],
@@ -95,29 +145,44 @@
   "General Admission": {
    "all_in": [
     52,
+    52,
+    52,
     52
    ],
    "ask": [
+    50,
+    50,
     50,
     50
    ],
    "ask_qty": [
     1,
+    1,
+    1,
     1
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 4,
    "listings": [
+    10,
+    10,
     10,
     10
    ],
    "qty": [
+    24,
+    24,
     24,
     24
    ],
@@ -126,29 +191,44 @@
   "VIP": {
    "all_in": [
     78,
+    78,
+    78,
     78
    ],
    "ask": [
+    75,
+    75,
     75,
     75
    ],
    "ask_qty": [
     4,
+    4,
+    4,
     4
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    1,
+    1,
     1,
     1
    ],
    "qty": [
+    4,
+    4,
     4,
     4
    ],

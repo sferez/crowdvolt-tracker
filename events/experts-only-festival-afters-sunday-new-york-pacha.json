@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    null,
+   106,
+   106,
    106
   ],
   "bidders": [
    null,
+   11,
+   11,
    11
+  ],
+  "fair": [
+   null,
+   null,
+   null,
+   null
   ],
   "high": [
    null,
+   250,
+   250,
    250
   ],
   "last_sale": [
    null,
+   94.0,
+   94.0,
    94.0
   ],
   "listings": [
    null,
-   24
+   24,
+   25,
+   25
   ],
   "tickets": [
    null,
-   52
+   52,
+   53,
+   53
   ]
  },
  "stamps": [
   "2026-09-09T02:47:28+00:00",
-  "2026-09-09T02:52:46+00:00"
+  "2026-09-09T02:52:46+00:00",
+  "2026-09-09T04:14:09+00:00",
+  "2026-09-09T04:21:52+00:00"
  ],
  "types": {
   "Backstage Dancing VIP": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    110,
+    110,
     110,
     110
    ],
    "bid_qty": [
     1,
+    1,
+    1,
     1
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -64,29 +99,44 @@
   "GA (Before 12AM)": {
    "all_in": [
     94,
+    94,
+    94,
     94
    ],
    "ask": [
+    91,
+    91,
     91,
     91
    ],
    "ask_qty": [
     6,
+    6,
+    6,
     6
    ],
    "bid": [
+    56,
+    56,
     56,
     56
    ],
    "bid_qty": [
     1,
+    1,
+    1,
     1
    ],
+   "linked_count": 1,
    "listings": [
+    6,
+    6,
     6,
     6
    ],
    "qty": [
+    13,
+    13,
     13,
     13
    ],
@@ -95,31 +145,46 @@
   "General Admission": {
    "all_in": [
     94,
+    94,
+    94,
     94
    ],
    "ask": [
+    91,
+    91,
     91,
     91
    ],
    "ask_qty": [
     4,
+    4,
+    4,
     4
    ],
    "bid": [
+    74,
+    74,
     74,
     74
    ],
    "bid_qty": [
     1,
+    1,
+    1,
     1
    ],
+   "linked_count": 1,
    "listings": [
     18,
-    18
+    18,
+    19,
+    19
    ],
    "qty": [
     39,
-    39
+    39,
+    40,
+    40
    ],
    "uqid": "7b38d4d3-90b1-4b3d-896d-7c6fd36125db"
   }

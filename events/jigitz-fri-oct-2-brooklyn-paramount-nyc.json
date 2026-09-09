@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    null,
+   91,
+   91,
    91
   ],
   "bidders": [
    null,
+   2,
+   2,
    2
+  ],
+  "fair": [
+   null,
+   null,
+   null,
+   null
   ],
   "high": [
    null,
+   145,
+   145,
    145
   ],
   "last_sale": [
    null,
+   144.0,
+   144.0,
    144.0
   ],
   "listings": [
    null,
+   8,
+   8,
    8
   ],
   "tickets": [
    null,
+   16,
+   16,
    16
   ]
  },
  "stamps": [
   "2026-09-09T02:48:23+00:00",
-  "2026-09-09T02:53:43+00:00"
+  "2026-09-09T02:53:43+00:00",
+  "2026-09-09T04:15:02+00:00",
+  "2026-09-09T04:22:40+00:00"
  ],
  "types": {
   "GA (Balcony)": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -64,29 +99,44 @@
   "GA (Floor)": {
    "all_in": [
     139,
+    139,
+    139,
     139
    ],
    "ask": [
+    134,
+    134,
     134,
     134
    ],
    "ask_qty": [
     2,
+    2,
+    2,
     2
    ],
    "bid": [
+    95,
+    95,
     95,
     95
    ],
    "bid_qty": [
     2,
+    2,
+    2,
     2
    ],
+   "linked_count": 6,
    "listings": [
+    8,
+    8,
     8,
     8
    ],
    "qty": [
+    16,
+    16,
     16,
     16
    ],

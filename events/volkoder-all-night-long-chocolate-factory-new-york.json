@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    0,
+   0,
+   0,
    0
   ],
   "bidders": [
    0,
+   0,
+   0,
    0
   ],
+  "fair": [
+   null,
+   null,
+   null,
+   60.77
+  ],
   "high": [
+   412,
+   412,
    412,
    412
   ],
   "last_sale": [
    null,
+   null,
+   null,
    null
   ],
   "listings": [
    17,
+   17,
+   17,
    17
   ],
   "tickets": [
+   32,
+   32,
    32,
    32
   ]
  },
  "stamps": [
   "2026-09-09T03:19:51+00:00",
-  "2026-09-09T03:24:32+00:00"
+  "2026-09-09T03:24:32+00:00",
+  "2026-09-09T04:17:33+00:00",
+  "2026-09-09T04:25:14+00:00"
  ],
  "types": {
   "Backstage": {
    "all_in": [
     412,
+    412,
+    412,
     412
    ],
    "ask": [
+    399,
+    399,
     399,
     399
    ],
    "ask_qty": [
     2,
+    2,
+    2,
     2
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    1,
+    1,
     1,
     1
    ],
    "qty": [
+    2,
+    2,
     2,
     2
    ],
@@ -64,29 +99,44 @@
   "General Admission": {
    "all_in": [
     86,
+    86,
+    86,
     86
    ],
    "ask": [
+    83,
+    83,
     83,
     83
    ],
    "ask_qty": [
     1,
+    1,
+    1,
     1
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 4,
    "listings": [
+    16,
+    16,
     16,
     16
    ],
    "qty": [
+    30,
+    30,
     30,
     30
    ],

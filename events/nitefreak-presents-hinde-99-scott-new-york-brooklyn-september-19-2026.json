@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    null,
+   19,
+   19,
    19
   ],
   "bidders": [
    null,
+   1,
+   1,
    1
+  ],
+  "fair": [
+   null,
+   null,
+   null,
+   34.56
   ],
   "high": [
    null,
+   92,
+   92,
    92
   ],
   "last_sale": [
    null,
+   39.0,
+   39.0,
    39.0
   ],
   "listings": [
    null,
+   4,
+   4,
    4
   ],
   "tickets": [
    null,
+   9,
+   9,
    9
   ]
  },
  "stamps": [
   "2026-09-09T02:49:25+00:00",
-  "2026-09-09T02:54:46+00:00"
+  "2026-09-09T02:54:46+00:00",
+  "2026-09-09T04:16:08+00:00",
+  "2026-09-09T04:23:48+00:00"
  ],
  "types": {
   "Artist\u2019s Guest VIP": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -64,29 +99,44 @@
   "GA (Before 11PM)": {
    "all_in": [
     37,
+    37,
+    37,
     37
    ],
    "ask": [
+    35,
+    35,
     35,
     35
    ],
    "ask_qty": [
     1,
+    1,
+    1,
     1
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 2,
    "listings": [
+    1,
+    1,
     1,
     1
    ],
    "qty": [
+    1,
+    1,
     1,
     1
    ],
@@ -95,29 +145,44 @@
   "GA (Before 12AM)": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -126,29 +191,44 @@
   "General Admission": {
    "all_in": [
     39,
+    39,
+    39,
     39
    ],
    "ask": [
+    37,
+    37,
     37,
     37
    ],
    "ask_qty": [
     2,
+    2,
+    2,
     2
    ],
    "bid": [
+    20,
+    20,
     20,
     20
    ],
    "bid_qty": [
     1,
+    1,
+    1,
     1
    ],
+   "linked_count": 4,
    "listings": [
+    3,
+    3,
     3,
     3
    ],
    "qty": [
+    8,
+    8,
     8,
     8
    ],
@@ -157,29 +237,44 @@
   "Owner's Experience (Only 2 Per Show Avail)": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -188,29 +283,44 @@
   "Prime VIP Table Reservation For 10-12 People [Details Below]": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -219,29 +329,44 @@
   "VIP": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],

@@ -1,1560 +1,2539 @@
 {
  "event": {
   "bid_all_in": [
+   168,
+   168,
    168
   ],
   "bidders": [
+   2,
+   2,
    2
   ],
+  "fair": [
+   null,
+   null,
+   null
+  ],
   "high": [
+   258,
+   258,
    258
   ],
   "last_sale": [
+   258.0,
+   258.0,
    258.0
   ],
   "listings": [
+   2,
+   2,
    2
   ],
   "tickets": [
+   3,
+   3,
    3
   ]
  },
  "stamps": [
-  "2026-09-09T03:12:47+00:00"
+  "2026-09-09T03:12:47+00:00",
+  "2026-09-09T04:15:12+00:00",
+  "2026-09-09T04:22:49+00:00"
  ],
  "types": {
   "Floor": {
    "all_in": [
+    258,
+    258,
     258
    ],
    "ask": [
+    250,
+    250,
     250
    ],
    "ask_qty": [
+    1,
+    1,
     1
    ],
    "bid": [
+    175,
+    175,
     175
    ],
    "bid_qty": [
+    1,
+    1,
     1
    ],
+   "linked_count": 1,
    "listings": [
+    1,
+    1,
     1
    ],
    "qty": [
+    1,
+    1,
     1
    ],
    "uqid": "0bbb3560-f5e4-4278-8553-ad936ea0c14f"
   },
   "Sec 10": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "9b191460-ed3e-49dc-8005-bf2b181e3f62"
   },
   "Sec 106": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "319b7bff-6745-4fa7-b5c5-2074aee904e8"
   },
   "Sec 107": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "1c7c4ab5-969f-4c94-afe4-65cb3b917a64"
   },
   "Sec 108": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "76ccdcbd-bdb2-4b1b-8488-c43abcd6f6a1"
   },
   "Sec 109": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "5da62cf8-1ce7-46cd-a66e-f0cece13172e"
   },
   "Sec 11": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "c50a6a68-a6c4-4064-bdc5-804c8f05db01"
   },
   "Sec 110": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "c8496e6d-b0cc-456d-a4a3-84cb403b78f2"
   },
   "Sec 111": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "75bbf3da-d41d-4a55-a791-bc079021591a"
   },
   "Sec 112": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "6c50ae31-1a7b-4fb8-b5b3-e89eabef5c7a"
   },
   "Sec 113": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "53bbdf96-ccf1-462d-b8a6-72df4a759a38"
   },
   "Sec 114": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "558ada0b-58e7-4c28-8084-fcc185a12313"
   },
   "Sec 115": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "99f21130-b59d-4bb2-9fa6-14c00389b6a8"
   },
   "Sec 116": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "595ce4cd-9f87-493e-970e-63a1e7452bd0"
   },
   "Sec 117": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "f5733e42-75e9-4200-ae38-82acd78d9507"
   },
   "Sec 118": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "8671e0e9-2537-4fbe-b69d-2b187620f7c2"
   },
   "Sec 119": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "358ecc24-3080-4b04-9dcf-53fa6172bb97"
   },
   "Sec 12": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "df28562a-80e1-4a1e-8b39-603df00d269d"
   },
   "Sec 120": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "3eaf2d08-b579-483f-a157-5a4c5dd3dcbf"
   },
   "Sec 121": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "b77b8e29-dc01-428b-8479-c802af2a33c8"
   },
   "Sec 122": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "e12a3943-ec3c-47a7-beb7-21573272da81"
   },
   "Sec 123": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "1b215c43-4974-407c-bd64-f5b2023edc71"
   },
   "Sec 124": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "8a1d6323-a558-4848-ba05-8074638c571b"
   },
   "Sec 125": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "2399ba92-9543-44bd-aac5-5fbc2da3a0a5"
   },
   "Sec 126": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "772e73d4-2e3b-461c-a026-5a9fcfb1291d"
   },
   "Sec 13": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "ee9e4cb3-34c7-45c1-8ba2-73783e4c7226"
   },
   "Sec 14": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "01c09eed-7c0a-4e84-9b86-a0a82cf44cf6"
   },
   "Sec 15": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "fb0f1663-4a13-47aa-8862-4060c6d0cca7"
   },
   "Sec 16": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "25c5bf9d-35b7-457a-8eaf-5d1dd0398a0c"
   },
   "Sec 17": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "6eabb0e8-5e3e-4c18-b00a-5c32a6c71be8"
   },
   "Sec 18": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "334ace33-58d7-455e-98ad-d467a04ff891"
   },
   "Sec 19": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "43689015-ceb4-4c76-bb1c-264ea9305a28"
   },
   "Sec 20": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "927d6bac-b822-4553-8f02-a71cfdced50d"
   },
   "Sec 206": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "c8d16d5e-42a1-48f1-ac62-66ebac8bc415"
   },
   "Sec 207": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "4ccef603-0ba3-481a-9374-83db1020c8d2"
   },
   "Sec 208": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "4a6f6075-085c-472e-9e0e-19490f346c1b"
   },
   "Sec 209": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "3d46c9b0-ed26-437f-87f6-f9c6f059b8ad"
   },
   "Sec 21": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "c9bd9f92-0f81-4788-8256-aed8fdf9d021"
   },
   "Sec 210": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "71007ea5-70b2-4f3f-93ec-4c3b66708a8c"
   },
   "Sec 211": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "726af4d4-5839-4907-9672-a42dc4ce8c07"
   },
   "Sec 212": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "00d8d5df-8523-4114-8f30-a739e439fdfc"
   },
   "Sec 213": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "2403524a-95a6-4e5f-9c95-4c1ec6844785"
   },
   "Sec 214": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "c352dc32-f5ec-40bc-b903-2f5895e54835"
   },
   "Sec 215": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "72a6097a-92ef-4638-a94a-dd1fc2daf5fe"
   },
   "Sec 216": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "01bca6c8-2986-4320-879d-73a2c2b1b616"
   },
   "Sec 217": {
    "all_in": [
+    181,
+    181,
     181
    ],
    "ask": [
+    175,
+    175,
     175
    ],
    "ask_qty": [
+    2,
+    2,
     2
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    1,
+    1,
     1
    ],
    "qty": [
+    2,
+    2,
     2
    ],
    "uqid": "7ea693ad-1bb0-400e-92ae-05ccf1822540"
   },
   "Sec 218": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "289950be-fa8c-429f-8cce-b8ba7cbf3eb5"
   },
   "Sec 219": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "b84da62b-279d-47ea-9b3b-a21a5aaa86cb"
   },
   "Sec 22": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "8fc8c2ce-2096-44d6-941e-f2bf382ed450"
   },
   "Sec 220": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "10627ada-8c71-4e74-b2d7-bf2882ac599d"
   },
   "Sec 221": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "2e3ac10e-207f-424c-a26f-3a81c05d2da5"
   },
   "Sec 222": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "27b78b7c-f563-4959-bb90-4f0d37185a3d"
   },
   "Sec 223": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "f81210be-421c-4f62-bcfe-f33888cf275e"
   },
   "Sec 224": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "aea67b27-4a62-44a3-b5e4-4550416a75fb"
   },
   "Sec 225": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "acf1eefa-63bb-4621-ade1-4e876b9fbc64"
   },
   "Sec 226": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "77526664-059b-4ec6-80dd-fa88ee3bfe2f"
   },
   "Sec 23": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "fab218c1-26cb-41e0-8f15-d5a769d9e093"
   },
   "Sec 24": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "54253f2d-3cec-49a2-b09d-ea2b4985ecf5"
   },
   "Sec 25": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "154be45f-f238-4abf-a083-6bc624a90371"
   },
   "Sec 26": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "69a91384-05d1-4f13-8041-b81467fd7159"
   },
   "Sec 6": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "5a6c7ec6-03ed-40f4-b0cb-133c412a670f"
   },
   "Sec 7": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "91d4600b-2d1a-415c-8bbd-fe4ca4ec848a"
   },
   "Sec 8": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "2d8cc3ff-f704-4682-8641-1020fa40190f"
   },
   "Sec 9": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "d950289e-bd52-4088-81f4-a42d2c8fe095"

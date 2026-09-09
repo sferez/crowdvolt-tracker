@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    null,
+   0,
+   0,
    0
   ],
   "bidders": [
    null,
+   0,
+   0,
    0
+  ],
+  "fair": [
+   null,
+   null,
+   null,
+   null
   ],
   "high": [
    null,
+   68,
+   68,
    68
   ],
   "last_sale": [
+   null,
+   null,
    null,
    null
   ],
   "listings": [
    null,
+   1,
+   1,
    1
   ],
   "tickets": [
    null,
+   3,
+   3,
    3
   ]
  },
  "stamps": [
   "2026-09-09T02:49:53+00:00",
-  "2026-09-09T02:55:13+00:00"
+  "2026-09-09T02:55:13+00:00",
+  "2026-09-09T04:16:37+00:00",
+  "2026-09-09T04:24:16+00:00"
  ],
  "types": {
   "GA (After 12AM)": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -64,29 +99,44 @@
   "GA (Entry Anytime)": {
    "all_in": [
     68,
+    68,
+    68,
     68
    ],
    "ask": [
+    65,
+    65,
     65,
     65
    ],
    "ask_qty": [
     3,
+    3,
+    3,
     3
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    1,
+    1,
     1,
     1
    ],
    "qty": [
+    3,
+    3,
     3,
     3
    ],

@@ -1,264 +1,433 @@
 {
  "event": {
   "bid_all_in": [
+   492,
+   492,
    492
   ],
   "bidders": [
+   39,
+   39,
    39
   ],
+  "fair": [
+   null,
+   null,
+   182.21
+  ],
   "high": [
+   1765,
+   1765,
    1765
   ],
   "last_sale": [
+   291.0,
+   291.0,
    291.0
   ],
   "listings": [
-   86
+   86,
+   87,
+   87
   ],
   "tickets": [
+   131,
+   132,
    131
   ]
  },
  "stamps": [
-  "2026-09-09T03:11:11+00:00"
+  "2026-09-09T03:11:11+00:00",
+  "2026-09-09T04:14:12+00:00",
+  "2026-09-09T04:21:53+00:00"
  ],
  "types": {
   "GA 2-DAY": {
    "all_in": [
-    291
+    291,
+    291,
+    293
    ],
    "ask": [
-    280
+    280,
+    280,
+    282
    ],
    "ask_qty": [
+    1,
+    1,
     1
    ],
    "bid": [
+    250,
+    250,
     250
    ],
    "bid_qty": [
+    1,
+    1,
     1
    ],
+   "linked_count": 3,
    "listings": [
+    46,
+    46,
     46
    ],
    "qty": [
+    78,
+    78,
     78
    ],
    "uqid": "a3a1c556-680b-4fc5-a6be-3c59f456700c"
   },
   "GA Saturday": {
    "all_in": [
+    224,
+    224,
     224
    ],
    "ask": [
+    215,
+    215,
     215
    ],
    "ask_qty": [
+    1,
+    1,
     1
    ],
    "bid": [
+    185,
+    185,
     185
    ],
    "bid_qty": [
+    1,
+    1,
     1
    ],
+   "linked_count": 2,
    "listings": [
+    9,
+    9,
     9
    ],
    "qty": [
+    10,
+    10,
     10
    ],
    "uqid": "d87c5fa8-ec02-430f-918e-37a0febab2f8"
   },
   "GA Sunday": {
    "all_in": [
+    208,
+    208,
     208
    ],
    "ask": [
+    200,
+    200,
     200
    ],
    "ask_qty": [
+    1,
+    1,
     1
    ],
    "bid": [
+    160,
+    160,
     160
    ],
    "bid_qty": [
+    1,
+    1,
     1
    ],
+   "linked_count": 2,
    "listings": [
-    9
+    9,
+    10,
+    10
    ],
    "qty": [
-    13
+    13,
+    14,
+    14
    ],
    "uqid": "3a60090e-54fb-414a-9a9a-ff34b24ec3ba"
   },
   "GA+ 2-Day": {
    "all_in": [
+    312,
+    312,
     312
    ],
    "ask": [
+    300,
+    300,
     300
    ],
    "ask_qty": [
+    1,
+    1,
     1
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    9,
+    9,
     9
    ],
    "qty": [
+    12,
+    12,
     12
    ],
    "uqid": "7530c25c-77a1-41d8-9606-a5adbe8fb48c"
   },
   "GA+ Saturday": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "adf17302-71b2-429e-9534-2110f06dba7b"
   },
   "GA+ Sunday": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "41976b07-d656-47cf-9a31-35f563feea28"
   },
   "Platinum 2-Day": {
    "all_in": [
+    1548,
+    1548,
     1548
    ],
    "ask": [
+    1491,
+    1491,
     1491
    ],
    "ask_qty": [
+    1,
+    1,
     1
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    3,
+    3,
     3
    ],
    "qty": [
+    5,
+    5,
     5
    ],
    "uqid": "1c759cd2-84a0-45e1-a2e9-ded3e238885c"
   },
   "VIP 2-Day": {
    "all_in": [
+    597,
+    597,
     597
    ],
    "ask": [
+    575,
+    575,
     575
    ],
    "ask_qty": [
+    1,
+    1,
     1
    ],
    "bid": [
+    515,
+    515,
     515
    ],
    "bid_qty": [
+    1,
+    1,
     1
    ],
+   "linked_count": 2,
    "listings": [
+    9,
+    9,
     9
    ],
    "qty": [
+    11,
+    11,
     11
    ],
    "uqid": "e1b5245c-48da-4b35-91bd-e6d13e07bea8"
   },
   "VIP Saturday (21+)": {
    "all_in": [
+    322,
+    322,
     322
    ],
    "ask": [
+    310,
+    310,
     310
    ],
    "ask_qty": [
+    2,
+    2,
     2
    ],
    "bid": [
+    275,
+    275,
     275
    ],
    "bid_qty": [
+    1,
+    1,
     1
    ],
+   "linked_count": 2,
    "listings": [
+    1,
+    1,
     1
    ],
    "qty": [
+    2,
+    2,
     2
    ],
    "uqid": "40d50ac7-7631-42e5-b58d-454b15ddd771"
   },
   "VIP Sunday (21+)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    315,
+    315,
     315
    ],
    "bid_qty": [
+    1,
+    1,
     1
    ],
+   "linked_count": 2,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "b457578a-6615-4e9f-90f0-fd171419d16d"

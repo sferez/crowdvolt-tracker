@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    null,
+   0,
+   0,
    0
   ],
   "bidders": [
    null,
+   0,
+   0,
    0
+  ],
+  "fair": [
+   null,
+   null,
+   null,
+   48.47
   ],
   "high": [
    null,
+   142,
+   142,
    142
   ],
   "last_sale": [
+   null,
+   null,
    null,
    null
   ],
   "listings": [
    null,
+   4,
+   4,
    4
   ],
   "tickets": [
    null,
+   14,
+   14,
    14
   ]
  },
  "stamps": [
   "2026-09-09T02:48:00+00:00",
-  "2026-09-09T02:53:18+00:00"
+  "2026-09-09T02:53:18+00:00",
+  "2026-09-09T04:14:43+00:00",
+  "2026-09-09T04:22:21+00:00"
  ],
  "types": {
   "Day (3pm-10pm)": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -64,29 +99,44 @@
   "Day + Night (3pm-5am)": {
    "all_in": [
     142,
+    142,
+    142,
     142
    ],
    "ask": [
+    137,
+    137,
     137,
     137
    ],
    "ask_qty": [
     4,
+    4,
+    4,
     4
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    2,
+    2,
     2,
     2
    ],
    "qty": [
+    6,
+    6,
     6,
     6
    ],
@@ -95,29 +145,44 @@
   "Night (10pm-5am)": {
    "all_in": [
     93,
+    93,
+    93,
     93
    ],
    "ask": [
+    90,
+    90,
     90,
     90
    ],
    "ask_qty": [
     2,
+    2,
+    2,
     2
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    2,
+    2,
     2,
     2
    ],
    "qty": [
+    8,
+    8,
     8,
     8
    ],

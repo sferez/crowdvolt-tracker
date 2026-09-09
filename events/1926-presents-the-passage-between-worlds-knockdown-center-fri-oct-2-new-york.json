@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    null,
+   0,
+   0,
    0
   ],
   "bidders": [
    null,
+   0,
+   0,
    0
+  ],
+  "fair": [
+   null,
+   null,
+   null,
+   30.0
   ],
   "high": [
    null,
+   186,
+   186,
    186
   ],
   "last_sale": [
    null,
+   34.0,
+   34.0,
    34.0
   ],
   "listings": [
    null,
+   12,
+   12,
    12
   ],
   "tickets": [
    null,
+   27,
+   27,
    27
   ]
  },
  "stamps": [
   "2026-09-09T02:46:28+00:00",
-  "2026-09-09T02:51:42+00:00"
+  "2026-09-09T02:51:42+00:00",
+  "2026-09-09T04:13:00+00:00",
+  "2026-09-09T04:20:47+00:00"
  ],
  "types": {
   "GA (Before 11PM)": {
    "all_in": [
     37,
+    37,
+    37,
     37
    ],
    "ask": [
+    35,
+    35,
     35,
     35
    ],
    "ask_qty": [
     2,
+    2,
+    2,
     2
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    3,
+    3,
     3,
     3
    ],
    "qty": [
+    5,
+    5,
     5,
     5
    ],
@@ -64,29 +99,44 @@
   "General Admission": {
    "all_in": [
     41,
+    41,
+    41,
     41
    ],
    "ask": [
+    39,
+    39,
     39,
     39
    ],
    "ask_qty": [
     1,
+    1,
+    1,
     1
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 4,
    "listings": [
+    9,
+    9,
     9,
     9
    ],
    "qty": [
+    22,
+    22,
     22,
     22
    ],
@@ -95,29 +145,44 @@
   "VIP": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],

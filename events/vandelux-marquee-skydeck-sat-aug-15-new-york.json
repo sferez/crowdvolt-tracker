@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    null,
+   0,
+   0,
    0
   ],
   "bidders": [
    null,
+   0,
+   0,
    0
+  ],
+  "fair": [
+   null,
+   null,
+   null,
+   104.35
   ],
   "high": [
    null,
+   114,
+   114,
    114
   ],
   "last_sale": [
+   null,
+   null,
    null,
    null
   ],
   "listings": [
    null,
+   3,
+   3,
    3
   ],
   "tickets": [
    null,
+   8,
+   8,
    8
   ]
  },
  "stamps": [
   "2026-09-09T02:50:53+00:00",
-  "2026-09-09T02:56:13+00:00"
+  "2026-09-09T02:56:13+00:00",
+  "2026-09-09T04:17:30+00:00",
+  "2026-09-09T04:25:10+00:00"
  ],
  "types": {
   "GA (Fast Pass)": {
    "all_in": [
     93,
+    93,
+    93,
     93
    ],
    "ask": [
+    90,
+    90,
     90,
     90
    ],
    "ask_qty": [
     2,
+    2,
+    2,
     2
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    1,
+    1,
     1,
     1
    ],
    "qty": [
+    2,
+    2,
     2,
     2
    ],
@@ -64,29 +99,44 @@
   "General Admission": {
    "all_in": [
     104,
+    104,
+    104,
     104
    ],
    "ask": [
+    100,
+    100,
     100,
     100
    ],
    "ask_qty": [
     4,
+    4,
+    4,
     4
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 2,
    "listings": [
+    2,
+    2,
     2,
     2
    ],
    "qty": [
+    6,
+    6,
     6,
     6
    ],

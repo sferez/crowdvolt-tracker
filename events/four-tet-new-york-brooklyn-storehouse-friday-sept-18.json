@@ -2,61 +2,96 @@
  "event": {
   "bid_all_in": [
    null,
+   67,
+   67,
    67
   ],
   "bidders": [
    null,
+   3,
+   3,
    3
+  ],
+  "fair": [
+   null,
+   null,
+   null,
+   90.64
   ],
   "high": [
    null,
+   181,
+   181,
    181
   ],
   "last_sale": [
    null,
+   82.0,
+   82.0,
    82.0
   ],
   "listings": [
    null,
+   30,
+   30,
    30
   ],
   "tickets": [
    null,
+   64,
+   64,
    64
   ]
  },
  "stamps": [
   "2026-09-09T02:47:38+00:00",
-  "2026-09-09T02:52:57+00:00"
+  "2026-09-09T02:52:57+00:00",
+  "2026-09-09T04:14:23+00:00",
+  "2026-09-09T04:22:03+00:00"
  ],
  "types": {
   "General Admission": {
    "all_in": [
     82,
+    82,
+    82,
     82
    ],
    "ask": [
+    79,
+    79,
     79,
     79
    ],
    "ask_qty": [
     2,
+    1,
+    1,
     1
    ],
    "bid": [
+    70,
+    70,
     70,
     70
    ],
    "bid_qty": [
     1,
+    1,
+    1,
     1
    ],
+   "linked_count": 4,
    "listings": [
+    30,
+    30,
     30,
     30
    ],
    "qty": [
     65,
+    64,
+    64,
     64
    ],
    "uqid": "2b632645-b23e-4cc1-9725-2183d98d2be1"
@@ -64,29 +99,44 @@
   "VIP": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],

@@ -1,96 +1,160 @@
 {
  "event": {
   "bid_all_in": [
+   57,
+   57,
    57
   ],
   "bidders": [
+   5,
+   5,
    5
   ],
+  "fair": [
+   null,
+   null,
+   246.65
+  ],
   "high": [
+   296,
+   296,
    296
   ],
   "last_sale": [
+   73.0,
+   73.0,
    73.0
   ],
   "listings": [
+   29,
+   29,
    29
   ],
   "tickets": [
+   79,
+   79,
    79
   ]
  },
  "stamps": [
-  "2026-09-09T03:14:26+00:00"
+  "2026-09-09T03:14:26+00:00",
+  "2026-09-09T04:16:19+00:00",
+  "2026-09-09T04:23:58+00:00"
  ],
  "types": {
   "GA (Before 11PM)": {
    "all_in": [
+    75,
+    75,
     75
    ],
    "ask": [
+    72,
+    72,
     72
    ],
    "ask_qty": [
+    1,
+    1,
     1
    ],
    "bid": [
+    30,
+    30,
     30
    ],
    "bid_qty": [
+    1,
+    1,
     1
    ],
+   "linked_count": 1,
    "listings": [
+    2,
+    2,
     2
    ],
    "qty": [
+    3,
+    3,
     3
    ],
    "uqid": "bd071bd2-032e-4832-a84e-91f327a8b4bf"
   },
   "General Admission": {
    "all_in": [
-    73
+    73,
+    72,
+    71
    ],
    "ask": [
-    70
+    70,
+    69,
+    68
    ],
    "ask_qty": [
+    1,
+    2,
     1
    ],
    "bid": [
+    60,
+    60,
     60
    ],
    "bid_qty": [
+    4,
+    4,
     4
    ],
+   "linked_count": 4,
    "listings": [
+    22,
+    22,
     22
    ],
    "qty": [
+    59,
+    59,
     59
    ],
    "uqid": "573d1065-3f7a-400d-b809-a9325dbc9676"
   },
   "Stage + VIP": {
    "all_in": [
+    248,
+    248,
     248
    ],
    "ask": [
+    240,
+    240,
     240
    ],
    "ask_qty": [
+    2,
+    2,
     2
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    5,
+    5,
     5
    ],
    "qty": [
+    17,
+    17,
     17
    ],
    "uqid": "40a1efcc-222a-4b8b-aa7f-6b74d487ee2d"

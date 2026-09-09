@@ -142,6 +142,21 @@
   "slug": "arodes",
   "spotify": null
  },
+ "avello": {
+  "bio": "AVELLO (Adam Lawrence) has experienced one of the fastest rises in dance music, exploding from a regional bass artist into an international festival favorite through a string of viral remixes and emotionally driven original productions. His remixes of \u201cNo Broke Boys\u201d and \u201cElectric Love\u201d became festival staples, while collaborations with Gryffin, Adventure Club, \u0141aszewo, and Big Gigantic showcased his ability to blend melodic emotion with high-energy festival production.",
+  "followers": null,
+  "genres": [
+   "Dubstep",
+   "Future bass",
+   "Festival bass"
+  ],
+  "img": "https://img.crowdvolt.com/267ab5b3-05af-4fd8-9561-5cb13314276e.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "AVELLO",
+  "slug": "avello",
+  "spotify": null
+ },
  "azzecca": {
   "bio": "Azzecca is a rising force in melodic techno, known for dark, hypnotic grooves, driving basslines, and emotionally charged synth work. Her sound blends underground techno energy with melodic tension, earning support from major tastemakers and landing her on lineups at top clubs and festivals worldwide. Behind the decks, Azzecca delivers immersive, high-intensity sets built for late-night moments and locked-in dance floors.",
   "followers": 30426,
@@ -876,6 +891,20 @@
   "monthly_listeners": null,
   "name": "Jordan Brando",
   "slug": "jordan-brando",
+  "spotify": null
+ },
+ "joris-voorn": {
+  "bio": "Joris Voorn is a Dutch DJ and producer known for blending melodic techno and deep house with emotional, atmospheric soundscapes. Based in Amsterdam, he has released influential records on labels like Green and Rejected, helping shape the modern melodic techno scene. His sets balance driving club energy with melodic depth, making him a regular at major festivals and underground venues worldwide.",
+  "followers": 39527,
+  "genres": [
+   "melodic techno",
+   "techno"
+  ],
+  "img": "https://img.crowdvolt.com/assets/1c4e00ce-7eef-483b-8266-9abcece74fdb/resident_advisor-625-44c5d195.jpg",
+  "instagram": "https://www.instagram.com/jorisvoorn",
+  "monthly_listeners": null,
+  "name": "Joris Voorn",
+  "slug": "joris-voorn",
   "spotify": null
  },
  "joseph-capriati": {

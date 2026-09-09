@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    null,
+   0,
+   0,
    0
   ],
   "bidders": [
    null,
+   0,
+   0,
    0
+  ],
+  "fair": [
+   null,
+   null,
+   null,
+   19.97
   ],
   "high": [
    null,
+   57,
+   57,
    57
   ],
   "last_sale": [
    null,
+   37.0,
+   37.0,
    37.0
   ],
   "listings": [
    null,
+   5,
+   5,
    5
   ],
   "tickets": [
    null,
+   9,
+   9,
    9
   ]
  },
  "stamps": [
   "2026-09-09T02:46:39+00:00",
-  "2026-09-09T02:51:55+00:00"
+  "2026-09-09T02:51:55+00:00",
+  "2026-09-09T04:13:16+00:00",
+  "2026-09-09T04:21:01+00:00"
  ],
  "types": {
   "GA (Anytime)": {
    "all_in": [
     34,
+    34,
+    34,
     34
    ],
    "ask": [
+    32,
+    32,
     32,
     32
    ],
    "ask_qty": [
     2,
+    2,
+    2,
     2
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 4,
    "listings": [
+    4,
+    4,
     4,
     4
    ],
    "qty": [
+    8,
+    8,
     8,
     8
    ],
@@ -64,29 +99,44 @@
   "GA (Before 11PM)": {
    "all_in": [
     26,
+    26,
+    26,
     26
    ],
    "ask": [
+    25,
+    25,
     25,
     25
    ],
    "ask_qty": [
     1,
+    1,
+    1,
     1
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    1,
+    1,
     1,
     1
    ],
    "qty": [
+    1,
+    1,
     1,
     1
    ],
@@ -95,29 +145,44 @@
   "VIP (Backstage access)": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -126,29 +191,44 @@
   "VIP (No Backstage)": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],

@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    158,
+   158,
+   158,
    158
   ],
   "bidders": [
    12,
+   12,
+   12,
    12
   ],
+  "fair": [
+   null,
+   null,
+   null,
+   null
+  ],
   "high": [
+   723,
+   723,
    723,
    723
   ],
   "last_sale": [
    228.0,
+   228.0,
+   228.0,
    228.0
   ],
   "listings": [
    19,
+   19,
+   19,
    19
   ],
   "tickets": [
+   62,
+   62,
    62,
    62
   ]
  },
  "stamps": [
   "2026-09-09T03:08:39+00:00",
-  "2026-09-09T03:10:25+00:00"
+  "2026-09-09T03:10:25+00:00",
+  "2026-09-09T04:13:27+00:00",
+  "2026-09-09T04:21:12+00:00"
  ],
  "types": {
   "Backstage Dancing VIP": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 2,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -64,29 +99,44 @@
   "GA (Before 11PM)": {
    "all_in": [
     207,
+    207,
+    207,
     207
    ],
    "ask": [
+    200,
+    200,
     200,
     200
    ],
    "ask_qty": [
     1,
+    1,
+    1,
     1
    ],
    "bid": [
+    101,
+    101,
     101,
     101
    ],
    "bid_qty": [
     1,
+    1,
+    1,
     1
    ],
+   "linked_count": 3,
    "listings": [
+    3,
+    3,
     3,
     3
    ],
    "qty": [
+    6,
+    6,
     6,
     6
    ],
@@ -95,29 +145,44 @@
   "General Admission": {
    "all_in": [
     243,
-    243
+    243,
+    240,
+    240
    ],
    "ask": [
     235,
-    235
+    235,
+    232,
+    232
    ],
    "ask_qty": [
     4,
-    4
+    4,
+    6,
+    6
    ],
    "bid": [
+    164,
+    164,
     164,
     164
    ],
    "bid_qty": [
     1,
+    1,
+    1,
     1
    ],
+   "linked_count": 2,
    "listings": [
+    16,
+    16,
     16,
     16
    ],
    "qty": [
+    56,
+    56,
     56,
     56
    ],

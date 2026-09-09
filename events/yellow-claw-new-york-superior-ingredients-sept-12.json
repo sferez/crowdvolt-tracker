@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    null,
-   11
+   11,
+   0,
+   0
   ],
   "bidders": [
    null,
-   1
+   1,
+   0,
+   0
+  ],
+  "fair": [
+   null,
+   null,
+   null,
+   null
   ],
   "high": [
    null,
+   78,
+   78,
    78
   ],
   "last_sale": [
    null,
+   29.0,
+   29.0,
    29.0
   ],
   "listings": [
    null,
+   4,
+   4,
    4
   ],
   "tickets": [
    null,
+   15,
+   15,
    15
   ]
  },
  "stamps": [
   "2026-09-09T02:50:59+00:00",
-  "2026-09-09T02:56:19+00:00"
+  "2026-09-09T02:56:19+00:00",
+  "2026-09-09T04:17:39+00:00",
+  "2026-09-09T04:25:20+00:00"
  ],
  "types": {
   "General Admission": {
    "all_in": [
     52,
+    52,
+    52,
     52
    ],
    "ask": [
+    50,
+    50,
     50,
     50
    ],
    "ask_qty": [
     5,
+    5,
+    5,
     5
    ],
    "bid": [
     12,
-    12
+    12,
+    null,
+    null
    ],
    "bid_qty": [
     1,
-    1
+    1,
+    null,
+    null
    ],
+   "linked_count": 5,
    "listings": [
+    3,
+    3,
     3,
     3
    ],
    "qty": [
+    13,
+    13,
     13,
     13
    ],
@@ -64,29 +99,44 @@
   "Stage VIP": {
    "all_in": [
     62,
+    62,
+    62,
     62
    ],
    "ask": [
+    60,
+    60,
     60,
     60
    ],
    "ask_qty": [
     2,
+    2,
+    2,
     2
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 2,
    "listings": [
+    1,
+    1,
     1,
     1
    ],
    "qty": [
+    2,
+    2,
     2,
     2
    ],
@@ -95,29 +145,44 @@
   "The Room & The Roof": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 2,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -126,29 +191,44 @@
   "VIP - All in": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 2,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],

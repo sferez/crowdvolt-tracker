@@ -2,60 +2,95 @@
  "event": {
   "bid_all_in": [
    null,
+   77,
+   77,
    77
   ],
   "bidders": [
    null,
+   2,
+   2,
    2
+  ],
+  "fair": [
+   null,
+   null,
+   null,
+   99.0
   ],
   "high": [
    null,
+   465,
+   465,
    465
   ],
   "last_sale": [
    null,
+   78.0,
+   78.0,
    78.0
   ],
   "listings": [
    null,
+   11,
+   11,
    11
   ],
   "tickets": [
    null,
+   17,
+   17,
    17
   ]
  },
  "stamps": [
   "2026-09-09T02:47:08+00:00",
-  "2026-09-09T02:52:25+00:00"
+  "2026-09-09T02:52:25+00:00",
+  "2026-09-09T04:13:48+00:00",
+  "2026-09-09T04:21:32+00:00"
  ],
  "types": {
   "2-Night Pass": {
    "all_in": [
     216,
+    216,
+    216,
     216
    ],
    "ask": [
+    209,
+    209,
     209,
     209
    ],
    "ask_qty": [
     2,
+    2,
+    2,
     2
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    2,
+    2,
     2,
     2
    ],
    "qty": [
+    3,
+    3,
     3,
     3
    ],
@@ -64,29 +99,44 @@
   "GA (Before 10PM Friday)": {
    "all_in": [
     115,
+    115,
+    115,
     115
    ],
    "ask": [
+    111,
+    111,
     111,
     111
    ],
    "ask_qty": [
     2,
+    2,
+    2,
     2
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    2,
+    2,
     2,
     2
    ],
    "qty": [
+    3,
+    3,
     3,
     3
    ],
@@ -95,29 +145,44 @@
   "GA (Before 10PM Saturday)": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -126,29 +191,44 @@
   "GA (Before 9:30PM Friday)": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -157,29 +237,44 @@
   "GA (Before 9:30PM Saturday)": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    80,
+    80,
     80,
     80
    ],
    "bid_qty": [
     2,
+    2,
+    2,
     2
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -188,29 +283,44 @@
   "GA (Friday)": {
    "all_in": [
     183,
+    183,
+    183,
     183
    ],
    "ask": [
+    177,
+    177,
     177,
     177
    ],
    "ask_qty": [
     1,
+    1,
+    1,
     1
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 6,
    "listings": [
+    4,
+    4,
     4,
     4
    ],
    "qty": [
+    7,
+    7,
     7,
     7
    ],
@@ -219,29 +329,44 @@
   "GA (Saturday)": {
    "all_in": [
     192,
+    192,
+    192,
     192
    ],
    "ask": [
+    186,
+    186,
     186,
     186
    ],
    "ask_qty": [
     1,
+    1,
+    1,
     1
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 6,
    "listings": [
+    2,
+    2,
     2,
     2
    ],
    "qty": [
+    3,
+    3,
     3,
     3
    ],
@@ -250,29 +375,44 @@
   "Premium 2-Night Pass": {
    "all_in": [
     465,
+    465,
+    465,
     465
    ],
    "ask": [
+    450,
+    450,
     450,
     450
    ],
    "ask_qty": [
     1,
+    1,
+    1,
     1
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    1,
+    1,
     1,
     1
    ],
    "qty": [
+    1,
+    1,
     1,
     1
    ],
@@ -281,29 +421,44 @@
   "Premium Backstage (Friday)": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],
@@ -312,29 +467,44 @@
   "Premium Backstage (Saturday)": {
    "all_in": [
     null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null,
     null
    ],
    "ask_qty": [
     null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null,
     null
    ],
    "bid_qty": [
     null,
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0,
     0
    ],
    "qty": [
+    0,
+    0,
     0,
     0
    ],

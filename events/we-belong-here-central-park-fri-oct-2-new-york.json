@@ -1,456 +1,745 @@
 {
  "event": {
   "bid_all_in": [
+   96,
+   96,
    96
   ],
   "bidders": [
+   4,
+   4,
    4
   ],
+  "fair": [
+   null,
+   null,
+   null
+  ],
   "high": [
+   269,
+   269,
    269
   ],
   "last_sale": [
+   null,
+   null,
    null
   ],
   "listings": [
+   14,
+   14,
    14
   ],
   "tickets": [
+   34,
+   34,
    34
   ]
  },
  "stamps": [
-  "2026-09-09T03:16:32+00:00"
+  "2026-09-09T03:16:32+00:00",
+  "2026-09-09T04:17:34+00:00",
+  "2026-09-09T04:25:15+00:00"
  ],
  "types": {
   "Gold  (All Weekend  First Hour Arrival)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "c5155b67-55ae-4773-939f-07189f00f8d3"
   },
   "Gold  (Sunday First Hour Arrival)": {
    "all_in": [
+    93,
+    93,
     93
    ],
    "ask": [
+    90,
+    90,
     90
    ],
    "ask_qty": [
+    1,
+    1,
     1
    ],
    "bid": [
+    82,
+    82,
     82
    ],
    "bid_qty": [
+    1,
+    1,
     1
    ],
+   "linked_count": 1,
    "listings": [
+    2,
+    2,
     2
    ],
    "qty": [
+    3,
+    3,
     3
    ],
    "uqid": "ff199360-4fbb-4907-a445-1ff11bfbc1f2"
   },
   "Gold (All Weekend  Anytime Entry)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "941c2413-842d-4216-a9b5-ca0c9a77622b"
   },
   "Gold (Friday  First Hour Arrival)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "8f0c19e3-509a-4a26-97b2-60af37f7a736"
   },
   "Gold (Friday Anytime Entry)": {
    "all_in": [
+    135,
+    135,
     135
    ],
    "ask": [
+    130,
+    130,
     130
    ],
    "ask_qty": [
+    6,
+    6,
     6
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    3,
+    3,
     3
    ],
    "qty": [
+    11,
+    11,
     11
    ],
    "uqid": "12fa6f2f-d64e-43e1-997b-67d84961f8a8"
   },
   "Gold (Friday/Saturday Combo)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "588a5ca6-4dc0-47f3-bf0f-0bd7b5b477f4"
   },
   "Gold (Friday/Sunday Combo)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "732ba1f9-a67a-46a9-b11f-f21e99297a3c"
   },
   "Gold (Saturday Anytime Entry)": {
    "all_in": [
+    145,
+    145,
     145
    ],
    "ask": [
+    140,
+    140,
     140
    ],
    "ask_qty": [
+    2,
+    2,
     2
    ],
    "bid": [
+    100,
+    100,
     100
    ],
    "bid_qty": [
+    1,
+    1,
     1
    ],
+   "linked_count": 1,
    "listings": [
+    3,
+    3,
     3
    ],
    "qty": [
+    10,
+    10,
     10
    ],
    "uqid": "84fbdad9-28fc-492a-89a1-1f2eb1a2da67"
   },
   "Gold (Saturday First Hour Arrival)": {
    "all_in": [
+    103,
+    103,
     103
    ],
    "ask": [
+    99,
+    99,
     99
    ],
    "ask_qty": [
+    2,
+    2,
     2
    ],
    "bid": [
+    70,
+    70,
     70
    ],
    "bid_qty": [
+    1,
+    1,
     1
    ],
+   "linked_count": 1,
    "listings": [
+    3,
+    3,
     3
    ],
    "qty": [
+    4,
+    4,
     4
    ],
    "uqid": "964e569a-066c-47cc-9dce-fcb2807503f6"
   },
   "Gold (Saturday/Sunday Combo)": {
    "all_in": [
+    269,
+    269,
     269
    ],
    "ask": [
+    260,
+    260,
     260
    ],
    "ask_qty": [
+    2,
+    2,
     2
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    1,
+    1,
     1
    ],
    "qty": [
+    2,
+    2,
     2
    ],
    "uqid": "2aa581de-40d7-42b4-91ba-1d04f0a2e040"
   },
   "Gold (Sunday Anytime Entry)": {
    "all_in": [
+    119,
+    119,
     119
    ],
    "ask": [
+    115,
+    115,
     115
    ],
    "ask_qty": [
+    2,
+    2,
     2
    ],
    "bid": [
+    96,
+    96,
     96
    ],
    "bid_qty": [
+    2,
+    2,
     2
    ],
+   "linked_count": 1,
    "listings": [
+    2,
+    2,
     2
    ],
    "qty": [
+    4,
+    4,
     4
    ],
    "uqid": "c329e79e-24f4-4330-b133-93ca167a6382"
   },
   "Platinum  (Friday Anytime Entry)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "3b310fcd-e753-49da-9942-038fe5ce577a"
   },
   "Platinum  (Saturday Anytime Entry)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "676cf052-5078-4295-9b20-b640e21a1e55"
   },
   "Platinum  (Saturday/Sunday Combo)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "0e180b57-912d-4987-9522-dfbde14864d7"
   },
   "Platinum (All Weekend  Anytime Entry)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "77ea9fba-9ab3-4f47-b845-816b1bf83fe5"
   },
   "Platinum (Friday/Saturday Combo)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "154b7b6b-bd65-4eee-9b34-85dcec65e2c9"
   },
   "Platinum (Friday/Sunday Combo)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "3c6689ff-0c1e-4c62-b69d-e313ebbd4a0f"
   },
   "Platinum (Sunday Anytime Entry)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
+   "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "32230a42-28b1-4d57-bd5d-fa771b8d5036"
