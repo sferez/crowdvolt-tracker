@@ -265,10 +265,26 @@ size at 139 events is single-digit MB — well inside the Hobby free allowance.
 **Backups.** Blob keeps no version history, so one bad write would be
 unrecoverable. The daily sweep ends by pushing a pretty-printed copy of the
 whole store to an orphan **`data` branch** — about 64 KB gzipped a day,
-diffable, and independent of Blob. It lives on its own branch so `main` stays
-code-only and Vercel never redeploys for a data change. `python3 snapshot.py`
-does the same thing locally. Artwork is deliberately excluded: it is static and
-re-mirrorable, and would add megabytes a week for nothing.
+diffable, and independent of Blob.
+
+It is a normal commit, not a force-push, so the branch accumulates a dated
+trail you can `git diff` between any two days to see which prices moved. Files
+are replaced wholesale, so an event deleted in Blob disappears from the next
+snapshot rather than lingering — and the deletion shows up in the diff. It
+lives on its own branch so `main` stays code-only and Vercel never redeploys
+for a data change. Artwork is deliberately excluded: static, re-mirrorable, and
+megabytes a week for nothing.
+
+The flow is one-way, Blob → GitHub. To go the other way:
+
+```bash
+git worktree add /tmp/restore origin/data   # or any older commit on it
+python3 snapshot.py --restore /tmp/restore  # asks before overwriting
+```
+
+Restore is manual and confirmed on purpose — it overwrites live readings, and
+nothing should ever call it on a schedule. `python3 snapshot.py` alone takes a
+snapshot locally without involving CI.
 
 That daily commit also keeps the repo active. GitHub disables scheduled
 workflows after 60 days without repository activity, and a workflow *run* does
