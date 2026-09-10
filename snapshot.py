@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Pull the whole data store out of Blob into a local directory.
+Pull the whole data store out of the R2 bucket into a local directory.
 
 The object store keeps no version history: one bad write and the readings are
 gone. A daily snapshot committed to an orphan `data` branch gives a durable,
@@ -10,9 +10,9 @@ enough that GitHub does not disable the scheduled workflows.
 Artwork is deliberately not snapshotted. It is static, re-mirrorable from the
 source at any time, and would add megabytes a week for nothing.
 
-    python3 snapshot.py                       # Blob -> snapshot/
+    python3 snapshot.py                       # bucket -> snapshot/
     python3 snapshot.py --out backup/
-    python3 snapshot.py --restore backup/     # backup/ -> Blob
+    python3 snapshot.py --restore backup/     # backup/ -> bucket
 """
 
 import argparse
@@ -29,13 +29,13 @@ def main():
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--out", default="snapshot", help="directory to write into")
     p.add_argument("--restore", metavar="DIR",
-                   help="push a snapshot directory back into Blob (asks first)")
+                   help="push a snapshot directory back into the bucket (asks first)")
     p.add_argument("--yes", action="store_true", help="skip the confirmation")
     args = p.parse_args()
 
     remote = r2.Remote()
     if not remote.enabled:
-        sys.exit("no Blob credentials -- nothing to snapshot")
+        sys.exit("no R2 credentials -- nothing to snapshot")
 
     if args.restore:
         return restore(remote, Path(args.restore), args.yes)
@@ -55,7 +55,7 @@ def main():
             continue
         dest = out / rel
         dest.parent.mkdir(parents=True, exist_ok=True)
-        # pretty-printed here, unlike the compact copies in Blob: this one is
+        # pretty-printed here, unlike the compact copies in R2: this one is
         # read by humans and diffed by git, where one value per line is worth
         # the extra bytes
         dest.write_text(json.dumps(data, indent=1, sort_keys=True))
@@ -78,7 +78,7 @@ def main():
 
 
 def restore(remote, src, assume_yes):
-    """Push a snapshot back into Blob.
+    """Push a snapshot back into the bucket.
 
     A backup you have never restored from is a guess, not a backup. This is
     the other half: point it at a checkout of the `data` branch and it puts

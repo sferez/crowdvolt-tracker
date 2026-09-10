@@ -47,7 +47,7 @@ jobs:
           import sys, r2
           if not r2.Remote().enabled:
               sys.exit("The R2_* secrets are not all set on this repository. "
-                       "See R2_SETUP.md.")
+                       "See the README for the five names.")
           PY
 
       - name: Sweep
@@ -72,7 +72,7 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      # Blob keeps no version history: one bad write and the readings are
+      # R2 keeps no version history: one bad write and the readings are
       # gone. A daily snapshot on an orphan `data` branch is a durable,
       # diffable backup for ~64KB gzipped a day -- and it doubles as the
       # keepalive, since GitHub disables scheduled workflows after 60 days

@@ -1,7 +1,7 @@
 """Renders public/index.html -- a static page that reads its data at runtime.
 
 Nothing is baked into the page but the code, so an hourly reading replaces a
-couple of JSON objects in Blob and the site is current without a redeploy.
+couple of JSON objects in the bucket and the site is current without a redeploy.
 
     index.json          loaded once: roster + each event's current numbers
     recent.json         loaded once: readings since the last consolidation

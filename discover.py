@@ -221,7 +221,7 @@ def main():
         st.save()
         sent = st.push()
         if sent:
-            print(f"pushed {len(sent)} file(s) to Blob")
+            print(f"pushed {len(sent)} file(s) to the store")
     return st
 
 

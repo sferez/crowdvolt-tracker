@@ -15,8 +15,8 @@ means an hourly reading appends one value per array rather than rewriting a
 list of row objects -- small writes, and the browser gets arrays it can hand
 straight to a chart.
 
-The same files live in two places: public/data/ locally, and Vercel Blob when
-credentials are present. Blob is the source of truth for the hosted site --
+The same files live in two places: public/data/ locally, and the R2 bucket
+when credentials are present. R2 is the source of truth for the hosted site --
 the static page never redeploys, the hourly job just replaces two or three
 JSON objects. Without credentials everything still works, purely local.
 """
@@ -401,7 +401,7 @@ class Store:
     # ---------------------------------------------------------------- images
 
     def mirror_image(self, slug, src):
-        """Copy an event's artwork into Blob once and serve it from there.
+        """Copy an event's artwork into the bucket once and serve it from there.
 
         Not a CORS fix -- an <img> renders cross-origin fine -- but it means the
         dashboard does not hotlink someone else's CDN, does not break when a

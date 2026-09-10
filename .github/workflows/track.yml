@@ -56,7 +56,7 @@ jobs:
           if not r.enabled:
               sys.exit("The R2_* secrets are not all set on this repository -- "
                        "the run would write to a mirror the runner then throws "
-                       "away. See R2_SETUP.md.")
+                       "away. See the README for the five names.")
           print(f"store reachable at {r.base}")
           PY
 
