@@ -15,7 +15,6 @@ the static page never redeploys, the hourly job just replaces two or three
 JSON objects. Without credentials everything still works, purely local.
 """
 
-import hashlib
 import json
 import urllib.error
 import urllib.request
@@ -40,10 +39,12 @@ EVENT_FIELDS = {"last_sale": "last_sale", "high": "event_high_ask_all_in",
 FULL_RESOLUTION = 336
 OLDER_STRIDE = 6
 
-# How often an event is re-read, by how far away it is. A show three months
-# out does not move hourly, and reading it hourly is 24x the requests for the
-# same information.
-TIERS = [(7, 1), (30, 3), (None, 6)]   # (days out at most, hours between reads)
+# Every active event is read every hour. Resale prices are set by individual
+# sellers and can move at any time, so there is no distance at which an hourly
+# reading is redundant. Face value on the primary is different -- it only
+# changes when a tier sells out -- and keeps its own staleness window in
+# track.py.
+READ_EVERY_HOURS = 1
 
 
 def _read(path, default):
@@ -56,13 +57,6 @@ def _read(path, default):
 def _write(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, separators=(",", ":"), sort_keys=True))
-
-
-def _slot(slug, every):
-    """Which hour-of-the-cycle this event belongs to. Stable across runs."""
-    if every <= 1:
-        return 0
-    return int(hashlib.md5(slug.encode()).hexdigest()[:8], 16) % every
 
 
 def _parse(ts):
@@ -168,34 +162,18 @@ class Store:
         return sorted(s for s, e in self.events.items() if e.get("status") == "active")
 
     def due(self, now):
-        """Active events whose tier says they are ready for another reading.
+        """Every active event not read in the last hour.
 
-        Each event gets a fixed slot within its tier, derived from its slug, so
-        a tier's events spread evenly across its window instead of all coming
-        due in the same hour. Without this the cohorts stay synchronised
-        forever -- everything was seeded within a few minutes of each other, so
-        an hourly run would alternate between 26 events and 140, which is both
-        a burst of traffic and a bill.
+        The slack matters more than it looks: GitHub's scheduler is
+        best-effort and routinely fires ten or twenty minutes late, so an exact
+        one-hour test would skip an event whose previous reading was 58 minutes
+        ago and silently halve its resolution.
         """
         out = []
         for slug in self.active():
-            e = self.events[slug]
-            days = ((e.get("starts_ts") or 0) - now.timestamp()) / 86400
-            every = next(h for limit, h in TIERS if limit is None or days <= limit)
-            last = _parse(e.get("last_read_at"))
-            if last is None:
-                out.append(slug)
-                continue
-            elapsed = now - last
-            # a missed run (GitHub's scheduler is best-effort) should not cost a
-            # whole extra window -- catch up once we are well past due
-            if elapsed >= timedelta(hours=every * 2):
-                out.append(slug)
-                continue
-            if now.hour % every != _slot(slug, every):
-                continue
-            # a little slack so an 07:03 run still counts as "an hour later"
-            if elapsed >= timedelta(hours=every, minutes=-10):
+            last = _parse(self.events[slug].get("last_read_at"))
+            if last is None or (now - last) >= timedelta(
+                    hours=READ_EVERY_HOURS, minutes=-15):
                 out.append(slug)
         return out
 

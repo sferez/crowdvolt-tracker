@@ -2,8 +2,8 @@
 """
 Hourly CrowdVolt tracker.
 
-  1. reads every event that is due -- a show this week every hour, one this
-     month every 3 hours, anything further out every 6 (see store.TIERS)
+  1. reads every active event -- hourly, all of them. Resale prices are set by
+     individual sellers and can move at any time.
   2. appends best ask + tickets available, per ticket category, to
      events/<slug>.json
   3. retires events that are past or have stopped selling
@@ -40,9 +40,11 @@ DASHBOARD = PUBLIC / "index.html"
 
 REQUEST_DELAY = 2.0      # seconds between events, be a good citizen
 
-# How stale a face value may get before it is re-read. Tiers sell out slowly
-# and then all at once as the date approaches, so the window tightens near the
-# event. These reads ride along with a price read we are making anyway.
+# How stale a face value may get before it is re-read. Unlike a resale ask, a
+# primary price only moves when a tier sells out -- slowly, then all at once as
+# the date approaches -- so this stays on a distance-based window while the
+# resale side is read hourly. These reads ride along with a price read we are
+# making anyway.
 FACE_TTL_HOURS = 24
 FACE_TTL_HOURS_SOON = 6
 SOON_DAYS = 7
@@ -208,7 +210,7 @@ def main():
     p.add_argument("--delay", type=float, default=REQUEST_DELAY,
                    help=f"seconds between events (default {REQUEST_DELAY})")
     p.add_argument("--all", action="store_true",
-                   help="read every active event, ignoring the read-frequency tiers")
+                   help="read every active event, even one read minutes ago")
     p.add_argument("--serve", action="store_true", help="serve public/ and open it")
     p.add_argument("--port", type=int, default=8000)
     args = p.parse_args()
