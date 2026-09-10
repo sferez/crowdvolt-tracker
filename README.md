@@ -270,6 +270,11 @@ The header carries everything: title, a sun/moon theme toggle beside it, the
 stat line (ending with when prices were last read), and the movers strip
 opposite. There is no footer — nothing here is worth a scroll of its own.
 
+The page re-reads the data every 20 minutes without reloading itself, so
+whatever tab, filter, search or scroll position you were on survives — it
+skips the poll while the tab is hidden or an event is open, and catches up the
+moment you come back to it.
+
 A **top movers** strip sits at the top right, opposite the title: the five biggest price drops,
 one at a time, rotating every six seconds and pausing on hover so a row can
 actually be read and clicked — clicking opens that event. It looks at the last

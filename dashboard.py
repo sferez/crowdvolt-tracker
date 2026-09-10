@@ -124,19 +124,22 @@ body.tab-list main { max-width:1420px; }
 /* top movers: one line, one item at a time, so it informs without becoming a
    second dashboard. Rotation pauses on hover so a row can actually be read
    and clicked. */
-.movers { display:flex; align-items:center; gap:10px; margin:0;
-          padding:8px 12px; border:1px solid var(--border); border-radius:10px;
-          background:var(--surface); font-size:13px;
+.movers { display:flex; align-items:center; gap:11px; margin:0;
+          padding:10px 14px; border:1px solid var(--border); border-radius:11px;
+          background:var(--surface); font-size:14px;
           /* pinned right: the stats line makes the brand wide enough that
              space-between alone leaves them touching */
-          flex:0 1 480px; min-width:0; margin-left:auto; }
-.movers .lbl { color:var(--muted); font-size:11px; letter-spacing:.05em;
-               text-transform:uppercase; font-weight:600; white-space:nowrap; }
-.movers .mv { display:flex; align-items:center; gap:9px; flex:1; min-width:0;
+          flex:1 1 620px; max-width:min(680px, 58%); min-width:0; margin-left:auto; }
+.movers .lbl { color:var(--muted); font-size:11px; letter-spacing:.04em;
+               text-transform:uppercase; font-weight:700; white-space:nowrap;
+               border:1px solid var(--border); border-radius:5px;
+               padding:2px 6px; flex:none; }
+.movers .mv { display:flex; align-items:center; gap:9px; flex:1 1 0; min-width:0;
+              overflow:hidden;
               background:transparent; border:0; padding:2px 0; cursor:pointer;
               color:var(--ink); font:inherit; text-align:left; }
 .movers .mv:hover .nm { text-decoration:underline; }
-.movers .mv img { width:22px; height:22px; border-radius:5px; object-fit:cover;
+.movers .mv img { width:26px; height:26px; border-radius:6px; object-fit:cover;
                   flex:none; background:var(--wash); }
 /* Three items competing for one line. The name and the context both give way
    -- the context first -- so neither can run under the dots when a fair price
@@ -237,7 +240,9 @@ tbody tr:hover { background:var(--wash); }
 #list td.ev, #list td.vn, #deals td.ev, #deals td.vn { overflow:hidden; text-overflow:ellipsis; }
 .dealnote { color:var(--muted); font-size:12.5px; max-width:88ch; margin:0 0 12px; }
 .up { color:var(--crit); } .down { color:var(--good); }
-.sig { font-size:11px; margin-right:4px; font-style:normal; }
+/* − and + rather than ▾ ▴: the triangles are a few pixels of ink at this
+   size and disappear into the row */
+.sig { font-size:11px; margin-right:4px; font-style:normal; font-weight:700; }
 td .sig { margin-left:6px; margin-right:0; }
 .badge { font-size:11.5px; color:var(--muted); border:1px solid var(--border);
          border-radius:999px; padding:1px 8px; }
@@ -620,9 +625,9 @@ function signalOf(e) {
   if (c.at_low && c.readings > 3 && (c.change7d ?? 0) < 0) return {
     icon: '🔥', cls: 'down', badge: true, title: `cheapest in 7 days (${money(c.floor)})`};
   if (pct != null && pct <= -0.03) return {
-    icon: '▾', cls: 'down', title: `down ${money(Math.abs(d))} recently`};
+    icon: '−', cls: 'down', title: `down ${money(Math.abs(d))} recently`};
   if (pct != null && pct >= 0.03) return {
-    icon: '▴', cls: 'up', title: `up ${money(d)} recently`};
+    icon: '+', cls: 'up', title: `up ${money(d)} recently`};
   return null;
 }
 const signal = e => {
@@ -641,7 +646,7 @@ function move24(e) {
   if (s && s.badge) { cls = s.cls; txt = s.icon; tip = s.title; }
   else if (d) {
     cls = d > 0 ? 'up' : 'down';
-    txt = (d > 0 ? '▴' : '▾') + money(Math.abs(d));
+    txt = (d > 0 ? '+' : '−') + money(Math.abs(d));
     tip = (d > 0 ? 'up ' : 'down ') + money(Math.abs(d)) + ' in the last 24h';
   }
   return `<em class="mv ${cls}"${tip ? ` title="${esc(tip)}"` : ''}>${txt}</em>`;
@@ -1205,8 +1210,8 @@ async function wireCard(root, e, id) {
    ticket is a seller relisting, not news, and a banner that cries wolf gets
    ignored. Nothing qualifying means no banner at all. */
 const MOVER_MIN_DROP = 10;
-const MOVER_WINDOWS = [['change2h', 'last 2h'], ['change24', 'last 24h'],
-                       ['change7d', 'last 7d']];
+const MOVER_WINDOWS = [['change2h', '2h'], ['change24', '24h'],
+                       ['change7d', '7d']];
 let moverIdx = 0, moverTimer = null;
 
 function moverList() {
@@ -1230,7 +1235,8 @@ function renderMovers() {
   const c = e.current, drop = c[m.field];
   const pct = c.floor != null && c.floor - drop ? drop / (c.floor - drop) : null;
 
-  host.innerHTML = `<span class="lbl">Biggest drop · ${esc(m.label)}</span>
+  host.innerHTML = `<span class="lbl" title="Biggest price drops in the ${
+      esc(m.label)} — click to open">${esc(m.label)}</span>
     <button class="mv" data-slug="${esc(e.slug)}">
       ${imgOf(e) ? `<img src="${esc(imgOf(e))}" alt="" decoding="async">` : ''}
       <span class="nm">${esc(e.name || e.slug)}</span>
@@ -1673,6 +1679,39 @@ $('#modalClose').onclick = () => $('#modal').close();
 // on a phone, where there is no Escape key
 $('#modal').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.close(); });
 $('#modal').addEventListener('close', () => { openSlug = null; render(); });
+/* Prices are read hourly, so re-read them here more often than that and the
+   page is never far behind. A soft refresh rather than location.reload():
+   whatever tab, filter, search or open event you were looking at survives it.
+   Skipped while a tab is hidden, and while the modal is open -- pulling the
+   chart out from under someone reading it is worse than being 20 minutes
+   stale. */
+const REFRESH_MS = 20 * 60 * 1000;
+
+async function refresh() {
+  if (document.hidden || $('#modal').open) return;
+  try {
+    const [idx, recent] = await Promise.all([
+      fetch(DATA_BASE + 'index.json', {cache: 'no-cache'}).then(r => r.json()),
+      fetch(DATA_BASE + 'recent.json', {cache: 'no-cache'})
+        .then(r => r.ok ? r.json() : {}).catch(() => ({})),
+    ]);
+    if (!idx.events || idx.generated_at === GENERATED) return;
+    INDEX = idx.events;
+    RECENT = recent || {};
+    GENERATED = idx.generated_at;
+    ORDER = Object.keys(INDEX);
+    Object.keys(HIST).forEach(k => delete HIST[k]);   // histories moved on too
+    buildGenres();
+    renderStats();
+    renderMovers();
+    render();
+  } catch (e) { /* a failed poll is not worth breaking the page over */ }
+}
+
+setInterval(refresh, REFRESH_MS);
+// catch up immediately on returning to the tab rather than waiting out the timer
+document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change', render);
 matchMedia('(max-width: 820px)').addEventListener('change', render);
 addEventListener('resize', () => { if (tab === 'calendar') fitCalendar(); });
