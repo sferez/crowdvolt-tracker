@@ -209,8 +209,14 @@ td .sig { margin-left:6px; margin-right:0; }
             flex:none; background:var(--wash); }
 .head .txt { min-width:0; }
 .card h3 { font-size:16px; margin:0 0 2px; letter-spacing:-.01em; }
-.card h3 a { text-decoration:none; }
-.card h3 a:hover { text-decoration:underline; }
+.card h3 a.src { text-decoration:none; }
+/* small enough to sit on the title's baseline without competing with it */
+a.src { display:inline-flex; align-items:center; justify-content:center;
+        width:22px; height:22px; border-radius:6px; margin-left:6px;
+        vertical-align:-4px; border:1px solid var(--border);
+        background:var(--surface); transition:border-color .12s, transform .12s; }
+a.src:hover { border-color:var(--ink-2); transform:translateY(-1px); }
+a.src img { width:14px; height:14px; object-fit:contain; }
 .meta { color:var(--muted); font-size:13px; }
 .meta .sep { padding:0 5px; opacity:.5; }
 .pills { display:flex; gap:6px; flex-wrap:wrap; margin-top:5px; }
@@ -972,6 +978,31 @@ function tierLadder(e) {
       + `</div>${table}</div>`;
 }
 
+/* Where to go to actually buy the thing. The title used to be the CrowdVolt
+   link, which read as a link to more detail rather than to another site; an
+   explicit mark per destination says where you are being sent, and the primary
+   link only exists for the platforms we can price -- if we could not read
+   their prices we have no id to link to either. */
+const SOURCE_ICONS = {
+  CrowdVolt: DATA_BASE + 'icons/crowdvolt.png',
+  DICE: DATA_BASE + 'icons/dice.png',
+  Eventbrite: DATA_BASE + 'icons/eventbrite.png',
+};
+
+function sourceLinks(e) {
+  const out = [];
+  if (e.url) out.push([e.url, 'CrowdVolt', 'resale listings on CrowdVolt']);
+  const p = e.primary || {};
+  if (p.url && SOURCE_ICONS[p.platform]) {
+    out.push([p.url, p.platform, `buy direct on ${p.platform}`]);
+  }
+  return out.map(([href, label, title]) =>
+    `<a class="src" href="${esc(href)}" target="_blank" rel="noreferrer noopener"
+        title="${esc(title)}" aria-label="${esc(title)}"
+     ><img src="${esc(SOURCE_ICONS[label])}" alt="${esc(label)}" decoding="async"></a>`
+  ).join('');
+}
+
 function cardShell(e, id) {
   const where = [e.venue, e.city].filter(Boolean).join(' · ');
   const tag = e.status === 'active' ? '' :
@@ -1014,7 +1045,7 @@ function cardShell(e, id) {
   const art = imgOf(e)
     ? `<img src="${esc(imgOf(e))}" alt="" loading="lazy" decoding="async">` : '';
   return `<div class="head">${art}<div class="txt">
-      <h3><a href="${esc(e.url)}" target="_blank" rel="noreferrer">${esc(e.name || e.slug)}</a>${tag}</h3>
+      <h3>${esc(e.name || e.slug)}${tag}${sourceLinks(e)}</h3>
       <div class="meta">${esc(where)}${where && e.doors ? '<span class="sep">·</span>' : ''}${esc(e.doors || '')}</div>
       <div class="pills">${pills}</div>${tagRow}
     </div></div>

@@ -95,6 +95,9 @@ def main():
     p.add_argument("--refresh-venues", action="store_true", help="ignore the venue cache")
     p.add_argument("--skip-artists", action="store_true",
                    help="do not look up genres for new artists")
+    p.add_argument("--eventbrite", action="store_true",
+                   help="also read face value from Eventbrite (rate-limited, "
+                        "and its availability flag is unreliable)")
     p.add_argument("--max-new", type=int, default=400,
                    help="stop after this many new events (default 400)")
     args = p.parse_args()
@@ -202,7 +205,7 @@ def main():
 
     if not args.dry_run:
         resolve_primary_ids(st)
-        refresh_primary(st, now)
+        refresh_primary(st, now, eventbrite=args.eventbrite)
     if not (args.dry_run or args.skip_artists):
         enrich_genres(st)
 
@@ -255,7 +258,7 @@ def resolve_primary_ids(st):
     return found
 
 
-def refresh_primary(st, now):
+def refresh_primary(st, now, eventbrite=False):
     """Re-read face value for tracked events.
 
     Tiers sell out as an event approaches, so the "cheapest you can still buy
@@ -263,8 +266,15 @@ def refresh_primary(st, now):
     against, and a stale one is worse than none. Events with no readable
     platform are skipped without a request.
     """
+    # Eventbrite is off by default. It works, but on two shakier footings than
+    # DICE: its JSON-LD advertises "InStock" on pages that say sold out, and it
+    # needs a search plus a page fetch per candidate -- about fifteen requests
+    # an event -- which earns a 429 well before a full pass finishes. Enable it
+    # with --eventbrite once those are solved.
     todo = [s for s, e in st.events.items()
-            if e.get("status") == "active" and e.get("dice_id")]
+            if e.get("status") == "active"
+            and (e.get("dice_id")
+                 or (eventbrite and (e.get("platform") or "").lower() == "eventbrite"))]
     if not todo:
         return 0
     print(f"refreshing face value for {len(todo)} event(s)")
@@ -272,11 +282,19 @@ def refresh_primary(st, now):
     for i, slug in enumerate(todo):
         if i:
             time.sleep(0.4)          # DICE is a different host and a light call
-        face = primary.dice_tiers(st.events[slug]["dice_id"],
-                                  expect_date=st.events[slug].get("local_date"))
+        e = st.events[slug]
+        if e.get("dice_id"):
+            face = primary.dice_tiers(e["dice_id"], expect_date=e.get("local_date"))
+            if face:
+                face["id"] = e["dice_id"]
+        else:
+            # Eventbrite has no id in CrowdVolt's payload, so it is found by
+            # name, venue and date every time -- slower, hence the longer pause
+            face = primary.eventbrite_tiers(e.get("name"), e.get("venue"),
+                                            e.get("local_date"))
+            time.sleep(1.0)
         if not face:
             continue
-        face["id"] = st.events[slug]["dice_id"]
         face["checked_at"] = now
         # a fair value per resale category, not just one for the whole event:
         # comparing a VIP listing against the cheapest GA tier is worse than
@@ -285,8 +303,8 @@ def refresh_primary(st, now):
         face["by_category"] = {
             c: primary.fair_value(face, c, t.get("linked_count"))
             for c, t in (h.get("types") or {}).items()}
-        was = (st.events[slug].get("primary") or {}).get("on_sale")
-        st.events[slug]["primary"] = face
+        was = (e.get("primary") or {}).get("on_sale")
+        e["primary"] = face
         # keep the dashboard's cached numbers in step
         st._refresh_current(slug, h)
         if was != face.get("on_sale"):

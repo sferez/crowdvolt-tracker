@@ -15,15 +15,28 @@ That gives two useful numbers:
 it is the alternative you actually have. `original` is the anchor for how far
 the event has run up since it went on sale.
 
-Only DICE is implemented. The other platforms CrowdVolt lists (AXS,
-Ticketmaster, Eventbrite, RA, POSH...) each need their own integration and
-several are openly hostile to automated access; events on those simply carry no
-face value, and the dashboard shows a blank rather than a guess.
+DICE and Eventbrite are implemented. The rest are not, for reasons worth
+recording so nobody re-treads them:
+
+    AXS, Four Venues ("PDF Tickets")  answer automated requests with 403, and
+                                      CrowdVolt stores no id for either
+    Ticketmaster                      its Discovery API gives a min/max band
+                                      for the whole event, not the price of
+                                      the cheapest tier on sale -- too coarse
+                                      to judge a resale ask against
+    Resident Advisor                  GraphQL endpoint is live but the ticket
+                                      prices did not come back; unfinished
+                                      rather than ruled out
+
+Events on those carry no face value, and the dashboard shows a blank rather
+than a guess.
 """
 
 import json
 import re
+import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 DICE_API = "https://api.dice.fm/events/{}/ticket_types"
@@ -79,8 +92,13 @@ def dice_tiers(dice_id, timeout=20, expect_date=None):
 
     singles = [t for t in tiers if (t.get("min_qty") or 1) == 1]
     on_sale = [t["price"] for t in singles if t["status"] == "on-sale"]
+    # dice.fm/event/<id> 308s to the canonical page, but the perm_name is right
+    # here, so link straight to it and save the redirect
+    perm = data.get("perm_name")
     return {
         "platform": "DICE",
+        "url": f"https://dice.fm/event/{perm}" if perm else
+               f"https://dice.fm/event/{dice_id}",
         "tiers": tiers,
         # same single-ticket rule as the fair value: one event's cheapest tier
         # is $0.00 and another's is a four-person pass, and neither is a price
@@ -262,6 +280,30 @@ def fair_value(face, category, linked_count=None):
     }
 
 
+_VENUE_STOPWORDS = {"at", "the", "a", "of", "and", "in", "on", "nyc", "ny",
+                    "new", "york", "venue", "club", "rooftop", "presents"}
+
+
+def _venue_tokens(name):
+    return {t for t in _norm(name).split() if t not in _VENUE_STOPWORDS}
+
+
+def _venue_match(a, b):
+    """Do two venue names describe the same place?
+
+    Exact strings are too strict: CrowdVolt says "Westlight at The William
+    Vale" where DICE says "Westlight Rooftop at The William Vale", and "Under
+    the K Bridge" against "Creekside - Under The K Bridge". Both are obviously
+    the same room. Requiring every distinctive word of the shorter name to
+    appear in the longer accepts those and still rejects a different venue,
+    and the date remains a hard equality check either way.
+    """
+    if not a or not b:
+        return False
+    short, long_ = (a, b) if len(a) <= len(b) else (b, a)
+    return short <= long_
+
+
 def dice_find(name, venue, local_date, timeout=20):
     """Recover an event's DICE id when CrowdVolt did not store one.
 
@@ -287,27 +329,140 @@ def dice_find(name, venue, local_date, timeout=20):
             json.JSONDecodeError, TimeoutError):
         return None
 
-    want_venue = _norm(venue)
+    want_venue = _venue_tokens(venue)
     hits = []
     for section in data.get("sections") or []:
         for item in section.get("items") or []:
             if item.get("type") != "event":
                 continue
             e = item.get("event") or {}
-            venues = [_norm(v.get("name")) for v in e.get("venues") or []]
+            venues = [_venue_tokens(v.get("name")) for v in e.get("venues") or []]
             start = ((e.get("dates") or {}).get("event_start_date") or "")[:10]
-            if want_venue in venues and start == local_date and e.get("id"):
+            if (start == local_date and e.get("id")
+                    and any(_venue_match(want_venue, v) for v in venues)):
                 hits.append(e["id"])
     return hits[0] if len(hits) == 1 else None
+
+
+# --------------------------------------------------------------------------
+# Eventbrite
+# --------------------------------------------------------------------------
+
+EB_SEARCH = "https://www.eventbrite.com/d/ny--brooklyn/events/?q={}"
+BROWSER_UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+              "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36")
+
+
+def _ld_offers(html):
+    """The event's JSON-LD block, which carries an AggregateOffer."""
+    for m in re.finditer(r"<script[^>]*application/ld\+json[^>]*>(.*?)</script>",
+                         html, re.S):
+        try:
+            d = json.loads(m.group(1))
+        except json.JSONDecodeError:
+            continue
+        if isinstance(d, dict) and d.get("offers"):
+            o = d["offers"][0] if isinstance(d["offers"], list) else d["offers"]
+            return d, o
+    return None, None
+
+
+def _fetch_text(url, timeout=25):
+    req = urllib.request.Request(url, headers={"User-Agent": BROWSER_UA,
+                                               "Accept-Language": "en-US,en;q=0.9"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read().decode("utf-8", "replace")
+
+
+def eventbrite_find(name, venue, local_date, timeout=25):
+    """The Eventbrite page for one event, matched the same way DICE is.
+
+    Search by name and venue, then accept only a page whose own JSON-LD agrees
+    on both the date and the venue. Eventbrite's search is loose -- a query for
+    an artist returns whatever is on in Brooklyn that week -- so the date is
+    doing the real work here, exactly as it does for DICE.
+    """
+    if not (name and local_date):
+        return None
+    q = urllib.parse.quote(f"{name} {venue or ''}".strip())
+    try:
+        html = _fetch_text(EB_SEARCH.format(q), timeout)
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError):
+        return None
+
+    want = _venue_tokens(venue)
+    seen, hits = set(), []
+    for url in re.findall(r"https://www\.eventbrite\.com/e/[^\"\s?<>]+", html):
+        url = url.rstrip("/")
+        if url in seen:
+            continue
+        seen.add(url)
+        try:
+            page = _fetch_text(url, timeout)
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError):
+            continue
+        ld, offer = _ld_offers(page)
+        if not offer:
+            continue
+        if (ld.get("startDate") or "")[:10] != local_date:
+            continue
+        loc = _venue_tokens((ld.get("location") or {}).get("name"))
+        if want and loc and not _venue_match(want, loc):
+            continue
+        hits.append((url, ld, offer, page))
+        if len(hits) > 1:            # ambiguous: say nothing rather than guess
+            return None
+        time.sleep(0.4)
+    return hits[0] if len(hits) == 1 else None
+
+
+def eventbrite_tiers(name, venue, local_date):
+    """Face value from Eventbrite, in the shape `fair_value` expects.
+
+    Eventbrite publishes an AggregateOffer -- a low and a high across whatever
+    is still purchasable -- not the tier ladder DICE gives. So there is one
+    synthetic tier at `lowPrice`: the cheapest ticket you can still buy, which
+    is the number a resale ask is judged against. `original` is unknowable
+    here, and left alone rather than invented.
+    """
+    found = eventbrite_find(name, venue, local_date)
+    if not found:
+        return None
+    url, ld, offer, page = found
+    low = offer.get("lowPrice")
+    high = offer.get("highPrice")
+    if low is None:
+        return None
+
+    # Eventbrite's JSON-LD availability cannot be trusted: Aerea at Elsewhere
+    # advertises "InStock" at $30.44 on a page that says sold out and sales
+    # ended. Believing it produced "resale is $74 above face" for a ticket
+    # nobody can buy at that price. The rendered page is the only honest
+    # signal, so a sold-out marker there overrules the field.
+    in_stock = ("InStock" in (offer.get("availability") or "")
+                and not re.search(r"sold\s*out|sales ended|no longer (on sale|available)",
+                                  page, re.I))
+    tiers = [{"name": "Cheapest available", "price": round(float(low), 2),
+              "status": "on-sale" if in_stock else "sold-out", "min_qty": 1}]
+    if high is not None and float(high) != float(low):
+        tiers.append({"name": "Dearest available", "price": round(float(high), 2),
+                      "status": "on-sale" if in_stock else "sold-out", "min_qty": 1})
+    return {"platform": "Eventbrite", "url": url, "tiers": tiers,
+            "original": round(float(low), 2),
+            "on_sale": round(float(low), 2) if in_stock else None,
+            "sold_out": not in_stock}
 
 
 def lookup(snap, expect_date=None):
     """Face value for one CrowdVolt event, or None if its platform is not one
     we can read. Adds a per-category fair value alongside the event-wide one."""
     face = dice_tiers(snap.get("dice_id"), expect_date=expect_date)
+    if face:
+        face["id"] = snap.get("dice_id")
+    elif (snap.get("platform") or "").lower() == "eventbrite":
+        face = eventbrite_tiers(snap.get("name"), snap.get("venue"), expect_date)
     if not face:
         return None
-    face["id"] = snap.get("dice_id")
     face["by_category"] = {
         row["ticket_type"]: fair_value(face, row["ticket_type"],
                                        row.get("linked_count"))

@@ -81,6 +81,10 @@ unauthenticated endpoint, giving two numbers per ticket category:
 - **original** — the cheapest tier ever offered, the anchor for how far an
   event has run up since it went on sale.
 
+Opening an event gives a CrowdVolt mark linking to its resale listings, and —
+where we can price it — a second mark linking straight to the primary seller,
+so "this is $8 under face" is one click from acting on.
+
 Roughly half of CrowdVolt's DICE events do not store the DICE id. Those are
 recovered by searching DICE for the name and venue and accepting a result only
 when the venue **and** the local date agree and exactly one candidate survives:
@@ -97,6 +101,7 @@ lessons are written into `primary.fair_value`:
 | CrowdVolt's own grouping breaks ties | it folds four GA tiers into one resale category; a GA listing competes with all four |
 | `+` is a product, not punctuation | "GA+" priced as "GA" undercharges the dearer ticket |
 | the whole-event tier pool is a last resort | it once priced a $467 VIP ticket at $122 |
+| venue names match on words, dates on equality | DICE calls it "Westlight Rooftop at The William Vale" where CrowdVolt says "Westlight at The William Vale"; the date stays an exact gate |
 
 Where a different reading would give a different price, the value is flagged
 ambiguous and the alternative is shown rather than quietly picking one. Where
