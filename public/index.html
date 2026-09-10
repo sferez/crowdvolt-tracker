@@ -131,6 +131,14 @@ th:first-child, td:first-child, th.l, td.l { text-align:left; }
 th { color:var(--muted); font-weight:500; position:sticky; top:0; background:var(--plane);
      cursor:pointer; user-select:none; }
 th[aria-sort]::after { content:'↑'; padding-left:5px; color:var(--ink-2); }
+/* the group row: quiet enough to scan past, present enough to parse by */
+tr.grp th { font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+            color:var(--muted); font-weight:600; text-align:left; cursor:default;
+            padding:9px 11px 3px; border-bottom:0; white-space:nowrap; }
+tr.grp + tr th { top:29px; padding-top:2px; }
+thead tr.grp th { top:0; }
+/* one hairline per group, carried down every row so the blocks read as blocks */
+th.ge, td.ge { border-left:1px solid var(--border); }
 th[aria-sort="descending"]::after { content:'↓'; }
 tbody tr { cursor:pointer; }
 tbody tr:hover { background:var(--wash); }
@@ -1206,43 +1214,52 @@ const cellChange = k => e => {
 };
 const plainTd = (cls, txt) => `<td class="${cls}">${txt}</td>`;
 
+// Grouped so the table answers one question at a time. The old flat order
+// interleaved three unrelated kinds of delta -- against the last sale, against
+// face value, and against the past -- so a reader had to remember which "vs"
+// column meant what. Each column now names its group, and the header spans it.
 const COLUMNS = [
-  ['date',    'Date',    'l', e => e.starts_ts ?? Infinity, cellDate],
-  ['in',      'In',      'l', e => e.starts_ts ?? Infinity, cellIn],
-  ['name',    'Event',   'l', e => (e.name || e.slug).toLowerCase(), cellName],
-  ['sale',    'Last sale', '', e => e.current?.last_sale ?? -1,
-    e => `<td>${e.current?.last_sale == null ? '—' : money(e.current.last_sale)}</td>`],
-  // nothing to compare sorts to the end rather than reading as a big discount
-  ['vsale',   'vs sale', '', e => vsSale(e) ?? Infinity, cellVsSale],
-  // the same two questions asked of the primary platform instead of the last
-  // resale: what this ticket is worth new, and whether the resale beats it
-  ['prim',    'Fair value', '', e => primaryOf(e) ?? Infinity, e => cellFair(e, false)],
-  ['vsprim',  'vs fair', '', e => vsPrimary(e) ?? Infinity, cellVsFair],
+  ['date',    'Date',    'l', e => e.starts_ts ?? Infinity, cellDate, 'When'],
+  ['in',      'In',      'l', e => e.starts_ts ?? Infinity, cellIn, 'When'],
+  ['name',    'Event',   'l', e => (e.name || e.slug).toLowerCase(), cellName, 'Event'],
   ['venue',   'Venue',   'l', e => (e.venue || '').toLowerCase(),
-    e => `<td class="l vn" title="${esc(e.venue || '')}">${esc(e.venue || '')}</td>`],
+    e => `<td class="l vn" title="${esc(e.venue || '')}">${esc(e.venue || '')}</td>`, 'Event'],
   ['city',    'City',    'l', e => (e.city || '').toLowerCase(),
-    e => plainTd('l', esc(e.city || ''))],
+    e => plainTd('l', esc(e.city || '')), 'Event'],
   ['genre',   'Genre',   'l', e => genreLabel(e).toLowerCase(),
     e => plainTd('l', `<i class="gdot" style="background:${
-      genreColor(genreOf(e))}"></i>${esc(genreLabel(e))}`)],
+      genreColor(genreOf(e))}"></i>${esc(genreLabel(e))}`), 'Event'],
+  // the anchor: what it costs right now, sat immediately left of the two
+  // things worth measuring it against
   ['floor',   'Floor',   '',  e => floorOf(e) ?? Infinity,
-    e => `<td>${floorOf(e) == null ? '—' : money(floorOf(e))}</td>`],
-  ['change',  '24h',     '',  e => e.current?.change24 ?? 0, cellChange('change24')],
-  ['change4', '4h',      '',  e => e.current?.change4h ?? 0, cellChange('change4h')],
-  ['change3', '3d',      '',  e => e.current?.change3d ?? 0, cellChange('change3d')],
-  ['change7', '7d',      '',  e => e.current?.change7d ?? 0, cellChange('change7d')],
-  ['tickets', 'Tickets', '',  e => ticketsOf(e), e => `<td>${ticketsOf(e)}</td>`],
+    e => `<td>${floorOf(e) == null ? '—' : money(floorOf(e))}</td>`, 'Asking'],
+  ['sale',    'Last sale', '', e => e.current?.last_sale ?? -1,
+    e => `<td>${e.current?.last_sale == null ? '—' : money(e.current.last_sale)}</td>`,
+    'vs what it is worth'],
+  // nothing to compare sorts to the end rather than reading as a big discount
+  ['vsale',   'Δ',       '', e => vsSale(e) ?? Infinity, cellVsSale, 'vs what it is worth'],
+  // the same two questions asked of the primary platform instead of the last
+  // resale: what this ticket is worth new, and whether the resale beats it
+  ['prim',    'Fair value', '', e => primaryOf(e) ?? Infinity,
+    e => cellFair(e, false), 'vs what it is worth'],
+  ['vsprim',  'Δ',       '', e => vsPrimary(e) ?? Infinity, cellVsFair, 'vs what it is worth'],
+  // ascending, so the eye reads left to right through time
+  ['change4', '4h',      '',  e => e.current?.change4h ?? 0, cellChange('change4h'), 'Moved'],
+  ['change',  '24h',     '',  e => e.current?.change24 ?? 0, cellChange('change24'), 'Moved'],
+  ['change3', '3d',      '',  e => e.current?.change3d ?? 0, cellChange('change3d'), 'Moved'],
+  ['change7', '7d',      '',  e => e.current?.change7d ?? 0, cellChange('change7d'), 'Moved'],
+  ['tickets', 'Tickets', '',  e => ticketsOf(e), e => `<td>${ticketsOf(e)}</td>`, 'Supply'],
   ['cats',    'Cats',    '',  e => (e.current?.cats || []).length,
-    e => `<td>${(e.current?.cats || []).length}</td>`],
+    e => `<td>${(e.current?.cats || []).length}</td>`, 'Supply'],
 ];
 
 /* The Deals view carries the List's columns so a row still reads the same and
    still opens the same modal, plus the percentage it is sorted by, and it says
    in words when a fair value belongs to a primary that has sold out. */
 const DEAL_COLUMNS = COLUMNS.flatMap(c =>
-  c[0] === 'prim' ? [[...c.slice(0, 4), e => cellFair(e, true)]] :
-  c[0] === 'vsprim' ? [c, ['vsfpct', 'vs fair %', '',
-                           e => vsPrimaryPct(e) ?? Infinity, cellVsFairPct]] : [c]);
+  c[0] === 'prim' ? [[...c.slice(0, 4), e => cellFair(e, true), c[5]]] :
+  c[0] === 'vsprim' ? [c, ['vsfpct', 'Δ%', '', e => vsPrimaryPct(e) ?? Infinity,
+                           cellVsFairPct, 'vs what it is worth']] : [c]);
 
 function sortRows(rows, cols, sort) {
   const get = Object.fromEntries(cols.map(c => [c[0], c[3]]));
@@ -1253,13 +1270,33 @@ function sortRows(rows, cols, sort) {
 }
 
 function tableFor(cols, rows, sort) {
+  // where each group starts, so both header rows and every body row can carry
+  // the same dividing rule
+  const starts = new Set(cols.map((c, i) => c[5] !== (cols[i - 1] || [])[5] ? i : -1));
+  const edge = i => starts.has(i) && i > 0 ? ' ge' : '';
+
   const body = rows.map(e => `<tr data-slug="${esc(e.slug)}">${
-    cols.map(c => c[4](e)).join('')}<td class="l">${e.status === 'active' ? ''
+    cols.map((c, i) => {
+      const td = c[4](e);
+      return edge(i) ? td.replace(/^<td/, '<td class="ge"').replace(
+        /^<td class="ge" class="([^"]*)"/, '<td class="ge $1"') : td;
+    }).join('')}<td class="l">${e.status === 'active' ? ''
       : `<span class="badge">${esc(e.status)}</span>`}</td></tr>`).join('');
-  return `<table><thead><tr>${cols.map(([k, t, cls]) =>
-    `<th data-sort="${k}" class="${cls}"${sort.key === k
-      ? ` aria-sort="${sort.dir > 0 ? 'ascending' : 'descending'}"` : ''}>${t}</th>`).join('')
-    }<th class="l"></th></tr></thead><tbody>${body}</tbody></table>`;
+
+  const groups = [];
+  cols.forEach((c, i) => {
+    if (starts.has(i)) groups.push([c[5], 1]);
+    else groups[groups.length - 1][1]++;
+  });
+
+  return `<table><thead>
+    <tr class="grp">${groups.map(([label, span], gi) =>
+      `<th colspan="${span}" class="${gi ? 'ge' : ''}">${esc(label)}</th>`).join('')
+      }<th></th></tr>
+    <tr>${cols.map(([k, t, cls], i) =>
+      `<th data-sort="${k}" class="${cls}${edge(i)}"${sort.key === k
+        ? ` aria-sort="${sort.dir > 0 ? 'ascending' : 'descending'}"` : ''}>${t}</th>`).join('')
+      }<th class="l"></th></tr></thead><tbody>${body}</tbody></table>`;
 }
 
 function wireTable(host, sort, redraw) {

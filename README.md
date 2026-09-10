@@ -248,8 +248,12 @@ yet is never mistaken for sold out. Retired events keep their history — tick
   its own timezone*, with artwork, floor price and ticket count. Days scroll
   inside their own cell, so a busy Saturday cannot stretch the row. On a phone
   the same events become a scrolling agenda instead of a squashed 7-column grid.
-- **List** — sortable: date, days out, last sale, vs sale, fair value, vs fair,
-  venue, city, genre, floor, 24 h / 4 h / 3 d / 7 d change, tickets, categories.
+- **List** — grouped so the table answers one question at a time: *when*, *event*,
+  *asking* (the floor), *vs what it is worth* (last sale and fair value, each
+  with its own delta beside it), *moved* (4 h / 24 h / 3 d / 7 d), *supply*.
+  Every column sorts. The grouping exists because three different kinds of
+  delta — against the last sale, against face value, and against the past —
+  read as interchangeable when they sit in one flat row.
 - **Charts** — a card per event, fetched and drawn as you scroll.
 
 **Genre** comes from the artists on the bill. The seven most common genres take
