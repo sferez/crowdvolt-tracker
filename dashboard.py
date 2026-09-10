@@ -351,13 +351,19 @@ button.statlink { font:inherit; background:none; border:0; padding:0;
             margin-top:1px; font-size:11.5px; }
 .cal .evt .thumb { width:14px; height:14px; border-radius:3px; flex:none; }
 .cal .evt .nm { flex:1 1 auto; min-width:0; }
-.cal .evt .pr { flex:none; min-width:26px; text-align:right; }
-.cal .evt .mv { flex:none; font-style:normal; font-size:10.5px; min-width:26px;
+/* Widths are set per render from the widest value the month actually holds
+   (see alignCalCols): fixed enough to form columns, not so fixed that a
+   four-figure price in one month costs every other month its event names. */
+.cal .evt .pr { flex:none; width:var(--prw, auto); min-width:26px;
+                text-align:right; }
+.cal .evt .mv { flex:none; font-style:normal; font-size:10.5px;
+                width:var(--mvw, auto); min-width:26px;
                 text-align:right; font-variant-numeric:tabular-nums; }
 /* badge and amount travel together, tighter than the cell's own 5px gap, so
    they read as one annotation on the price rather than two columns */
-.cal .evt .mvbox { display:flex; align-items:center; gap:2px; flex:none; }
-.cal .evt .sig { font-size:9.5px; margin:0; flex:none; line-height:1; }
+.cal .evt .mvbox { display:flex; align-items:center; gap:3px; flex:none; }
+.cal .evt .sig { font-size:9.5px; margin:0; flex:none; line-height:1;
+                 width:11px; text-align:center; }
 
 /* list */
 table { border-collapse:collapse; width:100%; font-size:13px; font-variant-numeric:tabular-nums; }
@@ -1209,10 +1215,15 @@ const signal = e => {
 
    The empty <em> when nothing moved is deliberate: it holds the column open
    so the prices above and below it still line up. */
-function move24(e) {
+function move24(e, reserve) {
   const s = signalOf(e), d = Math.round(rowView(e).change24 ?? 0);
+  // The badge slot is held open on every row of a month that uses one, so the
+  // price and the amount stay in their columns instead of stepping sideways on
+  // whichever rows happen to carry an icon. A month with no badges at all
+  // reserves nothing and gives the width back to the names.
   const badge = s && s.badge
-    ? `<i class="sig ${s.cls}" title="${esc(s.title)}">${s.icon}</i>` : '';
+    ? `<i class="sig ${s.cls}" title="${esc(s.title)}">${s.icon}</i>`
+    : reserve ? '<i class="sig"></i>' : '';
   if (!d) return `<span class="mvbox">${badge}<em class="mv"></em></span>`;
   const tip = (d > 0 ? 'up ' : 'down ') + money(Math.abs(d)) + ' in the last 24h';
   return `<span class="mvbox">${badge}<em class="mv ${d > 0 ? 'up' : 'down'}"
@@ -2112,6 +2123,23 @@ function renderAgenda(host) {
   fitCalendar();
 }
 
+/* Turns the price and the amount into columns.
+
+   Measured rather than computed: the strings are drawn with tabular figures
+   but "$" and the minus sign are not digits, so counting characters would be
+   a guess. This runs on a grid that has just been written and carries no
+   width yet, so what it measures is each column's natural width -- freezing
+   the widest is what stops the numbers stepping sideways row to row. */
+function alignCalCols(host) {
+  const cal = $('.cal', host);
+  if (!cal) return;
+  const widest = sel => Math.ceil(
+    Math.max(0, ...$$(sel, cal).map(el => el.getBoundingClientRect().width)));
+  const pr = widest('.evt .pr'), mv = widest('.evt .mv');
+  if (pr) cal.style.setProperty('--prw', pr + 'px');
+  if (mv) cal.style.setProperty('--mvw', mv + 'px');
+}
+
 function renderCalendar() {
   const host = $('#calendar');
   // the month buttons live in the static control bar, so they outlive a failed
@@ -2130,6 +2158,11 @@ function renderCalendar() {
     if (d) (buckets[dayKey(d)] ||= []).push(e);
   });
   const today = dayKey(new Date());
+  // one decision for the whole grid rather than per row: a column only exists
+  // if something in view puts something in it
+  const reserve = Object.values(buckets).flat().some(e => {
+    const sg = signalOf(e); return sg && sg.badge;
+  });
   let cells = '';
   for (let i = 0; i < weeks * 7; i++) {
     const d = new Date(start); d.setDate(start.getDate() + i);
@@ -2152,7 +2185,7 @@ function renderCalendar() {
           ${thumb(e, 'thumb')}<span class="nm">${
             isFav(e.slug) && !favCat(e.slug) ? '<i class="fdot"></i>' : ''}${
             esc(e.name || e.slug)}</span>${tag ? `<span class="ln2">${tag}` : ''
-          }<span class="pr">${w.floor == null ? '—' : money(w.floor)}</span>${move24(e)}${
+          }<span class="pr">${w.floor == null ? '—' : money(w.floor)}</span>${move24(e, reserve)}${
             tag ? '</span>' : ''}
         </button>`;
       }).join('')}
@@ -2165,6 +2198,7 @@ function renderCalendar() {
   // nor a visible extent to read it off.
   $('#calnote').textContent = first.toLocaleString([], {month:'long', year:'numeric'});
   host.innerHTML = genreBar() + `<div class="cal" style="--calrows:${weeks}">${dows}${cells}</div>`;
+  alignCalCols(host);
   wireGenreBar(host);
   $$('.evt', host).forEach(b => b.onclick = () => openEvent(b.dataset.slug));
   fitCalendar();
