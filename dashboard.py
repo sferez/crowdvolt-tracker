@@ -1270,6 +1270,7 @@ const COLUMNS = [
   ['floor',   'Floor',   '',  e => floorOf(e) ?? Infinity,
     e => `<td>${floorOf(e) == null ? '—' : money(floorOf(e))}</td>`],
   ['change',  '24h',     '',  e => e.current?.change24 ?? 0, cellChange('change24')],
+  ['change4', '4h',      '',  e => e.current?.change4h ?? 0, cellChange('change4h')],
   ['change3', '3d',      '',  e => e.current?.change3d ?? 0, cellChange('change3d')],
   ['change7', '7d',      '',  e => e.current?.change7d ?? 0, cellChange('change7d')],
   ['tickets', 'Tickets', '',  e => ticketsOf(e), e => `<td>${ticketsOf(e)}</td>`],

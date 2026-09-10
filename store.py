@@ -307,6 +307,10 @@ class Store:
         bidders_now = bidders_now or None
         e["current"] = {"floor": floor, "tickets": tickets, "cats": cats,
                         "change24": _change(h, 24),
+                        # meaningful now that every event is read every hour;
+                        # under the old tiers a distant event had no reading
+                        # within four hours to compare against
+                        "change4h": _change(h, 4),
                         "change3d": _change(h, 72),
                         "change7d": _change(h, 168),
                         # "cheapest it has been all week", the signal worth an
