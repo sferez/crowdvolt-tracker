@@ -291,8 +291,16 @@ tbody tr:hover { background:var(--wash); }
 /* zero basis, or a long name is wider than the line it is meant to share with
    the thumbnail and wraps below it, spending a third line on nothing */
 .cal .evt.pinned .nm { flex:1 1 0; }
-.cal .evt.pinned .brk { flex:1 0 100%; height:0; }
-.cal .evt.pinned .cat { margin-left:19px; margin-right:auto; }
+/* The tag and the two numbers are one line of their own, and a nested flex row
+   rather than three loose items: flexbox breaks lines before it shrinks
+   anything, so left in the outer wrapping row the move would hop to a third
+   line instead of the tag giving up a few characters. Inside a nowrap row the
+   tag shrinks and ellipses instead -- the tooltip still has the full name --
+   and the auto margin keeps the price and the move flush right, in the column
+   the unpinned rows above put them in. */
+.cal .evt.pinned .ln2 { flex:1 0 100%; display:flex; align-items:center;
+                        gap:5px; min-width:0; }
+.cal .evt.pinned .ln2 .cat { margin-right:auto; flex:0 1 auto; min-width:2.4em; }
 /* the agenda's price line is one nowrap run at 500px; letting it wrap is
    cheaper than letting a venue name push the page sideways */
 .agenda .evt .pr { white-space:normal; }
@@ -1626,18 +1634,19 @@ function renderCalendar() {
             + ', ' + ticketsOf(e) + ' tickets')}">
           ${thumb(e, 'thumb')}<span class="nm">${
             isFav(e.slug) && !favCat(e.slug) ? '<i class="fdot"></i>' : ''}${
-            esc(e.name || e.slug)}</span>${tag ? '<i class="brk"></i>' : ''}${tag}
-          <span class="pr">${w.floor == null ? '—' : money(w.floor)}</span>${move24(e)}
+            esc(e.name || e.slug)}</span>${tag ? `<span class="ln2">${tag}` : ''
+          }<span class="pr">${w.floor == null ? '—' : money(w.floor)}</span>${move24(e)}${
+            tag ? '</span>' : ''}
         </button>`;
       }).join('')}
     </div>`;
   }
   const dows = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x => `<div class="dow">${x}</div>`).join('');
-  const shown = visible().filter(e => {
-    const d = eventDate(e); return d && d.getFullYear() === y && d.getMonth() === m;
-  }).length;
-  $('#calnote').textContent = first.toLocaleString([], {month:'long', year:'numeric'})
-    + ' · ' + shown + (shown === 1 ? ' event' : ' events');
+  // just the month: the count restated what the grid already shows, while the
+  // month is the only thing saying where the ‹ › arrows have taken you. The
+  // agenda's note keeps its count -- a continuous list has neither heading
+  // nor a visible extent to read it off.
+  $('#calnote').textContent = first.toLocaleString([], {month:'long', year:'numeric'});
   host.innerHTML = genreBar() + `<div class="cal" style="--calrows:${weeks}">${dows}${cells}</div>`;
   wireGenreBar(host);
   $$('.evt', host).forEach(b => b.onclick = () => openEvent(b.dataset.slug));
