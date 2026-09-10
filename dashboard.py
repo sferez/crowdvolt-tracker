@@ -584,8 +584,7 @@ dialog .card { border:0; margin:0; background:transparent; }
 
 <dialog id="contact"><div class="contact">
   <h3>Contact</h3>
-  <p>Bugs, but not only — feedback, an event the tracker is missing, what
-    you'd like it to do next, or just how you're finding it. All welcome.</p>
+  <p>Bugs, missing events, ideas — I'd love to hear from you.</p>
   <code class="mailrow" id="mailAddr">__CONTACT_EMAIL__</code>
   <div class="btnrow"><button class="ghost" id="copyMail">Copy address</button>
     <button class="ghost" id="contactClose">Close</button></div>
