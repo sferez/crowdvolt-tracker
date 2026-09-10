@@ -23,6 +23,9 @@ HERE = Path(__file__).parent
 VENDOR = HERE / "public" / "vendor" / "chart.umd.min.js"
 CDN = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"
 
+# shown in the Contact dialog, and the only place the address is written
+CONTACT_EMAIL = "winds_amid.1b@icloud.com"
+
 # dataviz reference palette, fixed slot order (never cycled).
 SERIES_LIGHT = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4",
                 "#008300", "#4a3aa7", "#e34948"]
@@ -139,6 +142,10 @@ body.tab-list main { max-width:1420px; }
 .statlink { color:var(--muted); text-decoration:underline dotted;
             text-underline-offset:3px; }
 .statlink:hover { color:var(--ink-2); }
+/* Contact is a button because it opens a dialog rather than going anywhere,
+   but it has to read as the same kind of thing as the Help link beside it */
+button.statlink { font:inherit; background:none; border:0; padding:0;
+                  cursor:pointer; }
 
 /* top movers: one line, one item at a time, so it informs without becoming a
    second dashboard. Rotation pauses on hover so a row can actually be read
@@ -434,6 +441,19 @@ dialog { border:1px solid var(--border); border-radius:15px; background:var(--su
 dialog::backdrop { background:rgba(0,0,0,.5); }
 dialog .card { border:0; margin:0; background:transparent; }
 .close { position:absolute; top:13px; right:15px; z-index:1; }
+/* the contact card is a note, not a workspace, so it opts out of the wide
+   default the event modal sets */
+#contact { width:min(340px,92vw); }
+.contact { padding:20px; }
+.contact h3 { margin:0 0 6px; font-size:15px; }
+.contact p { margin:0 0 14px; color:var(--muted); font-size:12.5px; line-height:1.5; }
+/* the address is selectable text as well as a copy target: the button is the
+   fast path, not the only one */
+.mailrow { display:block; overflow:auto; white-space:nowrap;
+           font-size:13px; color:var(--ink); background:var(--wash);
+           border:1px solid var(--border); border-radius:9px; padding:9px 11px; }
+.btnrow { display:flex; gap:8px; justify-content:flex-end; margin-top:10px; }
+#copyMail.done { color:var(--good); border-color:var(--good); }
 .modalctl { display:flex; gap:8px; flex-wrap:wrap; padding:16px 18px 0; }
 /* agenda: the mobile shape of the calendar. A seven-column month grid on a
    phone is unreadable, so the same events become a scrolling day list. */
@@ -561,6 +581,15 @@ dialog .card { border:0; margin:0; background:transparent; }
 <dialog id="modal"><button class="ghost close" id="modalClose">Close</button>
   <div id="modalBody"></div>
 </dialog>
+
+<dialog id="contact"><div class="contact">
+  <h3>Contact</h3>
+  <p>Bugs, but not only — feedback, an event the tracker is missing, what
+    you'd like it to do next, or just how you're finding it. All welcome.</p>
+  <code class="mailrow" id="mailAddr">__CONTACT_EMAIL__</code>
+  <div class="btnrow"><button class="ghost" id="copyMail">Copy address</button>
+    <button class="ghost" id="contactClose">Close</button></div>
+</div></dialog>
 
 <script>
 const DATA_BASE = "__DATA_BASE__";
@@ -1593,7 +1622,9 @@ function renderStats() {
     // every poll and every "show retired" toggle, and a link added around it
     // would disappear the first time either happened
     + `<span class="statsep">·</span><a class="statlink" href="help.html"
-        title="How to read this dashboard">Help</a>`;
+        title="How to read this dashboard">Help</a>`
+    + `<span class="statsep">·</span><button class="statlink" id="contactBtn"
+        title="Get in touch">Contact</button>`;
 }
 
 function genreBar() {
@@ -2062,6 +2093,32 @@ $('#theme').onclick = () => {
 };
 paintTheme();
 $('#modalClose').onclick = () => $('#modal').close();
+/* the stats line is rewritten on every poll, so the Contact button in it is a
+   different element each time -- delegate rather than bind to one that is
+   about to be replaced */
+document.addEventListener('click', e => {
+  if (e.target.closest('#contactBtn')) $('#contact').showModal();
+});
+$('#contactClose').onclick = () => $('#contact').close();
+$('#contact').addEventListener('click', e => {
+  if (e.target === e.currentTarget) e.currentTarget.close();
+});
+$('#copyMail').onclick = async e => {
+  const btn = e.currentTarget, mail = $('#mailAddr').textContent;
+  try {
+    await navigator.clipboard.writeText(mail);
+  } catch {
+    // clipboard access is refused outside a secure context, and over plain
+    // http this page is one. Select the address so a manual copy is one
+    // keystroke rather than a drag across a nine-character string
+    const r = document.createRange();
+    r.selectNodeContents($('#mailAddr'));
+    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    btn.textContent = 'Select all'; return;
+  }
+  btn.textContent = 'Copied'; btn.classList.add('done');
+  setTimeout(() => { btn.textContent = 'Copy address'; btn.classList.remove('done'); }, 1600);
+};
 // clicking the backdrop lands on the dialog element itself -- the only way out
 // on a phone, where there is no Escape key
 $('#modal').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.close(); });
@@ -2116,6 +2173,7 @@ def build_dashboard(_store, out_path):
     out.parent.mkdir(parents=True, exist_ok=True)
     html = (HTML
             .replace("__CHART_JS__", "vendor/chart.umd.min.js" if VENDOR.exists() else CDN)
+            .replace("__CONTACT_EMAIL__", CONTACT_EMAIL)
             .replace("__DATA_BASE__", data_base())
             .replace("__PALETTE__", ",".join(SERIES_LIGHT[:5]))
             .replace("__SERIES_LIGHT__", str(SERIES_LIGHT).replace("'", '"'))
