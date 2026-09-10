@@ -118,7 +118,8 @@ button.statlink { font:inherit; background:none; border:0; padding:0;
           background:var(--surface); font-size:14px;
           /* pinned right: the stats line makes the brand wide enough that
              space-between alone leaves them touching */
-          flex:1 1 620px; max-width:min(680px, 58%); min-width:0; margin-left:auto; }
+          flex:1 1 620px; max-width:min(680px, 58%); min-width:0; margin-left:auto;
+          align-self:center; }
 .movers .lbl { color:var(--muted); font-size:11px; letter-spacing:.04em;
                text-transform:uppercase; font-weight:700; white-space:nowrap;
                border:1px solid var(--border); border-radius:5px;
@@ -156,7 +157,7 @@ button.statlink { font:inherit; background:none; border:0; padding:0;
 
 /* the device badge: an identity the page invents for this browser, which is
    the honest picture -- there is no account, and nothing here follows you */
-#profile { align-self:center; flex:none; width:32px; height:32px; padding:0;
+#profile { flex:none; width:32px; height:32px; padding:0;
            border-radius:50%; font:650 11px/1 inherit; letter-spacing:.02em;
            cursor:pointer; display:inline-flex; align-items:center;
            justify-content:center; }
@@ -166,17 +167,24 @@ button.statlink { font:inherit; background:none; border:0; padding:0;
    one only takes over when there is no banner to push against. */
 .movers.hide ~ #profile { margin-left:auto; }
 
-/* the bell carries its own count, so it needs a corner to hang it in */
-#bell { position:relative; align-self:center; flex:none; }
-#bell.lit { color:var(--crit); border-color:var(--crit); }
+/* The two of them are one cluster, not two things that happen to be near
+   each other: the header's 18px column gap between the banner and the bell
+   was also the gap between the bell and the badge, which left the bell
+   belonging to neither. */
+.tools { display:flex; align-items:center; gap:7px; flex:none; align-self:center; }
+.movers.hide ~ .tools { margin-left:auto; }
+
+/* same size and same shape as the badge beside it -- one neutral, one in the
+   device's colour */
+#bell { position:relative; width:32px; height:32px; border-radius:50%; }
+/* the count is already a red dot; a red border as well competes with the
+   banner's outline for the same attention */
+#bell.lit { color:var(--crit);
+            background:color-mix(in srgb, var(--crit) 12%, var(--surface)); }
 #bell .dot { position:absolute; top:-5px; right:-5px; min-width:14px; height:14px;
              padding:0 3px; border-radius:999px; background:var(--crit);
              color:#fff; font:650 9.5px/14px inherit; font-style:normal;
              text-align:center; }
-/* .movers claims the free space; the first thing after it must not claim it
-   too, or two auto margins split the gap and the banner floats inward */
-.movers.hide ~ #bell { margin-left:auto; }
-
 /* "≤ $95" says what the control does without a legend. Unset it is the same
    shape with the number missing, which reads as an invitation. */
 .abtn { font:600 11px/1 inherit; padding:3px 5px; margin-left:7px;
@@ -539,10 +547,9 @@ dialog .card { border:0; margin:0; background:transparent; }
      the banner for one wrapping line and lands wherever the three widths
      happen to fall; the corner is where it belongs and this is the only way
      to say so. The header's padding keeps the stats clear of it. */
-  header { position:relative; padding-right:104px; }
-  #profile { position:absolute; top:11px; right:16px; margin:0; }
-  #bell { position:absolute; top:11px; right:58px; margin:0; width:36px;
-          height:36px; }
+  header { position:relative; padding-right:98px; }
+  .tools { position:absolute; top:10px; right:16px; margin:0; gap:6px; }
+  #bell, #profile { width:36px; height:36px; }
   .spacer { display:none; }
   #theme { order:1; }
   .stats { order:2; }
@@ -603,8 +610,10 @@ dialog .card { border:0; margin:0; background:transparent; }
     <div class="stats" id="stats"></div>
   </div>
   <div id="movers" class="movers hide" aria-live="polite"></div>
-  <button id="bell" class="ghost icon" aria-label="Alerts and what changed"></button>
-  <button id="profile" aria-label="Your settings"></button>
+  <div class="tools">
+    <button id="bell" class="ghost icon" aria-label="Alerts and what changed"></button>
+    <button id="profile" aria-label="Your settings"></button>
+  </div>
 </header>
 
 <div class="controls">
