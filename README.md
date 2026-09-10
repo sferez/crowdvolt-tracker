@@ -266,6 +266,10 @@ the seven leading palette slots, everything else folds into a neutral "other" �
 the map is built once from every tracked event, so filtering never repaints the
 genres that survive it. The chips above the calendar and list are the filter.
 
+The header carries everything: title, a sun/moon theme toggle beside it, the
+stat line (ending with when prices were last read), and the movers strip
+opposite. There is no footer — nothing here is worth a scroll of its own.
+
 A **top movers** strip sits at the top right, opposite the title: the five biggest price drops,
 one at a time, rotating every six seconds and pausing on hover so a row can
 actually be read and clicked — clicking opens that event. It looks at the last

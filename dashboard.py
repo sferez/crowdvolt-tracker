@@ -80,7 +80,12 @@ a { color:inherit; }
 
 header { display:flex; flex-wrap:wrap; gap:6px 18px; align-items:baseline;
          padding:12px 28px 9px; }
-.brand h1 { margin-bottom:2px; }
+.titlerow { display:flex; align-items:center; gap:8px; margin-bottom:3px; }
+/* square, quiet, and the same height as the text beside it */
+.ghost.icon { width:26px; height:26px; padding:0; display:inline-flex;
+              align-items:center; justify-content:center; color:var(--muted); }
+.ghost.icon:hover { color:var(--ink); }
+.ghost.icon svg { width:14px; height:14px; }
 h1 { font-size:18px; margin:0; letter-spacing:-.015em; font-weight:650; }
 h1 em { font-style:normal; color:var(--muted); font-weight:500; }
 .sub { color:var(--muted); font-size:12.5px; }
@@ -133,10 +138,16 @@ body.tab-list main { max-width:1420px; }
 .movers .mv:hover .nm { text-decoration:underline; }
 .movers .mv img { width:22px; height:22px; border-radius:5px; object-fit:cover;
                   flex:none; background:var(--wash); }
-.movers .nm { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.movers .amt { font-weight:650; font-variant-numeric:tabular-nums; white-space:nowrap; }
-.movers .ctx { color:var(--muted); font-variant-numeric:tabular-nums; white-space:nowrap; }
-.movers .dots { display:flex; gap:5px; flex:none; }
+/* Three items competing for one line. The name and the context both give way
+   -- the context first -- so neither can run under the dots when a fair price
+   makes the line longer. The amount never shrinks: it is the point. */
+.movers .nm { flex:1 1 auto; min-width:2.5rem; overflow:hidden;
+              text-overflow:ellipsis; white-space:nowrap; }
+.movers .amt { flex:none; font-weight:650; font-variant-numeric:tabular-nums;
+               white-space:nowrap; }
+.movers .ctx { flex:0 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis;
+               color:var(--muted); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.movers .dots { display:flex; gap:5px; flex:none; margin-left:2px; }
 .movers .dots button { width:6px; height:6px; padding:0; border-radius:50%;
                        border:0; background:var(--axis); cursor:pointer; }
 .movers .dots button[aria-current="true"] { background:var(--ink-2); }
@@ -413,7 +424,10 @@ dialog .card { border:0; margin:0; background:transparent; }
 <body data-palette="__PALETTE__">
 <header>
   <div class="brand">
-    <h1>CrowdVolt <em>NYC</em> Tracker</h1>
+    <div class="titlerow">
+      <h1>CrowdVolt <em>NYC</em> Tracker</h1>
+      <button class="ghost icon" id="theme" aria-label="Switch theme"></button>
+    </div>
     <div class="stats" id="stats"></div>
   </div>
   <div id="movers" class="movers hide" aria-live="polite"></div>
@@ -452,12 +466,6 @@ dialog .card { border:0; margin:0; background:transparent; }
   <section id="deals" class="hide"></section>
   <section id="charts" class="hide"></section>
 </main>
-
-<footer>
-  <span class="sub" id="updated"></span>
-  <div class="spacer"></div>
-  <button class="ghost" id="theme">Theme</button>
-</footer>
 
 <dialog id="modal"><button class="ghost close" id="modalClose">Close</button>
   <div id="modalBody"></div>
@@ -533,9 +541,6 @@ async function boot() {
   }
   ORDER = Object.keys(INDEX);
   buildGenres();
-  $('#updated').textContent = GENERATED
-    ? 'updated ' + new Date(GENERATED).toLocaleString([], {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'})
-    : '';
   renderStats();
   renderMovers();
   render();
@@ -1266,12 +1271,18 @@ function renderStats() {
   const soon = act.filter(e => {
     const d = eventDate(e); return d && d >= t0 && (d - t0) / 86400000 <= 7;
   }).length;
+  // the timestamp reads as one more fact about the data, and folding it in
+  // here is what lets the page end without a footer
+  const stamp = GENERATED
+    ? new Date(GENERATED).toLocaleString([], {hour: 'numeric', minute: '2-digit'})
+    : null;
   $('#stats').innerHTML = [
     [act.length, 'events', 'events tracked'],
     [soon, 'in 7d', 'starting in the next 7 days'],
     [tickets.toLocaleString(), 'tickets', 'tickets listed'],
     [median == null ? '—' : money(median), 'median', 'median floor price'],
     [all.length - act.length, 'retired', 'no longer tracked'],
+    ...(stamp ? [[stamp, 'last read', 'when the tracker last read prices']] : []),
   ].map(([v, k, t]) => `<span class="stat" title="${esc(t)}"><b>${v}</b> ${k}</span>`).join('');
 }
 
@@ -1637,10 +1648,26 @@ $('#thisM').onclick = () => { month = new Date(); month.setDate(1); renderCalend
 $('#showRetired').onchange = e => { showRetired = e.target.checked; renderStats(); render(); };
 let qt;
 $('#q').oninput = e => { query = e.target.value; clearTimeout(qt); qt = setTimeout(render, 150); };
+/* Shows what you will get, not what you have: a sun in dark mode means
+   "switch to light". */
+const SUN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+  stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4
+  M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>`;
+const MOON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+  stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>`;
+
+function paintTheme() {
+  const b = $('#theme');
+  b.innerHTML = isDark() ? SUN : MOON;
+  b.title = isDark() ? 'Switch to light' : 'Switch to dark';
+}
+
 $('#theme').onclick = () => {
   document.documentElement.dataset.theme = isDark() ? 'light' : 'dark';
+  paintTheme();
   render();
 };
+paintTheme();
 $('#modalClose').onclick = () => $('#modal').close();
 // clicking the backdrop lands on the dialog element itself -- the only way out
 // on a phone, where there is no Escape key
