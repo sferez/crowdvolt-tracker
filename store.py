@@ -282,12 +282,28 @@ class Store:
         event's latest numbers are cached there rather than recomputed from
         139 history files."""
         ev = h.get("event") or {}
+        face = (self.events.get(slug) or {}).get("primary") or {}
         cats, floor, tickets = [], None, 0
         for name, t in h["types"].items():
             ask, qty = _last(t["all_in"]), _last(t["qty"]) or 0
             if ask is None and not qty and not any(v is not None for v in t["all_in"]):
                 continue
-            cats.append({"name": name, "ask": ask, "qty": qty})
+            fv = ((face.get("by_category") or {}).get(name)) or {}
+            fair = fv.get("value")
+            cats.append({
+                "name": name, "ask": ask, "qty": qty,
+                # everything the event-level numbers carry, per category, so a
+                # favourited one can stand in for the floor everywhere
+                "fair": fair,
+                "fair_basis": fv.get("basis"),
+                "vs_fair": (None if fair is None or ask is None
+                            else round(ask - fair, 2)),
+                "vs_fair_pct": (None if not fair or ask is None
+                                else round((ask - fair) / fair, 4)),
+                "change24": _cat_change(h, name, 24),
+                "change4h": _cat_change(h, name, 4),
+                "bid": _last(t.get("bid") or []) or None,
+            })
             tickets += qty
             if ask is not None:
                 floor = ask if floor is None else min(floor, ask)
@@ -295,7 +311,6 @@ class Store:
         bidders_now = _last(ev.get("bidders") or [])
 
         low7 = _floor_low(h, 168)
-        face = e.get("primary") or {}
         # Both ends of this subtraction must describe the SAME ticket. Taking
         # the floor from one category and the fair value from an event-wide
         # min/max compared a $90 GA ask against a $321 VIP tier and reported a
@@ -521,6 +536,28 @@ def _last(a):
         if v is not None:
             return v
     return None
+
+
+def _cat_at(h, name, i):
+    col = ((h.get("types") or {}).get(name) or {}).get("all_in") or []
+    return col[i] if i < len(col) and col[i] is not None else None
+
+
+def _cat_change(h, name, hours):
+    """The same time-based change as the event floor, for one category.
+
+    Needed because a favourited category has to answer the questions the floor
+    normally answers -- if you only care about GA, the event's cheapest tier
+    being an early-bird at $20 tells you nothing.
+    """
+    n = len(h["stamps"])
+    if n < 2:
+        return None
+    i = _index_at(h, hours)
+    if i is None or i == n - 1:
+        return None
+    now, then = _cat_at(h, name, n - 1), _cat_at(h, name, i)
+    return None if now is None or then is None else round(now - then, 2)
 
 
 def _floor_at(h, i):

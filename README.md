@@ -284,6 +284,22 @@ it is showing rather than pretending a day-old move is fresh. Only drops of
 relisting, not news, and a banner that cries wolf gets ignored. Nothing
 qualifying means no banner at all.
 
+**Favourites** are a star on any list row, chart card or open event, kept in
+`localStorage` — so they live in one browser and do not follow you to another
+device; there is no login to hang them off. A **Favourites** tab appears once
+you have one, and favourites sort to the top of their own day in the calendar
+and ahead of the other cards. They are not pinned in the List, because the
+Favourites tab *is* that list filtered.
+
+Starring a **ticket category** does something more: every view that would have
+shown the event's cheapest ticket shows that category instead. Pin the 2-day
+pass on an event and the calendar stops telling you $87 when the pass you want
+is $150 against a $120 face. The row carries a tag naming the pinned category,
+because calling $150 a "floor" would be false — it is not the cheapest thing
+on sale, it is the thing you asked about. If a pinned category stops being
+listed the row falls back to the event floor and says so rather than going
+blank.
+
 There is also a **Deals** tab: every event currently priced below fair value,
 best first, showing both the percentage and the dollar saving — $20 off a $40
 ticket and off a $400 one are very different claims. It states plainly when a

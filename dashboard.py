@@ -243,6 +243,15 @@ tbody tr:hover { background:var(--wash); }
 /* − and + rather than ▾ ▴: the triangles are a few pixels of ink at this
    size and disappear into the row */
 .sig { font-size:11px; margin-right:4px; font-style:normal; font-weight:700; }
+.fav { background:none; border:0; padding:0 2px; cursor:pointer; line-height:1;
+       color:var(--muted); font-size:14px; }
+.fav:hover { color:var(--ink-2); }
+.fav.on { color:#eda100; }
+.fav.big { font-size:17px; margin-left:6px; vertical-align:1px; }
+/* the pinned-category tag: the row is showing GA, not the floor, and says so */
+.pin { font-size:10.5px; color:var(--muted); border:1px solid var(--border);
+       border-radius:4px; padding:1px 5px; margin-left:6px; white-space:nowrap; }
+.lost { color:var(--crit); }
 td .sig { margin-left:6px; margin-right:0; }
 .badge { font-size:11.5px; color:var(--muted); border:1px solid var(--border);
          border-radius:999px; padding:1px 8px; }
@@ -440,6 +449,7 @@ dialog .card { border:0; margin:0; background:transparent; }
 
 <div class="controls">
   <span class="seg" role="group" aria-label="View">
+    <button data-tab="favs" class="hide" aria-pressed="false">Favourites</button>
     <button data-tab="calendar" aria-pressed="true">Calendar</button>
     <button data-tab="list" aria-pressed="false">List</button>
     <button data-tab="deals" aria-pressed="false">Deals</button>
@@ -466,6 +476,7 @@ dialog .card { border:0; margin:0; background:transparent; }
 </div>
 
 <main>
+  <section id="favs" class="hide"></section>
   <section id="calendar"></section>
   <section id="list" class="hide"></section>
   <section id="deals" class="hide"></section>
@@ -513,6 +524,53 @@ const pctOf = v => {
 };
 
 let INDEX = {}, ORDER = [], GENERATED = null, RECENT = {};
+
+/* Favourites live in this browser only -- there is no login to hang them off,
+   so they do not follow you to another device. A favourite is either the whole
+   event, or one of its ticket categories: pick GA and every view that would
+   have shown you the event floor shows GA instead, because a $20 early-bird
+   tier is not the answer to "what does GA cost". */
+const FAV_KEY = 'cv.favs.v1';
+let FAVS = {};
+
+function loadFavs() {
+  try { FAVS = JSON.parse(localStorage.getItem(FAV_KEY) || '{}') || {}; }
+  catch (e) { FAVS = {}; }
+}
+function saveFavs() {
+  try { localStorage.setItem(FAV_KEY, JSON.stringify(FAVS)); } catch (e) {}
+}
+const isFav = slug => slug in FAVS;
+const favCat = slug => FAVS[slug] || null;      // null = the whole event
+
+function toggleFav(slug, cat) {
+  if (cat === undefined) {
+    if (isFav(slug)) delete FAVS[slug]; else FAVS[slug] = null;
+  } else if (favCat(slug) === cat) {
+    FAVS[slug] = null;                          // keep the event, drop the category
+  } else {
+    FAVS[slug] = cat;
+  }
+  saveFavs();
+}
+
+/* The numbers a row should show: the favourited category's if there is one and
+   it is still listed, otherwise the event's own. `pinned` says which happened,
+   so a row showing GA can say so rather than mislabelling it "floor". */
+function rowView(e) {
+  const c = e.current || {};
+  const want = favCat(e.slug);
+  const cat = want && (c.cats || []).find(x => x.name === want);
+  if (!cat) {
+    return {floor: c.floor, fair: c.primary, vs_fair: c.vs_primary,
+            vs_fair_pct: c.vs_primary_pct, change24: c.change24,
+            change4h: c.change4h, tickets: c.tickets, pinned: null,
+            lost: want ? want : null};
+  }
+  return {floor: cat.ask, fair: cat.fair, vs_fair: cat.vs_fair,
+          vs_fair_pct: cat.vs_fair_pct, change24: cat.change24,
+          change4h: cat.change4h, tickets: cat.qty, pinned: cat.name, lost: null};
+}
 let GENRE_SLOT = {}, GENRE_RANK = [];   // genre -> palette slot, computed once
 const pickedGenres = new Set();
 const HIST = {};                    // slug -> history, fetched on demand
@@ -546,6 +604,8 @@ async function boot() {
   }
   ORDER = Object.keys(INDEX);
   buildGenres();
+  loadFavs();
+  renderTabs();
   renderStats();
   renderMovers();
   render();
@@ -682,8 +742,8 @@ function visible() {
     .filter(e => !q || [e.name, e.venue, e.city, ...(e.genres || [])]
       .join(' ').toLowerCase().includes(q));
 }
-const floorOf = e => e.current?.floor ?? null;
-const ticketsOf = e => e.current?.tickets ?? 0;
+const floorOf = e => rowView(e).floor ?? null;
+const ticketsOf = e => rowView(e).tickets ?? 0;
 /* What the cheapest ask wants over what somebody last actually paid. Below the
    last sale is the good side of this one -- the opposite polarity to the
    change columns, where it is a rising price that is the bad news. */
@@ -696,19 +756,23 @@ const vsSale = e => {
    resale floor compares. Negative is the good side again: below the fair value
    the listing is a real saving. Events on a platform we cannot read carry no
    number at all: a blank, never a zero. */
-const primaryOf = e => e.current?.primary ?? null;
-const primaryGone = e => e.current?.primary_basis === 'last-sold';
+const primaryOf = e => rowView(e).fair ?? null;
+const primaryGone = e => {
+  const w = rowView(e), c = e.current || {};
+  const cat = w.pinned && (c.cats || []).find(x => x.name === w.pinned);
+  return (cat ? cat.fair_basis : c.primary_basis) === 'last-sold';
+};
 const vsPrimary = e => {
-  const v = e.current?.vs_primary;
+  const v = rowView(e).vs_fair;
   return v == null ? null : Math.round(v);
 };
 /* The same comparison as a fraction of what the ticket is worth. (Derived
    here when the reading predates the field: it is exactly `vs_primary` over
    `primary`, so the two agree to the last decimal.) */
 const vsPrimaryPct = e => {
-  const c = e.current || {};
-  if (c.vs_primary_pct != null) return c.vs_primary_pct;
-  return c.vs_primary != null && c.primary ? c.vs_primary / c.primary : null;
+  const w = rowView(e);
+  if (w.vs_fair_pct != null) return w.vs_fair_pct;
+  return w.vs_fair != null && w.fair ? w.vs_fair / w.fair : null;
 };
 /* Under a dollar, say the cents: "$0 below fair value" reads as no saving at
    all when the point is that there is one. */
@@ -937,6 +1001,7 @@ function catTable(e) {
   const pal = colors(), picked = filters[e.slug];
   const rows = cats.map((c, i) => {
     const fv = fairOf(e, c.name), fair = fairVal(fv), past = isPast(fv);
+    const star = favBtn(e.slug, c.name);
     // struck, not hidden: the same treatment the ladder gives a gone tier, and
     // the delta against it stays the loudest thing in the row
     // a fair value you can only reach by buying two tickets is not a
@@ -957,7 +1022,8 @@ function catTable(e) {
     return `<tr class="crow" data-cat="${esc(c.name)}" role="button" tabindex="0"
       aria-pressed="${on}"${!picked || on ? '' : ' data-off="1"'}
       title="${on ? 'Show all categories' : 'Show only ' + esc(c.name)}">
-      <td class="l nm"><i class="swatch" style="background:${pal[i % pal.length]}"></i>${esc(c.name)}</td>
+      <td class="l nm">${star}<i class="swatch" style="background:${
+        pal[i % pal.length]}"></i>${esc(c.name)}</td>
       <td>${c.ask == null ? '—' : money(c.ask)}</td>
       <td${cls ? ` class="${cls}"` : ''}${notes.length ? ` title="${esc(notes.join(' · '))}"` : ''}>${face}</td>
       <td class="d ${!d ? '' : d > 0 ? 'up' : 'down'}"${d ? ` title="${
@@ -1050,6 +1116,28 @@ function sourceLinks(e) {
   ).join('');
 }
 
+const STAR_ON = '★', STAR_OFF = '☆';
+
+function favBtn(slug, cat, extra = '') {
+  const on = cat === undefined ? isFav(slug) : favCat(slug) === cat;
+  const what = cat === undefined ? 'this event'
+             : (on ? `${cat} — click to unpin` : `pin ${cat} to every view`);
+  return `<button class="fav${on ? ' on' : ''} ${extra}" data-fav="${esc(slug)}"
+    ${cat === undefined ? '' : `data-favcat="${esc(cat)}"`}
+    aria-pressed="${on}" title="${esc(on ? `Remove ${what}` : `Favourite ${what}`)}"
+    >${on ? STAR_ON : STAR_OFF}</button>`;
+}
+
+/* One handler for every star on the page, so a new one cannot be forgotten. */
+function wireFavs(root = document) {
+  $$('[data-fav]', root).forEach(b => b.onclick = ev => {
+    ev.stopPropagation();
+    toggleFav(b.dataset.fav, 'favcat' in b.dataset ? b.dataset.favcat : undefined);
+    renderTabs();
+    render();
+  });
+}
+
 function cardShell(e, id) {
   const where = [e.venue, e.city].filter(Boolean).join(' · ');
   const tag = e.status === 'active' ? '' :
@@ -1092,7 +1180,7 @@ function cardShell(e, id) {
   const art = imgOf(e)
     ? `<img src="${esc(imgOf(e))}" alt="" loading="lazy" decoding="async">` : '';
   return `<div class="head">${art}<div class="txt">
-      <h3>${esc(e.name || e.slug)}${tag}${sourceLinks(e)}</h3>
+      <h3>${esc(e.name || e.slug)}${tag}${sourceLinks(e)}${favBtn(e.slug, undefined, 'big')}</h3>
       <div class="meta">${esc(where)}${where && e.doors ? '<span class="sep">·</span>' : ''}${esc(e.doors || '')}</div>
       <div class="pills">${pills}</div>${tagRow}
     </div></div>
@@ -1331,6 +1419,9 @@ function renderAgenda(host) {
   const todayK = dayKey(new Date());
   const groups = {};
   rows.forEach(e => (groups[dayKey(eventDate(e))] ||= []).push(e));
+  // favourites first within their own day, as in the month grid -- the agenda
+  // is the same calendar, so it owes the same ordering
+  Object.values(groups).forEach(l => l.sort((a, b) => isFav(b.slug) - isFav(a.slug)));
   const body = Object.entries(groups).map(([k, list]) => {
     const d = new Date(k + 'T00:00:00');
     return `<div class="d${k === todayK ? ' today' : ''}">${
@@ -1371,8 +1462,10 @@ function renderCalendar() {
   let cells = '';
   for (let i = 0; i < weeks * 7; i++) {
     const d = new Date(start); d.setDate(start.getDate() + i);
+    // favourites first within the day; pinning across days would fight the
+    // grid, which exists to put events on their date
     const k = dayKey(d), list = (buckets[k] || []).sort((a, b) =>
-      (floorOf(a) ?? 1e9) - (floorOf(b) ?? 1e9));
+      (isFav(b.slug) - isFav(a.slug)) || (floorOf(a) ?? 1e9) - (floorOf(b) ?? 1e9));
     cells += `<div class="day${d.getMonth() === m ? '' : ' out'}${k === today ? ' today' : ''}">
       <div class="n">${d.getDate()}</div>
       ${list.map(e => `<button class="evt${e.status === 'active' ? '' : ' done'}"
@@ -1409,8 +1502,14 @@ const cellIn = e => {
   return `<td class="l">${days == null ? '' : days < 0 ? 'past'
     : days === 0 ? 'today' : days + 'd'}</td>`;
 };
-const cellName = e => `<td class="l ev" title="${esc(e.name || e.slug)}">${
-  thumb(e, 'lthumb')}${esc(e.name || e.slug)}${signal(e)}</td>`;
+const cellName = e => {
+  const w = rowView(e);
+  const tag = w.pinned ? `<span class="pin">${esc(w.pinned)}</span>`
+            : w.lost ? `<span class="pin lost" title="${esc(w.lost)} is no longer listed — showing the event floor">${esc(w.lost)} gone</span>`
+            : '';
+  return `<td class="l ev" title="${esc(e.name || e.slug)}">${favBtn(e.slug)}${
+    thumb(e, 'lthumb')}${esc(e.name || e.slug)}${signal(e)}${tag}</td>`;
+};
 const cellVsSale = e => {
   const vs = vsSale(e);
   return `<td class="${!vs ? '' : vs > 0 ? 'up' : 'down'}"${vs ? ` title="floor is ${
@@ -1535,6 +1634,7 @@ function wireTable(host, sort, redraw) {
     redraw();
   });
   $$('tbody tr', host).forEach(tr => tr.onclick = () => openEvent(tr.dataset.slug));
+  wireFavs(host);
 }
 
 function renderList() {
@@ -1572,7 +1672,7 @@ function renderDeals() {
 function renderCharts() {
   const host = $('#charts');
   host.innerHTML = '';
-  const list = visible();
+  const list = visible().sort((a, b) => isFav(b.slug) - isFav(a.slug));
   if (!list.length) { host.innerHTML = '<p class="empty">Nothing matches.</p>'; return; }
   list.forEach((e, i) => {
     const el = document.createElement('section');
@@ -1612,17 +1712,44 @@ function openEvent(slug) {
 
 /* ---------------- render + wiring ---------------- */
 
+function renderTabs() {
+  const n = Object.keys(FAVS).length;
+  const b = $('[data-tab="favs"]');
+  b.classList.toggle('hide', n === 0);
+  b.textContent = `Favourites ${n}`;
+  if (!n && tab === 'favs') { tab = 'calendar'; setTab('calendar'); }
+}
+
+function setTab(t) {
+  tab = t;
+  $$('[data-tab]').forEach(x => x.setAttribute('aria-pressed', x.dataset.tab === t));
+}
+
+function renderFavs() {
+  const host = $('#favs');
+  const rows = sortRows(visible().filter(e => isFav(e.slug)), COLUMNS, listSort);
+  host.innerHTML = rows.length
+    ? `<p class="sub note">${rows.length} favourite${rows.length === 1 ? '' : 's'}.
+       A star on a ticket category pins that category, so every view shows it
+       instead of the event's cheapest.</p>` + tableFor(COLUMNS, rows, listSort)
+    : '<p class="empty">Nothing matches your filters.</p>';
+  wireTable(host, listSort, renderFavs);
+}
+
 function render() {
   charts.splice(0).forEach(c => c.destroy());
   document.body.classList.toggle('split', view === 'split');
   document.body.classList.toggle('tab-calendar', tab === 'calendar');
   document.body.classList.toggle('tab-list', tab === 'list' || tab === 'deals');
-  ['calendar','list','deals','charts'].forEach(t => $('#' + t).classList.toggle('hide', t !== tab));
+  ['favs','calendar','list','deals','charts'].forEach(t => {
+    const el = $('#' + t); if (el) el.classList.toggle('hide', t !== tab);
+  });
   $$('.chartctl').forEach(el => el.classList.toggle('hide', tab !== 'charts'));
   $$('.calctl').forEach(el => el.classList.toggle('hide', tab !== 'calendar'));
   // the agenda is one continuous upcoming list, so a month stepper means
   // nothing there -- keep the note, drop the arrows
   $('#monthNav').classList.toggle('hide', tab !== 'calendar' || isPhone());
+  if (tab === 'favs') renderFavs();
   if (tab === 'calendar') renderCalendar();
   if (tab === 'list') renderList();
   if (tab === 'deals') renderDeals();
