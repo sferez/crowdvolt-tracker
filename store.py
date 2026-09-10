@@ -364,12 +364,15 @@ class Store:
                         # icon on the calendar
                         "low7d": low7,
                         "at_low": floor is not None and low7 is not None and floor <= low7,
-                        # CrowdVolt reports one last sale for the whole event
-                        # and none per category, so a row quoting VIP cannot
-                        # honestly compare itself to it -- the flag says so
-                        # rather than leaving the dashboard to assume
+                        # CrowdVolt reports one last sale per event and none
+                        # per category, so on a multi-category event we cannot
+                        # say WHICH ticket sold. Jungle settles what that
+                        # costs: last sale $258 against categories asking
+                        # [181, 258] -- plainly the dearer one -- displayed as
+                        # a $77 bargain on the cheaper. Scope says whether the
+                        # figure can be compared to anything.
                         "last_sale": _last(ev.get("last_sale") or []),
-                        "last_sale_scope": "event",
+                        "last_sale_scope": "category" if len(cats) == 1 else "event",
                         # what the same ticket costs on the platform that sold
                         # it first -- the alternative you actually have
                         "primary": primary_now,

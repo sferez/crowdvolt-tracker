@@ -134,19 +134,57 @@ def _norm(name, strict=False):
     return " ".join(n.split())
 
 
-def _family(name):
-    """Which broad product a tier belongs to. Deliberately coarse: the useful
-    question is "what is the cheapest comparable ticket I could buy new", and
-    promoters name tiers far too freely to match them one to one.
+_DAYS = ("monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
+         "sunday")
 
-    Strict, because the loose form throws bracket contents away and that is
-    exactly where the product marker often lives: "All-In Pass (VIP)" collapses
-    to "all in pass", reads as GA, and gets priced against the cheapest
-    late-entry tier on the event."""
+
+def _scope(name):
+    """Which night, or how many of them. A Saturday pass, a Sunday pass and a
+    two-day pass are three different tickets."""
     n = _norm(name, strict=True)
-    if "vip" in n or "backstage" in n or "table" in n or "cabana" in n:
+    # promoters write "2-Day", "2 Night" and "Two Day" for the same thing
+    m = re.search(r"\b([2-4])\s*(?:day|night)s?\b", n)
+    if m:
+        return f"{m.group(1)}day"
+    if re.search(r"\btwo\s*(?:day|night)s?\b", n):
+        return "2day"
+    if re.search(r"\bmulti\s*day\b|\bweekend\b|\bboth\b", n):
+        return "multiday"
+    for d in _DAYS:
+        if d in n:
+            return d
+    return ""
+
+
+def _grade(name):
+    """How premium the product is. Only equality is used -- a GA+ is not a GA,
+    and pricing one at the other's face is how a "Platinum 2-Day" pass came to
+    be reported as $1,366 over a $182 one-night GA tier."""
+    n = _norm(name, strict=True)
+    if ("platinum" in n or "premium" in n or "artist" in n or "table" in n
+            or "cabana" in n):
+        return "platinum"
+    if "vip" in n or "backstage" in n or "stage" in n:
         return "vip"
+    if "plus" in n:
+        return "ga_plus"
     return "ga"
+
+
+def _family(name):
+    """The product a tier belongs to: its grade and the night(s) it covers.
+
+    Deliberately coarse WITHIN a grade and a night -- promoters name tiers far
+    too freely to match one to one -- but never across either. Where no tier
+    shares both, there is no comparable ticket and a blank is worth more than
+    a number.
+
+    Strict normalisation, because the loose form throws bracket contents away
+    and that is exactly where the marker often lives: "All-In Pass (VIP)"
+    collapses to "all in pass", reads as GA, and gets priced against the
+    cheapest late-entry tier on the event.
+    """
+    return (_grade(name), _scope(name))
 
 
 def fair_value(face, category, linked_count=None):
@@ -182,14 +220,9 @@ def fair_value(face, category, linked_count=None):
             break
     family = [t for t in tiers if _family(t["name"]) == _family(category)]
 
-    # "event" (every tier) is a last resort, never a candidate the count may
-    # choose: for Diplo it is two tiers wide, which happened to match the
-    # linked count for Backstage VIP and priced a $467 ticket at $122.
     candidates = [(p, h) for p, h in [(exact, "exact"), (family, "family")] if p]
     if not candidates:
-        if not tiers:
-            return None
-        candidates = [(tiers, "event")]
+        return None
 
     if linked_count:
         # linked_count is how many of the promoter's ticket types CrowdVolt

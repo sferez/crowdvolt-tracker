@@ -101,6 +101,8 @@ lessons are written into `primary.fair_value`:
 | CrowdVolt's own grouping breaks ties | it folds four GA tiers into one resale category; a GA listing competes with all four |
 | `+` is a product, not punctuation | "GA+" priced as "GA" undercharges the dearer ticket |
 | the whole-event tier pool is a last resort | it once priced a $467 VIP ticket at $122 |
+| a match needs the same grade AND the same night(s) | "Platinum 2-Day" against a one-night GA tier reported a $1,366 premium; GA, GA+, VIP and Platinum are different products, as are Saturday, Sunday and a 2-day pass |
+| no comparable tier means no number | a blank is worth more than a confident comparison between two different tickets |
 | venue names match on words, dates on equality | DICE calls it "Westlight Rooftop at The William Vale" where CrowdVolt says "Westlight at The William Vale"; the date stays an exact gate |
 
 Where a different reading would give a different price, the value is flagged

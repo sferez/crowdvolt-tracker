@@ -88,6 +88,14 @@ body.tab-list main { max-width:1420px; }
          font-size:12.5px; }
 .stat b { font-weight:650; color:var(--ink); font-variant-numeric:tabular-nums; }
 .stat + .stat::before { content:'·'; padding:0 7px; opacity:.55; }
+/* the guide is a sibling page rather than a figure, so it rides in this line
+   at the labels' weight and never picks up the numbers' bold. Its own class,
+   not .stat, so the phone rule that trims the strip to three figures does not
+   count it as a fourth and take it with them. */
+.statsep { padding:0 7px; opacity:.55; }
+.statlink { color:var(--muted); text-decoration:underline dotted;
+            text-underline-offset:3px; }
+.statlink:hover { color:var(--ink-2); }
 
 /* top movers: one line, one item at a time, so it informs without becoming a
    second dashboard. Rotation pauses on hover so a row can actually be read
@@ -118,6 +126,9 @@ body.tab-list main { max-width:1420px; }
                white-space:nowrap; }
 .movers .ctx { flex:0 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis;
                color:var(--muted); font-variant-numeric:tabular-nums; white-space:nowrap; }
+/* the pinned tag is a fact about which price the amount belongs to, so it
+   holds its width while the name beside it gives way */
+.movers .cat { flex:none; max-width:92px; overflow:hidden; text-overflow:ellipsis; }
 .movers .dots { display:flex; gap:5px; flex:none; margin-left:2px; }
 .movers .dots button { width:6px; height:6px; padding:0; border-radius:50%;
                        border:0; background:var(--axis); cursor:pointer; }
@@ -225,6 +236,23 @@ tbody tr:hover { background:var(--wash); }
         background:#eda100; margin-right:5px; vertical-align:2px; }
 .evt .cat { color:var(--muted); font-size:10px; border:1px solid var(--border);
             border-radius:3px; padding:0 3px; margin-left:4px; }
+.evt .cat.lost { color:var(--crit); }
+/* A grid row is one flex line in a 150px cell, and a pinned row carries one
+   fact more than that fits: which category the price belongs to. The fact is
+   the whole point of pinning, so rather than clip the name to an ellipsis or
+   let the cell scroll sideways, a pinned row -- and only a pinned row -- takes
+   a second line, with the tag under the name and the numbers still right. */
+.cal .evt .cat { flex:none; max-width:88px; overflow:hidden;
+                 text-overflow:ellipsis; }
+.cal .evt.pinned { flex-wrap:wrap; row-gap:1px; }
+/* zero basis, or a long name is wider than the line it is meant to share with
+   the thumbnail and wraps below it, spending a third line on nothing */
+.cal .evt.pinned .nm { flex:1 1 0; }
+.cal .evt.pinned .brk { flex:1 0 100%; height:0; }
+.cal .evt.pinned .cat { margin-left:19px; margin-right:auto; }
+/* the agenda's price line is one nowrap run at 500px; letting it wrap is
+   cheaper than letting a venue name push the page sideways */
+.agenda .evt .pr { white-space:normal; }
 /* the pinned-category tag: the row is showing GA, not the floor, and says so */
 .pin { font-size:10.5px; color:var(--muted); border:1px solid var(--border);
        border-radius:4px; padding:1px 5px; margin-left:6px; white-space:nowrap; }
@@ -254,6 +282,8 @@ a.src img { width:14px; height:14px; object-fit:contain; }
 .pills { display:flex; gap:6px; flex-wrap:wrap; margin-top:5px; }
 .pill { font-size:11.5px; color:var(--muted); border:1px solid var(--border);
         border-radius:999px; padding:1px 8px; }
+/* the pin sits in the pill row and takes its spacing from the flex gap */
+.pills .pin { margin-left:0; align-self:center; }
 /* the descriptive half of the old pill wall: no border, no chrome, just a
    quiet line of words under the numbers that matter */
 .tags { display:flex; flex-wrap:wrap; gap:3px 12px; margin-top:6px;
@@ -322,6 +352,12 @@ td.past { color:var(--ink-2); text-decoration:line-through; }
    costs a row's height and not the column's width */
 .note { display:block; font-style:normal; font-size:10.5px;
         color:var(--muted); line-height:1.3; }
+/* the marker on a figure that belongs to the event rather than to the row.
+   Inline, because a hundred rows of the List cannot each afford a second line */
+td.ew { cursor:help; }
+td.ew i { font-style:normal; font-size:9.5px; color:var(--muted); margin-left:5px;
+          border:1px solid var(--border); border-radius:3px; padding:0 3px;
+          vertical-align:1px; }
 /* the ladder in the same table language, minus the interactivity */
 .tiers { margin:0; }
 .tiers tbody tr { cursor:default; }
@@ -404,8 +440,12 @@ dialog .card { border:0; margin:0; background:transparent; }
    is scrolling anyway, the clipped columns get their full text back. Above it
    the table fits and the sticky header floats against the viewport. */
 @media (max-width:1440px) {
-  #list table, #deals table { display:block; overflow-x:auto; white-space:nowrap;
-                              max-width:100%; overscroll-behavior-x:contain; }
+  /* Favourites is the same sixteen columns and was never named here, so the
+     one tab you reach for after pinning something was the one that pushed the
+     document sideways on a phone */
+  #list table, #deals table, #favs table {
+    display:block; overflow-x:auto; white-space:nowrap;
+    max-width:100%; overscroll-behavior-x:contain; }
   #list td.ev, #list td.vn, #deals td.ev, #deals td.vn { max-width:none; }
 }
 @media (max-width:420px) {
@@ -542,21 +582,56 @@ function toggleFav(slug, cat) {
 
 /* The numbers a row should show: the favourited category's if there is one and
    it is still listed, otherwise the event's own. `pinned` says which happened,
-   so a row showing GA can say so rather than mislabelling it "floor". */
+   so a row showing GA can say so rather than mislabelling it "floor".
+
+   Every figure a category carries is answered here, because a half-routed row
+   is the worst of both worlds: a $150 two-day ask beside the event's 24h move
+   is two different tickets printed as one line. The only numbers that stay
+   event-wide are the ones CrowdVolt only publishes per event -- the last sale
+   and the bidder count -- and those say so wherever they appear. */
 function rowView(e) {
   const c = e.current || {};
   const want = favCat(e.slug);
   const cat = want && (c.cats || []).find(x => x.name === want);
   if (!cat) {
     return {floor: c.floor, fair: c.primary, vs_fair: c.vs_primary,
-            vs_fair_pct: c.vs_primary_pct, change24: c.change24,
-            change4h: c.change4h, tickets: c.tickets, pinned: null,
+            vs_fair_pct: c.vs_primary_pct, fair_basis: c.primary_basis,
+            change1h: c.change1h, change2h: c.change2h, change4h: c.change4h,
+            change24: c.change24, change3d: c.change3d, change7d: c.change7d,
+            low7d: c.low7d, at_low: c.at_low, bid: c.bid, spread: c.spread,
+            readings: c.readings, tickets: c.tickets, pinned: null,
             lost: want ? want : null};
   }
   return {floor: cat.ask, fair: cat.fair, vs_fair: cat.vs_fair,
-          vs_fair_pct: cat.vs_fair_pct, change24: cat.change24,
-          change4h: cat.change4h, tickets: cat.qty, pinned: cat.name, lost: null};
+          vs_fair_pct: cat.vs_fair_pct, fair_basis: cat.fair_basis,
+          change1h: cat.change1h, change2h: cat.change2h, change4h: cat.change4h,
+          change24: cat.change24, change3d: cat.change3d, change7d: cat.change7d,
+          low7d: cat.low7d, at_low: cat.at_low, bid: cat.bid, spread: cat.spread,
+          readings: cat.readings, tickets: cat.qty, pinned: cat.name, lost: null};
 }
+
+/* The tag that stops a pinned row lying about what it is quoting. One helper
+   so every view says it the same way, and so a view that forgets it is a
+   missing call rather than a differently worded excuse. `short` is for the
+   calendar, where a cell is 150px wide and the tooltip carries the full name. */
+const PIN_TIP = c => `${c} is pinned — every view shows that category's `
+  + `numbers instead of the event's cheapest`;
+const LOST_TIP = c => `${c} is no longer listed — showing the event floor instead`;
+const pinTag = (w, short) => w.pinned
+  ? `<span class="pin cat" title="${esc(PIN_TIP(w.pinned))}">${
+      esc(short ? shortCat(w.pinned) : w.pinned)}</span>`
+  : w.lost
+  ? `<span class="pin cat lost" title="${esc(LOST_TIP(w.lost))}">${
+      esc(short ? shortCat(w.lost) : w.lost)} gone</span>`
+  : '';
+/* The same fact where there is room to spell it out: a card is not a calendar
+   cell, and "showing X" answers the question the bare name only hints at. */
+const pinPill = w => w.pinned
+  ? `<span class="pin" title="${esc(PIN_TIP(w.pinned))}">showing ${esc(w.pinned)}</span>`
+  : w.lost
+  ? `<span class="pin lost" title="${esc(LOST_TIP(w.lost))}">${
+      esc(w.lost)} gone — showing the event floor</span>`
+  : '';
 let GENRE_SLOT = {}, GENRE_RANK = [];   // genre -> palette slot, computed once
 const pickedGenres = new Set();
 const HIST = {};                    // slug -> history, fetched on demand
@@ -659,11 +734,11 @@ const shortCat = n => {
    right-hand slot outright, where the arrows share it with the amount. Flagged
    rather than listed by name, so a new signal cannot be forgotten there. */
 function signalOf(e) {
-  const c = e.current || {};
   // A pinned category has to answer these questions about itself: an event
   // whose cheapest tier is a bargain says nothing about the VIP you pinned.
+  // Every figure below is that category's own wherever one is pinned.
   const w = rowView(e);
-  const d = w.pinned ? (w.change24 ?? null) : (c.change24 ?? c.change3d ?? null);
+  const d = w.change24 ?? w.change3d ?? null;
   const pct = d != null && w.floor ? d / (w.floor - d) : null;
   // No reading count to satisfy: this compares two current numbers, so unlike
   // the flame it needs no history to be true. Below a sold-out primary counts
@@ -674,13 +749,15 @@ function signalOf(e) {
   // colour is the first thing to go, so the two tiers differ in shape before
   // they differ in anything else.
   if (under != null && under <= STANDOUT) return {
-    icon: '⚡', cls: 'down', badge: true, title: dealTitle(c, under)};
+    icon: '⚡', cls: 'down', badge: true, title: dealTitle(w, under)};
   if (under != null && under < 0) return {
-    icon: '★', cls: 'down', badge: true, title: dealTitle(c, under)};
-  // the flame is a floor-vs-its-own-history claim and we keep no per-category
-  // low, so a pinned row does not get to make it
-  if (!w.pinned && c.at_low && c.readings > 3 && (c.change7d ?? 0) < 0) return {
-    icon: '🔥', cls: 'down', badge: true, title: `cheapest in 7 days (${money(c.floor)})`};
+    icon: '★', cls: 'down', badge: true, title: dealTitle(w, under)};
+  // the flame is a floor-against-its-own-history claim. A category now keeps
+  // its own low, its own reading count and its own week, so a pinned row earns
+  // it on the pinned category's merits, on exactly the same thresholds
+  if (w.at_low && w.readings > 3 && (w.change7d ?? 0) < 0) return {
+    icon: '🔥', cls: 'down', badge: true, title: `${
+      w.pinned ? w.pinned + ': ' : ''}cheapest in 7 days (${money(w.floor)})`};
   if (pct != null && pct <= -0.03) return {
     icon: '−', cls: 'down', title: `down ${money(Math.abs(d))} recently`};
   if (pct != null && pct >= 0.03) return {
@@ -744,9 +821,22 @@ const ticketsOf = e => rowView(e).tickets ?? 0;
 /* What the cheapest ask wants over what somebody last actually paid. Below the
    last sale is the good side of this one -- the opposite polarity to the
    change columns, where it is a rising price that is the bad news. */
+/* CrowdVolt publishes one last sale per event and none per category, so the
+   figure is only attributable when the event has a single category to sell --
+   which is exactly what `last_sale_scope` records. Everywhere else the trade
+   could have been any tier, and subtracting it from the cheapest one invents a
+   saving: an event last sold at $258 with tiers asking $181 and $258 plainly
+   sold the dearer one, and "−$77" against the cheaper is a bargain that never
+   existed. So there is no delta at all there, pinned or not -- the ambiguity
+   belongs to the event, not to what you chose to look at. */
+const saleKnown = e => (e.current || {}).last_sale_scope === 'category';
+const SALE_VAGUE = 'this event lists several ticket categories and CrowdVolt reports '
+  + 'one last sale for the whole event, so there is no telling which category sold — '
+  + 'no comparison against an asking price would be honest';
 const vsSale = e => {
-  const c = e.current || {};
-  return c.floor != null && c.last_sale != null ? Math.round(c.floor - c.last_sale) : null;
+  const c = e.current || {}, w = rowView(e);
+  if (!saleKnown(e)) return null;
+  return w.floor != null && c.last_sale != null ? Math.round(w.floor - c.last_sale) : null;
 };
 /* The event-wide fair value -- the cheapest way to buy this new, or once the
    primary has sold out, what it was going for when it ran out -- and how the
@@ -754,11 +844,7 @@ const vsSale = e => {
    the listing is a real saving. Events on a platform we cannot read carry no
    number at all: a blank, never a zero. */
 const primaryOf = e => rowView(e).fair ?? null;
-const primaryGone = e => {
-  const w = rowView(e), c = e.current || {};
-  const cat = w.pinned && (c.cats || []).find(x => x.name === w.pinned);
-  return (cat ? cat.fair_basis : c.primary_basis) === 'last-sold';
-};
+const primaryGone = e => rowView(e).fair_basis === 'last-sold';
 const vsPrimary = e => {
   const v = rowView(e).vs_fair;
   return v == null ? null : Math.round(v);
@@ -773,12 +859,13 @@ const vsPrimaryPct = e => {
 };
 /* Under a dollar, say the cents: "$0 below fair value" reads as no saving at
    all when the point is that there is one. */
-const dealTitle = (c, under) => {
-  const v = Math.abs(c.vs_primary);
-  return `${v < 1 ? exact(v) : money(v)} (${pctOf(under)}) below ${
-    c.primary_basis === 'last-sold'
-      ? `the last face value — ${money(c.primary)} before the primary sold out`
-      : `fair value${c.primary != null ? ` — ${money(c.primary)} to buy direct` : ''}`}`;
+const dealTitle = (w, under) => {
+  const v = Math.abs(w.vs_fair);
+  return `${w.pinned ? w.pinned + ': ' : ''}${v < 1 ? exact(v) : money(v)} (${
+    pctOf(under)}) below ${
+    w.fair_basis === 'last-sold'
+      ? `the last face value — ${money(w.fair)} before the primary sold out`
+      : `fair value${w.fair != null ? ` — ${money(w.fair)} to buy direct` : ''}`}`;
 };
 const vsPrimaryTip = (v, gone) => v > 0
   ? (gone ? `resale asks ${money(v)} more than the last face value before it sold out`
@@ -1131,6 +1218,10 @@ function wireFavs(root = document) {
     ev.stopPropagation();
     toggleFav(b.dataset.fav, 'favcat' in b.dataset ? b.dataset.favcat : undefined);
     renderTabs();
+    // the stat strip and the movers read pinned numbers too, so a star has to
+    // repaint them or they keep quoting the event floor until the next poll
+    renderStats();
+    renderMovers();
     render();
   });
 }
@@ -1140,11 +1231,11 @@ function cardShell(e, id) {
   const tag = e.status === 'active' ? '' :
     `<span class="tag">${esc(String(e.status).replace('_',' '))}${e.retired_reason
       ? ' — ' + esc(e.retired_reason.split(': ').pop()) : ''}</span>`;
-  const c = e.current || {};
+  const c = e.current || {}, w = rowView(e);
   // a bid of zero is not a bid: CrowdVolt reports 0 where nobody has bid at
   // all, and a spread measured against it is a spread against nothing. The
   // spread arrives precomputed, and is null unless there is a real bid
-  const spread = c.spread ?? (c.floor != null && c.bid ? c.floor - c.bid : null);
+  const spread = w.spread ?? (w.floor != null && w.bid ? w.floor - w.bid : null);
   const vs = vsSale(e);
   /* Two groups, not one wall. The market numbers are what the page is for, so
      they keep the bordered pill and come first; the descriptive tags are
@@ -1155,13 +1246,23 @@ function cardShell(e, id) {
      category and more precisely, and the ladder's summary carries the face
      value. A pill repeating either would be the same number twice. */
   const pills = [
-    c.at_low && c.readings > 3 && '🔥 cheapest in 7 days',
-    c.last_sale != null && `last sale ${money(c.last_sale)}`,
+    w.at_low && w.readings > 3 && '🔥 cheapest in 7 days',
+    c.last_sale != null && (saleKnown(e)
+      ? `last sale ${money(c.last_sale)}`
+      : [`last sale ${money(c.last_sale)} · event-wide`, SALE_VAGUE]),
     vs ? `${money(Math.abs(vs))} ${vs > 0 ? 'above' : 'below'} last sale` : null,
-    c.bid ? `best bid ${money(c.bid)}` : null,
+    w.bid ? `best bid ${money(w.bid)}` : null,
     spread != null && `spread ${money(spread)}`,
-    c.bidders ? `${c.bidders} bidder${c.bidders === 1 ? '' : 's'}` : null,
-  ].filter(Boolean).map(t => `<span class="pill">${esc(t)}</span>`).join('');
+    // there is no per-category bidder count, so on a pinned card the number is
+    // marked the same way the last sale is rather than posing as the tier's own
+    c.bidders ? (w.pinned
+      ? [`${c.bidders} bidder${c.bidders === 1 ? '' : 's'} · event-wide`,
+         `${c.bidders} bidder${c.bidders === 1 ? '' : 's'} across the whole event — `
+         + 'CrowdVolt does not break bidders down by category']
+      : `${c.bidders} bidder${c.bidders === 1 ? '' : 's'}`) : null,
+  ].filter(Boolean).map(t => Array.isArray(t)
+    ? `<span class="pill" title="${esc(t[1])}">${esc(t[0])}</span>`
+    : `<span class="pill">${esc(t)}</span>`).join('');
   // genres keep the coloured dot they carry everywhere else on the page
   const tags = [
     ...(e.genres || []).map(g => [g, genreColor(g)]),
@@ -1179,7 +1280,7 @@ function cardShell(e, id) {
   return `<div class="head">${art}<div class="txt">
       <h3>${esc(e.name || e.slug)}${tag}${sourceLinks(e)}${favBtn(e.slug, undefined, 'big')}</h3>
       <div class="meta">${esc(where)}${where && e.doors ? '<span class="sep">·</span>' : ''}${esc(e.doors || '')}</div>
-      <div class="pills">${pills}</div>${tagRow}
+      <div class="pills">${pinPill(w)}${pills}</div>${tagRow}
     </div></div>
     ${catTable(e)}${id === 'modal' ? tierLadder(e) : ''}
     <div class="wrap price"><canvas id="c-${id}"></canvas></div>
@@ -1303,8 +1404,8 @@ let moverIdx = 0, moverTimer = null;
 function moverList() {
   for (const [field, label] of MOVER_WINDOWS) {
     const rows = ORDER.map(evOf)
-      .filter(e => e.status === 'active' && (e.current?.[field] ?? 0) <= -MOVER_MIN_DROP)
-      .sort((a, b) => a.current[field] - b.current[field])
+      .filter(e => e.status === 'active' && (rowView(e)[field] ?? 0) <= -MOVER_MIN_DROP)
+      .sort((a, b) => rowView(a)[field] - rowView(b)[field])
       .slice(0, 5);
     if (rows.length) return {rows, field, label};
   }
@@ -1318,17 +1419,18 @@ function renderMovers() {
   host.classList.remove('hide');
   if (moverIdx >= m.rows.length) moverIdx = 0;
   const e = m.rows[moverIdx];
-  const c = e.current, drop = c[m.field];
-  const pct = c.floor != null && c.floor - drop ? drop / (c.floor - drop) : null;
+  const w = rowView(e), drop = w[m.field];
+  const pct = w.floor != null && w.floor - drop ? drop / (w.floor - drop) : null;
 
   host.innerHTML = `<span class="lbl" title="Biggest price drops in the ${
       esc(m.label)} — click to open">${esc(m.label)}</span>
     <button class="mv" data-slug="${esc(e.slug)}">
       ${imgOf(e) ? `<img src="${esc(imgOf(e))}" alt="" decoding="async">` : ''}
-      <span class="nm">${esc(e.name || e.slug)}</span>
+      <span class="nm">${esc(e.name || e.slug)}</span>${pinTag(w, true)}
       <span class="amt down">${delta(drop)}${pct ? ` (${Math.round(pct * 100)}%)` : ''}</span>
-      <span class="ctx">now ${money(c.floor)}${
-        c.primary != null ? ` · fair ${money(c.primary)}` : ''}</span>
+      <span class="ctx">now ${money(w.floor)}${
+        w.pinned ? ` for ${esc(w.pinned)}` : ''}${
+        w.fair != null ? ` · fair ${money(w.fair)}` : ''}</span>
     </button>
     ${m.rows.length > 1 ? `<span class="dots">${m.rows.map((_, i) =>
       `<button data-i="${i}" aria-current="${i === moverIdx}"
@@ -1372,7 +1474,12 @@ function renderStats() {
     [tickets.toLocaleString(), 'tickets', 'tickets listed'],
     [median == null ? '—' : money(median), 'median', 'median floor price'],
     ...(stamp ? [[stamp, 'last read', 'when the tracker last read prices']] : []),
-  ].map(([v, k, t]) => `<span class="stat" title="${esc(t)}"><b>${v}</b> ${k}</span>`).join('');
+  ].map(([v, k, t]) => `<span class="stat" title="${esc(t)}"><b>${v}</b> ${k}</span>`).join('')
+    // emitted here rather than added once at boot: this line is rewritten on
+    // every poll and every "show retired" toggle, and a link added around it
+    // would disappear the first time either happened
+    + `<span class="statsep">·</span><a class="statlink" href="help.html"
+        title="How to read this dashboard">Help</a>`;
 }
 
 function genreBar() {
@@ -1424,7 +1531,8 @@ function renderAgenda(host) {
       list.map(e => `<button class="evt${e.status === 'active' ? '' : ' done'}"
         data-slug="${esc(e.slug)}" style="border-left-color:${genreColor(genreOf(e))}">
         <span class="nm">${thumb(e, 'thumb')}${esc(e.name || e.slug)}</span>
-        <span class="pr">${signal(e)}${floorOf(e) == null ? 'no asks' : money(floorOf(e))} · ${
+        <span class="pr">${signal(e)}${floorOf(e) == null ? 'no asks' : money(floorOf(e))}${
+          pinTag(rowView(e), true)} · ${
           ticketsOf(e)} tix${e.venue ? ' · ' + esc(e.venue) : ''}</span>
       </button>`).join('');
   }).join('');
@@ -1463,16 +1571,22 @@ function renderCalendar() {
       (isFav(b.slug) - isFav(a.slug)) || (floorOf(a) ?? 1e9) - (floorOf(b) ?? 1e9));
     cells += `<div class="day${d.getMonth() === m ? '' : ' out'}${k === today ? ' today' : ''}">
       <div class="n">${d.getDate()}</div>
-      ${list.map(e => `<button class="evt${e.status === 'active' ? '' : ' done'}"
+      ${list.map(e => {
+        // one rowView for the whole cell: the tag, the title and the price all
+        // have to be talking about the same ticket
+        const w = rowView(e), tag = pinTag(w, true);
+        return `<button class="evt${e.status === 'active' ? '' : ' done'}${tag ? ' pinned' : ''}"
           data-slug="${esc(e.slug)}" style="border-left-color:${genreColor(genreOf(e))}"
           title="${esc([e.name, e.venue, genreOf(e)].filter(Boolean).join(' — ') + ' — '
-            + (floorOf(e) == null ? 'no asks'
-               : money(floorOf(e)) + (rowView(e).pinned ? ` for ${rowView(e).pinned}` : ' floor'))
+            + (w.floor == null ? 'no asks'
+               : money(w.floor) + (w.pinned ? ` for ${w.pinned}` : ' floor'))
             + ', ' + ticketsOf(e) + ' tickets')}">
-          ${thumb(e, 'thumb')}<span class="nm">${isFav(e.slug) ? '<i class="fdot"></i>' : ''}${
-            esc(e.name || e.slug)}</span>
-          <span class="pr">${floorOf(e) == null ? '—' : money(floorOf(e))}</span>${move24(e)}
-        </button>`).join('')}
+          ${thumb(e, 'thumb')}<span class="nm">${
+            isFav(e.slug) && !favCat(e.slug) ? '<i class="fdot"></i>' : ''}${
+            esc(e.name || e.slug)}</span>${tag ? '<i class="brk"></i>' : ''}${tag}
+          <span class="pr">${w.floor == null ? '—' : money(w.floor)}</span>${move24(e)}
+        </button>`;
+      }).join('')}
     </div>`;
   }
   const dows = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x => `<div class="dow">${x}</div>`).join('');
@@ -1499,19 +1613,27 @@ const cellIn = e => {
   return `<td class="l">${days == null ? '' : days < 0 ? 'past'
     : days === 0 ? 'today' : days + 'd'}</td>`;
 };
-const cellName = e => {
-  const w = rowView(e);
-  const tag = w.pinned ? `<span class="pin">${esc(w.pinned)}</span>`
-            : w.lost ? `<span class="pin lost" title="${esc(w.lost)} is no longer listed — showing the event floor">${esc(w.lost)} gone</span>`
-            : '';
-  return `<td class="l ev" title="${esc(e.name || e.slug)}">${favBtn(e.slug)}${
-    thumb(e, 'lthumb')}${esc(e.name || e.slug)}${signal(e)}${tag}</td>`;
-};
+const cellName = e => `<td class="l ev" title="${esc(e.name || e.slug)}">${favBtn(e.slug)}${
+    thumb(e, 'lthumb')}${esc(e.name || e.slug)}${signal(e)}${pinTag(rowView(e))}</td>`;
 const cellVsSale = e => {
-  const vs = vsSale(e);
-  return `<td class="${!vs ? '' : vs > 0 ? 'up' : 'down'}"${vs ? ` title="floor is ${
-    money(Math.abs(vs))} ${vs > 0 ? 'above' : 'below'} the last sale"` : ''}>${
-    vs ? delta(vs) : '—'}</td>`;
+  const vs = vsSale(e), c = e.current || {}, w = rowView(e);
+  // a dash where a sale exists but cannot be attributed is not "no data", and
+  // saying which of the two it is is the whole point of withholding the number
+  const why = vs
+    ? `${w.pinned || 'the floor'} is ${money(Math.abs(vs))} ${
+        vs > 0 ? 'above' : 'below'} the last sale`
+    : c.last_sale != null && !saleKnown(e) ? SALE_VAGUE : '';
+  return `<td class="${!vs ? '' : vs > 0 ? 'up' : 'down'}"${
+    why ? ` title="${esc(why)}"` : ''}>${vs ? delta(vs) : '—'}</td>`;
+};
+/* The trade itself is real and worth knowing, so it stays -- but on an event
+   with more than one category it is marked as the event's rather than the
+   row's, so nobody reads it as the pinned category's own last price. */
+const cellSale = e => {
+  const c = e.current || {};
+  if (c.last_sale == null) return '<td>—</td>';
+  return saleKnown(e) ? `<td>${money(c.last_sale)}</td>`
+    : `<td class="ew" title="${esc(SALE_VAGUE)}">${money(c.last_sale)}<i>event</i></td>`;
 };
 const cellFair = (e, plain) => {
   const pr = primaryOf(e), gone = pr != null && primaryGone(e);
@@ -1532,7 +1654,7 @@ const cellVsFairPct = e => {
     v == null ? '—' : (v > 0 ? '+' : '−') + pctOf(v)}</td>`;
 };
 const cellChange = k => e => {
-  const v = e.current?.[k];
+  const v = rowView(e)[k];
   return `<td class="${!v || !Math.round(v) ? '' : v > 0 ? 'up' : 'down'}">${delta(v)}</td>`;
 };
 const plainTd = (cls, txt) => `<td class="${cls}">${txt}</td>`;
@@ -1556,8 +1678,7 @@ const COLUMNS = [
   // things worth measuring it against
   ['floor',   'Floor',   '',  e => floorOf(e) ?? Infinity,
     e => `<td>${floorOf(e) == null ? '—' : money(floorOf(e))}</td>`, 'Asking'],
-  ['sale',    'Last sale', '', e => e.current?.last_sale ?? -1,
-    e => `<td>${e.current?.last_sale == null ? '—' : money(e.current.last_sale)}</td>`,
+  ['sale',    'Last sale', '', e => e.current?.last_sale ?? -1, cellSale,
     'vs what it is worth'],
   // nothing to compare sorts to the end rather than reading as a big discount
   ['vsale',   'Δ',       '', e => vsSale(e) ?? Infinity, cellVsSale, 'vs what it is worth'],
@@ -1567,10 +1688,10 @@ const COLUMNS = [
     e => cellFair(e, false), 'vs what it is worth'],
   ['vsprim',  'Δ',       '', e => vsPrimary(e) ?? Infinity, cellVsFair, 'vs what it is worth'],
   // ascending, so the eye reads left to right through time
-  ['change4', '4h',      '',  e => e.current?.change4h ?? 0, cellChange('change4h'), 'Moved'],
-  ['change',  '24h',     '',  e => e.current?.change24 ?? 0, cellChange('change24'), 'Moved'],
-  ['change3', '3d',      '',  e => e.current?.change3d ?? 0, cellChange('change3d'), 'Moved'],
-  ['change7', '7d',      '',  e => e.current?.change7d ?? 0, cellChange('change7d'), 'Moved'],
+  ['change4', '4h',      '',  e => rowView(e).change4h ?? 0, cellChange('change4h'), 'Moved'],
+  ['change',  '24h',     '',  e => rowView(e).change24 ?? 0, cellChange('change24'), 'Moved'],
+  ['change3', '3d',      '',  e => rowView(e).change3d ?? 0, cellChange('change3d'), 'Moved'],
+  ['change7', '7d',      '',  e => rowView(e).change7d ?? 0, cellChange('change7d'), 'Moved'],
   ['tickets', 'Tickets', '',  e => ticketsOf(e), e => `<td>${ticketsOf(e)}</td>`, 'Supply'],
   ['cats',    'Cats',    '',  e => (e.current?.cats || []).length,
     e => `<td>${(e.current?.cats || []).length}</td>`, 'Supply'],
