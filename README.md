@@ -266,7 +266,7 @@ the seven leading palette slots, everything else folds into a neutral "other" â€
 the map is built once from every tracked event, so filtering never repaints the
 genres that survive it. The chips above the calendar and list are the filter.
 
-A **top movers** strip sits above the views: the five biggest price drops,
+A **top movers** strip sits at the top right, opposite the title: the five biggest price drops,
 one at a time, rotating every six seconds and pausing on hover so a row can
 actually be read and clicked â€” clicking opens that event. It looks at the last
 2 hours first and falls back to 24 hours, then 7 days, labelling which window

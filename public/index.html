@@ -37,7 +37,7 @@ a { color:inherit; }
 
 header { display:flex; flex-wrap:wrap; gap:6px 18px; align-items:baseline;
          padding:12px 28px 9px; }
-.brand { display:flex; align-items:baseline; gap:10px; }
+.brand h1 { margin-bottom:2px; }
 h1 { font-size:18px; margin:0; letter-spacing:-.015em; font-weight:650; }
 h1 em { font-style:normal; color:var(--muted); font-weight:500; }
 .sub { color:var(--muted); font-size:12.5px; }
@@ -76,9 +76,12 @@ body.tab-list main { max-width:1420px; }
 /* top movers: one line, one item at a time, so it informs without becoming a
    second dashboard. Rotation pauses on hover so a row can actually be read
    and clicked. */
-.movers { display:flex; align-items:center; gap:10px; margin:0 28px 14px;
-          padding:9px 13px; border:1px solid var(--border); border-radius:10px;
-          background:var(--surface); font-size:13px; }
+.movers { display:flex; align-items:center; gap:10px; margin:0;
+          padding:8px 12px; border:1px solid var(--border); border-radius:10px;
+          background:var(--surface); font-size:13px;
+          /* pinned right: the stats line makes the brand wide enough that
+             space-between alone leaves them touching */
+          flex:0 1 480px; min-width:0; margin-left:auto; }
 .movers .lbl { color:var(--muted); font-size:11px; letter-spacing:.05em;
                text-transform:uppercase; font-weight:600; white-space:nowrap; }
 .movers .mv { display:flex; align-items:center; gap:9px; flex:1; min-width:0;
@@ -94,7 +97,11 @@ body.tab-list main { max-width:1420px; }
 .movers .dots button { width:6px; height:6px; padding:0; border-radius:50%;
                        border:0; background:var(--axis); cursor:pointer; }
 .movers .dots button[aria-current="true"] { background:var(--ink-2); }
-@media (max-width:820px) { .movers { margin:0 16px 12px; } .movers .ctx { display:none; } }
+@media (max-width:820px) {
+  /* full width under the title rather than squeezed beside it */
+  .movers { flex:1 1 100%; }
+  .movers .ctx { display:none; }
+}
 
 /* genre legend + filter */
 .genres { display:flex; flex-wrap:wrap; gap:5px; margin:0 0 10px; }
@@ -362,12 +369,11 @@ dialog .card { border:0; margin:0; background:transparent; }
 </head>
 <body data-palette="#2a78d6,#eb6834,#1baf7a,#eda100,#e87ba4">
 <header>
-  <div class="brand"><h1>CrowdVolt <em>NYC</em> Tracker</h1></div>
-  <div class="stats" id="stats"></div>
-<div id="movers" class="movers hide" aria-live="polite"></div>
-  <div class="spacer"></div>
-  <span class="sub" id="updated"></span>
-  <button class="ghost" id="theme">Theme</button>
+  <div class="brand">
+    <h1>CrowdVolt <em>NYC</em> Tracker</h1>
+    <div class="stats" id="stats"></div>
+  </div>
+  <div id="movers" class="movers hide" aria-live="polite"></div>
 </header>
 
 <div class="controls">
@@ -403,6 +409,12 @@ dialog .card { border:0; margin:0; background:transparent; }
   <section id="deals" class="hide"></section>
   <section id="charts" class="hide"></section>
 </main>
+
+<footer>
+  <span class="sub" id="updated"></span>
+  <div class="spacer"></div>
+  <button class="ghost" id="theme">Theme</button>
+</footer>
 
 <dialog id="modal"><button class="ghost close" id="modalClose">Close</button>
   <div id="modalBody"></div>
