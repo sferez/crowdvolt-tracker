@@ -100,8 +100,19 @@ h1 em { font-style:normal; color:var(--muted); font-weight:500; }
 .seg button[aria-pressed="true"] { background:var(--wash); color:var(--ink); font-weight:600; }
 .ghost { border:1px solid var(--border); border-radius:9px; background:var(--surface); }
 .ghost:hover, .seg button:hover { background:var(--wash); }
-input[type=search] { font:inherit; font-size:13px; padding:6px 11px; border-radius:9px;
-  border:1px solid var(--border); background:var(--surface); color:var(--ink); min-width:180px; }
+/* collapsed to its icon until wanted, so the controls row is not mostly an
+   empty text box. Stays open while it holds a query -- collapsing a filter
+   that is still filtering would hide why the list looks short. */
+.search { display:flex; align-items:center; gap:6px; }
+/* hidden outright rather than animated to zero width: an input collapsed with
+   width:0 inside a flex row is at the mercy of the shrink algorithm, and was
+   reopening to 2px */
+.search input { display:none; font:inherit; font-size:13px; border-radius:9px;
+  border:1px solid var(--border); background:var(--surface); color:var(--ink);
+  padding:6px 11px; width:210px; }
+.search.open input { display:block; }
+.search.on #qbtn { color:var(--ink); border-color:var(--ink-2); }
+@media (max-width:820px) { .search input { width:100%; } }
 label.chk { display:inline-flex; align-items:center; gap:6px; color:var(--muted); font-size:13px; }
 
 main { padding:20px 28px 70px; max-width:1280px; }
@@ -243,11 +254,20 @@ tbody tr:hover { background:var(--wash); }
 /* − and + rather than ▾ ▴: the triangles are a few pixels of ink at this
    size and disappear into the row */
 .sig { font-size:11px; margin-right:4px; font-style:normal; font-weight:700; }
-.fav { background:none; border:0; padding:0 2px; cursor:pointer; line-height:1;
-       color:var(--muted); font-size:14px; }
+.fav { background:none; border:0; padding:0; cursor:pointer; line-height:1;
+       color:var(--muted); font-size:14px;
+       /* centred on the row, not sitting on the text baseline */
+       display:inline-flex; align-items:center; justify-content:center;
+       width:18px; height:18px; vertical-align:middle; margin-right:4px; }
 .fav:hover { color:var(--ink-2); }
 .fav.on { color:#eda100; }
 .fav.big { font-size:17px; margin-left:6px; vertical-align:1px; }
+/* the calendar has no room for a star, but a favourite should still be
+   findable, and a pinned category has to be visible or the price lies */
+.fdot { display:inline-block; width:5px; height:5px; border-radius:50%;
+        background:#eda100; margin-right:5px; vertical-align:2px; }
+.evt .cat { color:var(--muted); font-size:10px; border:1px solid var(--border);
+            border-radius:3px; padding:0 3px; margin-left:4px; }
 /* the pinned-category tag: the row is showing GA, not the floor, and says so */
 .pin { font-size:10.5px; color:var(--muted); border:1px solid var(--border);
        border-radius:4px; padding:1px 5px; margin-left:6px; white-space:nowrap; }
@@ -304,7 +324,8 @@ div.ladder { margin:0 0 14px; }
 .ladder .lad::-webkit-scrollbar { width:6px; }
 .ladder .lad::-webkit-scrollbar-thumb { background:var(--axis); border-radius:3px; }
 td .thumb, .lthumb { width:22px; height:22px; border-radius:5px; object-fit:cover;
-                     vertical-align:-6px; margin-right:8px; background:var(--wash); }
+                     vertical-align:middle; margin-right:8px; background:var(--wash); }
+td.ev { display:flex; align-items:center; gap:0; }
 /* artless events keep the same footprint so names stay on one left edge */
 .ph { display:inline-block; background:var(--wash); }
 .gdot { display:inline-block; width:9px; height:9px; border-radius:50%;
@@ -399,7 +420,8 @@ dialog .card { border:0; margin:0; background:transparent; }
   .stats { font-size:12px; }
   .stat + .stat::before { padding:0 5px; }
   main, body.tab-calendar main { padding:14px 16px 48px; }
-  input[type=search] { flex:1 1 100%; min-width:0; order:99; }
+  .search { order:99; min-width:0; }
+  .search.open { flex:1 1 100%; }
   label.chk { order:100; }                          /* below the search field */
   .seg button, .ghost { padding:8px 13px; }        /* fat-finger targets */
   .gchip { padding:7px 12px 7px 10px; }
@@ -461,7 +483,13 @@ dialog .card { border:0; margin:0; background:transparent; }
     <button id="nextM" aria-label="Next month">›</button>
   </span>
   <span class="calctl sub" id="calnote"></span>
-  <input type="search" id="q" placeholder="Filter events, venues, cities">
+  <div class="search" id="search">
+    <button class="ghost icon" id="qbtn" aria-label="Search" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    </button>
+    <input type="search" id="q" placeholder="Filter events, venues, cities" tabindex="-1">
+  </div>
   <span class="chartctl seg" role="group" aria-label="Time range">
     <button data-range="24" aria-pressed="false">24h</button>
     <button data-range="168" aria-pressed="false">7d</button>
@@ -472,7 +500,8 @@ dialog .card { border:0; margin:0; background:transparent; }
     <button data-view="split" aria-pressed="false">Split axes</button>
   </span>
   <div class="spacer"></div>
-  <label class="chk"><input type="checkbox" id="showRetired"> show retired</label>
+  <label class="chk"><input type="checkbox" id="showRetired">
+    show retired <span id="retiredN" class="sub"></span></label>
 </div>
 
 <main>
@@ -653,6 +682,12 @@ async function history(slug) {
 const evOf = slug => ({slug, ...INDEX[slug]});
 const imgOf = e => e.img_blob || e.img || null;
 const genreOf = e => (e.genres && e.genres[0]) || null;
+/* "GA (2-Day Access)" will not fit a calendar cell; the tooltip carries the
+   full name. */
+const shortCat = n => {
+  const t = String(n).replace(/general admission/i, 'GA').replace(/[()]/g, '');
+  return t.length > 12 ? t.slice(0, 11) + '…' : t;
+};
 
 /* One glyph, five states, only when the data actually says something: a
    standout deal, a deal, at its cheapest all week, drifting down, drifting up.
@@ -668,8 +703,11 @@ const genreOf = e => (e.genres && e.genres[0]) || null;
    rather than listed by name, so a new signal cannot be forgotten there. */
 function signalOf(e) {
   const c = e.current || {};
-  const d = c.change24 ?? c.change3d ?? null;
-  const pct = d != null && c.floor ? d / (c.floor - d) : null;
+  // A pinned category has to answer these questions about itself: an event
+  // whose cheapest tier is a bargain says nothing about the VIP you pinned.
+  const w = rowView(e);
+  const d = w.pinned ? (w.change24 ?? null) : (c.change24 ?? c.change3d ?? null);
+  const pct = d != null && w.floor ? d / (w.floor - d) : null;
   // No reading count to satisfy: this compares two current numbers, so unlike
   // the flame it needs no history to be true. Below a sold-out primary counts
   // too -- under what the last buyer paid at face, with resale the only way
@@ -682,7 +720,9 @@ function signalOf(e) {
     icon: '⚡', cls: 'down', badge: true, title: dealTitle(c, under)};
   if (under != null && under < 0) return {
     icon: '★', cls: 'down', badge: true, title: dealTitle(c, under)};
-  if (c.at_low && c.readings > 3 && (c.change7d ?? 0) < 0) return {
+  // the flame is a floor-vs-its-own-history claim and we keep no per-category
+  // low, so a pinned row does not get to make it
+  if (!w.pinned && c.at_low && c.readings > 3 && (c.change7d ?? 0) < 0) return {
     icon: '🔥', cls: 'down', badge: true, title: `cheapest in 7 days (${money(c.floor)})`};
   if (pct != null && pct <= -0.03) return {
     icon: '−', cls: 'down', title: `down ${money(Math.abs(d))} recently`};
@@ -701,7 +741,7 @@ const signal = e => {
    element is always emitted, empty or not, so the prices beside it stay in a
    column. */
 function move24(e) {
-  const s = signalOf(e), d = Math.round(e.current?.change24 ?? 0);
+  const s = signalOf(e), d = Math.round(rowView(e).change24 ?? 0);
   let cls = '', txt = '', tip = '';
   if (s && s.badge) { cls = s.cls; txt = s.icon; tip = s.title; }
   else if (d) {
@@ -1275,6 +1315,7 @@ async function wireCard(root, e, id) {
   const det = $('.tbl', root);
   const fill = () => { if (det.open) $('div', det).innerHTML = dataTable(e.slug, h); };
   det.ontoggle = fill; fill();
+  wireFavs(root);
   $$('.crow', root).forEach(row => {
     const pick = () => {
       filters[e.slug] = filters[e.slug] === row.dataset.cat ? undefined : row.dataset.cat;
@@ -1357,14 +1398,13 @@ function scheduleMovers() {
 
 function renderStats() {
   const all = ORDER.map(evOf), act = all.filter(e => e.status === 'active');
+  // the count belongs on the control that reveals them, not in the headline
+  $('#retiredN').textContent = all.length - act.length
+    ? `(${all.length - act.length})` : '';
   const withAsk = act.filter(e => floorOf(e) != null);
   const tickets = act.reduce((n, e) => n + ticketsOf(e), 0);
   const median = withAsk.length
     ? withAsk.map(floorOf).sort((a, b) => a - b)[Math.floor(withAsk.length / 2)] : null;
-  const t0 = startOfToday();
-  const soon = act.filter(e => {
-    const d = eventDate(e); return d && d >= t0 && (d - t0) / 86400000 <= 7;
-  }).length;
   // the timestamp reads as one more fact about the data, and folding it in
   // here is what lets the page end without a footer
   const stamp = GENERATED
@@ -1372,10 +1412,8 @@ function renderStats() {
     : null;
   $('#stats').innerHTML = [
     [act.length, 'events', 'events tracked'],
-    [soon, 'in 7d', 'starting in the next 7 days'],
     [tickets.toLocaleString(), 'tickets', 'tickets listed'],
     [median == null ? '—' : money(median), 'median', 'median floor price'],
-    [all.length - act.length, 'retired', 'no longer tracked'],
     ...(stamp ? [[stamp, 'last read', 'when the tracker last read prices']] : []),
   ].map(([v, k, t]) => `<span class="stat" title="${esc(t)}"><b>${v}</b> ${k}</span>`).join('');
 }
@@ -1471,9 +1509,11 @@ function renderCalendar() {
       ${list.map(e => `<button class="evt${e.status === 'active' ? '' : ' done'}"
           data-slug="${esc(e.slug)}" style="border-left-color:${genreColor(genreOf(e))}"
           title="${esc([e.name, e.venue, genreOf(e)].filter(Boolean).join(' — ') + ' — '
-            + (floorOf(e) == null ? 'no asks' : money(floorOf(e)) + ' floor')
+            + (floorOf(e) == null ? 'no asks'
+               : money(floorOf(e)) + (rowView(e).pinned ? ` for ${rowView(e).pinned}` : ' floor'))
             + ', ' + ticketsOf(e) + ' tickets')}">
-          ${thumb(e, 'thumb')}<span class="nm">${esc(e.name || e.slug)}</span>
+          ${thumb(e, 'thumb')}<span class="nm">${isFav(e.slug) ? '<i class="fdot"></i>' : ''}${
+            esc(e.name || e.slug)}</span>
           <span class="pr">${floorOf(e) == null ? '—' : money(floorOf(e))}</span>${move24(e)}
         </button>`).join('')}
     </div>`;
@@ -1780,7 +1820,34 @@ $('#nextM').onclick = () => { month.setMonth(month.getMonth() + 1); renderCalend
 $('#thisM').onclick = () => { month = new Date(); month.setDate(1); renderCalendar(); };
 $('#showRetired').onchange = e => { showRetired = e.target.checked; renderStats(); render(); };
 let qt;
-$('#q').oninput = e => { query = e.target.value; clearTimeout(qt); qt = setTimeout(render, 150); };
+const searchBox = $('#search');
+
+function openSearch(focus = true) {
+  searchBox.classList.add('open');
+  $('#qbtn').setAttribute('aria-expanded', 'true');
+  $('#q').tabIndex = 0;
+  if (focus) $('#q').focus();
+}
+function closeSearch() {
+  if (query.trim()) return;            // never hide an active filter
+  searchBox.classList.remove('open');
+  $('#qbtn').setAttribute('aria-expanded', 'false');
+  $('#q').tabIndex = -1;
+}
+
+$('#qbtn').onclick = () => {
+  searchBox.classList.contains('open') ? ($('#q').value ? null : closeSearch()) : openSearch();
+};
+$('#q').oninput = e => {
+  query = e.target.value;
+  searchBox.classList.toggle('on', !!query.trim());
+  clearTimeout(qt);
+  qt = setTimeout(render, 150);
+};
+$('#q').onblur = () => closeSearch();
+$('#q').onkeydown = e => {
+  if (e.key === 'Escape') { e.target.value = ''; query = ''; searchBox.classList.remove('on'); render(); closeSearch(); }
+};
 /* Shows what you will get, not what you have: a sun in dark mode means
    "switch to light". */
 const SUN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
