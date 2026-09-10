@@ -5,7 +5,7 @@ New York City, with a static dashboard. No account, no bearer token, no API
 key, no database server.
 
 ```
- crowdvolt.com      discover.py (daily, NYC sweep)     Vercel Blob        Vercel
+ crowdvolt.com      discover.py (daily, NYC sweep)     Cloudflare R2        Vercel
    (SSR page)  ──>  track.py   (hourly, tiered)   ──>  index.json    ──>  static page
                                                        events/*.json      calendar · list · charts
 ```
@@ -314,11 +314,11 @@ so a reading appends one value per array instead of rewriting row objects, and
 the browser gets arrays it can hand straight to a chart. Readings older than 14
 days are thinned to 6-hourly, which bounds each file at a few hundred points.
 
-The same files live in `public/data/` locally and in Vercel Blob when
+The same files live in `public/data/` locally and in Cloudflare R2 when
 credentials are present; Blob is the source of truth for the hosted site. Total
 size at 172 events is single-digit MB — well inside the Hobby free allowance.
 
-**Backups.** Blob keeps no version history, so one bad write would be
+**Backups.** R2 keeps no version history, so one bad write would be
 unrecoverable. The daily sweep ends by pushing a pretty-printed copy of the
 whole store to an orphan **`data` branch** — about 64 KB gzipped a day,
 diffable, and independent of Blob.
@@ -346,18 +346,24 @@ That daily commit also keeps the repo active. GitHub disables scheduled
 workflows after 60 days without repository activity, and a workflow *run* does
 not count — without it, both schedules would quietly die after two months.
 
-**Caching, the hard way.** Vercel Blob's CDN will serve a stale body on a plain
-URL even with `max-age=0` (observed: `age: 134` on a file rewritten seconds
-earlier). State files are therefore uploaded with `max-age 0` *and* read with a
-cache-buster, and `store.py` refuses a remote copy whose `generated_at` predates
-the local mirror. Without all three, a run can read the state it just replaced
-and push the result over newer data — which is exactly how four events once
-vanished from the roster.
+**Write volume is the constraint, not storage.** The store holds ~4 MB and
+moves ~90 MB a month; what costs is the number of objects written. Rewriting
+all 172 event files every hour was 124,000 writes a month, which exhausted the
+previous store's monthly allowance in thirteen hours. Readings now land in
+`recent.json` and are folded into the per-event files once a day: **two writes
+an hour instead of 173**, about 6,600 a month for identical data.
+
+**Caching.** A CDN will serve a stale body on a plain URL even with
+`max-age=0`. State files are therefore uploaded with `max-age 0` *and* read
+with a cache-buster, and `store.py` refuses a remote copy whose `generated_at`
+predates the local mirror. Without all three, a run can read the state it just
+replaced and push the result over newer data — which is exactly how four events
+once vanished from the roster.
 
 **One writer at a time.** The two workflows share a `concurrency` group, so CI
 cannot race itself. If you also run `launchd` locally, pick one or the other.
 
-**Swapping the backend** is one file: `blob.py` exposes `get` / `put` /
+**Swapping the backend** is one file: `r2.py` exposes `get` / `put` /
 `put_bytes` / `list`, and `store.py` calls nothing else. Committing JSON to the repo, or an
 S3 bucket, would be a drop-in replacement.
 
@@ -369,7 +375,7 @@ S3 bucket, would be a drop-in replacement.
 |---|---|
 | `crowdvolt.py` | fetching + payload parsing; usable standalone |
 | `store.py` | the JSON store, tiers, thinning |
-| `blob.py` | Vercel Blob client |
+| `r2.py` | Cloudflare R2 client (S3 SigV4, no dependencies) |
 | `track.py` | the hourly reading |
 | `discover.py` | the daily NYC sweep |
 | `dashboard.py` | renders `public/index.html` |

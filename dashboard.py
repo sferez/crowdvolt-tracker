@@ -4,7 +4,8 @@ Nothing is baked into the page but the code, so an hourly reading replaces a
 couple of JSON objects in Blob and the site is current without a redeploy.
 
     index.json          loaded once: roster + each event's current numbers
-    events/<slug>.json  loaded when you open an event
+    recent.json         loaded once: readings since the last consolidation
+    events/<slug>.json  loaded when you open an event, merged with the above
 
 Four views over the same data: a Calendar of the month, a List of everything,
 Charts (a card per event), and Deals (everything priced below fair value). Opening one event shows a line per ticket
@@ -15,7 +16,7 @@ available, right axis) on a shared hourly x-axis.
 import os
 from pathlib import Path
 
-import blob
+import r2
 
 HERE = Path(__file__).parent
 # Chart.js is vendored so the page works offline and needs no third-party CDN.
@@ -30,14 +31,14 @@ SERIES_DARK = ["#3987e5", "#d95926", "#199e70", "#c98500", "#d55181",
 
 
 def data_base():
-    """Where the page fetches its JSON. Blob when configured, the local
-    public/data/ mirror otherwise."""
-    blob.load_env()
+    """Where the page fetches its JSON: the object store when one is
+    configured, the local public/data/ mirror otherwise."""
+    r2.load_env()
     override = os.environ.get("DATA_BASE")
     if override:
         return override.rstrip("/") + "/"
-    base = blob.public_base()
-    return base + blob.PREFIX if base else "data/"
+    remote = r2.Remote()
+    return remote.base + remote.prefix if remote.enabled else "data/"
 
 
 HTML = r"""<!doctype html>
@@ -456,7 +457,7 @@ const pctOf = v => {
   return (p < 1 ? p.toFixed(1) : Math.round(p)) + '%';
 };
 
-let INDEX = {}, ORDER = [], GENERATED = null;
+let INDEX = {}, ORDER = [], GENERATED = null, RECENT = {};
 let GENRE_SLOT = {}, GENRE_RANK = [];   // genre -> palette slot, computed once
 const pickedGenres = new Set();
 const HIST = {};                    // slug -> history, fetched on demand
@@ -473,8 +474,15 @@ let openSlug = null;
 
 async function boot() {
   try {
-    const idx = await fetch(DATA_BASE + 'index.json', {cache: 'no-cache'}).then(r => r.json());
+    // the buffer holds every reading since the last daily consolidation, so a
+    // chart is current even though the per-event files are rewritten once a day
+    const [idx, recent] = await Promise.all([
+      fetch(DATA_BASE + 'index.json', {cache: 'no-cache'}).then(r => r.json()),
+      fetch(DATA_BASE + 'recent.json', {cache: 'no-cache'})
+        .then(r => r.ok ? r.json() : {}).catch(() => ({})),
+    ]);
     INDEX = idx.events || {};
+    RECENT = recent || {};
     GENERATED = idx.generated_at || null;
   } catch (e) {
     $('main').innerHTML = `<p class="empty">Could not load <code>${esc(DATA_BASE)}index.json</code>.
@@ -490,11 +498,39 @@ async function boot() {
   render();
 }
 
+/* Concatenate the buffer onto the consolidated file. Mirrors store._merge:
+   readings only ever arrive in order, but a category present in one and not
+   the other needs padding so every series stays the length of `stamps`. */
+function mergeRecent(base, extra) {
+  base = base || {stamps: [], types: {}, event: {}};
+  if (!extra || !(extra.stamps || []).length) return base;
+  const n0 = (base.stamps || []).length, n1 = extra.stamps.length;
+  const pad = (a, n) => { a = (a || []).slice(); while (a.length < n) a.push(null); return a; };
+  const out = {stamps: (base.stamps || []).concat(extra.stamps), types: {}, event: {}};
+
+  new Set([...Object.keys(base.types || {}), ...Object.keys(extra.types || {})])
+    .forEach(name => {
+      const a = (base.types || {})[name] || {}, b = (extra.types || {})[name] || {};
+      const t = {uqid: b.uqid || a.uqid};
+      if (b.linked_count || a.linked_count) t.linked_count = b.linked_count || a.linked_count;
+      ['ask','all_in','ask_qty','bid','bid_qty','qty','listings'].forEach(f => {
+        t[f] = pad(a[f], n0).concat(pad(b[f], n1));
+      });
+      out.types[name] = t;
+    });
+  new Set([...Object.keys(base.event || {}), ...Object.keys(extra.event || {})])
+    .forEach(k => {
+      out.event[k] = pad((base.event || {})[k], n0).concat(pad((extra.event || {})[k], n1));
+    });
+  return out;
+}
+
 async function history(slug) {
   if (!HIST[slug]) {
     HIST[slug] = fetch(`${DATA_BASE}events/${encodeURIComponent(slug)}.json`)
-      .then(r => r.ok ? r.json() : {stamps: [], types: {}})
-      .catch(() => ({stamps: [], types: {}}));
+      .then(r => r.ok ? r.json() : {stamps: [], types: {}, event: {}})
+      .catch(() => ({stamps: [], types: {}, event: {}}))
+      .then(h => mergeRecent(h, RECENT[slug]));
   }
   return HIST[slug];
 }

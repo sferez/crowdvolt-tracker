@@ -210,6 +210,11 @@ def main():
     print(f"\n{added} now tracked, {deferred} deferred, {rejected} outside NYC"
           + (f", {promoted} deferred event(s) came into range" if promoted else ""))
     if not args.dry_run:
+        # the one place per-event objects are written -- everything else in the
+        # day appended to the buffer instead
+        folded = st.consolidate()
+        if folded:
+            print(f"consolidated {folded} event(s) into their history files")
         st.save()
         sent = st.push()
         if sent:

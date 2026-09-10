@@ -5,8 +5,10 @@ name: track
 # 3 hours, anything further out every 6 -- roughly a third of the requests a
 # flat hourly sweep would make, with full resolution where prices actually move.
 #
-# State lives in Vercel Blob, not in this repo. The job pulls what it needs,
-# appends one reading, and writes back; nothing is ever committed.
+# State lives in the R2 bucket, not in this repo. A run pulls index.json and
+# recent.json, appends one reading to the buffer, and writes those two objects
+# back; nothing is ever committed. The per-event history files are rewritten
+# once a day by the discovery workflow.
 
 on:
   schedule:
@@ -40,24 +42,31 @@ jobs:
 
       # Fail loudly rather than "succeeding" while writing to a local mirror
       # that this runner throws away thirty seconds later.
-      - name: Check Blob credentials
+      - name: Check store credentials
         env:
-          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
-          BLOB_STORE_ID: ${{ secrets.BLOB_STORE_ID }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          R2_PUBLIC_BASE: ${{ secrets.R2_PUBLIC_BASE }}
         run: |
           python3 - <<'PY'
-          import sys, blob
-          r = blob.Remote()
+          import sys, r2
+          r = r2.Remote()
           if not r.enabled:
-              sys.exit("BLOB_READ_WRITE_TOKEN / BLOB_STORE_ID are not set as "
-                       "repository secrets -- the run would write nowhere.")
-          print(f"Blob reachable at {r.base}")
+              sys.exit("The R2_* secrets are not all set on this repository -- "
+                       "the run would write to a mirror the runner then throws "
+                       "away. See R2_SETUP.md.")
+          print(f"store reachable at {r.base}")
           PY
 
       - name: Take a reading
         env:
-          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
-          BLOB_STORE_ID: ${{ secrets.BLOB_STORE_ID }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          R2_PUBLIC_BASE: ${{ secrets.R2_PUBLIC_BASE }}
         run: |
           python3 track.py --delay 1.5 ${{ inputs.all && '--all' || '' }} \
             | tee /tmp/track.log
@@ -65,8 +74,11 @@ jobs:
       - name: Summary
         if: always()
         env:
-          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
-          BLOB_STORE_ID: ${{ secrets.BLOB_STORE_ID }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          R2_PUBLIC_BASE: ${{ secrets.R2_PUBLIC_BASE }}
         run: |
           {
             echo "### Reading"

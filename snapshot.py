@@ -2,9 +2,9 @@
 """
 Pull the whole data store out of Blob into a local directory.
 
-Blob keeps no version history: one bad write and the readings are gone. A
-daily snapshot committed to an orphan `data` branch gives a durable, diffable
-backup for about 64KB gzipped a day -- and, incidentally, keeps the repo active
+The object store keeps no version history: one bad write and the readings are
+gone. A daily snapshot committed to an orphan `data` branch gives a durable,
+diffable backup for about 64KB gzipped a day -- and, incidentally, keeps the repo active
 enough that GitHub does not disable the scheduled workflows.
 
 Artwork is deliberately not snapshotted. It is static, re-mirrorable from the
@@ -21,7 +21,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-import blob
+import r2
 
 
 def main():
@@ -33,7 +33,7 @@ def main():
     p.add_argument("--yes", action="store_true", help="skip the confirmation")
     args = p.parse_args()
 
-    remote = blob.Remote()
+    remote = r2.Remote()
     if not remote.enabled:
         sys.exit("no Blob credentials -- nothing to snapshot")
 

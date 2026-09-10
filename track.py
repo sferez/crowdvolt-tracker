@@ -211,12 +211,21 @@ def main():
                    help=f"seconds between events (default {REQUEST_DELAY})")
     p.add_argument("--all", action="store_true",
                    help="read every active event, even one read minutes ago")
+    p.add_argument("--consolidate", action="store_true",
+                   help="fold the buffer into the per-event history files")
     p.add_argument("--serve", action="store_true", help="serve public/ and open it")
     p.add_argument("--port", type=int, default=8000)
     args = p.parse_args()
 
     if args.serve:
         serve(args.port)
+        return
+
+    if args.consolidate:
+        st = Store()
+        print(f"consolidated {st.consolidate()} event(s)")
+        st.save()
+        st.push()
         return
 
     if args.revive:

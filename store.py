@@ -1,8 +1,14 @@
 """The tracker's state, as plain JSON.
 
     index.json          roster + each event's current price and ticket count
-    events/<slug>.json  that event's history, column-oriented
+    recent.json         every reading since the last consolidation, all events
+    events/<slug>.json  that event's consolidated history, column-oriented
     venues.json         discovery's venue -> city cache
+
+Readings land in `recent.json` first and are folded into the per-event files
+once a day. Writing all 172 event files every hour was 124,000 object writes a
+month, which is both wasteful and more than most object stores give away; two
+writes an hour plus a daily fold is about 6,000, for identical data.
 
 Column-oriented history ({"stamps": [...], "types": {name: {"ask": [...]}}})
 means an hourly reading appends one value per array rather than rewriting a
@@ -22,7 +28,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-import blob
+import r2
 
 ROOT = Path(__file__).parent / "public" / "data"
 
@@ -69,15 +75,18 @@ class Store:
         self.index_path = self.root / "index.json"
         self.events_dir = self.root / "events"
         self.venues_path = self.root / "venues.json"
-        self.remote = blob.Remote() if remote else None
+        self.remote = r2.Remote() if remote else None
         self.dirty = set()
         idx = self._load("index.json", self.index_path, {})
         self.events = idx.get("events", {})
         self.meta = {k: v for k, v in idx.items() if k != "events"}
+        self.recent_path = self.root / "recent.json"
+        self.recent = self._load("recent.json", self.recent_path, {})
 
     # Remote wins on load: another machine (or the GitHub Action) may have
     # taken readings since this checkout last ran.
-    STATE_FILES = {"index.json", "skipped.json", "venues.json", "artists.json"}
+    STATE_FILES = {"index.json", "recent.json", "skipped.json",
+                   "venues.json", "artists.json"}
 
     def _load(self, rel, path, default):
         if self.remote and self.remote.enabled:
@@ -185,25 +194,29 @@ class Store:
     def _event_path(self, slug):
         return self.events_dir / f"{slug}.json"
 
-    def history(self, slug):
-        """Remote wins, always.
+    def history(self, slug, merged=True):
+        """An event's readings: the consolidated file plus anything still in
+        the buffer.
 
-        Reading the local mirror when Blob has newer data is how you lose a
-        week: run on the Mac for a while, switch to the Action for a while,
-        then run locally once -- a stale local file gets one reading appended
-        and pushed over the top. One cached GET per due event is cheap
-        insurance. (Still: one runner at a time. Two writers inside the event
-        files' 300 s cache TTL can lose a reading whatever this does.)
+        The consolidated file only changes once a day, so it can be read from
+        the local mirror and cached hard. Everything newer lives in
+        `recent.json`, which a run has already loaded -- so a normal run reads
+        no per-event files at all.
         """
         rel = f"events/{slug}.json"
-        h = self._load(rel, self._event_path(slug), None)
+        path = self._event_path(slug)
+        h = _read(path, None)
         if h is None:
-            return {"stamps": [], "types": {}, "event": {}}
+            h = self._load(rel, path, None)
+        h = h or {"stamps": [], "types": {}, "event": {}}
         h.setdefault("event", {})
-        return h
+        h.setdefault("types", {})
+        h.setdefault("stamps", [])
+        return _merge(h, self.recent.get(slug)) if merged else h
 
     def add_snapshot(self, slug, ts, rows, snap=None):
-        h = self.history(slug)
+        """Append one reading to the buffer. Nothing is written per event."""
+        h = self.recent.setdefault(slug, {"stamps": [], "types": {}, "event": {}})
         stamps, types = h["stamps"], h["types"]
         if stamps and stamps[-1] == ts:
             return h
@@ -242,10 +255,10 @@ class Store:
             for f in SERIES_FIELDS:
                 while len(t[f]) < n:
                     t[f].append(None)
-        _thin(h)
-        self._store(f"events/{slug}.json", self._event_path(slug), h)
-        self._refresh_current(slug, h)
-        return h
+        self.recent[slug] = h
+        full = _merge(self.history(slug, merged=False), h)
+        self._refresh_current(slug, full)
+        return full
 
     def _fair_now(self, slug, floor_cat=None):
         """Fair value for the category that sets the floor, to record alongside
@@ -406,6 +419,25 @@ class Store:
                     {**self.meta, "events": self.events,
                      "generated_at": datetime.now(timezone.utc)
                      .isoformat(timespec="seconds")})
+        self._store("recent.json", self.recent_path, self.recent)
+
+    def consolidate(self):
+        """Fold the buffer into the per-event files and empty it.
+
+        Run daily. This is the only thing that writes per-event objects, and
+        the only reason a run ever reads one.
+        """
+        folded = 0
+        for slug, buf in list(self.recent.items()):
+            if not buf.get("stamps"):
+                continue
+            h = _merge(self.history(slug, merged=False), buf)
+            _thin(h)
+            self._store(f"events/{slug}.json", self._event_path(slug), h)
+            folded += 1
+        self.recent = {}
+        self._store("recent.json", self.recent_path, {})
+        return folded
 
 
 _FIELD_MAP = {"ask": "best_ask", "all_in": "best_ask_all_in", "ask_qty": "best_ask_qty",
@@ -430,6 +462,39 @@ def _bid_of(h, floor_cat):
         return None
     t = (h.get("types") or {}).get(floor_cat["name"]) or {}
     return _last(t.get("bid") or []) or None
+
+
+def _merge(base, extra):
+    """Concatenate a buffer onto a consolidated history, aligning categories.
+
+    Readings only ever arrive in order, so this is an append rather than a
+    sort -- but a category that first appears in the buffer needs backfilling
+    with nulls across the older stamps, and one that has stopped appearing
+    needs padding across the newer ones.
+    """
+    if not extra or not extra.get("stamps"):
+        return base
+    out = {"stamps": list(base.get("stamps") or []) + list(extra["stamps"]),
+           "types": {}, "event": {}}
+    n0, n1 = len(base.get("stamps") or []), len(extra["stamps"])
+
+    for name in set(base.get("types") or {}) | set(extra.get("types") or {}):
+        a = (base.get("types") or {}).get(name) or {}
+        b = (extra.get("types") or {}).get(name) or {}
+        t = {"uqid": b.get("uqid") or a.get("uqid")}
+        if b.get("linked_count") or a.get("linked_count"):
+            t["linked_count"] = b.get("linked_count") or a.get("linked_count")
+        for f in SERIES_FIELDS:
+            t[f] = (list(a.get(f) or []) + [None] * (n0 - len(a.get(f) or []))
+                    + list(b.get(f) or []) + [None] * (n1 - len(b.get(f) or [])))
+        out["types"][name] = t
+
+    for key in set(base.get("event") or {}) | set(extra.get("event") or {}):
+        a = (base.get("event") or {}).get(key) or []
+        b = (extra.get("event") or {}).get(key) or []
+        out["event"][key] = (list(a) + [None] * (n0 - len(a))
+                             + list(b) + [None] * (n1 - len(b)))
+    return out
 
 
 def _spread(h, floor_cat):
