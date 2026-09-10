@@ -1,0 +1,80 @@
+{
+ "event": {
+  "bid_all_in": [
+   0
+  ],
+  "bidders": [
+   0
+  ],
+  "fair": [
+   null
+  ],
+  "high": [
+   93
+  ],
+  "last_sale": [
+   null
+  ],
+  "listings": [
+   2
+  ],
+  "tickets": [
+   6
+  ]
+ },
+ "stamps": [
+  "2026-09-10T04:51:21+00:00"
+ ],
+ "types": {
+  "GA Fast Pass": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "826b172d-a2b2-494a-925c-b457c0903b8e"
+  },
+  "General Admission": {
+   "all_in": [
+    78
+   ],
+   "ask": [
+    75
+   ],
+   "ask_qty": [
+    4
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    2
+   ],
+   "qty": [
+    6
+   ],
+   "uqid": "a00f667c-d7e4-4091-96f7-0430763f4672"
+  }
+ }
+}

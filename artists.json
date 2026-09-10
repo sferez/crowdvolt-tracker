@@ -390,6 +390,19 @@
   "slug": "crankdat",
   "spotify": "https://open.spotify.com/artist/5lCekoJW9jNq01B1wiqdAb"
  },
+ "dan-ghenacia": {
+  "bio": "Dan Ghenacia is a French DJ and producer known for his deep, minimal house sound and long, hypnotic sets. A key figure in the Paris underground scene, he was a founding member of the trio Apollonia alongside Dyed Soundorom and Shonky. Ghenacia is respected worldwide for his refined selections and groove-focused approach to house and minimal music.",
+  "followers": 3860,
+  "genres": [
+   "house"
+  ],
+  "img": "https://img.crowdvolt.com/assets/4717f5d2-ffaf-4b28-ba22-4f56751b2115/resident_advisor-685-44c5d195.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Dan Ghenacia",
+  "slug": "dan-ghenacia",
+  "spotify": null
+ },
  "david-lindmer": {
   "bio": "David Lindmer is a British producer and DJ based in Brooklyn, and the co-founder of melodic techno label Running Clouds alongside Andrea Vizzarro. His sound leans on raw analog basslines and cinematic, melody-driven leads, with releases on Afterlife, Purified, Atlant and Oddity, and support from Tale Of Us, Mind Against, Kevin de Vries and Nora En Pure. In 2022 he co-founded Chromia Sounds with Massano and Un:said, and his tracks have been played at ADE Awakenings and Afterlife Tulum.",
   "followers": null,
@@ -600,6 +613,21 @@
   "name": "Franky Rizardo",
   "slug": "franky-rizardo",
   "spotify": "https://open.spotify.com/artist/2UgphhGSlC9QWgaZWUOCkl"
+ },
+ "friends": {
+  "bio": "&friends is a globally inspired DJ collective known for blending organic house with rich cultural influences and storytelling-driven soundscapes. Their music weaves together rhythmic percussion, melodic elements, and soulful textures drawn from around the world, creating an immersive and uplifting experience on the dancefloor. With a focus on connection and community, &friends delivers sets that feel both intimate and expansive\u2014bridging genres and cultures through music. Their unique approach continues to resonate with audiences seeking deeper, more meaningful electronic experiences.",
+  "followers": null,
+  "genres": [
+   "organic house",
+   "afro house",
+   "melodic house"
+  ],
+  "img": "https://img.crowdvolt.com/87ae20ce-b721-4467-b67e-e58569f6a8a1.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "&friends",
+  "slug": "friends",
+  "spotify": null
  },
  "funk-tribu-fc448": {
   "bio": "Funk Tribu is a DJ and producer known for his fast, rave-inspired blend of techno, trance, and hard groove. His sound combines nostalgic 90s rave elements with modern club energy, featuring euphoric synths, driving kicks, and high-BPM momentum. Funk Tribu has gained strong support across the underground electronic scene and international festival circuit.",
@@ -1050,6 +1078,21 @@
   "monthly_listeners": null,
   "name": "KUKO",
   "slug": "kuko",
+  "spotify": null
+ },
+ "kyle-watson": {
+  "bio": "Kyle Watson is a South African DJ and producer known for his infectious, groove-driven take on house music. Blending deep basslines with crisp percussion and catchy vocal elements, his sound sits at the intersection of underground cool and mainstream appeal. With releases on top labels like Dirtybird and Higher Ground, Watson has built a global following and earned support from some of the biggest names in electronic music. His sets are energetic, fun, and irresistibly danceable\u2014making him a standout presence on both festival stages and club circuits worldwide.",
+  "followers": null,
+  "genres": [
+   "house",
+   "tech house",
+   "bass house"
+  ],
+  "img": "https://img.crowdvolt.com/4f19a9c1-52ae-4bad-94c2-3e918632dfe4.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Kyle Watson",
+  "slug": "kyle-watson",
   "spotify": null
  },
  "lane-8": {
@@ -2034,6 +2077,34 @@
   "monthly_listeners": null,
   "name": "Tripolism",
   "slug": "tripolism",
+  "spotify": null
+ },
+ "two-friends": {
+  "bio": "Two Friends is an American DJ and producer duo known for upbeat, feel-good dance music that blends pop, house, and melodic electronic sounds. They first gained widespread attention through their viral Big Bootie Mix series, which showcases high-energy mashups and crowd-friendly transitions. With infectious originals and nonstop touring, Two Friends have built a reputation for fun, accessible sets that thrive on festival and college crowds alike.",
+  "followers": null,
+  "genres": [
+   "melodic house",
+   "progressive house"
+  ],
+  "img": "https://img.crowdvolt.com/bece2261-5232-402d-971a-b20071b09b6d.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Two Friends",
+  "slug": "two-friends",
+  "spotify": null
+ },
+ "vanjee": {
+  "bio": "Vanjee is an electronic artist known for energetic club-focused sets that blend driving grooves, hypnotic rhythms, and underground dance influences. Building momentum through performances in nightlife circuits and curated events, Vanjee\u2019s sound balances melodic atmosphere with peak-time dance floor energy.",
+  "followers": 227,
+  "genres": [
+   "house",
+   "afro house"
+  ],
+  "img": "https://img.crowdvolt.com/assets/8f253d38-b723-4f3b-8a17-0b6fa1483924/resident_advisor-54060-44c5d195.jpg",
+  "instagram": "https://www.instagram.com/vanjeeny",
+  "monthly_listeners": null,
+  "name": "Vanjee",
+  "slug": "vanjee",
   "spotify": null
  },
  "vintage-culture": {

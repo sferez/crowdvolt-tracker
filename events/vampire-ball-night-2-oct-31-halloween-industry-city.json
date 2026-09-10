@@ -1,0 +1,155 @@
+{
+ "event": {
+  "bid_all_in": [
+   0
+  ],
+  "bidders": [
+   0
+  ],
+  "fair": [
+   null
+  ],
+  "high": [
+   413
+  ],
+  "last_sale": [
+   null
+  ],
+  "listings": [
+   2
+  ],
+  "tickets": [
+   6
+  ]
+ },
+ "stamps": [
+  "2026-09-10T04:52:04+00:00"
+ ],
+ "types": {
+  "GA (2-Day Pass)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "8372c1dc-2a02-4d04-9995-9aafe0defd8b"
+  },
+  "GA (Before 9:30PM)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "a2fe9481-24a3-4cfb-bd27-fdbd71c74296"
+  },
+  "General Admission": {
+   "all_in": [
+    207
+   ],
+   "ask": [
+    200
+   ],
+   "ask_qty": [
+    2
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    1
+   ],
+   "qty": [
+    2
+   ],
+   "uqid": "49fc8598-62b9-49aa-be25-f212682c7860"
+  },
+  "Premium (2-Day Pass)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "9dd3a5b6-e29a-4d0c-842a-e603a5d5c74e"
+  },
+  "Premium Backstage": {
+   "all_in": [
+    413
+   ],
+   "ask": [
+    400
+   ],
+   "ask_qty": [
+    4
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    1
+   ],
+   "qty": [
+    4
+   ],
+   "uqid": "f6ac7717-83e7-4f5e-b22b-d7e2c7689a9a"
+  }
+ }
+}
