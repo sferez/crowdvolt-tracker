@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guide · CrowdVolt NYC Tracker</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🎟️</text></svg>">
+<style>
+:root {
+  color-scheme: light;
+  --plane:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink-2:#52514e;
+  --muted:#898781; --border:rgba(11,11,11,.10); --good:#0ca30c; --crit:#d03b3b;
+  --wash:rgba(11,11,11,.045);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --plane:#0d0d0d; --surface:#1a1a19; --ink:#fff; --ink-2:#c3c2b7;
+    --muted:#898781; --border:rgba(255,255,255,.10); --wash:rgba(255,255,255,.055);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --plane:#0d0d0d; --surface:#1a1a19; --ink:#fff; --ink-2:#c3c2b7;
+  --muted:#898781; --border:rgba(255,255,255,.10); --wash:rgba(255,255,255,.055);
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--plane); color:var(--ink);
+       font:15px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif;
+       -webkit-font-smoothing:antialiased; }
+.wrap { max-width:760px; margin:0 auto; padding:34px 22px 90px; }
+header { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+         margin-bottom:6px; }
+h1 { font-size:22px; margin:0; letter-spacing:-.015em; }
+a { color:inherit; }
+a.back { font-size:13px; color:var(--muted); text-decoration:none;
+         border:1px solid var(--border); border-radius:8px; padding:4px 10px;
+         background:var(--surface); }
+a.back:hover { color:var(--ink); }
+.lede { color:var(--ink-2); margin:0 0 26px; }
+h2 { font-size:16px; margin:34px 0 8px; letter-spacing:-.01em; }
+h2 .n { color:var(--muted); font-weight:400; margin-right:7px; }
+p { margin:0 0 12px; }
+figure { margin:14px 0 6px; }
+figure img { width:100%; border:1px solid var(--border); border-radius:10px;
+             display:block; background:var(--surface); }
+figcaption { color:var(--muted); font-size:12.5px; margin-top:7px; }
+table { border-collapse:collapse; width:100%; margin:10px 0 14px; font-size:14px; }
+td, th { text-align:left; padding:7px 10px; border-bottom:1px solid var(--border);
+         vertical-align:top; }
+th { color:var(--muted); font-weight:500; font-size:12.5px; }
+td:first-child { white-space:nowrap; color:var(--ink); font-weight:600; }
+code { font:13px ui-monospace,SFMono-Regular,Menlo,monospace;
+       background:var(--wash); padding:1px 5px; border-radius:4px; }
+.note { border-left:3px solid var(--border); padding:2px 0 2px 14px;
+        color:var(--ink-2); margin:14px 0; }
+.g { color:var(--good); font-weight:600; } .r { color:var(--crit); font-weight:600; }
+footer { margin-top:44px; padding-top:16px; border-top:1px solid var(--border);
+         color:var(--muted); font-size:13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>How to read this</h1>
+  <a class="back" href="/">← Back to the tracker</a>
+</header>
+<p class="lede">It tracks resale ticket prices for every event in New York, once
+an hour, and compares them to what the same ticket costs new.</p>
+
+<h2><span class="n">1</span>The one number that matters</h2>
+<p><strong>Fair value</strong> is the cheapest comparable ticket you could still
+buy on the original seller — DICE, mostly. Everything else is context.</p>
+<table>
+  <tr><td class="g">−$8</td><td>The resale ask is <strong>below</strong> what you would pay new. A genuine saving.</td></tr>
+  <tr><td class="r">+$29</td><td>The resale ask is <strong>above</strong> it. Buy direct instead.</td></tr>
+  <tr><td>—</td><td>We cannot price this event. Its seller (AXS, Ticketmaster, Four Venues) does not let us read prices, so we show nothing rather than a guess.</td></tr>
+</table>
+<p class="note">Green always means <em>cheaper for you</em>, everywhere on the
+page — including price changes, where a falling price is green. That is the
+opposite of a stock ticker, on purpose: you are buying.</p>
+
+<h2><span class="n">2</span>Calendar</h2>
+<figure>
+  <img src="help/calendar.jpg" alt="The calendar view: a month grid with events on their dates">
+  <figcaption>Every event on the night it happens, with its cheapest ask.</figcaption>
+</figure>
+<p>Each day scrolls on its own, so a busy Saturday never stretches the row. The
+coloured bar on the left is the genre — click a genre chip to filter. Click any
+event to open it.</p>
+<table>
+  <tr><td>⚡</td><td>20% or more below fair value</td></tr>
+  <tr><td>★</td><td>Below fair value</td></tr>
+  <tr><td>🔥</td><td>Cheapest it has been in 7 days</td></tr>
+  <tr><td>− +</td><td>Moved down / up in the last 24 hours</td></tr>
+</table>
+
+<h2><span class="n">3</span>List</h2>
+<figure>
+  <img src="help/list.jpg" alt="The list view: a sortable table grouped into columns">
+  <figcaption>Columns are grouped so each block answers one question.</figcaption>
+</figure>
+<table>
+  <tr><td>Asking</td><td>What the cheapest ticket costs right now.</td></tr>
+  <tr><td>Vs what it is worth</td><td>The last price someone actually paid, and fair value — each with its own difference beside it.</td></tr>
+  <tr><td>Moved</td><td>How the price changed over 4 hours, a day, 3 days, a week.</td></tr>
+  <tr><td>Supply</td><td>Tickets listed, and how many ticket categories exist.</td></tr>
+</table>
+<p>Click any heading to sort by it. A struck-through fair value with
+<em>primary sold out</em> means you can no longer buy at that price — the
+comparison is against history, not an option you have.</p>
+
+<h2><span class="n">4</span>Deals</h2>
+<figure>
+  <img src="help/deals.jpg" alt="The deals view: everything priced below fair value">
+  <figcaption>Everything currently below fair value, biggest saving first.</figcaption>
+</figure>
+<p>Shown in both dollars and percent, because $20 off a $40 ticket and off a
+$400 one are not the same thing.</p>
+
+<h2><span class="n">5</span>Opening an event</h2>
+<figure>
+  <img src="help/event.jpg" alt="An open event: category table above a price chart">
+  <figcaption>One row per ticket category, above the price history.</figcaption>
+</figure>
+<p>The table is also the chart legend and the filter — <strong>click a row</strong>
+to show only that category. On the chart, solid lines are resale asks, bars are
+tickets available, and the dashed line is fair value.</p>
+<p>The two small icons by the title open the event on CrowdVolt and, where we
+can price it, on the original seller.</p>
+
+<h2><span class="n">6</span>Favourites</h2>
+<p>Click a <strong>☆</strong> on any row to follow an event. A Favourites tab
+appears, and favourites rise to the top of their day in the calendar.</p>
+<p>Click the star on a <strong>ticket category</strong> instead and you pin it:
+every view then shows that category rather than the event's cheapest ticket. If
+you only want the 2-day pass, the calendar stops telling you $79 when the pass
+you want is $135. Pinned rows are tagged with the category name, so a price is
+never mistaken for the floor.</p>
+<p class="note">Favourites live in this browser only — they will not follow you
+to your phone. There is no login to hang them off.</p>
+
+<h2><span class="n">7</span>Good to know</h2>
+<table>
+  <tr><td>Freshness</td><td>Prices are read hourly; the page re-reads them every 20 minutes on its own.</td></tr>
+  <tr><td>All-in prices</td><td>Every figure includes fees, on both sides, so the comparison is like for like.</td></tr>
+  <tr><td>Last sale</td><td>Only shown as a comparison when the event has one ticket category. With several, there is no way to tell which one sold, so we do not pretend.</td></tr>
+  <tr><td>Coverage</td><td>172 NYC events. Roughly half can be priced against the original seller.</td></tr>
+</table>
+
+<footer>
+  A personal project. Prices are read from public pages and may lag reality —
+  check the seller before buying.
+  <a href="/">Back to the tracker</a>
+</footer>
+
+</div>
+</body>
+</html>
