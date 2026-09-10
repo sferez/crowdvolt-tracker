@@ -713,8 +713,16 @@ let GENRE_SLOT = {}, GENRE_RANK = [];   // genre -> palette slot, computed once
 const pickedGenres = new Set();
 const HIST = {};                    // slug -> history, fetched on demand
 // The bars are the noisiest thing on the plot and the only reason a second
-// axis exists, so the chart opens on price alone and supply is asked for.
+// axis exists, so the chart opens on price alone and supply is asked for --
+// unless you asked for it last time, which is remembered per browser.
+const VIEW_KEY = 'cv.view.v1';
 let tab = 'calendar', range = 0, view = 'ask';
+try {
+  // validated rather than trusted: a key left by another version should fall
+  // back to the default, not wedge the chart on a layout that no longer exists
+  const v = localStorage.getItem(VIEW_KEY);
+  if (v === 'ask' || v === 'both') view = v;
+} catch (e) {}
 let showRetired = false, query = '';
 const listSort = {key: 'date', dir: 1};
 const dealSort = {key: 'vsfpct', dir: 1};   // deepest discount first
@@ -1271,17 +1279,6 @@ function catTable(e) {
     <th>Tickets</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
-function dataTable(slug, h) {
-  const d = slice(h), series = shownSeries(slug, d);
-  if (!series.length) return '<p class="sub">No readings yet.</p>';
-  const head = ['Time', ...series.flatMap(s => [s.name + ' ask', s.name + ' qty'])];
-  const body = d.labels.map((l, r) => '<tr><td>' + esc(l) + '</td>' +
-    series.map(s => `<td>${s.ask[r] == null ? '—' : money(s.ask[r])}</td>` +
-                    `<td>${s.qty[r] ?? '—'}</td>`).join('') + '</tr>').reverse().join('');
-  return `<table><thead><tr>${head.map(x => `<th>${esc(x)}</th>`).join('')}</tr></thead>
-          <tbody>${body}</tbody></table>`;
-}
-
 /* The primary platform's tiers, cheapest first. Deliberately text and not a
    chart: four numbers and a strike-through say "Tier 1 gone, Tier 2 gone, only
    the Final is left" faster than any plot of four points could, and the plot
@@ -1430,8 +1427,7 @@ function cardShell(e, id) {
     </div></div>
     ${catTable(e)}${id === 'modal' ? tierLadder(e) : ''}
     <div class="wrap price"><canvas id="c-${id}"></canvas></div>
-    <div class="axisnote"><span>Best ask, all-in</span><span class="rt">Right: tickets available</span></div>
-    <details class="tbl"><summary>Data table</summary><div></div></details>`;
+    <div class="axisnote"><span>Best ask, all-in</span><span class="rt">Right: tickets available</span></div>`;
 }
 
 /* The modal is one long-lived element that gets rewritten, so two opens in
@@ -1510,11 +1506,6 @@ async function wireCard(root, e, id) {
     if (withFair) $('.axisnote span:last-child', root)
       .insertAdjacentHTML('beforebegin', `<span>Dashed: ${FAIR}</span>`);
   }
-  // the table is built on first open -- rendering every row of every event up
-  // front is what turns a hundred tracked events into a heavy page
-  const det = $('.tbl', root);
-  const fill = () => { if (det.open) $('div', det).innerHTML = dataTable(e.slug, h); };
-  det.ontoggle = fill; fill();
   wireFavs(root);
   $$('.crow', root).forEach(row => {
     const pick = () => {
@@ -2023,7 +2014,10 @@ function render() {
 const SEGMENTS = {
   'data-tab':   v => tab = v,
   'data-range': v => range = +v,
-  'data-view':  v => view = v,
+  'data-view':  v => {
+    view = v;
+    try { localStorage.setItem(VIEW_KEY, v); } catch (e) {}
+  },
 };
 function wireSegments() {
   // the modal renders its own copy of the chart controls; both sets share the
@@ -2036,6 +2030,10 @@ function wireSegments() {
       render();
     });
   });
+  // the header's buttons are static markup, so a remembered view has to be
+  // pressed into them once at boot; the modal builds its own from `view`
+  $$('[data-view]').forEach(b =>
+    b.setAttribute('aria-pressed', b.getAttribute('data-view') === view));
 }
 wireSegments();
 $('#prevM').onclick = () => { month.setMonth(month.getMonth() - 1); renderCalendar(); };
