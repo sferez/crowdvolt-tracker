@@ -300,9 +300,24 @@ class Store:
                             else round(ask - fair, 2)),
                 "vs_fair_pct": (None if not fair or ask is None
                                 else round((ask - fair) / fair, 4)),
-                "change24": _cat_change(h, name, 24),
+                # full parity with the event-level numbers: a pinned category
+                # has to answer every question the floor answers, including
+                # "cheapest it has been all week", or the dashboard has to keep
+                # special-casing it
+                "change1h": _cat_change(h, name, 1),
+                "change2h": _cat_change(h, name, 2),
                 "change4h": _cat_change(h, name, 4),
+                "change24": _cat_change(h, name, 24),
+                "change3d": _cat_change(h, name, 72),
+                "change7d": _cat_change(h, name, 168),
+                "low7d": _cat_low(h, name, 168),
+                "at_low": (ask is not None and _cat_low(h, name, 168) is not None
+                           and ask <= _cat_low(h, name, 168)),
                 "bid": _last(t.get("bid") or []) or None,
+                "spread": (None if _last(t.get("bid") or []) in (None, 0)
+                           or _last(t.get("ask") or []) is None
+                           else round(_last(t["ask"]) - _last(t["bid"]), 2)),
+                "readings": sum(1 for v in t["all_in"] if v is not None),
             })
             tickets += qty
             if ask is not None:
@@ -349,7 +364,12 @@ class Store:
                         # icon on the calendar
                         "low7d": low7,
                         "at_low": floor is not None and low7 is not None and floor <= low7,
+                        # CrowdVolt reports one last sale for the whole event
+                        # and none per category, so a row quoting VIP cannot
+                        # honestly compare itself to it -- the flag says so
+                        # rather than leaving the dashboard to assume
                         "last_sale": _last(ev.get("last_sale") or []),
+                        "last_sale_scope": "event",
                         # what the same ticket costs on the platform that sold
                         # it first -- the alternative you actually have
                         "primary": primary_now,
@@ -558,6 +578,15 @@ def _cat_change(h, name, hours):
         return None
     now, then = _cat_at(h, name, n - 1), _cat_at(h, name, i)
     return None if now is None or then is None else round(now - then, 2)
+
+
+def _cat_low(h, name, hours):
+    """Lowest price this category has been in the window."""
+    n = len(h["stamps"])
+    start = _index_at(h, hours)
+    start = 0 if start is None else start
+    seen = [v for v in (_cat_at(h, name, i) for i in range(start, n)) if v is not None]
+    return min(seen) if seen else None
 
 
 def _floor_at(h, i):
