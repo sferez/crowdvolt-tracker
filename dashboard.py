@@ -116,6 +116,29 @@ body.tab-list main { max-width:1420px; }
 .stat b { font-weight:650; color:var(--ink); font-variant-numeric:tabular-nums; }
 .stat + .stat::before { content:'·'; padding:0 7px; opacity:.55; }
 
+/* top movers: one line, one item at a time, so it informs without becoming a
+   second dashboard. Rotation pauses on hover so a row can actually be read
+   and clicked. */
+.movers { display:flex; align-items:center; gap:10px; margin:0 28px 14px;
+          padding:9px 13px; border:1px solid var(--border); border-radius:10px;
+          background:var(--surface); font-size:13px; }
+.movers .lbl { color:var(--muted); font-size:11px; letter-spacing:.05em;
+               text-transform:uppercase; font-weight:600; white-space:nowrap; }
+.movers .mv { display:flex; align-items:center; gap:9px; flex:1; min-width:0;
+              background:transparent; border:0; padding:2px 0; cursor:pointer;
+              color:var(--ink); font:inherit; text-align:left; }
+.movers .mv:hover .nm { text-decoration:underline; }
+.movers .mv img { width:22px; height:22px; border-radius:5px; object-fit:cover;
+                  flex:none; background:var(--wash); }
+.movers .nm { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.movers .amt { font-weight:650; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.movers .ctx { color:var(--muted); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.movers .dots { display:flex; gap:5px; flex:none; }
+.movers .dots button { width:6px; height:6px; padding:0; border-radius:50%;
+                       border:0; background:var(--axis); cursor:pointer; }
+.movers .dots button[aria-current="true"] { background:var(--ink-2); }
+@media (max-width:820px) { .movers { margin:0 16px 12px; } .movers .ctx { display:none; } }
+
 /* genre legend + filter */
 .genres { display:flex; flex-wrap:wrap; gap:5px; margin:0 0 10px; }
 .gchip { display:inline-flex; align-items:center; gap:6px; padding:2px 9px 2px 7px;
@@ -384,6 +407,7 @@ dialog .card { border:0; margin:0; background:transparent; }
 <header>
   <div class="brand"><h1>CrowdVolt <em>NYC</em> Tracker</h1></div>
   <div class="stats" id="stats"></div>
+<div id="movers" class="movers hide" aria-live="polite"></div>
   <div class="spacer"></div>
   <span class="sub" id="updated"></span>
   <button class="ghost" id="theme">Theme</button>
@@ -501,6 +525,7 @@ async function boot() {
     ? 'updated ' + new Date(GENERATED).toLocaleString([], {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'})
     : '';
   renderStats();
+  renderMovers();
   render();
 }
 
@@ -1154,6 +1179,70 @@ async function wireCard(root, e, id) {
 }
 
 /* ---------------- views ---------------- */
+
+/* The biggest recent drops, newest window first. Falls back to a longer one
+   rather than showing an empty strip: on a quiet hour nothing has moved in
+   two, but something usually has in a day, and the label says which.
+
+   $10 is the floor for calling something a drop -- a dollar or two off an $80
+   ticket is a seller relisting, not news, and a banner that cries wolf gets
+   ignored. Nothing qualifying means no banner at all. */
+const MOVER_MIN_DROP = 10;
+const MOVER_WINDOWS = [['change2h', 'last 2h'], ['change24', 'last 24h'],
+                       ['change7d', 'last 7d']];
+let moverIdx = 0, moverTimer = null;
+
+function moverList() {
+  for (const [field, label] of MOVER_WINDOWS) {
+    const rows = ORDER.map(evOf)
+      .filter(e => e.status === 'active' && (e.current?.[field] ?? 0) <= -MOVER_MIN_DROP)
+      .sort((a, b) => a.current[field] - b.current[field])
+      .slice(0, 5);
+    if (rows.length) return {rows, field, label};
+  }
+  return null;
+}
+
+function renderMovers() {
+  const host = $('#movers');
+  const m = moverList();
+  if (!m) { host.classList.add('hide'); return; }
+  host.classList.remove('hide');
+  if (moverIdx >= m.rows.length) moverIdx = 0;
+  const e = m.rows[moverIdx];
+  const c = e.current, drop = c[m.field];
+  const pct = c.floor != null && c.floor - drop ? drop / (c.floor - drop) : null;
+
+  host.innerHTML = `<span class="lbl">Biggest drop · ${esc(m.label)}</span>
+    <button class="mv" data-slug="${esc(e.slug)}">
+      ${imgOf(e) ? `<img src="${esc(imgOf(e))}" alt="" decoding="async">` : ''}
+      <span class="nm">${esc(e.name || e.slug)}</span>
+      <span class="amt down">${delta(drop)}${pct ? ` (${Math.round(pct * 100)}%)` : ''}</span>
+      <span class="ctx">now ${money(c.floor)}${
+        c.primary != null ? ` · fair ${money(c.primary)}` : ''}</span>
+    </button>
+    ${m.rows.length > 1 ? `<span class="dots">${m.rows.map((_, i) =>
+      `<button data-i="${i}" aria-current="${i === moverIdx}"
+        aria-label="Mover ${i + 1} of ${m.rows.length}"></button>`).join('')}</span>` : ''}`;
+
+  $('.mv', host).onclick = () => openEvent(e.slug);
+  $$('.dots button', host).forEach(b => b.onclick = () => {
+    moverIdx = +b.dataset.i; scheduleMovers(); renderMovers();
+  });
+  host.onmouseenter = () => clearTimeout(moverTimer);
+  host.onmouseleave = scheduleMovers;
+  if (m.rows.length > 1) scheduleMovers();
+}
+
+function scheduleMovers() {
+  clearTimeout(moverTimer);
+  moverTimer = setTimeout(() => {
+    const m = moverList();
+    if (!m) return;
+    moverIdx = (moverIdx + 1) % m.rows.length;
+    renderMovers();
+  }, 6000);
+}
 
 function renderStats() {
   const all = ORDER.map(evOf), act = all.filter(e => e.status === 'active');

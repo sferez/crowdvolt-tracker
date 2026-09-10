@@ -319,6 +319,10 @@ class Store:
         bid_now = _bid_of(h, floor_cat)
         bidders_now = bidders_now or None
         e["current"] = {"floor": floor, "tickets": tickets, "cats": cats,
+                        # short windows are only meaningful now that every
+                        # event is read every hour
+                        "change1h": _change(h, 1),
+                        "change2h": _change(h, 2),
                         "change24": _change(h, 24),
                         # meaningful now that every event is read every hour;
                         # under the old tiers a distant event had no reading

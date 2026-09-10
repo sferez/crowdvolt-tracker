@@ -266,6 +266,15 @@ the seven leading palette slots, everything else folds into a neutral "other" �
 the map is built once from every tracked event, so filtering never repaints the
 genres that survive it. The chips above the calendar and list are the filter.
 
+A **top movers** strip sits above the views: the five biggest price drops,
+one at a time, rotating every six seconds and pausing on hover so a row can
+actually be read and clicked — clicking opens that event. It looks at the last
+2 hours first and falls back to 24 hours, then 7 days, labelling which window
+it is showing rather than pretending a day-old move is fresh. Only drops of
+**$10 or more** qualify: a dollar or two off an $80 ticket is a seller
+relisting, not news, and a banner that cries wolf gets ignored. Nothing
+qualifying means no banner at all.
+
 There is also a **Deals** tab: every event currently priced below fair value,
 best first, showing both the percentage and the dollar saving — $20 off a $40
 ticket and off a $400 one are very different claims. It states plainly when a
