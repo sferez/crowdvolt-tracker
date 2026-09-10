@@ -212,6 +212,67 @@ button.statlink { font:inherit; background:none; border:0; padding:0;
    one only takes over when there is no banner to push against. */
 .movers.hide ~ #profile { margin-left:auto; }
 
+/* the bell carries its own count, so it needs a corner to hang it in */
+#bell { position:relative; align-self:center; flex:none; }
+#bell.lit { color:var(--crit); border-color:var(--crit); }
+#bell .dot { position:absolute; top:-5px; right:-5px; min-width:14px; height:14px;
+             padding:0 3px; border-radius:999px; background:var(--crit);
+             color:#fff; font:650 9.5px/14px inherit; font-style:normal;
+             text-align:center; }
+/* .movers claims the free space; the first thing after it must not claim it
+   too, or two auto margins split the gap and the banner floats inward */
+.movers.hide ~ #bell { margin-left:auto; }
+
+/* "≤ $95" says what the control does without a legend. Unset it is the same
+   shape with the number missing, which reads as an invitation. */
+.abtn { font:600 11px/1 inherit; padding:3px 5px; margin-left:7px;
+        border-radius:6px; cursor:pointer; vertical-align:1px;
+        color:var(--muted); background:var(--wash);
+        border:1px dashed var(--border); }
+.abtn:hover { color:var(--ink); border-style:solid; }
+.abtn.on { color:var(--good); border:1px solid var(--good); background:transparent; }
+.aedit { display:inline-flex; align-items:center; gap:1px; margin-left:7px;
+         padding:2px 5px; border-radius:6px; vertical-align:1px;
+         border:1px solid var(--good); background:var(--surface); }
+.aedit .pre { font:600 11px/1 inherit; color:var(--good); }
+.aedit input { width:52px; border:0; outline:none; background:transparent;
+               color:var(--ink); font:600 12px/1 inherit; padding:1px 0; }
+/* the arrows would be a third of the field's width */
+.aedit input::-webkit-outer-spin-button,
+.aedit input::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+
+.notebox { margin:10px 0 2px; }
+.notebox input { width:100%; box-sizing:border-box; padding:8px 11px;
+                 border:1px solid var(--border); border-radius:9px;
+                 background:var(--wash); color:var(--ink); font:inherit;
+                 font-size:13px; }
+.notebox input:focus { outline:none; border-color:var(--axis);
+                       background:var(--surface); }
+.nmark { font-style:normal; color:var(--muted); margin-left:6px; cursor:help; }
+
+/* the tray: two lists of the same shaped row -- what it is on the left, what
+   the number is on the right */
+#tray { width:min(520px,92vw); }
+.tsec { margin:14px 0 5px; font-size:11px; letter-spacing:.04em;
+        text-transform:uppercase; font-weight:700; }
+.settings h3.second { margin-top:22px; padding-top:16px;
+                      border-top:1px solid var(--border); }
+.trow { display:flex; align-items:center; gap:12px; width:100%; text-align:left;
+        padding:8px 10px; margin:0 -10px; border:0; border-radius:9px;
+        background:transparent; color:var(--ink); font:inherit; cursor:pointer; }
+.trow:hover { background:var(--wash); }
+.trow .tl { flex:1 1 auto; min-width:0; }
+.trow .tr { flex:none; text-align:right; }
+.trow b { font-weight:650; font-size:13px; display:block;
+          overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.trow .c { display:block; color:var(--muted); font-size:11.5px;
+           overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.trow.hit { background:color-mix(in srgb, var(--good) 9%, transparent); }
+.trow.hit:hover { background:color-mix(in srgb, var(--good) 16%, transparent); }
+.trow.dim { opacity:.6; }
+/* inside prose the control is a picture of itself, not a button */
+.settings .abtn { cursor:default; margin:0 1px; }
+
 #settings { width:min(430px,92vw); }
 .settings { padding:20px; }
 .settings h3 { margin:0 0 14px; font-size:15px; }
@@ -524,8 +585,10 @@ dialog .card { border:0; margin:0; background:transparent; }
      the banner for one wrapping line and lands wherever the three widths
      happen to fall; the corner is where it belongs and this is the only way
      to say so. The header's padding keeps the stats clear of it. */
-  header { position:relative; padding-right:62px; }
+  header { position:relative; padding-right:104px; }
   #profile { position:absolute; top:11px; right:16px; margin:0; }
+  #bell { position:absolute; top:11px; right:58px; margin:0; width:36px;
+          height:36px; }
   .spacer { display:none; }
   #theme { order:1; }
   .stats { order:2; }
@@ -586,6 +649,7 @@ dialog .card { border:0; margin:0; background:transparent; }
     <div class="stats" id="stats"></div>
   </div>
   <div id="movers" class="movers hide" aria-live="polite"></div>
+  <button id="bell" class="ghost icon" aria-label="Alerts and what changed"></button>
   <button id="profile" aria-label="Your settings"></button>
 </header>
 
@@ -635,6 +699,8 @@ dialog .card { border:0; margin:0; background:transparent; }
 <dialog id="modal"><button class="ghost close" id="modalClose">Close</button>
   <div id="modalBody"></div>
 </dialog>
+
+<dialog id="tray"><div class="settings" id="trayBody"></div></dialog>
 
 <dialog id="settings"><div class="settings" id="settingsBody"></div></dialog>
 
@@ -744,6 +810,151 @@ function toggleFav(slug, cat) {
   saveFavs();
 }
 
+/* ---------------- notes, alerts, and what moved while you were away -------
+
+   Three more things kept in this browser. Each is a plain object under its own
+   key, read once at boot and written on every change: none of it is big enough
+   to be worth batching, and a note lost to a crash is worse than a redundant
+   write. */
+
+const NOTE_KEY = 'cv.notes.v1';
+const ALERT_KEY = 'cv.alerts.v1';
+const SEEN_KEY = 'cv.seen.v1';
+let NOTES = {}, ALERTS = {};
+
+function readStore(key) {
+  try {
+    const v = JSON.parse(localStorage.getItem(key) || '{}');
+    return v && typeof v === 'object' ? v : {};
+  } catch (e) { return {}; }
+}
+function writeStore(key, val) {
+  try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {}
+}
+
+const noteOf = slug => NOTES[slug] || '';
+
+function setNote(slug, text) {
+  text = String(text || '').trim().slice(0, 280);
+  if (text) NOTES[slug] = text; else delete NOTES[slug];
+  writeStore(NOTE_KEY, NOTES);
+}
+
+/* An alert is a ceiling on one ticket category: notify me when this can be had
+   for this or less. Per category rather than per event because the event floor
+   is whatever tier happens to be cheapest, which is not the ticket you want. */
+const alertsOf = slug => ALERTS[slug] || {};
+const alertFor = (slug, cat) => alertsOf(slug)[cat];
+
+function setAlert(slug, cat, target) {
+  const t = Number(target);
+  if (!Number.isFinite(t) || t <= 0) {
+    if (ALERTS[slug]) {
+      delete ALERTS[slug][cat];
+      if (!Object.keys(ALERTS[slug]).length) delete ALERTS[slug];
+    }
+  } else {
+    (ALERTS[slug] = ALERTS[slug] || {})[cat] = Math.round(t);
+  }
+  writeStore(ALERT_KEY, ALERTS);
+}
+
+const alertCount = () =>
+  Object.values(ALERTS).reduce((n, m) => n + Object.keys(m).length, 0);
+
+/* Every alert, resolved against what the board says now.
+
+   `state` is the whole point: a target is met, or waiting, or unanswerable
+   because the category stopped being listed or the event stopped being
+   tracked. An alert is never quietly dropped for any of those -- it is the
+   user's, and silently deleting their data to keep a list tidy is not a
+   trade this page gets to make. */
+function alertRows() {
+  const out = [];
+  Object.entries(ALERTS).forEach(([slug, cats]) => {
+    Object.entries(cats).forEach(([cat, target]) => {
+      const e = INDEX[slug] && evOf(slug);
+      if (!e) { out.push({slug, cat, target, state: 'gone', e: null}); return; }
+      const c = (e.current?.cats || []).find(x => x.name === cat);
+      const ask = c ? c.ask : null;
+      const state = e.status !== 'active' ? 'retired'
+                  : !c ? 'unlisted'
+                  : ask == null ? 'noask'
+                  : ask <= target ? 'hit' : 'waiting';
+      out.push({slug, cat, target, ask, qty: c ? c.qty : null, state, e});
+    });
+  });
+  // met first, then the closest to being met, so the list is ordered by how
+  // much it wants your attention
+  const rank = {hit: 0, waiting: 1, noask: 2, unlisted: 3, retired: 4, gone: 5};
+  return out.sort((a, b) => rank[a.state] - rank[b.state]
+    || (a.ask ?? Infinity) - a.target - ((b.ask ?? Infinity) - b.target));
+}
+
+const alertsHit = () => alertRows().filter(r => r.state === 'hit');
+
+/* ---- what changed since your last visit ----
+
+   Two snapshots, not one. Rotating on every load would mean the first reload
+   after a three-day gap replaced the three-day-old baseline with one from
+   thirty seconds ago, wiping the very deltas you had just opened the page to
+   read. `prev` is the visit before this one and is what gets compared; `cur`
+   only becomes `prev` once a real gap has passed. */
+const VISIT_GAP_MS = 30 * 60 * 1000;
+let SEEN_BASE = null;                 // slug -> [value, pinnedCat] as last seen
+
+function snapPrices() {
+  const rows = {};
+  ORDER.forEach(slug => {
+    const e = evOf(slug);
+    if (e.status !== 'active') return;
+    const w = rowView(e);
+    if (w.floor != null) rows[slug] = [w.floor, w.pinned || null];
+  });
+  return rows;
+}
+
+/* Called once, from boot, after the index is in. Never from the poll: a
+   refresh is the same visit continuing. */
+function rollVisit() {
+  const st = readStore(SEEN_KEY);
+  const now = Date.now();
+  const cur = st.cur && st.cur.rows ? st.cur : null;
+  const prev = st.prev && st.prev.rows ? st.prev : null;
+  SEEN_BASE = prev ? prev.rows : null;
+  if (!cur) {                                   // first ever visit
+    writeStore(SEEN_KEY, {prev: null, cur: {at: now, rows: snapPrices()}});
+    return;
+  }
+  if (now - (cur.at || 0) < VISIT_GAP_MS) return;   // still the same visit
+  writeStore(SEEN_KEY, {prev: cur, cur: {at: now, rows: snapPrices()}});
+  SEEN_BASE = cur.rows;
+}
+
+/* Only movements worth reading. Everything on the board drifts over three
+   days, so a favourite always counts and anything else has to clear the same
+   bar the movers banner uses. */
+function movedSince() {
+  if (!SEEN_BASE) return [];
+  const out = [];
+  ORDER.forEach(slug => {
+    const was = SEEN_BASE[slug];
+    if (!was) return;
+    const e = evOf(slug);
+    if (e.status !== 'active') return;
+    const w = rowView(e);
+    if (w.floor == null) return;
+    // a pin changed since then compares two different tickets, so it does not
+    // get compared at all
+    if ((was[1] || null) !== (w.pinned || null)) return;
+    const d = w.floor - was[0];
+    if (!d) return;
+    if (!isFav(slug) && Math.abs(d) < MOVER_MIN_DROP) return;
+    out.push({e, slug, was: was[0], now: w.floor, d, pinned: w.pinned});
+  });
+  return out.sort((a, b) => Math.abs(b.d) - Math.abs(a.d));
+}
+
 /* The numbers a row should show: the favourited category's if there is one and
    it is still listed, otherwise the event's own. `pinned` says which happened,
    so a row showing GA can say so rather than mislabelling it "floor".
@@ -840,9 +1051,15 @@ async function boot() {
   ORDER = Object.keys(INDEX);
   buildGenres();
   loadFavs();
+  NOTES = readStore(NOTE_KEY);
+  ALERTS = readStore(ALERT_KEY);
+  // after loadFavs: the snapshot records the number each row was showing, and
+  // a pinned category is what a pinned row shows
+  rollVisit();
   renderTabs();
   renderStats();
   renderMovers();
+  renderBell();
   render();
 }
 
@@ -1320,6 +1537,33 @@ function fairNote(fv) {
 /* One row per resale category: the chart's legend, the fair-value comparison
    and the category filter in a single small table. A row is a button -- click
    to isolate that category, click again for all of them back. */
+/* A line of your own about the event. Only in the modal: an editable field on
+   each of a hundred and seventy cards is a lot of page for something you write
+   once, and the marker in the list is enough to say a note exists. */
+function noteBox(e) {
+  const n = noteOf(e.slug);
+  return `<div class="notebox"><input id="noteFor" type="text" maxlength="280"
+    value="${esc(n)}" data-note="${esc(e.slug)}"
+    placeholder="Add a note — only you will see it"
+    aria-label="Your note about this event"></div>`;
+}
+
+function wireNote(root = document) {
+  const i = $('[data-note]', root);
+  if (!i) return;
+  const save = () => {
+    const before = noteOf(i.dataset.note);
+    setNote(i.dataset.note, i.value);
+    // only repaint when the marker in the list would actually change
+    if (!before !== !noteOf(i.dataset.note)) render();
+  };
+  i.onkeydown = ev => {
+    ev.stopPropagation();
+    if (ev.key === 'Enter') { ev.preventDefault(); i.blur(); }
+  };
+  i.onblur = save;
+}
+
 function catTable(e) {
   const cats = e.current?.cats || [];
   if (!cats.length) return '';
@@ -1348,7 +1592,7 @@ function catTable(e) {
       aria-pressed="${on}"${!picked || on ? '' : ' data-off="1"'}
       title="${on ? 'Show all categories' : 'Show only ' + esc(c.name)}">
       <td class="l nm">${star}<i class="swatch" style="background:${
-        pal[i % pal.length]}"></i>${esc(c.name)}</td>
+        pal[i % pal.length]}"></i>${esc(c.name)}${alertBtn(e.slug, c.name)}</td>
       <td>${c.ask == null ? '—' : money(c.ask)}</td>
       <td${cls ? ` class="${cls}"` : ''}${notes.length ? ` title="${esc(notes.join(' · '))}"` : ''}>${face}</td>
       <td class="d ${!d ? '' : d > 0 ? 'up' : 'down'}"${d ? ` title="${
@@ -1432,6 +1676,17 @@ function sourceLinks(e) {
 
 const STAR_ON = '★', STAR_OFF = '☆';
 
+/* "at or below this" as the control's own label, rather than a bell that has
+   to be learnt. Unset it is an empty ceiling you can click and fill in. */
+function alertBtn(slug, cat) {
+  const t = alertFor(slug, cat);
+  return `<button class="abtn${t != null ? ' on' : ''}" data-alert="${esc(slug)}"
+    data-acat="${esc(cat)}" title="${esc(t != null
+      ? `Alert set: tell me when ${cat} is ${money(t)} or less — click to change`
+      : `Alert me when ${cat} drops to a price I set`)}"
+    >≤&thinsp;${t != null ? esc(money(t)) : '$'}</button>`;
+}
+
 function favBtn(slug, cat, extra = '') {
   const on = cat === undefined ? isFav(slug) : favCat(slug) === cat;
   const what = cat === undefined ? 'this event'
@@ -1440,6 +1695,57 @@ function favBtn(slug, cat, extra = '') {
     ${cat === undefined ? '' : `data-favcat="${esc(cat)}"`}
     aria-pressed="${on}" title="${esc(on ? `Remove ${what}` : `Favourite ${what}`)}"
     >${on ? STAR_ON : STAR_OFF}</button>`;
+}
+
+/* The editor opens inside a <tr role="button" tabindex="0"> that answers
+   click, Enter and Space by re-rendering the whole modal -- which would throw
+   away the input mid-type. Every key and click inside the editor therefore
+   stops where it is. */
+function wireAlerts(root = document) {
+  $$('[data-alert]', root).forEach(b => {
+    b.onclick = ev => { ev.stopPropagation(); openAlertEditor(b); };
+    b.onkeydown = ev => ev.stopPropagation();
+  });
+}
+
+function openAlertEditor(btn) {
+  const slug = btn.dataset.alert, cat = btn.dataset.acat;
+  const cur = alertFor(slug, cat);
+  const e = INDEX[slug] && evOf(slug);
+  const ask = ((e && e.current?.cats) || []).find(x => x.name === cat)?.ask;
+  const box = document.createElement('span');
+  box.className = 'aedit';
+  box.innerHTML = `<span class="pre">≤&thinsp;$</span><input type="number" min="1"
+    step="1" inputmode="numeric" value="${cur != null ? cur : ''}"
+    placeholder="${ask != null ? Math.max(1, Math.floor(ask * 0.9)) : ''}"
+    aria-label="Alert me at or below this price">`;
+  btn.replaceWith(box);
+  const input = $('input', box);
+  const restore = () => {
+    const fresh = document.createElement('span');
+    fresh.innerHTML = alertBtn(slug, cat);
+    box.replaceWith(fresh.firstElementChild);
+    wireAlerts(fresh.parentElement || document);
+  };
+  const commit = () => {
+    if (done) return;
+    done = true;
+    setAlert(slug, cat, input.value);
+    renderBell();
+    restore();
+    wireAlerts(document);
+  };
+  let done = false;
+  ['click', 'keyup'].forEach(t => box.addEventListener(t, ev => ev.stopPropagation()));
+  input.onkeydown = ev => {
+    ev.stopPropagation();
+    if (ev.key === 'Enter') { ev.preventDefault(); commit(); }
+    // Escape leaves whatever was already stored alone
+    if (ev.key === 'Escape') { done = true; restore(); wireAlerts(document); }
+  };
+  input.onblur = commit;
+  input.focus();
+  input.select();
 }
 
 /* One handler for every star on the page, so a new one cannot be forgotten. */
@@ -1512,6 +1818,7 @@ function cardShell(e, id) {
       <div class="meta">${esc(where)}${where && e.doors ? '<span class="sep">·</span>' : ''}${esc(e.doors || '')}</div>
       <div class="pills">${pinPill(w)}${pills}</div>${tagRow}
     </div></div>
+    ${id === 'modal' ? noteBox(e) : ''}
     ${catTable(e)}${id === 'modal' ? tierLadder(e) : ''}
     <div class="wrap price"><canvas id="c-${id}"></canvas></div>
     <div class="axisnote"><span>Best ask, all-in</span><span class="rt">Right: tickets available</span></div>`;
@@ -1542,6 +1849,10 @@ async function wireCard(root, e, id) {
     $$('.qtag[hidden]', root).forEach(t => t.hidden = false);
     more.remove();
   };
+  // for the same reason: typing a note has nothing to do with the chart's
+  // history, and the early return below would skip them altogether
+  wireAlerts(root);
+  wireNote(root);
   // the canvas this call set out to draw on. The modal is one long-lived
   // element that gets rewritten, so a second open while this one is still
   // waiting on its history leaves the first drawing onto a canvas that is no
@@ -1836,8 +2147,13 @@ const cellIn = e => {
   return `<td class="l">${days == null ? '' : days < 0 ? 'past'
     : days === 0 ? 'today' : days + 'd'}</td>`;
 };
+// the note itself rides in the tooltip: a marker that only says "there is a
+// note" makes you open the event to find out what you told yourself
+const noteMark = e => noteOf(e.slug)
+  ? `<i class="nmark" title="${esc(noteOf(e.slug))}">✎</i>` : '';
 const cellName = e => `<td class="l ev" title="${esc(e.name || e.slug)}">${favBtn(e.slug)}${
-    thumb(e, 'lthumb')}${esc(e.name || e.slug)}${signal(e)}${pinTag(rowView(e))}</td>`;
+    thumb(e, 'lthumb')}${esc(e.name || e.slug)}${signal(e)}${pinTag(rowView(e))}${
+    noteMark(e)}</td>`;
 const cellVsSale = e => {
   const vs = vsSale(e), c = e.current || {}, w = rowView(e);
   // a dash where a sale exists but cannot be attributed is not "no data", and
@@ -2043,6 +2359,89 @@ function chartToolbar() {
   </div>`;
 }
 
+const BELL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+  stroke-linecap="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
+  <path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>`;
+
+/* The count is how many alerts are met *right now*, not how many have ever
+   fired. For an hourly price feed that is the more useful question -- a target
+   that was met at 3am and is not any more is not something to go and act on --
+   and it means the badge needs no read/unread state to get out of step. */
+function renderBell() {
+  const n = alertsHit().length, b = $('#bell');
+  b.innerHTML = BELL + (n ? `<i class="dot">${n}</i>` : '');
+  b.classList.toggle('lit', n > 0);
+  const moved = movedSince().length;
+  b.title = [n ? `${n} price alert${n === 1 ? '' : 's'} met` : 'No alerts met',
+             moved ? `${moved} event${moved === 1 ? '' : 's'} moved since your last visit` : '']
+    .filter(Boolean).join(' · ');
+}
+
+const ALERT_WHY = {
+  waiting: r => `now ${money(r.ask)}`,
+  hit: r => `now ${money(r.ask)}${r.qty ? ` · ${r.qty} left` : ''}`,
+  noask: () => 'nothing listed right now',
+  unlisted: () => 'this category is no longer listed',
+  retired: () => 'no longer tracked',
+  gone: () => 'no longer tracked',
+};
+
+function trayRow(cls, slug, left, right) {
+  return `<button class="trow ${cls}" data-open="${esc(slug)}">
+    <span class="tl">${left}</span><span class="tr">${right}</span></button>`;
+}
+
+function renderTray() {
+  const rows = alertRows(), hit = rows.filter(r => r.state === 'hit');
+  const rest = rows.filter(r => r.state !== 'hit');
+  const moved = movedSince(), shown = moved.slice(0, 15);
+
+  const alertList = !rows.length
+    ? `<p class="note">No alerts yet. Open an event and click the
+       <span class="abtn on">≤&thinsp;$</span> beside a ticket category to be told
+       when it reaches a price you name.</p>`
+    : (hit.length
+        ? `<p class="sub tsec">Met now</p>` + hit.map(r => trayRow('hit', r.slug,
+            `<b>${esc(r.e.name || r.slug)}</b><span class="c">${esc(r.cat)}</span>`,
+            `<b class="down">${money(r.ask)}</b><span class="c">your target ${
+              money(r.target)}</span>`)).join('')
+        : '')
+      + (rest.length
+        ? `<p class="sub tsec">Watching</p>` + rest.map(r => trayRow(
+            r.state === 'waiting' ? '' : 'dim', r.slug,
+            `<b>${esc(r.e ? (r.e.name || r.slug) : r.slug)}</b><span class="c">${
+              esc(r.cat)}</span>`,
+            `<span>≤&thinsp;${money(r.target)}</span><span class="c">${
+              esc(ALERT_WHY[r.state](r))}</span>`)).join('')
+        : '');
+
+  const movedList = !SEEN_BASE
+    ? `<p class="note">Nothing to compare yet — come back after a few hours and
+       this will say what moved while you were away.</p>`
+    : !moved.length
+    ? `<p class="note">Nothing worth reporting has moved since your last visit.</p>`
+    : shown.map(m => trayRow('', m.slug,
+        `<b>${esc(m.e.name || m.slug)}</b>${m.pinned
+          ? `<span class="c">${esc(m.pinned)}</span>` : ''}`,
+        `<b class="${m.d > 0 ? 'up' : 'down'}">${delta(m.d)}</b><span class="c">${
+          money(m.was)} → ${money(m.now)}</span>`)).join('')
+      + (moved.length > shown.length
+        ? `<p class="note">…and ${moved.length - shown.length} more.</p>` : '');
+
+  $('#trayBody').innerHTML = `
+    <h3>Price alerts</h3>${alertList}
+    <h3 class="second">Since your last visit</h3>${movedList}
+    <div class="btnrow"><button class="ghost" id="trayClose">Close</button></div>`;
+
+  $('#trayClose').onclick = () => $('#tray').close();
+  $$('#trayBody [data-open]').forEach(b => b.onclick = () => {
+    const slug = b.dataset.open;
+    if (!INDEX[slug]) return;
+    $('#tray').close();
+    openEvent(slug);
+  });
+}
+
 /* Everything the page remembers about you, in one place. Read it as the
    answer to "what does this thing know" -- which is: three preferences, all
    of them in this browser's own storage. */
@@ -2073,6 +2472,15 @@ function renderSettings() {
       <div class="prefrow"><span class="k">Favourites</span>
         <span class="v">${n ? `<button class="linkish" id="goFavs">${esc(favText)}</button>`
                             : esc(favText)}</span></div>
+      <div class="prefrow"><span class="k">Price alerts</span>
+        <span class="v">${alertCount()
+          ? `<button class="linkish" id="goAlerts">${alertCount()} set</button>`
+          : 'none set'}</span></div>
+      <div class="prefrow"><span class="k">Notes</span>
+        <span class="v">${Object.keys(NOTES).length
+          ? `on ${Object.keys(NOTES).length} event${
+              Object.keys(NOTES).length === 1 ? '' : 's'}`
+          : 'none written'}</span></div>
     </div>
     <div class="btnrow"><button class="ghost" id="settingsClose">Close</button></div>`;
   wireSegments();
@@ -2081,6 +2489,11 @@ function renderSettings() {
   if (go) go.onclick = () => {
     $('#settings').close();
     setTab('favs'); render();
+  };
+  const ga = $('#goAlerts');
+  if (ga) ga.onclick = () => {
+    $('#settings').close();
+    renderTray(); $('#tray').showModal();
   };
 }
 
@@ -2251,6 +2664,10 @@ function paintProfile() {
   b.style.color = d.hue;
   b.style.border = `1px solid ${d.hue}59`;
 }
+$('#bell').onclick = () => { renderTray(); $('#tray').showModal(); };
+$('#tray').addEventListener('click', e => {
+  if (e.target === e.currentTarget) e.currentTarget.close();
+});
 $('#profile').onclick = () => { renderSettings(); $('#settings').showModal(); };
 $('#settings').addEventListener('click', e => {
   if (e.target === e.currentTarget) e.currentTarget.close();
@@ -2313,6 +2730,10 @@ async function refresh() {
     buildGenres();
     renderStats();
     renderMovers();
+    // a target crossed while the tab sits open should light the bell without
+    // a reload. The visit baseline is deliberately not touched: a poll is the
+    // same visit continuing, not a new one
+    renderBell();
     render();
   } catch (e) { /* a failed poll is not worth breaking the page over */ }
 }
