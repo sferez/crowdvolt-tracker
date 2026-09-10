@@ -263,7 +263,11 @@ yet is never mistaken for sold out. Retired events keep their history — tick
   read as interchangeable when they sit in one flat row.
 - **Charts** — a card per event, fetched and drawn as you scroll.
 
-**Genre** comes from the artists on the bill. The seven most common genres take
+**Genre** comes from the artists on the bill, folded into eight groups.
+CrowdVolt's artists carry 96 distinct genres and 62 of them appear exactly
+once — that is a long tail, not a taxonomy, and filtering on the literal string
+scattered one scene across chips nobody would click. `house` and `House` were
+two of them. The event itself still lists every genre it has. The seven most common genres take
 the seven leading palette slots, everything else folds into a neutral "other" —
 the map is built once from every tracked event, so filtering never repaints the
 genres that survive it. The chips above the calendar and list are the filter.

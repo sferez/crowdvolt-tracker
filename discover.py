@@ -328,6 +328,45 @@ def norm_genre(g):
     return _GENRE_TYPOS.get(g, g)
 
 
+# CrowdVolt's artists carry 96 distinct genres, 62 of which appear exactly
+# once. That is a long tail, not a taxonomy: it splits one scene across chips
+# nobody would think to click. These fold it into eight groups -- the number of
+# colours the palette can keep distinguishable for a colourblind reader, so the
+# ceiling is a real one rather than a preference.
+#
+# Order matters: the first pattern that matches wins, so the specific families
+# ("tech house", "melodic techno") are tested before the broad ones.
+GENRE_GROUPS = [
+    ("tech house", r"tech house|deep tech|afro tech|\btech\b"),
+    ("techno",     r"techno|hard ?groove|\bminimal\b"),
+    ("house",      r"house|disco"),
+    ("bass",       r"dubstep|riddim|drum and bass|\bdnb\b|neurofunk|deathstep|"
+                   r"bass music|melodic bass|experimental bass|festival bass|"
+                   r"future bass|\btrap\b|bassline"),
+    ("garage",     r"garage"),
+    ("trance",     r"trance|hard ?style|hardcore|hard bounce|\brave\b|"
+                   r"eurodance|\bebm\b|industrial"),
+    # electronic is tested BEFORE edm so that "indie dance" is read as indie
+    # rather than as dance -- the bare word is doing too much work otherwise
+    ("electronic",   r"electro|breakbeat|breaks|indie|electronica|downtempo|"
+                     r"organic|chill|\bnu disco\b|experimental|ambient"),
+    # festival-scale dance music, kept apart from that broader tail: breakbeat
+    # and downtempo are not what anyone means by EDM
+    ("edm festival", r"\bedm\b|big room|festival|\bdance\b|hard bounce"),
+]
+
+
+def genre_group(genre):
+    """The broad scene a genre belongs to, or None if it has no genre."""
+    if not genre:
+        return None
+    g = norm_genre(genre)
+    for name, pattern in GENRE_GROUPS:
+        if re.search(pattern, g):
+            return name
+    return "other"
+
+
 def enrich_genres(st):
     """Genre lives on the artist page, so read each artist once and hang the
     result on every event they play."""
@@ -360,9 +399,20 @@ def enrich_genres(st):
                 listeners = max(listeners or 0, a["monthly_listeners"])
         if genres:
             e["genres"] = genres
+            # the chips, colours and filters all key off this one field
+            e["genre_group"] = genre_group(genres[0])
             tagged += 1
         if listeners:
             e["monthly_listeners"] = listeners
+    # normalise what is already stored too: an event whose artist never made it
+    # into the cache keeps whatever it was first tagged with, which is how one
+    # "Dubstep" survived a pass that folded every other spelling
+    for e in st.events.values():
+        g = [norm_genre(x) for x in (e.get("genres") or [])]
+        if g:
+            e["genres"] = list(dict.fromkeys(g))
+            e["genre_group"] = genre_group(g[0])
+
     print(f"{tagged} event(s) tagged with a genre")
     return tagged
 

@@ -721,7 +721,12 @@ async function history(slug) {
 
 const evOf = slug => ({slug, ...INDEX[slug]});
 const imgOf = e => e.img_blob || e.img || null;
-const genreOf = e => (e.genres && e.genres[0]) || null;
+/* Chips, colours and filters key off the broad group, not the raw genre.
+   CrowdVolt's artists carry 96 distinct genres and 62 appear exactly once, so
+   filtering on the literal string scatters one scene across chips nobody would
+   click. The full list still shows on the event itself. */
+const genreOf = e => e.genre_group || ((e.genres && e.genres[0]) || null);
+const genresFull = e => e.genres || [];
 /* "GA (2-Day Access)" will not fit a calendar cell; the tooltip carries the
    full name. */
 const shortCat = n => {
