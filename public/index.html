@@ -373,9 +373,8 @@ td.ew i { font-style:normal; font-size:9.5px; color:var(--muted); margin-left:5p
 .tiers tbody tr.gone { opacity:.55; }
 .tiers tbody tr.gone .nm, .tiers tbody tr.gone .pr { text-decoration:line-through; }
 .wrap { position:relative; height:320px; }
-.wrap.qty { display:none; height:150px; }
-.split .wrap.price { height:220px; }
-.split .wrap.qty { display:block; }
+/* the right-hand axis only exists when the supply bars are on */
+body:not(.supply) .axisnote .rt { display:none; }
 .axisnote { color:var(--muted); font-size:12px; margin:6px 2px 0;
             display:flex; justify-content:space-between; }
 details { margin-top:10px; border-top:1px solid var(--border); padding-top:8px; }
@@ -429,7 +428,6 @@ dialog .card { border:0; margin:0; background:transparent; }
   label.chk { padding:6px 0; }
   .head img { width:46px; height:46px; }
   .wrap { height:260px; }
-  .split .wrap.price { height:190px; }
   /* the modal's data table scrolls sideways instead of squashing */
   details table { display:block; overflow-x:auto; white-space:nowrap; max-width:100%; }
   dialog { width:100vw; max-width:100vw; max-height:100dvh; height:100dvh;
@@ -501,8 +499,8 @@ dialog .card { border:0; margin:0; background:transparent; }
     <button data-range="0" aria-pressed="true">All</button>
   </span>
   <span class="chartctl seg" role="group" aria-label="Chart layout">
-    <button data-view="combined" aria-pressed="true">Combined</button>
-    <button data-view="split" aria-pressed="false">Split axes</button>
+    <button data-view="ask" aria-pressed="true">Price only</button>
+    <button data-view="both" aria-pressed="false">+ ticket supply</button>
   </span>
   <div class="spacer"></div>
   <label class="chk"><input type="checkbox" id="showRetired">
@@ -643,7 +641,9 @@ const pinPill = w => w.pinned
 let GENRE_SLOT = {}, GENRE_RANK = [];   // genre -> palette slot, computed once
 const pickedGenres = new Set();
 const HIST = {};                    // slug -> history, fetched on demand
-let tab = 'calendar', range = 0, view = 'combined';
+// The bars are the noisiest thing on the plot and the only reason a second
+// axis exists, so the chart opens on price alone and supply is asked for.
+let tab = 'calendar', range = 0, view = 'ask';
 let showRetired = false, query = '';
 const listSort = {key: 'date', dir: 1};
 const dealSort = {key: 'vsfpct', dir: 1};   // deepest discount first
@@ -953,7 +953,7 @@ function fairSets(e, series, fair, n) {
     // history, and otherwise its own level, flat -- never somebody else's shape
     const data = fairTracks(e, s.name, fair) ? fair : new Array(n).fill(val);
     return {
-      type: 'line', label: `${s.name} — ${FAIR}`, data,
+      type: 'line', label: `${s.name} — ${FAIR}`, endLabel: false, data,
       borderColor: pal[s.idx % pal.length], backgroundColor: pal[s.idx % pal.length],
       borderWidth: 1.5, borderDash: [5, 4], tension: 0, spanGaps: true,
       pointRadius: data.filter(v => v != null).length === 1 ? 3 : 0,
@@ -977,19 +977,18 @@ function fairTracks(e, cat, fair) {
 
 function datasets(series, kind) {
   const pal = colors(), hue = s => pal[s.idx % pal.length], out = [];
-  if (kind !== 'qty-only') series.forEach(s => out.push({
-    type:'line', label: s.name + ' — ask', data: s.ask,
+  series.forEach(s => out.push({
+    type:'line', label: s.name + ' — ask', endLabelText: s.name, data: s.ask,
     borderColor: hue(s), backgroundColor: hue(s), borderWidth: 2,
     pointRadius: 0, pointHoverRadius: 5, tension: .25, spanGaps: true,
     yAxisID: 'y', order: 1,
   }));
-  if (kind !== 'ask-only') series.forEach(s => out.push({
+  if (kind === 'both') series.forEach(s => out.push({
     type:'bar', label: s.name + ' — tickets', data: s.qty,
-    backgroundColor: hue(s) + (kind === 'qty-only' ? 'cc' : '2b'),
-    borderColor: hue(s) + (kind === 'qty-only' ? 'cc' : '45'),
+    backgroundColor: hue(s) + '2b', borderColor: hue(s) + '45',
     borderWidth: 1, borderRadius: 3, borderSkipped: false,
     categoryPercentage: .8, barPercentage: .9,
-    yAxisID: kind === 'qty-only' ? 'y' : 'y1', order: 2,
+    yAxisID: 'y1', order: 2,
   }));
   return out;
 }
@@ -1008,6 +1007,57 @@ function priceBounds(series, extra) {
           max: Math.ceil((hi + pad) / 5) * 5};
 }
 
+/* Names the lines where they end, instead of in a legend.
+
+   A legend makes the eye travel to a key and back for every line; a label at
+   the end of the line is read in place. It also means identity never rests on
+   colour alone, which a legend beside a colour swatch does.
+
+   Labels are nudged apart when two lines finish close together, and the plot
+   reserves right-hand room for them so nothing is clipped. */
+function labelPlugin() {
+  return {
+    id: 'endLabels',
+    afterDatasetsDraw(chart, _args, opts) {
+      const {ctx, chartArea} = chart;
+      const placed = [];
+      ctx.save();
+      ctx.font = `600 ${isPhone() ? 10 : 11}px ${getComputedStyle(document.body).fontFamily}`;
+      ctx.textBaseline = 'middle';
+      chart.data.datasets.forEach((ds, i) => {
+        if (ds.type !== 'line' || ds.endLabel === false) return;
+        const meta = chart.getDatasetMeta(i);
+        if (meta.hidden) return;
+        // the last point that actually has a value: a series can end in nulls
+        const pts = meta.data.filter((p, j) => ds.data[j] != null);
+        const last = pts[pts.length - 1];
+        if (!last) return;
+        let y = last.y;
+        while (placed.some(p => Math.abs(p - y) < 13)) y += 13;
+        y = Math.min(Math.max(y, chartArea.top + 7), chartArea.bottom - 7);
+        placed.push(y);
+        // the supply bars bring a right-hand axis, which sits between the
+        // plot and the labels -- start past it or the two overprint
+        const x = chartArea.right + (chart.scales.y1 ? chart.scales.y1.width : 0) + 7;
+        const room = chart.width - x - 5;
+        // trim to the room actually reserved rather than hoping it fits:
+        // "General Admission" overruns, and a clipped label is worse than an
+        // elided one because you cannot tell it has been cut
+        let text = ds.endLabelText || ds.label || '';
+        if (ctx.measureText(text).width > room) {
+          while (text.length > 1 && ctx.measureText(text + '…').width > room) {
+            text = text.slice(0, -1);
+          }
+          text += '…';
+        }
+        ctx.fillStyle = ds.borderColor;
+        ctx.fillText(text, x, y);
+      });
+      ctx.restore();
+    },
+  };
+}
+
 function options(kind, bounds) {
   // on a phone the plot is barely 300px wide: two rotated axis titles would
   // cost a fifth of it, and the note under the chart already says which side
@@ -1020,15 +1070,17 @@ function options(kind, bounds) {
                            color: css('--muted'), font: {size: 11}});
   const scales = {
     x: {grid: {...grid, display: false}, border: {color: css('--axis')},
-        ticks: {...ticks, display: kind !== 'ask-only'}},
+        // always shown: this used to be the upper panel of a split pair, where
+        // the lower one carried the dates. It is the only chart now.
+        ticks},
     y: {
       position:'left', grid, border: {display: false},
       // the price axis sits just below the floor rather than at zero: a $6
       // move on a $90 ticket is the whole story and a $0 baseline flattens it.
       // A count of tickets is a different quantity and does start at zero.
-      ...(kind === 'qty-only' ? {beginAtZero: true} : bounds || {}),
-      ticks: {...ticks, callback: v => kind === 'qty-only' ? v : '$' + v},
-      title: axisTitle(kind === 'qty-only' ? 'Tickets available' : 'Best ask, all-in'),
+      ...(bounds || {}),
+      ticks: {...ticks, callback: v => '$' + v},
+      title: axisTitle('Best ask, all-in'),
     },
   };
   if (kind === 'both') scales.y1 = {
@@ -1038,14 +1090,14 @@ function options(kind, bounds) {
   };
   return {
     responsive: true, maintainAspectRatio: false, animation: false,
+    // room for the names that sit past the last point
+    layout: {padding: {right: tight ? 74 : 118}},
     interaction: {mode: 'index', intersect: false}, scales,
     plugins: {
       // the category table is the legend now -- its swatch is the series
       // colour -- so the price chart does not need a second one
-      legend: {display: kind === 'qty-only',
-        labels: {color: css('--ink-2'), boxWidth: 10, boxHeight: 10, usePointStyle: true,
-                 font: {size: tight ? 11 : 12}, padding: tight ? 10 : 16,
-                 filter: it => !it.text.endsWith('— tickets') || kind === 'qty-only'}},
+      // every line names itself where it ends, so there is no key to consult
+      legend: {display: false},
       tooltip: {
         backgroundColor: css('--surface'), titleColor: css('--ink'), bodyColor: css('--ink-2'),
         borderColor: css('--border'), borderWidth: 1, padding: 10, boxPadding: 4,
@@ -1307,8 +1359,7 @@ function cardShell(e, id) {
     </div></div>
     ${catTable(e)}${id === 'modal' ? tierLadder(e) : ''}
     <div class="wrap price"><canvas id="c-${id}"></canvas></div>
-    <div class="wrap qty"><canvas id="q-${id}"></canvas></div>
-    <div class="axisnote"><span>Left: best ask (all-in)</span><span>Right: tickets available</span></div>
+    <div class="axisnote"><span>Best ask, all-in</span><span class="rt">Right: tickets available</span></div>
     <details class="tbl"><summary>Data table</summary><div></div></details>`;
 }
 
@@ -1355,7 +1406,7 @@ async function wireCard(root, e, id) {
     const s = d.series.find(x => x.name === row.dataset.cat), sw = $('.swatch', row);
     if (s && sw) sw.style.background = pal[s.idx % pal.length];
   });
-  const combined = view === 'combined';
+  const withBars = view === 'both';
   const c = $(`#c-${id}`, root);
   if (!c || c !== canvas) return;    // superseded while the fetch was in flight
   // plenty of events are tracked before anything is ever listed on them. An
@@ -1367,7 +1418,7 @@ async function wireCard(root, e, id) {
       ? 'Nothing listed yet — no asks and no tickets in any reading so far.'
       : 'No readings yet.'}</span>`;
   } else {
-    const sets = datasets(series, combined ? 'both' : 'ask-only');
+    const sets = datasets(series, withBars ? 'both' : 'ask-only');
     // two categories is four lines and readable; five would be ten and a mess.
     // Counted over the categories that actually drew an ask line, not every one
     // the history has ever seen -- and isolating a category leaves exactly one.
@@ -1379,14 +1430,11 @@ async function wireCard(root, e, id) {
     const withFair = fairs.length > 0;
     charts.push(new Chart(free(c), {
       data: {labels: d.labels, datasets: sets},
-      options: options(combined ? 'both' : 'ask-only',
+      options: options(withBars ? 'both' : 'ask-only',
                        priceBounds(series, fairs.flatMap(f => f.data))),
+      plugins: [labelPlugin()],
     }));
-    if (!combined) charts.push(new Chart(free($(`#q-${id}`, root)), {
-      data: {labels: d.labels, datasets: datasets(series, 'qty-only')},
-      options: options('qty-only'),
-    }));
-    $('.axisnote', root).style.display = combined ? 'flex' : 'none';
+    $('.axisnote', root).style.display = withBars ? 'flex' : 'none';
     // there is no chart legend any more, so the dashed line says its own name
     if (withFair) $('.axisnote span:last-child', root)
       .insertAdjacentHTML('beforebegin', `<span>Dashed: ${FAIR}</span>`);
@@ -1836,7 +1884,7 @@ function chartToolbar() {
       (attr === 'data-view' && view === v)}">${t}</button>`).join('') + '</span>';
   return `<div class="modalctl">
     ${seg('data-range', [['24','24h'],['168','7d'],['0','All']])}
-    ${seg('data-view', [['combined','Combined'],['split','Split axes']])}
+    ${seg('data-view', [['ask','Price only'],['both','+ ticket supply']])}
   </div>`;
 }
 
@@ -1880,7 +1928,7 @@ function renderFavs() {
 
 function render() {
   charts.splice(0).forEach(c => c.destroy());
-  document.body.classList.toggle('split', view === 'split');
+  document.body.classList.toggle('supply', view === 'both');
   document.body.classList.toggle('tab-calendar', tab === 'calendar');
   document.body.classList.toggle('tab-list', tab === 'list' || tab === 'deals');
   ['favs','calendar','list','deals','charts'].forEach(t => {
