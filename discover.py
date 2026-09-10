@@ -314,6 +314,20 @@ def refresh_primary(st, now, eventbrite=False):
     return changed
 
 
+# CrowdVolt's artist pages spell the same genre several ways -- "house" and
+# "House", "UK garage", "UK-garage" and "uk garage" -- and the dashboard
+# filters on the literal string, so a house chip counted 13 events while three
+# more sat under a separate "House" chip. Fold them before storing.
+_GENRE_TYPOS = {"techo": "techno", "pregressive house": "progressive house",
+                "pregressive breaks": "progressive breaks"}
+
+
+def norm_genre(g):
+    g = re.sub(r"\s+", " ", (g or "").strip().lower().replace("-", " ")
+               .replace("&", "and"))
+    return _GENRE_TYPOS.get(g, g)
+
+
 def enrich_genres(st):
     """Genre lives on the artist page, so read each artist once and hang the
     result on every event they play."""
@@ -339,7 +353,8 @@ def enrich_genres(st):
         for p in e.get("performers") or []:
             a = cache.get(p.get("slug")) or {}
             for g in a.get("genres") or []:
-                if g not in genres:
+                g = norm_genre(g)
+                if g and g not in genres:
                     genres.append(g)
             if a.get("monthly_listeners"):
                 listeners = max(listeners or 0, a["monthly_listeners"])
