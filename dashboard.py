@@ -789,6 +789,19 @@ const shortCat = n => {
    A signal marked `badge` stands on its own and takes the calendar's
    right-hand slot outright, where the arrows share it with the amount. Flagged
    rather than listed by name, so a new signal cannot be forgotten there. */
+/* The flame is a claim about a price against its own history, so it needs
+   three things: to be at the low, enough readings for "the low" to mean
+   anything, and a week that actually fell — being at a low you have sat at all
+   week is not news.
+
+   One predicate because the card's pill and the calendar's badge had drifted:
+   the pill omitted the falling-week test, so a card could show a flame the
+   calendar did not. Both now ask the same question of the same numbers, and a
+   pinned category answers it on its own merits. */
+function atWeekLow(w) {
+  return !!(w.at_low && w.readings > 3 && (w.change7d ?? 0) < 0);
+}
+
 function signalOf(e) {
   // A pinned category has to answer these questions about itself: an event
   // whose cheapest tier is a bargain says nothing about the VIP you pinned.
@@ -808,10 +821,7 @@ function signalOf(e) {
     icon: '⚡', cls: 'down', badge: true, title: dealTitle(w, under)};
   if (under != null && under < 0) return {
     icon: '★', cls: 'down', badge: true, title: dealTitle(w, under)};
-  // the flame is a floor-against-its-own-history claim. A category now keeps
-  // its own low, its own reading count and its own week, so a pinned row earns
-  // it on the pinned category's merits, on exactly the same thresholds
-  if (w.at_low && w.readings > 3 && (w.change7d ?? 0) < 0) return {
+  if (atWeekLow(w)) return {
     icon: '🔥', cls: 'down', badge: true, title: `${
       w.pinned ? w.pinned + ': ' : ''}cheapest in 7 days (${money(w.floor)})`};
   if (pct != null && pct <= -0.03) return {
@@ -1302,7 +1312,7 @@ function cardShell(e, id) {
      category and more precisely, and the ladder's summary carries the face
      value. A pill repeating either would be the same number twice. */
   const pills = [
-    w.at_low && w.readings > 3 && '🔥 cheapest in 7 days',
+    atWeekLow(w) && '🔥 cheapest in 7 days',
     c.last_sale != null && (saleKnown(e)
       ? `last sale ${money(c.last_sale)}`
       : [`last sale ${money(c.last_sale)} · event-wide`, SALE_VAGUE]),
