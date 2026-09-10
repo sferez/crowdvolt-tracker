@@ -308,6 +308,10 @@ button.statlink { font:inherit; background:none; border:0; padding:0;
 .cal .evt .pr { flex:none; min-width:26px; text-align:right; }
 .cal .evt .mv { flex:none; font-style:normal; font-size:10.5px; min-width:26px;
                 text-align:right; font-variant-numeric:tabular-nums; }
+/* badge and amount travel together, tighter than the cell's own 5px gap, so
+   they read as one annotation on the price rather than two columns */
+.cal .evt .mvbox { display:flex; align-items:center; gap:2px; flex:none; }
+.cal .evt .sig { font-size:9.5px; margin:0; flex:none; line-height:1; }
 
 /* list */
 table { border-collapse:collapse; width:100%; font-size:13px; font-variant-numeric:tabular-nums; }
@@ -380,6 +384,7 @@ tbody tr:hover { background:var(--wash); }
 /* the agenda's price line is one nowrap run at 500px; letting it wrap is
    cheaper than letting a venue name push the page sideways */
 .agenda .evt .pr { white-space:normal; }
+.agenda .evt .mv { font-style:normal; font-variant-numeric:tabular-nums; }
 /* the pinned-category tag: the row is showing GA, not the floor, and says so */
 .pin { font-size:10.5px; color:var(--muted); border:1px solid var(--border);
        border-radius:4px; padding:1px 5px; margin-left:6px; white-space:nowrap; }
@@ -1133,6 +1138,14 @@ function signalOf(e) {
     icon: '+', cls: 'up', title: `up ${money(d)} recently`};
   return null;
 }
+/* Only the badges -- the deal, the star, the week low. The bare -/+ signals
+   say nothing an amount beside them does not say better, so anywhere the
+   amount is shown they would just be the same fact twice. */
+const badgeSignal = e => {
+  const s = signalOf(e);
+  return s && s.badge
+    ? `<span class="sig ${s.cls}" title="${esc(s.title)}">${s.icon}</span>` : '';
+};
 const signal = e => {
   const s = signalOf(e);
   return s ? `<span class="sig ${s.cls}" title="${esc(s.title)}">${s.icon}</span>` : '';
@@ -1143,16 +1156,21 @@ const signal = e => {
    printing a dash in every cell; the flame still outranks a plain arrow. The
    element is always emitted, empty or not, so the prices beside it stay in a
    column. */
+/* The badge and the amount answer different questions -- "is this worth a
+   look" and "what has it done today" -- so a cell carries both. The badge used
+   to stand in for the number, which meant the events most worth looking at
+   were the only ones whose movement you could not see.
+
+   The empty <em> when nothing moved is deliberate: it holds the column open
+   so the prices above and below it still line up. */
 function move24(e) {
   const s = signalOf(e), d = Math.round(rowView(e).change24 ?? 0);
-  let cls = '', txt = '', tip = '';
-  if (s && s.badge) { cls = s.cls; txt = s.icon; tip = s.title; }
-  else if (d) {
-    cls = d > 0 ? 'up' : 'down';
-    txt = (d > 0 ? '+' : '−') + money(Math.abs(d));
-    tip = (d > 0 ? 'up ' : 'down ') + money(Math.abs(d)) + ' in the last 24h';
-  }
-  return `<em class="mv ${cls}"${tip ? ` title="${esc(tip)}"` : ''}>${txt}</em>`;
+  const badge = s && s.badge
+    ? `<i class="sig ${s.cls}" title="${esc(s.title)}">${s.icon}</i>` : '';
+  if (!d) return `<span class="mvbox">${badge}<em class="mv"></em></span>`;
+  const tip = (d > 0 ? 'up ' : 'down ') + money(Math.abs(d)) + ' in the last 24h';
+  return `<span class="mvbox">${badge}<em class="mv ${d > 0 ? 'up' : 'down'}"
+    title="${esc(tip)}">${(d > 0 ? '+' : '−') + money(Math.abs(d))}</em></span>`;
 }
 
 /* The genre -> colour map is built once, from every tracked event, so that
@@ -2011,6 +2029,14 @@ function fitCalendar() {
     '--calh', Math.max(380, Math.floor(innerHeight - top - gap)) + 'px');
 }
 
+/* The same amount the grid shows, inline: the agenda is the calendar on a
+   phone, so it owes the same number rather than the badge alone. */
+function agendaMove(e) {
+  const d = Math.round(rowView(e).change24 ?? 0);
+  return d ? ` <em class="mv ${d > 0 ? 'up' : 'down'}">${
+    (d > 0 ? '+' : '−') + money(Math.abs(d))}</em>` : '';
+}
+
 function renderAgenda(host) {
   const rows = visible().filter(e => eventDate(e))
     .sort((a, b) => (a.starts_ts || 0) - (b.starts_ts || 0));
@@ -2027,8 +2053,8 @@ function renderAgenda(host) {
       list.map(e => `<button class="evt${e.status === 'active' ? '' : ' done'}"
         data-slug="${esc(e.slug)}" style="border-left-color:${genreColor(genreOf(e))}">
         <span class="nm">${thumb(e, 'thumb')}${esc(e.name || e.slug)}</span>
-        <span class="pr">${signal(e)}${floorOf(e) == null ? 'no asks' : money(floorOf(e))}${
-          pinTag(rowView(e), true)} · ${
+        <span class="pr">${badgeSignal(e)}${floorOf(e) == null ? 'no asks' : money(floorOf(e))}${
+          pinTag(rowView(e), true)}${agendaMove(e)} · ${
           ticketsOf(e)} tix${e.venue ? ' · ' + esc(e.venue) : ''}</span>
       </button>`).join('');
   }).join('');
