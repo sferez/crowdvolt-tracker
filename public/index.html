@@ -6,6 +6,15 @@
 <title>CrowdVolt NYC Tracker</title>
 <meta name="description" content="Best ask and ticket availability per category for New York events, hourly.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🎟️</text></svg>">
+<!-- Ahead of the stylesheet on purpose: a remembered theme applied after
+     first paint is a visible flash of the other one. Validated, not trusted,
+     and silent if storage is unavailable. -->
+<script>
+try {
+  var t = localStorage.getItem('cv.theme.v1');
+  if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+} catch (e) {}
+</script>
 <script src="vendor/chart.umd.min.js"></script>
 <style>
 :root {
@@ -138,10 +147,47 @@ button.statlink { font:inherit; background:none; border:0; padding:0;
                        border:0; background:var(--axis); cursor:pointer; }
 .movers .dots button[aria-current="true"] { background:var(--ink-2); }
 @media (max-width:820px) {
-  /* full width under the title rather than squeezed beside it */
-  .movers { flex:1 1 100%; }
+  /* full width under the title rather than squeezed beside it. The base rule
+     caps it at 58% and pushes it right to keep it off the brand, neither of
+     which applies once it has a line to itself. */
+  .movers { flex:1 1 100%; max-width:none; margin-left:0; }
   .movers .ctx { display:none; }
 }
+
+/* the device badge: an identity the page invents for this browser, which is
+   the honest picture -- there is no account, and nothing here follows you */
+#profile { align-self:center; flex:none; width:32px; height:32px; padding:0;
+           border-radius:50%; font:650 11px/1 inherit; letter-spacing:.02em;
+           cursor:pointer; display:inline-flex; align-items:center;
+           justify-content:center; }
+#profile:hover { filter:brightness(1.06); }
+/* .movers already claims the free space with margin-left:auto. A second auto
+   margin here would split it and float the banner into the middle, so this
+   one only takes over when there is no banner to push against. */
+.movers.hide ~ #profile { margin-left:auto; }
+
+#settings { width:min(430px,92vw); }
+.settings { padding:20px; }
+.settings h3 { margin:0 0 14px; font-size:15px; }
+.who { display:flex; align-items:center; gap:11px; margin-bottom:12px; }
+.who .av { width:38px; height:38px; border-radius:50%; flex:none;
+           display:inline-flex; align-items:center; justify-content:center;
+           font:650 13px/1 inherit; }
+.who b { display:block; font-size:14px; font-weight:650; }
+.settings .note { color:var(--muted); font-size:12.5px; line-height:1.5;
+                  margin:0 0 16px; }
+.prefs { display:flex; flex-direction:column; gap:12px; }
+/* label left, control right, and the control keeps its size when the label
+   is the longer of the two */
+.prefrow { display:flex; align-items:center; gap:12px; }
+.prefrow .k { flex:1 1 auto; font-size:13px; color:var(--ink-2); }
+.prefrow .seg, .prefrow .v { flex:none; }
+.prefrow .v { font-size:12.5px; color:var(--muted); }
+.prefrow .seg button { font-size:12px; padding:5px 9px; }
+.linkish { background:none; border:0; padding:0; font:inherit; cursor:pointer;
+           color:var(--ink-2); text-decoration:underline dotted;
+           text-underline-offset:3px; }
+.linkish:hover { color:var(--ink); }
 
 /* genre legend + filter */
 .genres { display:flex; flex-wrap:wrap; gap:5px; margin:0 0 10px; }
@@ -428,6 +474,12 @@ dialog .card { border:0; margin:0; background:transparent; }
      timestamp trails them -- rather than Theme drifting beside the timestamp */
   header { padding:12px 16px 8px; gap:3px 10px; align-items:center; }
   .brand { flex:1 1 auto; }
+  /* Taken out of the flow here. In it, the badge competes with the brand and
+     the banner for one wrapping line and lands wherever the three widths
+     happen to fall; the corner is where it belongs and this is the only way
+     to say so. The header's padding keeps the stats clear of it. */
+  header { position:relative; padding-right:62px; }
+  #profile { position:absolute; top:11px; right:16px; margin:0; }
   .spacer { display:none; }
   #theme { order:1; }
   .stats { order:2; }
@@ -441,6 +493,7 @@ dialog .card { border:0; margin:0; background:transparent; }
   .search.open { flex:1 1 100%; }
   label.chk { order:100; }                          /* below the search field */
   .seg button, .ghost { padding:8px 13px; }        /* fat-finger targets */
+  #profile { width:36px; height:36px; }
   .gchip { padding:7px 12px 7px 10px; }
   label.chk { padding:6px 0; }
   .head img { width:46px; height:46px; }
@@ -487,6 +540,7 @@ dialog .card { border:0; margin:0; background:transparent; }
     <div class="stats" id="stats"></div>
   </div>
   <div id="movers" class="movers hide" aria-live="polite"></div>
+  <button id="profile" aria-label="Your settings"></button>
 </header>
 
 <div class="controls">
@@ -535,6 +589,8 @@ dialog .card { border:0; margin:0; background:transparent; }
 <dialog id="modal"><button class="ghost close" id="modalClose">Close</button>
   <div id="modalBody"></div>
 </dialog>
+
+<dialog id="settings"><div class="settings" id="settingsBody"></div></dialog>
 
 <dialog id="contact"><div class="contact">
   <h3>Contact</h3>
@@ -587,6 +643,37 @@ let INDEX = {}, ORDER = [], GENERATED = null, RECENT = {};
    event, or one of its ticket categories: pick GA and every view that would
    have shown you the event floor shows GA instead, because a $20 early-bird
    tier is not the answer to "what does GA cost". */
+/* An identity for this browser, invented on first visit and kept with the
+   rest of the preferences. It exists to make the one thing worth
+   understanding about all of this visible rather than merely stated: open the
+   tracker somewhere else and it is a different name, because it is a
+   different, empty set of settings. */
+const DEVICE_KEY = 'cv.device.v1';
+const D_ADJ = ['Amber','Cobalt','Crimson','Emerald','Golden','Indigo',
+               'Ivory','Jade','Onyx','Rust','Slate','Violet'];
+const D_NOUN = ['Fox','Heron','Lynx','Magpie','Marten','Otter',
+                'Owl','Panther','Raven','Shrike','Stoat','Wolf'];
+
+function deviceId() {
+  let v;
+  try { v = localStorage.getItem(DEVICE_KEY); } catch (e) {}
+  if (!/^\d+$/.test(v || '')) {
+    v = String(Math.floor(Math.random() * 1e9));
+    try { localStorage.setItem(DEVICE_KEY, v); } catch (e) {}
+  }
+  return +v;
+}
+
+function device() {
+  const n = deviceId(), pal = colors();
+  const adj = D_ADJ[n % D_ADJ.length];
+  // a second, coarser slice of the same number, so the two words do not move
+  // in lockstep and neighbouring ids do not read as near-duplicates
+  const noun = D_NOUN[Math.floor(n / D_ADJ.length) % D_NOUN.length];
+  return {name: `${adj} ${noun}`, mono: adj[0] + noun[0],
+          hue: pal[Math.floor(n / (D_ADJ.length * D_NOUN.length)) % pal.length]};
+}
+
 const FAV_KEY = 'cv.favs.v1';
 let FAVS = {};
 
@@ -1895,15 +1982,60 @@ function renderCharts() {
   });
 }
 
+/* Buttons carrying the attribute wireSegments() binds by, so a set built here
+   stays in step with the one in the header without being told about it. */
+function segHTML(attr, opts, cur) {
+  return '<span class="seg" role="group">' + opts.map(([v, t]) =>
+    `<button ${attr}="${v}" aria-pressed="${String(cur) === String(v)}">${t}</button>`
+  ).join('') + '</span>';
+}
+
 function chartToolbar() {
-  const seg = (attr, opts) => '<span class="seg" role="group">' + opts.map(([v, t]) =>
-    `<button ${attr}="${v}" aria-pressed="${
-      (attr === 'data-range' && range === +v) ||
-      (attr === 'data-view' && view === v)}">${t}</button>`).join('') + '</span>';
   return `<div class="modalctl">
-    ${seg('data-range', [['24','24h'],['168','7d'],['0','All']])}
-    ${seg('data-view', [['ask','Price only'],['both','+ ticket supply']])}
+    ${segHTML('data-range', [['24','24h'],['168','7d'],['0','All']], range)}
+    ${segHTML('data-view', [['ask','Price only'],['both','+ ticket supply']], view)}
   </div>`;
+}
+
+/* Everything the page remembers about you, in one place. Read it as the
+   answer to "what does this thing know" -- which is: three preferences, all
+   of them in this browser's own storage. */
+function renderSettings() {
+  const d = device(), n = Object.keys(FAVS).length;
+  const pinned = Object.values(FAVS).filter(Boolean).length;
+  const favText = !n ? 'none yet'
+    : `${n} event${n === 1 ? '' : 's'}`
+      + (pinned ? `, ${pinned} pinned to a category` : '');
+  $('#settingsBody').innerHTML = `
+    <h3>Your settings</h3>
+    <div class="who">
+      <span class="av" style="background:${d.hue}26;color:${d.hue};
+            border:1px solid ${d.hue}59">${esc(d.mono)}</span>
+      <div><b>${esc(d.name)}</b>
+        <span class="sub">this browser's name for itself</span></div>
+    </div>
+    <p class="note">Everything below lives in this browser only. There is no
+      account: open the tracker on your phone or in another browser and it
+      starts fresh, under a different name, with none of this carried over.</p>
+    <div class="prefs">
+      <div class="prefrow"><span class="k">Theme</span>
+        ${segHTML('data-theme-pref',
+                  [['','System'],['light','Light'],['dark','Dark']], themePref())}</div>
+      <div class="prefrow"><span class="k">Charts open on</span>
+        ${segHTML('data-view',
+                  [['ask','Price only'],['both','+ supply']], view)}</div>
+      <div class="prefrow"><span class="k">Favourites</span>
+        <span class="v">${n ? `<button class="linkish" id="goFavs">${esc(favText)}</button>`
+                            : esc(favText)}</span></div>
+    </div>
+    <div class="btnrow"><button class="ghost" id="settingsClose">Close</button></div>`;
+  wireSegments();
+  $('#settingsClose').onclick = () => $('#settings').close();
+  const go = $('#goFavs');
+  if (go) go.onclick = () => {
+    $('#settings').close();
+    setTab('favs'); render();
+  };
 }
 
 function openEvent(slug) {
@@ -1972,6 +2104,7 @@ const SEGMENTS = {
     view = v;
     try { localStorage.setItem(VIEW_KEY, v); } catch (e) {}
   },
+  'data-theme-pref': v => applyTheme(v),
 };
 function wireSegments() {
   // the modal renders its own copy of the chart controls; both sets share the
@@ -2035,13 +2168,48 @@ function paintTheme() {
   const b = $('#theme');
   b.innerHTML = isDark() ? SUN : MOON;
   b.title = isDark() ? 'Switch to light' : 'Switch to dark';
+  paintProfile();
+  if ($('#settings').open) renderSettings();
 }
 
-$('#theme').onclick = () => {
-  document.documentElement.dataset.theme = isDark() ? 'light' : 'dark';
+/* The icon is a two-state switch -- whatever you are looking at, the other
+   one. Choosing "follow the system" is a third state, so it lives in the
+   settings panel rather than in a one-button cycle nobody can predict. */
+const THEME_KEY = 'cv.theme.v1';
+
+function applyTheme(t) {
+  document.documentElement.dataset.theme = t || '';
+  try {
+    if (t) localStorage.setItem(THEME_KEY, t);
+    else localStorage.removeItem(THEME_KEY);   // absent = follow the system
+  } catch (e) {}
   paintTheme();
-  render();
+}
+// wireSegments() renders for itself, so the panel's control uses applyTheme
+// directly and only the icon needs this
+function setTheme(t) { applyTheme(t); render(); }
+const themePref = () => {
+  try {
+    const t = localStorage.getItem(THEME_KEY);
+    return t === 'light' || t === 'dark' ? t : '';
+  } catch (e) { return ''; }
 };
+
+$('#theme').onclick = () => setTheme(isDark() ? 'light' : 'dark');
+
+function paintProfile() {
+  const d = device(), b = $('#profile');
+  b.textContent = d.mono;
+  b.title = `Your settings · ${d.name}`;
+  b.style.background = d.hue + '26';
+  b.style.color = d.hue;
+  b.style.border = `1px solid ${d.hue}59`;
+}
+$('#profile').onclick = () => { renderSettings(); $('#settings').showModal(); };
+$('#settings').addEventListener('click', e => {
+  if (e.target === e.currentTarget) e.currentTarget.close();
+});
+paintProfile();
 paintTheme();
 $('#modalClose').onclick = () => $('#modal').close();
 /* the stats line is rewritten on every poll, so the Contact button in it is a
