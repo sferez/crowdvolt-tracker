@@ -533,16 +533,26 @@ def verify_turnstile(token, ip=None):
     except Exception:
         # fail closed: minutes of "posting unavailable" beat an open relay
         raise Busy("could not reach the challenge service")
+    # Three different failures, three different messages. They all said
+    # "challenge failed" once, and when a new domain was added in Cloudflare
+    # but not to TURNSTILE_HOSTS the symptom was indistinguishable from a bot
+    # being blocked -- which is the opposite of what was happening.
     if not out.get("success"):
-        raise Rejected("challenge failed")
+        codes = ", ".join(out.get("error-codes") or []) or "no reason given"
+        raise Rejected(f"challenge failed ({codes})")
     if out.get("action") not in (None, "chat"):
-        raise Rejected("challenge failed")
-    allowed = [h for h in (os.environ.get("TURNSTILE_HOSTS") or "").split(",") if h.strip()]
+        raise Rejected("challenge failed (unexpected action)")
+    allowed = [h.strip() for h in (os.environ.get("TURNSTILE_HOSTS") or "").split(",")
+               if h.strip()]
     host = out.get("hostname")
-    # without this, anyone can put your public site key on their own page and
-    # farm valid tokens for this endpoint
-    if allowed and host and host not in [h.strip() for h in allowed]:
-        raise Rejected("challenge failed")
+    # A second allowlist behind Cloudflare's own hostname management, so a
+    # site key configured to accept any host cannot be farmed from someone
+    # else's page. It is a separate list from the one in the Cloudflare
+    # dashboard, and a domain has to be added to both -- which the message
+    # now says outright, because adding it in one place and not the other is
+    # the obvious mistake.
+    if allowed and host and host not in allowed:
+        raise Rejected(f"this site is not in TURNSTILE_HOSTS ({host})")
 
 
 def is_admin(token):
