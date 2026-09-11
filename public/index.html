@@ -275,12 +275,6 @@ button.statlink { font:inherit; background:none; border:0; padding:0;
 .crow2 { display:flex; align-items:center; gap:10px; margin-top:8px; }
 .cerr { flex:1 1 auto; color:var(--crit); font-size:12px; }
 .crow2 .ghost { flex:none; }
-#modKey { width:150px; padding:4px 7px; border:1px solid var(--border);
-          border-radius:7px; background:var(--wash); color:var(--ink);
-          font:inherit; font-size:12px; }
-#modOk { font-style:normal; font-size:11.5px; margin-left:7px; }
-#modOk.good { color:var(--good); } #modOk.bad { color:var(--crit); }
-
 #settings { width:min(430px,92vw); }
 .settings { padding:20px; }
 .settings h3 { margin:0 0 14px; font-size:15px; }
@@ -842,6 +836,32 @@ let chatTimer = null;
 
 const modToken = () => { try { return localStorage.getItem(MOD_KEY) || ''; }
                          catch (e) { return ''; } };
+
+/* Moderation is a console affair on purpose. A password box in the settings
+   panel told every visitor there was an admin door and invited them to knock;
+   the token lives in this browser's storage instead, put there by hand:
+
+     cvMod('the-token')   store it, and say whether the server agrees
+     cvMod()              what is stored now, and whether it still works
+     cvMod(null)          forget it
+
+   The delete controls appear in chat once a token is stored. Whether it is
+   the right one is settled by the server, never here. */
+window.cvMod = async t => {
+  try {
+    if (t === null) { localStorage.removeItem(MOD_KEY); return 'forgotten'; }
+    if (t) localStorage.setItem(MOD_KEY, String(t).trim());
+  } catch (e) { return 'this browser will not store it'; }
+  const v = modToken();
+  if (!v) return 'nothing stored';
+  try {
+    const r = await fetch('/api/chat?op=auth',
+                          {headers: {'authorization': 'Bearer ' + v}});
+    if (r.ok && $('#chat').open) renderChat();
+    return r.ok ? 'verified — delete controls are on'
+                : 'the server does not recognise that token';
+  } catch (e) { return 'could not reach the server'; }
+};
 
 /* A 4-character discriminator, mirroring chatstore.tag_for exactly. Hashed
    rather than sliced off the id: 36^4 divides by 12*12, so the low base-36
@@ -2979,9 +2999,6 @@ function renderSettings() {
         <span class="v">${alertCount()
           ? `<button class="linkish" id="goAlerts">${alertCount()} set</button>`
           : 'none set'}</span></div>
-      ${CHAT_BASE ? `<div class="prefrow"><span class="k">Moderation</span>
-        <span class="v"><input type="password" id="modKey" placeholder="admin token"
-          value="${esc(modToken())}" autocomplete="off"><i id="modOk"></i></span></div>` : ''}
       <div class="prefrow"><span class="k">Notes</span>
         <span class="v">${Object.keys(NOTES).length
           ? `on ${Object.keys(NOTES).length} event${
@@ -3001,25 +3018,6 @@ function renderSettings() {
     $('#settings').close();
     renderTray(); $('#tray').showModal();
   };
-  const mk = $('#modKey');
-  if (mk) {
-    mk.onkeydown = ev => ev.stopPropagation();
-    mk.onchange = async () => {
-      const v = mk.value.trim();
-      try { v ? localStorage.setItem(MOD_KEY, v) : localStorage.removeItem(MOD_KEY); }
-      catch (e) {}
-      // checked the moment it is entered, rather than leaving you to find
-      // out from a delete that quietly does nothing
-      const ok = $('#modOk');
-      if (!v) { ok.textContent = ''; return; }
-      try {
-        const r = await fetch('/api/chat?op=auth',
-                              {headers: {'authorization': 'Bearer ' + v}});
-        ok.textContent = r.ok ? 'verified' : 'not recognised';
-        ok.className = r.ok ? 'good' : 'bad';
-      } catch (e) { ok.textContent = 'could not check'; ok.className = 'bad'; }
-    };
-  }
 }
 
 function openEvent(slug) {
