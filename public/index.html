@@ -174,17 +174,22 @@ button.statlink { font:inherit; background:none; border:0; padding:0;
 .tools { display:flex; align-items:center; gap:7px; flex:none; align-self:center; }
 .movers.hide ~ .tools { margin-left:auto; }
 
-/* same size and same shape as the badge beside it -- one neutral, one in the
-   device's colour */
-#bell { position:relative; width:32px; height:32px; border-radius:50%; }
+/* All three are the same 32px circle -- two neutral, one in the device's
+   colour. Grouped rather than repeated: styling #bell alone left the chat
+   bubble a rounded square from .ghost, with its unread count unstyled. */
+#bell, #chatBtn { position:relative; width:32px; height:32px; border-radius:50%; }
 /* the count is already a red dot; a red border as well competes with the
    banner's outline for the same attention */
-#bell.lit { color:var(--crit);
-            background:color-mix(in srgb, var(--crit) 12%, var(--surface)); }
-#bell .dot { position:absolute; top:-5px; right:-5px; min-width:14px; height:14px;
-             padding:0 3px; border-radius:999px; background:var(--crit);
-             color:#fff; font:650 9.5px/14px inherit; font-style:normal;
-             text-align:center; }
+#bell.lit, #chatBtn.lit {
+  color:var(--crit);
+  background:color-mix(in srgb, var(--crit) 12%, var(--surface));
+}
+#bell .dot, #chatBtn .dot {
+  position:absolute; top:-5px; right:-5px; min-width:14px; height:14px;
+  padding:0 3px; border-radius:999px; background:var(--crit);
+  color:#fff; font:650 9.5px/14px inherit; font-style:normal;
+  text-align:center;
+}
 /* "≤ $95" says what the control does without a legend. Unset it is the same
    shape with the number missing, which reads as an invitation. */
 .abtn { font:600 11px/1 inherit; padding:3px 5px; margin-left:7px;
@@ -598,9 +603,11 @@ dialog .card { border:0; margin:0; background:transparent; }
      the banner for one wrapping line and lands wherever the three widths
      happen to fall; the corner is where it belongs and this is the only way
      to say so. The header's padding keeps the stats clear of it. */
-  header { position:relative; padding-right:98px; }
+  /* three 36px buttons, two 6px gaps and the 16px margin: 136. Sized for two
+     it was 98, and the stats line ran under the cluster. */
+  header { position:relative; padding-right:140px; }
   .tools { position:absolute; top:10px; right:16px; margin:0; gap:6px; }
-  #bell, #profile { width:36px; height:36px; }
+  #bell, #chatBtn, #profile { width:36px; height:36px; }
   .spacer { display:none; }
   #theme { order:1; }
   .stats { order:2; }
@@ -614,7 +621,6 @@ dialog .card { border:0; margin:0; background:transparent; }
   .search.open { flex:1 1 100%; }
   label.chk { order:100; }                          /* below the search field */
   .seg button, .ghost { padding:8px 13px; }        /* fat-finger targets */
-  #profile { width:36px; height:36px; }
   .gchip { padding:7px 12px 7px 10px; }
   label.chk { padding:6px 0; }
   .head img { width:46px; height:46px; }
