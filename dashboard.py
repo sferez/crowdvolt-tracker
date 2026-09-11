@@ -16,6 +16,7 @@ available, right axis) on a shared hourly x-axis.
 import os
 from pathlib import Path
 
+import chatstore
 import r2
 
 HERE = Path(__file__).parent
@@ -42,6 +43,16 @@ def data_base():
         return override.rstrip("/") + "/"
     remote = r2.Remote()
     return remote.base + remote.prefix if remote.enabled else "data/"
+
+
+def chat_base():
+    """Where the page reads chat threads. Its own bucket, so the endpoint
+    that takes writes from the internet cannot reach the price data."""
+    override = os.environ.get("CHAT_BASE")
+    if override:
+        return override.rstrip("/") + "/"
+    remote = r2.Remote(prefix=chatstore.PREFIX, env="CHAT_")
+    return remote.base + remote.prefix if remote.enabled else ""
 
 
 HTML = r"""<!doctype html>
@@ -280,6 +291,52 @@ button.statlink { font:inherit; background:none; border:0; padding:0;
 .trow.dim { opacity:.6; }
 /* inside prose the control is a picture of itself, not a button */
 .settings .abtn { cursor:default; margin:0 1px; }
+
+#chat { width:min(560px,92vw); }
+.chat { margin-top:14px; border-top:1px solid var(--border); padding-top:10px; }
+.chat > summary { cursor:pointer; font-size:13px; color:var(--ink-2);
+                  font-weight:650; list-style:none; }
+.chat > summary::-webkit-details-marker { display:none; }
+.chat > summary::before { content:'▸'; margin-right:6px; color:var(--muted); }
+.chat[open] > summary::before { content:'▾'; }
+.chat > summary .n { color:var(--muted); font-weight:500; margin-left:2px; }
+.chat .note { margin:8px 0 10px; }
+/* a bounded, scrolling log: a long thread must not push the composer off
+   the bottom of a modal that is already tall */
+.clog { max-height:260px; overflow-y:auto; display:flex; flex-direction:column;
+        gap:10px; padding-right:4px; }
+.cmsg { font-size:13px; }
+.cwho { display:flex; align-items:baseline; gap:7px; }
+.cwho b { font-weight:650; font-size:12.5px; }
+/* the discriminator, because 144 names collide long before the ids do */
+.ctag { font-size:10px; color:var(--muted); font-variant-numeric:tabular-nums;
+        border:1px solid var(--border); border-radius:4px; padding:0 3px; }
+.cyou { font-size:10px; color:var(--good); border:1px solid var(--good);
+        border-radius:4px; padding:0 4px; }
+.cwhen { font-size:11px; color:var(--muted); margin-left:auto; }
+.cdel { background:none; border:0; cursor:pointer; color:var(--muted);
+        font-size:15px; line-height:1; padding:0 2px; }
+.cdel:hover { color:var(--crit); }
+/* pre-wrap, so the newlines someone typed survive -- and break-word, so a
+   200-character unbroken string cannot widen the dialog */
+.ctext { margin:2px 0 0; white-space:pre-wrap; overflow-wrap:anywhere;
+         line-height:1.45; }
+.cform { margin-top:12px; }
+.cform textarea { width:100%; box-sizing:border-box; resize:vertical;
+                  padding:8px 11px; border:1px solid var(--border);
+                  border-radius:9px; background:var(--wash); color:var(--ink);
+                  font:inherit; font-size:13px; }
+.cform textarea:focus { outline:none; border-color:var(--axis);
+                        background:var(--surface); }
+.cts:not(:empty) { margin-bottom:8px; }
+.crow2 { display:flex; align-items:center; gap:10px; margin-top:8px; }
+.cerr { flex:1 1 auto; color:var(--crit); font-size:12px; }
+.crow2 .ghost { flex:none; }
+#modKey { width:150px; padding:4px 7px; border:1px solid var(--border);
+          border-radius:7px; background:var(--wash); color:var(--ink);
+          font:inherit; font-size:12px; }
+#modOk { font-style:normal; font-size:11.5px; margin-left:7px; }
+#modOk.good { color:var(--good); } #modOk.bad { color:var(--crit); }
 
 #settings { width:min(430px,92vw); }
 .settings { padding:20px; }
@@ -668,6 +725,7 @@ dialog .card { border:0; margin:0; background:transparent; }
   </div>
   <div id="movers" class="movers hide" aria-live="polite"></div>
   <div class="tools">
+    <button id="chatBtn" class="ghost icon" aria-label="Chat"></button>
     <button id="bell" class="ghost icon" aria-label="Alerts and what changed"></button>
     <button id="profile" aria-label="Your settings"></button>
   </div>
@@ -720,6 +778,8 @@ dialog .card { border:0; margin:0; background:transparent; }
   <div id="modalBody"></div>
 </dialog>
 
+<dialog id="chat"><div class="settings" id="chatBody"></div></dialog>
+
 <dialog id="tray"><div class="settings" id="trayBody"></div></dialog>
 
 <dialog id="settings"><div class="settings" id="settingsBody"></div></dialog>
@@ -734,12 +794,24 @@ dialog .card { border:0; margin:0; background:transparent; }
 
 <script>
 const DATA_BASE = "__DATA_BASE__";
+const CHAT_BASE = "__CHAT_BASE__";
+/* Turnstile refuses a bare IP in Hostname Management, so a real site key can
+   never authorise 127.0.0.1 and local development would always see error
+   110200. Cloudflare publishes dummy keys that pass on any hostname for
+   exactly this; the real key is used everywhere else. Chosen at runtime
+   rather than at build time so the committed page always carries the
+   production key and cannot be shipped with a test one by accident. */
+const LOCAL = ['127.0.0.1', 'localhost', '0.0.0.0'].includes(location.hostname);
+const TURNSTILE_KEY = LOCAL ? '1x00000000000000000000AA' : "__TURNSTILE_KEY__";
 const LIGHT = __SERIES_LIGHT__, DARK = __SERIES_DARK__;
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-const esc = t => String(t ?? '').replace(/[&<>"]/g, c =>
-  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// ' is escaped too. Every attribute in this page is double-quoted, so it was
+// not needed -- but chat is the first text one visitor writes and another
+// reads, and that invariant is not something to make it depend on.
+const esc = t => String(t ?? '').replace(/[&<>"']/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const isDark = () => document.documentElement.dataset.theme === 'dark' ||
   (document.documentElement.dataset.theme !== 'light' &&
    matchMedia('(prefers-color-scheme: dark)').matches);
@@ -781,10 +853,10 @@ let INDEX = {}, ORDER = [], GENERATED = null, RECENT = {};
    tracker somewhere else and it is a different name, because it is a
    different, empty set of settings. */
 const DEVICE_KEY = 'cv.device.v1';
-const D_ADJ = ['Amber','Cobalt','Crimson','Emerald','Golden','Indigo',
-               'Ivory','Jade','Onyx','Rust','Slate','Violet'];
-const D_NOUN = ['Fox','Heron','Lynx','Magpie','Marten','Otter',
-                'Owl','Panther','Raven','Shrike','Stoat','Wolf'];
+// baked in from chatstore.ADJ/NOUN so the page and the server cannot drift:
+// if they did, every message from a browser on the newer list would be
+// rejected as a bad name, which nobody finds until a stranger complains
+const D_ADJ = __D_ADJ__, D_NOUN = __D_NOUN__;
 
 function deviceId() {
   let v;
@@ -804,6 +876,378 @@ function device() {
   const noun = D_NOUN[Math.floor(n / D_ADJ.length) % D_NOUN.length];
   return {name: `${adj} ${noun}`, mono: adj[0] + noun[0],
           hue: pal[Math.floor(n / (D_ADJ.length * D_NOUN.length)) % pal.length]};
+}
+
+/* ---------------- chat ---------------------------------------------------
+
+   Threads are read straight from their own bucket, like every other piece of
+   data here; only posting goes through a server, because that needs a key.
+
+   The awkward part is that `render()` rebuilds #modalBody wholesale, so a
+   panel inside the event modal is destroyed and recreated under you -- while
+   you are typing, if a favourite gets starred or the breakpoint changes. So
+   nothing lives in the DOM that is not also held here. */
+
+const CHAT = {};          // thread -> the last thread document we saw
+const DRAFTS = {};        // thread -> half-typed text
+const MOD_KEY = 'cv.mod.v1', SEEN_CHAT_KEY = 'cv.chatseen.v1';
+let CHAT_FOCUS = null;    // thread whose composer had focus before a rebuild
+let TS_ID = null;         // the Turnstile widget, which a rebuild also eats
+let TS_WAIT = null;       // resolver for a challenge running right now
+let chatTimer = null;
+
+const modToken = () => { try { return localStorage.getItem(MOD_KEY) || ''; }
+                         catch (e) { return ''; } };
+
+/* A 4-character discriminator, mirroring chatstore.tag_for exactly. Hashed
+   rather than sliced off the id: 36^4 divides by 12*12, so the low base-36
+   digits are decided by the same arithmetic that picks the two words, and
+   the tag would carry far less than it appears to. */
+function tagOf(n) {
+  let h = 2166136261;
+  for (const c of String(n)) {
+    h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0;
+  }
+  let v = h % (36 ** 4), out = '';
+  for (let i = 0; i < 4; i++) { out = (v % 36).toString(36) + out; v = Math.floor(v / 36); }
+  return out.toUpperCase();
+}
+
+const chatMe = () => ({...device(), tag: tagOf(deviceId())});
+
+/* A colour per speaker.
+
+   Hashed from the name and tag, never sent with the message -- a client that
+   could pick its own colour would eventually pick the one that looks like
+   somebody else. But a hash alone is not enough: hashing into the eight-slot
+   chart palette collided on the third speaker, and hashing onto the raw hue
+   circle produced hsl(163) and hsl(165), which are different numbers and the
+   same colour. Two people in one colour is the single thing this is for.
+
+   So: hash to a slot, then linear-probe to the next free one. Everyone in a
+   thread gets a distinct slot while there are slots left, and a speaker keeps
+   theirs as long as the cast does not change. Slots are laid out by the
+   golden angle, so neighbouring slots -- the ones probing hands out -- are on
+   opposite sides of the wheel rather than next to each other.
+
+   Saturation and lightness are fixed per theme, so every hue stays legible
+   against the surface. Identity rests on the name and tag; colour only makes
+   a thread quicker to skim. */
+const HUE_SLOTS = 16;
+
+function chatSlots(msgs) {
+  const slots = new Map(), used = new Set();
+  for (const m of msgs) {
+    const k = m.n + '\u0000' + m.g;
+    if (slots.has(k)) continue;
+    let h = 2166136261;
+    for (const c of k) h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0;
+    let slot = h % HUE_SLOTS;
+    while (used.has(slot) && used.size < HUE_SLOTS) slot = (slot + 1) % HUE_SLOTS;
+    used.add(slot);
+    slots.set(k, slot);
+  }
+  return slots;
+}
+
+function hueOf(slot) {
+  const deg = Math.round((slot * 137.508) % 360);
+  return isDark() ? `hsl(${deg} 72% 70%)` : `hsl(${deg} 62% 36%)`;
+}
+const chatUrl = t => CHAT_BASE + t + '.json';
+
+/* One row, built as nodes rather than a string.
+
+   Everywhere else on this page interpolates through esc(), which is fine
+   because every attribute is double-quoted. This is the first text one
+   visitor writes and another reads, and making that safety depend on an
+   invariant a future edit could break is not a trade worth taking. */
+function chatRow(m, thread, slots, dupes) {
+  const row = document.createElement('div');
+  row.className = 'cmsg';
+  const me = chatMe();
+  const mine = m.g === me.tag && m.n === me.name;
+
+  const head = document.createElement('div');
+  head.className = 'cwho';
+  const hue = hueOf(slots.get(m.n + '\u0000' + m.g) || 0);
+  const who = document.createElement('b');
+  who.textContent = m.n;
+  who.style.color = hue;
+  head.append(who);
+  // The tag is carried on every message but shown only when two people in
+  // this thread actually picked the same name. With ~395,000 of them that is
+  // vanishingly rare, and a hash beside every name the rest of the time is
+  // clutter paid for a case that does not happen.
+  if (dupes && dupes.has(m.n)) {
+    const tag = document.createElement('span');
+    tag.className = 'ctag';
+    tag.textContent = m.g;
+    tag.style.color = hue;
+    tag.style.borderColor = `color-mix(in srgb, ${hue} 45%, transparent)`;
+    head.append(tag);
+  }
+  if (mine) {
+    const you = document.createElement('span');
+    you.className = 'cyou';
+    you.textContent = 'you';
+    head.append(you);
+  }
+  const when = document.createElement('time');
+  when.className = 'cwhen';
+  when.textContent = new Date(m.t * 1000)
+    .toLocaleString([], {month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'});
+  head.append(when);
+  if (modToken()) {
+    const del = document.createElement('button');
+    del.className = 'cdel';
+    del.type = 'button';
+    del.title = 'Remove this message';
+    del.textContent = '×';
+    del.onclick = ev => { ev.stopPropagation(); chatDelete(thread, m.id); };
+    head.append(del);
+  }
+
+  const body = document.createElement('p');
+  body.className = 'ctext';
+  // textContent, always. Links are deliberately not made clickable: an
+  // anonymous stranger's URL on a ticket-price page is the likeliest way
+  // this feature gets abused.
+  body.textContent = m.m;
+
+  row.append(head, body);
+  return row;
+}
+
+function paintChatList(thread, root = document) {
+  const list = $(`[data-clog="${thread}"]`, root);
+  if (!list) return;
+  const doc = CHAT[thread];
+  const atBottom = list.scrollHeight - list.scrollTop - list.clientHeight < 40;
+  list.textContent = '';
+  const msgs = (doc && doc.msgs) || [];
+  if (!msgs.length) {
+    const empty = document.createElement('p');
+    empty.className = 'sub';
+    empty.textContent = doc ? 'Nothing here yet. Say something.' : 'Loading…';
+    list.append(empty);
+  } else {
+    const slots = chatSlots(msgs);
+    // names seen under more than one tag: the only case where the tag earns
+    // its place on screen
+    const byName = new Map();
+    msgs.forEach(m => (byName.get(m.n) || byName.set(m.n, new Set()).get(m.n)).add(m.g));
+    const dupes = new Set([...byName].filter(([, gs]) => gs.size > 1).map(([n]) => n));
+    msgs.forEach(m => list.append(chatRow(m, thread, slots, dupes)));
+  }
+  if (atBottom) list.scrollTop = list.scrollHeight;
+  const n = $(`[data-ccount="${thread}"]`, root);
+  if (n) n.textContent = doc ? (doc.total || 0) : '';
+}
+
+/* Rendered from CHAT/DRAFTS, never from the DOM, so a rebuild is invisible. */
+function chatPanel(thread, {open = false, extra = ''} = {}) {
+  if (!CHAT_BASE) return '';
+  const doc = CHAT[thread];
+  const live = !!TURNSTILE_KEY || CHAT_BASE.startsWith('http://127.0.0.1');
+  const body = `
+    <p class="note">Everyone here is anonymous — your browser picked the name,
+      and it is not an account.</p>
+    <div class="clog" data-clog="${esc(thread)}"></div>
+    ${live ? `<div class="cform">
+      <div class="cts" data-cts="${esc(thread)}"></div>
+      <textarea data-cbox="${esc(thread)}" rows="2" maxlength="500"
+        placeholder="Say something"></textarea>
+      <div class="crow2">
+        <span class="cerr" data-cerr="${esc(thread)}"></span>
+        ${extra}
+        <button class="ghost" data-csend="${esc(thread)}">Send</button>
+      </div>
+    </div>` : `<p class="note">Posting is unavailable on this build.</p>`}`;
+  if (open) return `<div class="chat">${body}</div>`;
+  return `<details class="chat"${doc && doc.msgs && doc.msgs.length ? ' open' : ''}>
+    <summary>Discussion <span class="n" data-ccount="${esc(thread)}">${
+      doc ? (doc.total || 0) : ''}</span></summary>${body}</details>`;
+}
+
+/* Turnstile is loaded on first use, not in <head>: the page vendored its own
+   chart library specifically so it calls no third party, and a token minted
+   at page load has expired by the time anyone types. */
+function turnstileReady() {
+  if (!TURNSTILE_KEY) return Promise.resolve(false);
+  if (window.turnstile) return Promise.resolve(true);
+  if (!window.__tsLoad) {
+    window.__tsLoad = new Promise(res => {
+      const sc = document.createElement('script');
+      sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      sc.async = true;
+      sc.onload = () => res(true);
+      sc.onerror = () => res(false);
+      document.head.append(sc);
+    });
+  }
+  return window.__tsLoad;
+}
+
+async function mountTurnstile(thread, root) {
+  const host = $(`[data-cts="${thread}"]`, root);
+  if (!host || !await turnstileReady()) return;
+  host.textContent = '';
+  // the widget lived in a subtree a rebuild has just thrown away, so it is
+  // always re-rendered rather than assumed to have survived
+  TS_ID = window.turnstile.render(host, {
+    sitekey: TURNSTILE_KEY, action: 'chat', size: 'flexible',
+    // Nothing is shown unless the visitor genuinely has to do something, and
+    // nothing runs until they press Send -- a token minted when the panel
+    // opened would have expired by the time a message was written, and a
+    // permanent verification box over a chat box is a lot of furniture for
+    // something most people never trip.
+    appearance: 'interaction-only',
+    execution: 'render',
+    callback: token => { if (TS_WAIT) { TS_WAIT(token); TS_WAIT = null; } },
+    // without this a failed challenge is a silent grey box and a Send that
+    // never works; 110200 in the console is not an answer for a visitor
+    'error-callback': code => {
+      chatErr(thread, `challenge unavailable (${code}) — posting is off`, root);
+      const send = $(`[data-csend="${thread}"]`, root);
+      if (send) send.disabled = true;
+      return true;
+    },
+    'expired-callback': () => window.turnstile.reset(TS_ID),
+  });
+}
+
+function wireChat(root, thread) {
+  const box = $(`[data-cbox="${thread}"]`, root);
+  paintChatList(thread, root);
+  if (!box) return;
+  box.value = DRAFTS[thread] || '';
+  box.oninput = () => { DRAFTS[thread] = box.value; };
+  box.onfocus = () => { CHAT_FOCUS = thread; };
+  // isConnected: a rebuild removes this textarea, and Chrome fires blur on
+  // the way out. Clearing the flag there would lose the caret on exactly the
+  // rebuild the flag exists to survive.
+  box.onblur = () => { if (box.isConnected && CHAT_FOCUS === thread) CHAT_FOCUS = null; };
+  // the modal's category rows are role="button" and answer Enter and Space
+  // by re-rendering everything, so keystrokes must stop here
+  box.onkeydown = ev => {
+    ev.stopPropagation();
+    if (ev.key === 'Enter' && (ev.metaKey || ev.ctrlKey)) {
+      ev.preventDefault();
+      chatSend(thread, root);
+    }
+  };
+  const send = $(`[data-csend="${thread}"]`, root);
+  if (send) send.onclick = ev => { ev.stopPropagation(); chatSend(thread, root); };
+  if (CHAT_FOCUS === thread) {
+    box.focus();
+    box.setSelectionRange(box.value.length, box.value.length);
+  }
+  mountTurnstile(thread, root);
+  chatFetch(thread).then(() => paintChatList(thread, root));
+}
+
+/* The token for this post: already held, or obtained by running the
+   challenge now. Resolves to '' if it cannot be got, so the server decides
+   rather than the page silently refusing. */
+function chatToken() {
+  if (!TS_ID || !window.turnstile) return Promise.resolve('');
+  const have = window.turnstile.getResponse(TS_ID);
+  if (have) return Promise.resolve(have);
+  return new Promise(res => {
+    TS_WAIT = res;
+    try { window.turnstile.execute(TS_ID); } catch (e) { TS_WAIT = null; res(''); }
+    // an interactive challenge the visitor ignores must not leave Send
+    // spinning for ever
+    setTimeout(() => { if (TS_WAIT === res) { TS_WAIT = null; res(''); } }, 25000);
+  });
+}
+
+const chatErr = (thread, msg, root = document) => {
+  const el = $(`[data-cerr="${thread}"]`, root);
+  if (el) el.textContent = msg || '';
+};
+
+async function chatFetch(thread) {
+  if (!CHAT_BASE) return;
+  try {
+    const r = await fetch(chatUrl(thread), {cache: 'no-cache'});
+    if (!r.ok) { if (r.status === 404) CHAT[thread] = CHAT[thread] || {msgs: [], total: 0}; return; }
+    const doc = await r.json();
+    const have = CHAT[thread];
+    // <=, not !==: your own message is shown the moment the POST returns, and
+    // a poll can hand back an edge copy older than that. Going backwards on
+    // screen is worse than being a few seconds late.
+    if (have && doc.updated <= (have.updated || 0)) return;
+    CHAT[thread] = doc;
+  } catch (e) { /* a failed poll is not worth surfacing */ }
+}
+
+function activeThread() {
+  if ($('#chat').open) return 'general';
+  if ($('#modal').open && openSlug) return 'event/' + openSlug;
+  return null;
+}
+
+/* Its own clock. refresh() is a 20-minute price poll that deliberately skips
+   while the modal is open; chat wants the opposite, and must never call
+   render() -- that would rebuild the modal and take the composer with it. */
+async function chatPoll() {
+  if (document.hidden || !CHAT_BASE) return;
+  const t = activeThread();
+  if (!t) return;
+  const before = CHAT[t] && CHAT[t].updated;
+  await chatFetch(t);
+  if (CHAT[t] && CHAT[t].updated !== before) paintChatList(t);
+}
+
+async function chatSend(thread, root) {
+  const box = $(`[data-cbox="${thread}"]`, root);
+  const send = $(`[data-csend="${thread}"]`, root);
+  const text = (box.value || '').trim();
+  if (!text) return;
+  const me = chatMe();
+  const [scope, slug] = thread === 'general' ? ['general', null]
+                                             : ['event', thread.slice(6)];
+  chatErr(thread, '', root);
+  if (send) { send.disabled = true; send.textContent = 'Sending…'; }
+  try {
+    const r = await fetch('/api/chat', {
+      method: 'POST', headers: {'content-type': 'application/json'},
+      body: JSON.stringify({scope, slug, text, name: me.name, tag: me.tag,
+                            turnstile: await chatToken()}),
+    });
+    const out = await r.json().catch(() => ({}));
+    if (!r.ok) { chatErr(thread, out.error || `failed (${r.status})`, root); return; }
+    box.value = '';
+    DRAFTS[thread] = '';
+    // the response carries the whole thread, so your message appears at once
+    // rather than after the next poll clears the edge cache
+    CHAT[thread] = out.thread;
+    paintChatList(thread, root);
+  } catch (e) {
+    chatErr(thread, 'could not reach the server', root);
+  } finally {
+    if (send) { send.disabled = false; send.textContent = 'Send'; }
+    // tokens are single-use; a replay is rejected as a duplicate
+    if (TS_ID && window.turnstile) window.turnstile.reset(TS_ID);
+  }
+}
+
+async function chatDelete(thread, id) {
+  const [scope, slug] = thread === 'general' ? ['general', null]
+                                             : ['event', thread.slice(6)];
+  try {
+    const r = await fetch('/api/chat', {
+      method: 'DELETE',
+      headers: {'content-type': 'application/json',
+                'authorization': 'Bearer ' + modToken()},
+      body: JSON.stringify({scope, slug, id}),
+    });
+    const out = await r.json().catch(() => ({}));
+    if (r.ok) { CHAT[thread] = out.thread; paintChatList(thread); }
+    else chatErr(thread, out.error || `failed (${r.status})`);
+  } catch (e) { chatErr(thread, 'could not reach the server'); }
 }
 
 const FAV_KEY = 'cv.favs.v1';
@@ -1080,6 +1524,8 @@ async function boot() {
   renderStats();
   renderMovers();
   renderBell();
+  renderChatBtn();
+  chatFetch('general').then(renderChatBtn);
   render();
 }
 
@@ -1859,7 +2305,8 @@ function cardShell(e, id) {
     ${id === 'modal' ? noteBox(e) : ''}
     ${catTable(e)}${id === 'modal' ? tierLadder(e) : ''}
     <div class="wrap price"><canvas id="c-${id}"></canvas></div>
-    <div class="axisnote"><span>Best ask, all-in</span><span class="rt">Right: tickets available</span></div>`;
+    <div class="axisnote"><span>Best ask, all-in</span><span class="rt">Right: tickets available</span></div>
+    ${id === 'modal' ? chatPanel('event/' + e.slug) : ''}`;
 }
 
 /* The modal is one long-lived element that gets rewritten, so two opens in
@@ -1891,6 +2338,7 @@ async function wireCard(root, e, id) {
   // history, and the early return below would skip them altogether
   wireAlerts(root);
   wireNote(root);
+  if (id === 'modal' && CHAT_BASE) wireChat(root, 'event/' + e.slug);
   // the canvas this call set out to draw on. The modal is one long-lived
   // element that gets rewritten, so a second open while this one is still
   // waiting on its history leaves the first drawing onto a canvas that is no
@@ -2511,6 +2959,45 @@ function renderTray() {
   });
 }
 
+const BUBBLE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+  stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4
+  a8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>`;
+
+/* A dialog rather than a sixth tab. render() rebuilds whichever section is
+   showing on every theme change, favourite and poll, so a thread living in
+   one would be torn down constantly; a dialog is outside its reach. */
+function renderChat() {
+  // Close rides in the composer's own row rather than a second right-aligned
+  // row under it, which read as two stacked buttons
+  $('#chatBody').innerHTML = `
+    <h3>Chat</h3>
+    ${chatPanel('general', {open: true,
+                            extra: '<button class="ghost" id="chatClose">Close</button>'})}`;
+  $('#chatClose').onclick = () => $('#chat').close();
+  wireChat($('#chatBody'), 'general');
+}
+
+function renderChatBtn() {
+  const b = $('#chatBtn');
+  if (!b) return;
+  b.classList.toggle('hide', !CHAT_BASE);
+  const doc = CHAT['general'];
+  let seen = 0;
+  try { seen = +(localStorage.getItem(SEEN_CHAT_KEY) || 0); } catch (e) {}
+  const fresh = ((doc && doc.msgs) || []).filter(m => m.t > seen).length;
+  b.innerHTML = BUBBLE + (fresh ? `<i class="dot">${fresh > 9 ? '9+' : fresh}</i>` : '');
+  b.classList.toggle('lit', fresh > 0);
+  b.title = fresh ? `${fresh} new message${fresh === 1 ? '' : 's'}` : 'Chat';
+}
+
+function markChatSeen() {
+  const doc = CHAT['general'], msgs = (doc && doc.msgs) || [];
+  if (!msgs.length) return;
+  try { localStorage.setItem(SEEN_CHAT_KEY, String(msgs[msgs.length - 1].t)); }
+  catch (e) {}
+  renderChatBtn();
+}
+
 /* Everything the page remembers about you, in one place. Read it as the
    answer to "what does this thing know" -- which is: three preferences, all
    of them in this browser's own storage. */
@@ -2545,6 +3032,9 @@ function renderSettings() {
         <span class="v">${alertCount()
           ? `<button class="linkish" id="goAlerts">${alertCount()} set</button>`
           : 'none set'}</span></div>
+      ${CHAT_BASE ? `<div class="prefrow"><span class="k">Moderation</span>
+        <span class="v"><input type="password" id="modKey" placeholder="admin token"
+          value="${esc(modToken())}" autocomplete="off"><i id="modOk"></i></span></div>` : ''}
       <div class="prefrow"><span class="k">Notes</span>
         <span class="v">${Object.keys(NOTES).length
           ? `on ${Object.keys(NOTES).length} event${
@@ -2564,6 +3054,25 @@ function renderSettings() {
     $('#settings').close();
     renderTray(); $('#tray').showModal();
   };
+  const mk = $('#modKey');
+  if (mk) {
+    mk.onkeydown = ev => ev.stopPropagation();
+    mk.onchange = async () => {
+      const v = mk.value.trim();
+      try { v ? localStorage.setItem(MOD_KEY, v) : localStorage.removeItem(MOD_KEY); }
+      catch (e) {}
+      // checked the moment it is entered, rather than leaving you to find
+      // out from a delete that quietly does nothing
+      const ok = $('#modOk');
+      if (!v) { ok.textContent = ''; return; }
+      try {
+        const r = await fetch('/api/chat?op=auth',
+                              {headers: {'authorization': 'Bearer ' + v}});
+        ok.textContent = r.ok ? 'verified' : 'not recognised';
+        ok.className = r.ok ? 'good' : 'bad';
+      } catch (e) { ok.textContent = 'could not check'; ok.className = 'bad'; }
+    };
+  }
 }
 
 function openEvent(slug) {
@@ -2733,6 +3242,11 @@ function paintProfile() {
   b.style.color = d.hue;
   b.style.border = `1px solid ${d.hue}59`;
 }
+$('#chatBtn').onclick = () => { renderChat(); $('#chat').showModal(); };
+$('#chat').addEventListener('click', e => {
+  if (e.target === e.currentTarget) e.currentTarget.close();
+});
+$('#chat').addEventListener('close', markChatSeen);
 $('#bell').onclick = () => { renderTray(); $('#tray').showModal(); };
 $('#tray').addEventListener('click', e => {
   if (e.target === e.currentTarget) e.currentTarget.close();
@@ -2808,6 +3322,12 @@ async function refresh() {
 }
 
 setInterval(refresh, REFRESH_MS);
+// chat moves on a different timescale from prices, and unlike refresh() it
+// has to keep running while the modal is open
+const CHAT_MS = 15000;
+setInterval(chatPoll, CHAT_MS);
+setInterval(() => { if (!document.hidden && !$('#chat').open)
+                      chatFetch('general').then(renderChatBtn); }, 60000);
 // catch up immediately on returning to the tab rather than waiting out the timer
 document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
 
@@ -2830,6 +3350,12 @@ def build_dashboard(_store, out_path):
             .replace("__CHART_JS__", "vendor/chart.umd.min.js" if VENDOR.exists() else CDN)
             .replace("__CONTACT_EMAIL__", CONTACT_EMAIL)
             .replace("__DATA_BASE__", data_base())
+            .replace("__CHAT_BASE__", chat_base())
+            # public by design; absent means the page renders chat read-only
+            # rather than a composer that fails on submit
+            .replace("__TURNSTILE_KEY__", os.environ.get("TURNSTILE_SITE_KEY", ""))
+            .replace("__D_ADJ__", str(chatstore.ADJ).replace("'", '"'))
+            .replace("__D_NOUN__", str(chatstore.NOUN).replace("'", '"'))
             .replace("__PALETTE__", ",".join(SERIES_LIGHT[:5]))
             .replace("__SERIES_LIGHT__", str(SERIES_LIGHT).replace("'", '"'))
             .replace("__SERIES_DARK__", str(SERIES_DARK).replace("'", '"')))

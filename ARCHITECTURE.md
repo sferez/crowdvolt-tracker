@@ -172,7 +172,45 @@ not count.
 cannot race itself. Swapping the backend is one file: `r2.py` exposes
 `get`/`put`/`put_bytes`/`list` and `store.py` calls nothing else.
 
-## 5. The dashboard
+## 5. Chat
+
+A general thread and one per event, in a **separate R2 bucket**. Two reasons,
+and both are structural rather than a policy someone has to remember:
+
+- R2 tokens are scoped per bucket, not per prefix. `api/chat.py` is the only
+  code here that takes writes from the open internet; with the tracker's own
+  key, a bug in it could rewrite `index.json` and every `events/*.json`.
+- `snapshot.py` lists everything under the tracker's prefix and the daily
+  workflow commits it to a public branch. Chat there would mean a moderated
+  message surviving in git history for good.
+
+One JSON object per thread, not one per message: the browser reads threads
+straight from the bucket and cannot list one, so per-message objects would
+turn every poll into a server call. The cost is a read-modify-write, so every
+write is a **compare-and-swap** — a signed `GET` for the body and its ETag,
+then a `PUT` carrying `If-Match`, retried on a 412. The read has to be the
+signed one: `Remote.get()` goes through the CDN and returns `None` for a 404,
+a timeout and bad JSON alike, so a blip would look exactly like "no thread
+yet" and overwrite a live one with an empty document.
+
+Posting goes through `api/chat.py` on Vercel, which holds the chat bucket's
+credentials and nothing else — it checks that an event slug is real by reading
+the tracker's public `index.json` over plain HTTP, like any other visitor.
+Turnstile gates writes on every deployment and is skipped only when the
+`VERCEL` variable is absent, so there is no switch that can ship the endpoint
+unprotected. Rate limiting comes from the thread itself, which the write has
+just read anyway: a cooldown per browser, a cap on how many of the last five
+messages are yours, a 500-character limit.
+
+Identities are a name the browser invents from a 1068 × 353 vocabulary
+(~377,000), with a hashed 4-character tag carried on every message and shown
+only when two people in one thread actually collide. Colour is assigned by
+hashing to a slot and linear-probing to the next free one, so everyone in a
+thread is a visibly different hue rather than merely a different number.
+Message text is rendered with `textContent`, never interpolation — it is the
+only content on the page written by one visitor and read by another.
+
+## 6. The dashboard
 
 `dashboard.py` renders a single static `public/index.html` that fetches its
 data at runtime. Chart.js is vendored, so no CDN is needed.
@@ -194,7 +232,7 @@ Some decisions worth knowing:
   whatever tab, filter, search or scroll position you were on survives. It
   skips the poll while the tab is hidden or an event is open.
 
-## 6. Files
+## 7. Files
 
 | | |
 |---|---|
@@ -206,4 +244,6 @@ Some decisions worth knowing:
 | `discover.py` | the daily NYC sweep |
 | `dashboard.py` | renders `public/index.html` |
 | `snapshot.py` | pulls the store out for backup, and restores it |
+| `chatstore.py` | chat threads: validation, moderation, compare-and-swap |
+| `api/chat.py` | the Vercel function; a thin adapter over `chatstore` |
 | `.github/workflows/` | hourly reading; daily sweep + snapshot |

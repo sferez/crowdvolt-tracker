@@ -7,6 +7,7 @@ __pycache__/
 
 # local working notes, not part of the published repo
 CLAUDE.md
+SETUP.local.md
 
 # the data store: the R2 bucket is the source of truth, this is just the local
 # mirror. Keeping it out of git is what stops the repo growing hourly.

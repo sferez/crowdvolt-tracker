@@ -3,6 +3,13 @@
   "buildCommand": null,
   "outputDirectory": "public",
   "framework": null,
+  "functions": {
+    "api/*.py": {
+      "includeFiles": "{r2.py,chatstore.py}",
+      "excludeFiles": "{public/**,.github/**,__pycache__/**,snapshot/**,*.md}",
+      "maxDuration": 10
+    }
+  },
   "headers": [
     {
       "source": "/vendor/(.*)",

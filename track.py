@@ -193,11 +193,41 @@ def print_status(st):
 
 
 def serve(port=8000):
+    """Static files, plus /api/chat routed to the very code the deployed
+    function runs. The alternative is `vercel dev`, which means npm in a
+    project that has deliberately avoided a build step -- and a chat you
+    cannot try locally is a chat nobody tests."""
     import http.server, functools, webbrowser
-    handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(PUBLIC))
+
+    # loaded by path, not imported as a package: an api/__init__.py would
+    # itself be picked up as a function by Vercel
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("_chatfn", HERE / "api" / "chat.py")
+    fn = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(fn)
+
+    class Handler(fn.handler, http.server.SimpleHTTPRequestHandler):
+        """The deployed handler first in the MRO, so /api/chat runs exactly
+        the code Vercel runs; everything else falls through to static."""
+
+        def __init__(self, *a, **kw):
+            http.server.SimpleHTTPRequestHandler.__init__(
+                self, *a, directory=str(PUBLIC), **kw)
+
+        def do_GET(self):
+            if self.path.split("?")[0] == "/api/chat":
+                return fn.handler.do_GET(self)
+            return http.server.SimpleHTTPRequestHandler.do_GET(self)
+
+        def do_POST(self):
+            return fn.handler.do_POST(self)
+
+        def do_DELETE(self):
+            return fn.handler.do_DELETE(self)
+
     print(f"serving {PUBLIC} at http://127.0.0.1:{port}  (ctrl-c to stop)")
     webbrowser.open(f"http://127.0.0.1:{port}")
-    http.server.HTTPServer(("127.0.0.1", port), handler).serve_forever()
+    http.server.HTTPServer(("127.0.0.1", port), Handler).serve_forever()
 
 
 def main():

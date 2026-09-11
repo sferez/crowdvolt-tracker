@@ -44,6 +44,11 @@ Notes on an event. Price alerts per ticket category, with a bell that counts
 the ones currently met. A "since your last visit" list of what moved while you
 were away. All in `localStorage`; there is no account and nothing syncs.
 
+**Has a chat,** general and per event: anonymous, with a name your browser
+invents, gated by Cloudflare Turnstile and moderatable with an admin token.
+Messages live in their own bucket, deliberately outside the daily public
+snapshot, so a message that is removed is actually gone.
+
 **Keeps its own history.** Column-oriented JSON per event, thinned to 6-hourly
 past 14 days, with a daily diffable backup committed to an orphan branch.
 
@@ -70,6 +75,22 @@ R2_SECRET_ACCESS_KEY=
 R2_BUCKET=
 R2_PUBLIC_BASE=
 ```
+
+Chat, if you want it, needs a **second bucket** and its own token — R2 scopes
+tokens per bucket, so this is what stops the public write endpoint reaching
+the price data:
+
+```sh
+R2_CHAT_ACCESS_KEY_ID=
+R2_CHAT_SECRET_ACCESS_KEY=
+R2_CHAT_BUCKET=
+R2_CHAT_PUBLIC_BASE=
+TURNSTILE_SITE_KEY=            # public, baked into the page
+TURNSTILE_SECRET_KEY=          # server only, on the host
+CHAT_ADMIN_TOKEN=              # reveals the delete control
+```
+
+Without them chat is simply absent and everything else works.
 
 Then import the repo on Vercel — `vercel.json` serves `public/` with no build
 step — and enable the two workflows. Data and deploys are fully decoupled: an
@@ -118,3 +139,7 @@ binding constraint.
 
 [MIT](LICENSE). The code only: the data it reads belongs to CrowdVolt and the
 primary ticketing platforms.
+
+The chat nickname vocabulary in `chatstore.py` is adapted from
+[unique-names-generator](https://github.com/andreasonny83/unique-names-generator)
+(MIT, © 2018-2022 AndreaSonny), filtered for tone.
