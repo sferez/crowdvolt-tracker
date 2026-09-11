@@ -142,6 +142,20 @@
   "slug": "arodes",
   "spotify": null
  },
+ "audien": {
+  "bio": "Audien is an American DJ and producer known for his uplifting progressive house and melodic electronic sound. He gained international recognition with hits like Something Better and his Grammy-nominated remix of Bastille\u2019s Pompeii. Audien continues to captivate fans worldwide with high-energy sets, emotive melodies, and festival-ready productions.",
+  "followers": 7940,
+  "genres": [
+   "edm",
+   "progressive house"
+  ],
+  "img": "https://img.crowdvolt.com/13b9d40d-a49d-44bd-9d15-103147032fc9.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Audien",
+  "slug": "audien",
+  "spotify": null
+ },
  "avello": {
   "bio": "AVELLO (Adam Lawrence) has experienced one of the fastest rises in dance music, exploding from a regional bass artist into an international festival favorite through a string of viral remixes and emotionally driven original productions. His remixes of \u201cNo Broke Boys\u201d and \u201cElectric Love\u201d became festival staples, while collaborations with Gryffin, Adventure Club, \u0141aszewo, and Big Gigantic showcased his ability to blend melodic emotion with high-energy festival production.",
   "followers": null,
@@ -1022,6 +1036,20 @@
   "slug": "killen",
   "spotify": null
  },
+ "koastle-8ec4c": {
+  "bio": "Koastle are the Orange County duo of best friends Brett Beaudette and Andy Mueller, building shimmering, melodic bass music around big nostalgic drops and a deliberately cinematic sense of mood. They cut their teeth on \"Koastcards,\" a self-imposed monthly ritual of one mix, one unofficial remix and one original track, filming the live sets in unlikely locations like an aquarium and the middle of Joshua Tree. Their 2025 debut album In The Beginning is a 15-track arc designed to play as one connected story, and the accompanying live show leans heavily on a custom lighting production that rolls into their spring 2026 tour.",
+  "followers": null,
+  "genres": [
+   "hosue",
+   "bass"
+  ],
+  "img": "https://img.crowdvolt.com/486378c5-a7e3-4fc1-84ad-6ff9a90eaea3.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Koastle",
+  "slug": "koastle-8ec4c",
+  "spotify": null
+ },
  "konstantin": {
   "bio": "Konstantin is a German DJ and producer from Weimar who co-founded Giegling, one of underground electronic music's most influential and enigmatic labels. His DJ sets blend deep house, techno, and experimental sounds, reflecting the label's signature aesthetic, and he's built a reputation as a key architect of the Giegling sound alongside collaborators like Kettenkarussell. He's a regular on the CircoLoco circuit, having played sets for the brand at Ibiza's DC-10 and international editions including Tulum.",
   "followers": 2952,
@@ -1706,6 +1734,21 @@
   "slug": "purple-disco-machine",
   "spotify": null
  },
+ "ragie-ban": {
+  "bio": "Ragie Ban is a Brazilian DJ and electronic music producer gaining recognition in the global dance music scene for his energetic, groove-driven club tracks and genre-blending style. At a young age he\u2019s already supported by established artists, released music on notable labels, and collaborated with names like Chris Lake, expanding his presence internationally.",
+  "followers": null,
+  "genres": [
+   "tech house",
+   "house",
+   "minimal"
+  ],
+  "img": "https://img.crowdvolt.com/06336f04-0141-46cc-ac94-cabaf923d9bf.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Ragie Ban",
+  "slug": "ragie-ban",
+  "spotify": null
+ },
  "rampa": {
   "bio": "Rampa is a Berlin-based DJ, producer, and co-founder of the Keinemusik collective, known for a genre-fluid sound that moves fluidly between house, techno, and Afro-house. Growing up in Freiburg in Germany's Black Forest before relocating to Berlin, he helped launch Keinemusik in 2009 alongside longtime friends &ME, Adam Port, and Reznik. Beyond Keinemusik, he has released music on a wide range of respected imprints including Innervisions, Diynamic, Afterlife, Cocoon, Kompakt, and Defected, cementing his reputation across the broader electronic music world.",
   "followers": 39570,
@@ -2107,6 +2150,21 @@
   "slug": "vanjee",
   "spotify": null
  },
+ "victor-calderone": {
+  "bio": "Victor Calderone is a driving force in the underground, known for his hypnotic, long-form DJ sets that blend techno, house, and dark, futuristic grooves. A fixture of the New York scene and a longtime tastemaker, his sound is deep, evolving, and built for late-night dance floors. Whether behind the decks or curating iconic events, Victor brings a raw, immersive energy that keeps crowds locked in from start to finish.",
+  "followers": 3274,
+  "genres": [
+   "house",
+   "techno",
+   "progressive house"
+  ],
+  "img": "https://img.crowdvolt.com/5b879eb9-0428-4dce-a4e3-6a158cf1fa47.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Victor Calderone",
+  "slug": "victor-calderone",
+  "spotify": null
+ },
  "vintage-culture": {
   "bio": "Vintage Culture \u2014 real name Lukas Rafael Ruiz Hespanhol \u2014 is a Brazilian DJ and producer who specializes in house music, blending influences from disco, techno, and pop to create a signature sound built on catchy melodies, groovy basslines, and nostalgic vibes. With over 1.5 billion streams, Diamond, Platinum, and Gold certifications, and a debut album (Promised Land) featuring collaborators like Solomun and CamelPhat, he has risen from a small-town dreamer to one of electronic music's biggest global names.",
   "followers": 31792,
@@ -2167,6 +2225,20 @@
   "monthly_listeners": null,
   "name": "Worship",
   "slug": "worship",
+  "spotify": null
+ },
+ "x-club": {
+  "bio": "X CLUB. are an Australian techno duo known for their fast, rave-inspired sound that blends techno, trance, and hard groove elements. Rising from the underground scene, they\u2019ve gained global attention with high-BPM productions and energetic club sets. Their music channels classic 90s rave influences while pushing a modern, high-intensity techno style.",
+  "followers": 13395,
+  "genres": [
+   "techno",
+   "hard groove"
+  ],
+  "img": "https://img.crowdvolt.com/assets/11762d7c-6241-482c-b5d4-8dd10a6f2bf8/resident_advisor-92314-44c5d195.jpg",
+  "instagram": "https://www.instagram.com/xclub___",
+  "monthly_listeners": null,
+  "name": "X CLUB.",
+  "slug": "x-club",
   "spotify": null
  },
  "x3butterfly": {

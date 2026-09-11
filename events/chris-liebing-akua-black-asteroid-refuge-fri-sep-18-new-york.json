@@ -1,0 +1,105 @@
+{
+ "event": {
+  "bid_all_in": [
+   0
+  ],
+  "bidders": [
+   0
+  ],
+  "fair": [
+   null
+  ],
+  "high": [
+   0
+  ],
+  "last_sale": [
+   null
+  ],
+  "listings": [
+   0
+  ],
+  "tickets": [
+   0
+  ]
+ },
+ "stamps": [
+  "2026-09-11T04:46:39+00:00"
+ ],
+ "types": {
+  "GA (After 4AM)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "2c0dd3b8-e1fc-4d23-a722-913e22b8364b"
+  },
+  "GA (Before 12AM)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "84889aa8-1c34-4b4f-b58c-0f657ee58ca2"
+  },
+  "GA (Before 4AM)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "52abdcd8-7e17-48ad-ba2d-79e5f71abe3b"
+  }
+ }
+}

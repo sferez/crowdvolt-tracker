@@ -1,0 +1,155 @@
+{
+ "event": {
+  "bid_all_in": [
+   0
+  ],
+  "bidders": [
+   0
+  ],
+  "fair": [
+   null
+  ],
+  "high": [
+   104
+  ],
+  "last_sale": [
+   null
+  ],
+  "listings": [
+   1
+  ],
+  "tickets": [
+   1
+  ]
+ },
+ "stamps": [
+  "2026-09-11T04:46:37+00:00"
+ ],
+ "types": {
+  "GA (Before 6PM Friday)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "c66631d0-0c6a-4ea5-b271-70c6ca016a2e"
+  },
+  "GA (Before 6PM Saturday)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "7204a69d-efd1-409c-a3d4-38bdcb1a563b"
+  },
+  "GA (Friday)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "eff936fd-4f7e-4a63-afc2-39985bc81084"
+  },
+  "GA (Saturday)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "3a4cdd2b-391c-465a-9f87-1483b7c0c789"
+  },
+  "Weekend Pass": {
+   "all_in": [
+    104
+   ],
+   "ask": [
+    100
+   ],
+   "ask_qty": [
+    1
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    1
+   ],
+   "qty": [
+    1
+   ],
+   "uqid": "e565349b-0144-4c85-b035-c58c7b43067a"
+  }
+ }
+}

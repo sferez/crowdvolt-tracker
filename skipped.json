@@ -124,6 +124,11 @@
   "city": "Chicago",
   "state": " IL"
  },
+ "bassfluff-tiffany-day-los-angeles-california-sept-12": {
+  "checked_at": "2026-09-11T04:46:27+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "bedouin-saga-miami-little-river-studios-dec-4-basel": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Miami",
@@ -167,6 +172,16 @@
  "boiler-room-tba-la-sat-sep-26-los-angeles": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Los Angeles",
+  "state": "CA"
+ },
+ "bolo-hollywood-palladium-sat-nov-21-los-angeles": {
+  "checked_at": "2026-09-11T04:46:27+00:00",
+  "city": "Hollywood",
+  "state": "CA"
+ },
+ "bolo-hollywood-palladium-thu-nov-19-los-angeles": {
+  "checked_at": "2026-09-11T04:46:27+00:00",
+  "city": "Hollywood",
   "state": "CA"
  },
  "bonobo-radius-wed-nov-25-chicago": {
@@ -227,6 +242,11 @@
  "cid-x-maesic-1015-folsom-fri-oct-23-san-francisco": {
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "San Francisco",
+  "state": "CA"
+ },
+ "circus-halloween-villa-blanca-lifestyle-sat-oct-31-los-angeles": {
+  "checked_at": "2026-09-11T04:46:27+00:00",
+  "city": "North Hollywood",
   "state": "CA"
  },
  "cloonee-and-miluhska-and-omar-and-vintage-culture-club-space-miami-florida-october-16-2026": {
@@ -419,6 +439,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "fcukers-dj-set-chloe-caillet-san-francisco-california": {
+  "checked_at": "2026-09-11T04:46:27+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "felix-dickinson-monarch-fri-sep-18-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
@@ -557,6 +582,11 @@
  "indo-warehouse-sound-nightclub-fri-nov-6-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Los Angeles",
+  "state": "CA"
+ },
+ "insomniac-presents-valentino-khan-hollywood-hollywood-palladium-sat-nov-14-los-angeles": {
+  "checked_at": "2026-09-11T04:46:27+00:00",
+  "city": "Hollywood",
   "state": "CA"
  },
  "interplanetary-criminal-sam-alfred-jubilee-zeyzey-sun-oct-18-miami": {
@@ -739,6 +769,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "korolova-liv-nightclub-fri-sep-18-miami": {
+  "checked_at": "2026-09-11T04:46:27+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "kream-daer-dayclub-south-florida-sat-sept-12-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -818,6 +853,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "maddix-chicago-radius-oct-10": {
+  "checked_at": "2026-09-11T04:46:27+00:00",
+  "city": "Chicago",
+  "state": "IL"
  },
  "madeon-presents-victory-shrine-expo-hall-sat-oct-4-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -916,6 +956,11 @@
  },
  "moscoman-and-red-axes-and-whitesquare-floyd-miami-florida-october-16-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
+ "music-on-space-basel-dec-4-miami-florida": {
+  "checked_at": "2026-09-11T04:46:27+00:00",
   "city": "Miami",
   "state": "FL"
  },
@@ -1164,6 +1209,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "san-holo-presents-true-love-in-a-made-up-world-hollywood-palladium-fri-sep-11-los-angeles": {
+  "checked_at": "2026-09-11T04:46:27+00:00",
+  "city": "Hollywood",
+  "state": "CA"
+ },
  "satellite-33-hour-iii-points-closing-party-club-space-at-the-ground-miami-miami-october-18-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -1367,6 +1417,11 @@
  "tinzo-jojo-dark-library-tour-the-foundry-sunday-oct-25-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
+  "state": "CA"
+ },
+ "tobehonest-gabss-b2b-moontalk-inntraw-academy-la-sat-oct-10-los-angeles": {
+  "checked_at": "2026-09-11T04:46:27+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  },
  "turnstile-the-never-enough-tour-factory-town-sun-sep-20-miami": {
