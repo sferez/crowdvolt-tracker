@@ -837,6 +837,7 @@ const MOD_KEY = 'cv.mod.v1', SEEN_CHAT_KEY = 'cv.chatseen.v1';
 let CHAT_FOCUS = null;    // thread whose composer had focus before a rebuild
 let TS_ID = null;         // the Turnstile widget, which a rebuild also eats
 let TS_WAIT = null;       // resolver for a challenge running right now
+let TS_USED = false;      // this token has been spent; reset before reusing
 let chatTimer = null;
 
 const modToken = () => { try { return localStorage.getItem(MOD_KEY) || ''; }
@@ -1095,6 +1096,10 @@ function wireChat(root, thread) {
    rather than the page silently refusing. */
 function chatToken() {
   if (!TS_ID || !window.turnstile) return Promise.resolve('');
+  // Reset here rather than after the last send. Tokens are single-use so one
+  // is needed, but resetting on the way out leaves the widget sitting in the
+  // composer asking to be verified for a message that already went.
+  if (TS_USED) { window.turnstile.reset(TS_ID); TS_USED = false; }
   const have = window.turnstile.getResponse(TS_ID);
   if (have) return Promise.resolve(have);
   return new Promise(res => {
@@ -1172,8 +1177,7 @@ async function chatSend(thread, root) {
     chatErr(thread, 'could not reach the server', root);
   } finally {
     if (send) { send.disabled = false; send.textContent = 'Send'; }
-    // tokens are single-use; a replay is rejected as a duplicate
-    if (TS_ID && window.turnstile) window.turnstile.reset(TS_ID);
+    TS_USED = true;     // spent -- the next send resets before asking again
   }
 }
 
