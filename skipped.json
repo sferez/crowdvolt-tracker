@@ -549,6 +549,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "horse-meat-disco-chicago-sept-26": {
+  "checked_at": "2026-09-12T04:45:54+00:00",
+  "city": "Chicago",
+  "state": " IL"
+ },
  "horsegiirl-portola-week-the-midway-sun-sep-27-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
@@ -1161,6 +1166,11 @@
  },
  "riordan-and-luuk-van-dijk-and-julian-fijma-and-james-poole-club-space-florida-miami-october-25-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
+ "ritmo-celestial-the-ground-florida-miami-september-13-2026": {
+  "checked_at": "2026-09-12T04:45:54+00:00",
   "city": "Miami",
   "state": "FL"
  },
