@@ -99,6 +99,19 @@
   "slug": "aline-umber",
   "spotify": null
  },
+ "anetha": {
+  "bio": "Anetha is a Paris-based techno DJ and producer known for her fast, high-energy sets and powerful rave-driven sound. She blends hypnotic techno, acid, and trance influences to create intense, emotionally charged dancefloor moments. Anetha is also the founder of the label Mama Told Ya, which showcases forward-thinking techno and emerging artists.",
+  "followers": 15282,
+  "genres": [
+   "techno"
+  ],
+  "img": "https://img.crowdvolt.com/assets/e91a77ee-d7de-423c-9ac0-9fbe202b4f4b/resident_advisor-44868-44c5d195.jpg",
+  "instagram": "https://www.instagram.com/anetha_music",
+  "monthly_listeners": null,
+  "name": "Anetha",
+  "slug": "anetha",
+  "spotify": null
+ },
  "anotr": {
   "bio": "ANOTR is a Dutch house duo known for their groove-driven sound that blends deep house, minimal, and funk-infused rhythms. With releases on labels like Solid Grooves and their own imprint No Art, they\u2019ve built a reputation for infectious basslines and tightly crafted club records. Their high-energy sets have made them staples at global festivals and underground dance floors alike.",
   "followers": 189980,
@@ -344,6 +357,20 @@
   "slug": "carlita",
   "spotify": null
  },
+ "chasewest": {
+  "bio": "ChaseWest is a minimal house and tech house DJ and producer celebrated for his solid, hypnotic grooves that keep the dancefloor locked in from start to finish. With rolling basslines, crisp percussion, and a keen sense of timing, his sets strike the perfect balance between underground energy and irresistible rhythm. ChaseWest has quickly made a name for himself in the club scene, delivering refined, immersive performances that leave crowds moving long after the night ends.",
+  "followers": 13322,
+  "genres": [
+   "tech house",
+   "minimal house"
+  ],
+  "img": "https://img.crowdvolt.com/b46e63a1-6f3a-4f51-ad05-0c3f7e70ce01.png",
+  "instagram": "https://www.instagram.com/chasewest",
+  "monthly_listeners": null,
+  "name": "ChaseWest",
+  "slug": "chasewest",
+  "spotify": "https://open.spotify.com/artist/4770WxUOyJMOJ1CHiZi2d6"
+ },
  "chloe-caillet": {
   "bio": "Chlo\u00e9 Caillet is a New York\u2013born DJ and producer known for her vibrant, groove-driven house sets that blend disco, techno, and global influences. She broke out with releases on CircoLoco Records and has since become a fixture at major clubs and festivals worldwide. As the founder of SMIILE, she champions inclusivity and community while delivering high-energy, emotionally charged performances.",
   "followers": 7069,
@@ -492,6 +519,36 @@
   "slug": "dixon",
   "spotify": "https://open.spotify.com/artist/3wc57nV2fGEoM8x4xPK1O9"
  },
+ "dj-snake": {
+  "bio": "DJ Snake (born William Grigahcine) is a French DJ and producer known for blending EDM, hip-hop, and global sounds. He broke through with the explosive hit \u201cTurn Down for What\u201d and followed with worldwide smashes like \u201cLean On,\u201d \u201cMiddle,\u201d and \u201cTaki Taki.\u201d A Paris native with Algerian roots, DJ Snake is celebrated for high-energy festival sets and a knack for crossing cultures and genres on the global stage.",
+  "followers": 9431584,
+  "genres": [
+   "edm",
+   "house",
+   "electronic"
+  ],
+  "img": "https://img.crowdvolt.com/f6c3575d-73c1-4f45-928e-256a383f7b51.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "DJ Snake",
+  "slug": "dj-snake",
+  "spotify": "https://open.spotify.com/artist/540vIaP2JwjQb9dm3aArA4"
+ },
+ "dj-tennis": {
+  "bio": "DJ Tennis is the Italian-born DJ and producer known for his deep, emotive, and genre-defying sets that span house, techno, and electronica. A co-founder of the influential label Life and Death, he\u2019s celebrated for crafting journeys on the dance floor that are both hypnotic and melodic, balancing underground intensity with musical sophistication. His productions and performances are marked by a subtle, atmospheric depth that captivates both festival crowds and intimate club audiences.",
+  "followers": 16596,
+  "genres": [
+   "house",
+   "techno",
+   "deep tech"
+  ],
+  "img": "https://img.crowdvolt.com/b82e4efa-aaac-49eb-a937-69b522498e03.png",
+  "instagram": "https://www.instagram.com/djtennis",
+  "monthly_listeners": null,
+  "name": "DJ Tennis",
+  "slug": "dj-tennis",
+  "spotify": null
+ },
  "dom-dolla": {
   "bio": "Dom Dolla is an Australian house and tech-house producer known for punchy basslines, crisp percussion, and infectious vocal hooks. He broke through globally with hits like \u201cTake It\u201d and \u201cSan Frandisco,\u201d earning ARIA Awards and a Grammy nomination while becoming a staple on festival and Ibiza lineups. Blending underground groove with mainstage energy, Dom Dolla has emerged as one of the leading figures in modern tech house.",
   "followers": 647604,
@@ -519,6 +576,21 @@
   "monthly_listeners": null,
   "name": "DREYA V",
   "slug": "dreya-v",
+  "spotify": null
+ },
+ "dvs1-b31f3": {
+  "bio": "DVS1 is an emerging electronic artist known for crafting high-energy, immersive sets that blend underground textures with festival-ready sounds. With a style rooted in rhythmic intensity and melodic layering, DSV1 has been building momentum through dynamic live performances and a growing presence in the electronic scene.",
+  "followers": null,
+  "genres": [
+   "house",
+   "tech house",
+   "deep house"
+  ],
+  "img": "https://img.crowdvolt.com/d4007b0e-d11c-4c71-b161-609f76e67cba.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "DVS1",
+  "slug": "dvs1-b31f3",
   "spotify": null
  },
  "dylan-brady": {
@@ -552,6 +624,21 @@
   "monthly_listeners": null,
   "name": "Eli Escobar",
   "slug": "eli-escobar",
+  "spotify": null
+ },
+ "eli-fur": {
+  "bio": "$39",
+  "followers": 22838,
+  "genres": [
+   "melodic house",
+   "deep house",
+   "progressive house"
+  ],
+  "img": "https://img.crowdvolt.com/6ac4c745-2bb3-4cdf-ac24-0de20eeb264c.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Eli & Fur",
+  "slug": "eli-fur",
   "spotify": null
  },
  "emanuel-satie-b4619": {
@@ -786,6 +873,22 @@
   "slug": "honeyluv",
   "spotify": null
  },
+ "horse-meat-disco": {
+  "bio": "Founded on New Year\u2019s Day in 2004 at London\u2019s Eagle club, Horse Meat Disco began as a Sunday-night queer party dedicated to reviving the sounds of disco, soul, Italo, house, and funk at a time when those records were largely absent from London\u2019s nightlife. What started as a local residency has since grown into an international phenomenon, with the collective\u2014Luke Howard, James Hillard, Jim Stanton, and Severino Panzetta\u2014headlining festivals, clubs, and Pride celebrations around the world.",
+  "followers": 35111,
+  "genres": [
+   "disco house",
+   "nu disco",
+   "funky house",
+   "disco"
+  ],
+  "img": "https://img.crowdvolt.com/assets/cdf490bb-4368-48b3-864b-35a3736ecb4e/spotify-5MnToV7aAt2Zy9ag3DAsna-63972d1d.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Horse Meat Disco",
+  "slug": "horse-meat-disco",
+  "spotify": "https://open.spotify.com/artist/5MnToV7aAt2Zy9ag3DAsna"
+ },
  "horsegiirl": {
   "bio": "Since emerging in 2022, horsegiirL has built an entire fictional universe around her alter ego, Stella Stallion, blending humor with genuinely high-energy dance music. Viral hits like My Barn My Rules and Obsessed introduced millions of fans to her unique mix of Eurodance, hard house, and happy hardcore, while performances at festivals including Tomorrowland, Movement Detroit, III Points, and Lollapalooza have cemented her as one of electronic music\u2019s fastest-rising stars.  \n\nHer sets are equal parts rave and performance art, bouncing between hard dance, pop edits, trance, and tongue-in-cheek storytelling. Beneath the humor is a technically skilled DJ whose infectious energy has made her a favorite among a new generation of clubbers. ",
   "followers": 13250,
@@ -801,6 +904,20 @@
   "monthly_listeners": null,
   "name": "horsegiirL",
   "slug": "horsegiirl",
+  "spotify": null
+ },
+ "indira-paganotto": {
+  "bio": "Indira Paganotto is a Spanish DJ and producer born in Barcelona who has rapidly risen to prominence in the global techno scene, known for her intense, dark, and high energy style. She has become a fixture at major festivals and clubs worldwide, delivering ferocious sets that blend industrial, hard techno, and rave influences. She is also the founder of her own label Pantheon Records, through which she champions her uncompromising vision of underground electronic music.",
+  "followers": 13250,
+  "genres": [
+   "psy-techno",
+   "trance"
+  ],
+  "img": "https://img.crowdvolt.com/fb254ee2-4f13-4876-abd7-8db411bf1a70.png",
+  "instagram": "https://www.instagram.com/indirapaganotto",
+  "monthly_listeners": null,
+  "name": "Indira Paganotto",
+  "slug": "indira-paganotto",
   "spotify": null
  },
  "innellea": {
@@ -1021,6 +1138,20 @@
   "slug": "joss-dean",
   "spotify": null
  },
+ "julya-karma": {
+  "bio": "Emerging from the pulse of Brooklyn\u2019s underground, Julya Karma has quickly established herself as a force that refuses to be defined.  Known for her dynamic selections and infectious energy behind the decks, she has been invited to dancefloors worldwide, including Coachella, Lost Village, Innervisions, Cercle, The Brooklyn Mirage, DGTL, Time Warp, Audio Obscura, Afterlife, and Mayan Warrior, appearing alongside legends like Adriatique, Laurent Garnier, Dixon, Ame, R\u00fcf\u00fcs du Sol, and Sven V\u00e4th.",
+  "followers": 363,
+  "genres": [
+   "deep house",
+   "melodic techno"
+  ],
+  "img": "https://img.crowdvolt.com/assets/9489c91a-7c3a-49e7-a84d-d4d1b41a847f/resident_advisor-96714-44c5d195.jpg",
+  "instagram": "https://www.instagram.com/julya_karma",
+  "monthly_listeners": null,
+  "name": "Julya Karma",
+  "slug": "julya-karma",
+  "spotify": null
+ },
  "jungle": {
   "bio": "Jungle is a London-based electronic soul collective led by Josh Lloyd-Watson and Tom McFarland. Known for their smooth fusion of funk, soul, and electronic music, Jungle has built a global following through groove-heavy productions and visually distinctive performances, including DJ sets that translate their live sound into a dancefloor-focused experience.",
   "followers": 725,
@@ -1064,6 +1195,37 @@
   "monthly_listeners": null,
   "name": "Killen.",
   "slug": "killen",
+  "spotify": null
+ },
+ "kilopatrah-jones-8e5cf": {
+  "bio": "Rather than focusing on one genre, Kilopatrah Jones builds musical journeys designed for dancers first. Their ability to seamlessly move between soulful house, rolling techno, and breakneck jungle has earned them a reputation as one of New York\u2019s premier club DJs, with acclaimed mixes for Coloring Lessons, Honcho, Rinse FM, Refuge, and The Lot Radio. ",
+  "followers": 490,
+  "genres": [
+   "Techno",
+   "Jungle",
+   "Breakbeat",
+   "NYC Underground",
+   "House"
+  ],
+  "img": "https://img.crowdvolt.com/assets/99a1b267-fa29-4c12-9dc6-175afd9070e0/resident_advisor-97712-44c5d195.jpg",
+  "instagram": "https://www.instagram.com/Kilopatrahjones",
+  "monthly_listeners": null,
+  "name": "Kilopatrah Jones",
+  "slug": "kilopatrah-jones-8e5cf",
+  "spotify": null
+ },
+ "klangkuenstler": {
+  "bio": "Klangkuenstler is a Berlin-based DJ and producer known for his driving, high-impact take on modern techno. Blending hard-hitting percussion with rave-inspired melodies and industrial textures, his sound channels raw warehouse energy with precision and power. A mainstay on Europe\u2019s biggest stages and festivals, Klangkuenstler has built a global following through relentless sets, standout releases, and a signature style that pushes peak-time techno to its limits.",
+  "followers": 28426,
+  "genres": [
+   "techno",
+   "industrial techno"
+  ],
+  "img": "https://img.crowdvolt.com/assets/32e72cdb-7c52-48fc-b0d9-07389bfc4d78/resident_advisor-41146-44c5d195.jpg",
+  "instagram": "https://www.instagram.com/klangkuenstler",
+  "monthly_listeners": null,
+  "name": "Klangkuenstler",
+  "slug": "klangkuenstler",
   "spotify": null
  },
  "koastle-8ec4c": {
@@ -1631,6 +1793,20 @@
   "slug": "notre-dame",
   "spotify": null
  },
+ "novah": {
+  "bio": "Novah is a female hard techno DJ and producer based in Antwerp, Belgium. With an international presence, she graces Europe's most prestigious DJ booths, leaving an indelible mark on the global electronic music scene. Already making waves in the industry, Novah has released her first track on the esteemed Taapion label, curated by the artist Shl\u00f8mo. This milestone is just the beginning, as she continues to work on upcoming releases that are set to captivate listeners.",
+  "followers": 2709,
+  "genres": [
+   "techno",
+   "hard techno"
+  ],
+  "img": "https://img.crowdvolt.com/8b54e9f8-0cac-47c3-8a21-04d22d98aa1a.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Novah",
+  "slug": "novah",
+  "spotify": null
+ },
  "olive-f": {
   "bio": "Olive F is a DJ and producer known for her high-energy sets and growing presence in the underground club scene. She has been building recognition through club performances and curated lineups, showcasing a confident and engaging approach to DJing. With a strong focus on rhythm and crowd connection, she continues to establish herself as an emerging artist.",
   "followers": 204,
@@ -1946,6 +2122,20 @@
   "slug": "silva-bumpa",
   "spotify": null
  },
+ "silvie-loto": {
+  "bio": "$39",
+  "followers": 970,
+  "genres": [
+   "tech house",
+   "house"
+  ],
+  "img": "https://img.crowdvolt.com/assets/4142bd4f-68c8-4471-aadd-73934eb8bdd9/resident_advisor-21756-44c5d195.jpg",
+  "instagram": "https://www.instagram.com/silvieloto",
+  "monthly_listeners": null,
+  "name": "Silvie Loto",
+  "slug": "silvie-loto",
+  "spotify": null
+ },
  "skrillex": {
   "bio": "Skrillex (Sonny Moore) is a Grammy-winning American producer and DJ who helped detonate dubstep into the US mainstream in the early 2010s before evolving into one of dance music's most versatile shapeshifters. His sound spans brostep, trap, house, and pop crossover, with landmark work from Scary Monsters and Nice Sprites to Jack \u00dc alongside Diplo, and his 2023 double-album run Quest for Fire and Don't Get Too Close. Live, he's known for relentless, genre-hopping sets packed with unreleased edits and chaotic energy that still hit as hard in a warehouse as on a festival main stage.",
   "followers": null,
@@ -2060,6 +2250,21 @@
   "monthly_listeners": null,
   "name": "Supergloss",
   "slug": "supergloss",
+  "spotify": null
+ },
+ "sven-vath-54e11": {
+  "bio": "Sven V\u00e4th is a legendary German DJ, producer, and electronic music pioneer known for shaping the global techno scene. As the founder of Cocoon, he has spent decades curating cutting-edge sounds and delivering marathon sets that blend deep, hypnotic techno with a distinctive, boundary-pushing style.",
+  "followers": null,
+  "genres": [
+   "techno",
+   "minimal techno",
+   "acid techno"
+  ],
+  "img": "https://img.crowdvolt.com/a136aa4e-5fd6-470c-bfb8-892872a7e5dd.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Sven Vath",
+  "slug": "sven-vath-54e11",
   "spotify": null
  },
  "taiki-nulight": {
@@ -2223,6 +2428,20 @@
   "monthly_listeners": null,
   "name": "Vintage Culture",
   "slug": "vintage-culture",
+  "spotify": null
+ },
+ "vtss-0e62c": {
+  "bio": "VTSS is the Warsaw-born, London-based DJ and producer Martyna Maja, one of the central figures in the late-2010s \"fast and hard\" techno wave that pulled trance, EBM, hardcore and industrial back onto the same dancefloor. She came up through the Bruta\u017c parties and her home club Jasna 1 in Warsaw after dropping out of law school for sound engineering, then broke internationally with sharp releases on Repitch and Intrepid Skin that earned her residencies at Berghain and slots at Dekmantel, Awakenings and Berlin Atonal. More recently she has expanded the project to include her own vocals and songwriting on releases for Ninja Tune's Technicolour imprint, turning what started as a pure-club operation into a fuller artistic identity.",
+  "followers": null,
+  "genres": [
+   "trance",
+   "even pop"
+  ],
+  "img": "https://img.crowdvolt.com/e3da0fad-eec9-420d-b4f4-77b2d16261a3.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "VTSS",
+  "slug": "vtss-0e62c",
   "spotify": null
  },
  "william-kiss": {
