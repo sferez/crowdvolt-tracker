@@ -539,6 +539,11 @@
   "city": "Chicago",
   "state": " IL"
  },
+ "gravedgr-hollywood-palladium-los-angeles-california-sept-18": {
+  "checked_at": "2026-09-16T04:47:28+00:00",
+  "city": "Hollywood",
+  "state": "CA"
+ },
  "green-velvet-cajmere-vinyl-sable-fri-oct-23-miami": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -1413,6 +1418,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "soul-wax-los-angeles-california-sept-17": {
+  "checked_at": "2026-09-16T04:47:28+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
  },
  "soulwax-the-regency-ballroom-thu-sep-4-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
