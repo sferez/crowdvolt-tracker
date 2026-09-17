@@ -124,6 +124,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "ayybo-the-brass-rail-sat-sep-26-san-diego": {
+  "checked_at": "2026-09-17T04:47:45+00:00",
+  "city": "San Diego",
+  "state": "California"
+ },
  "azzecca-audio-nightclub-portola-week-sun-sep-27-san-francisco": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "San Francisco",
@@ -213,6 +218,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "boys-noize-spin-sun-sep-27-san-diego": {
+  "checked_at": "2026-09-17T04:47:45+00:00",
+  "city": "San Diego",
+  "state": "California"
  },
  "bruno-furlan-halcyon-california-san-francisco-october-17-2026": {
   "checked_at": "2026-09-15T04:47:43+00:00",
@@ -323,6 +333,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "dean-turnley-3oz-dive-club-sat-sep-26-san-diego": {
+  "checked_at": "2026-09-17T04:47:45+00:00",
+  "city": "San Diego",
+  "state": "California"
  },
  "dean-turnley-spybar-illinois-chicago-september-19-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -869,6 +884,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "layton-giordani-spin-sat-sep-26-san-diego": {
+  "checked_at": "2026-09-17T04:47:45+00:00",
+  "city": "San Diego",
+  "state": "California"
+ },
  "layton-giordani-the-regency-ballroom-fri-nov-20-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
@@ -1189,6 +1209,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "proper-2027-san-diego-california-december-31-2026": {
+  "checked_at": "2026-09-17T04:47:45+00:00",
+  "city": "San Diego",
+  "state": "California"
+ },
  "prophecy-club-space-florida-miami-december-2-2026": {
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "Miami",
@@ -1264,10 +1289,20 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "rossi-richs-sat-sep-26-san-diego": {
+  "checked_at": "2026-09-17T04:47:45+00:00",
+  "city": "San Diego",
+  "state": "California"
+ },
  "rupaul-radius-sat-oct-3-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "salute-music-box-sat-sep-26-san-diego": {
+  "checked_at": "2026-09-17T04:47:45+00:00",
+  "city": "San Diego",
+  "state": "California"
  },
  "salute-open-to-close-at-space-550-saturday-sep-12-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -1583,6 +1618,11 @@
   "checked_at": "2026-09-14T04:49:26+00:00",
   "city": "Los Angeles",
   "state": "CA"
+ },
+ "vtss-spin-fri-sep-25-san-diego": {
+  "checked_at": "2026-09-17T04:47:45+00:00",
+  "city": "San Diego",
+  "state": "California"
  },
  "wax-motif-grand-park-los-angeles-sept-25-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
