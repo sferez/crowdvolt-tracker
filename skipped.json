@@ -224,6 +224,11 @@
   "city": "San Diego",
   "state": "California"
  },
+ "brunello-mellow-circus-los-angeles-oct-31": {
+  "checked_at": "2026-09-18T04:47:05+00:00",
+  "city": " Los Angeles",
+  "state": "CA"
+ },
  "bruno-furlan-halcyon-california-san-francisco-october-17-2026": {
   "checked_at": "2026-09-15T04:47:43+00:00",
   "city": "San Francisco",
@@ -241,6 +246,11 @@
  },
  "carl-cox-radius-sat-nov-7-chicago": {
   "checked_at": "2026-09-09T03:07:33+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
+ "channel-tres-enigma-tour-ramova-theatre-chicago": {
+  "checked_at": "2026-09-18T04:47:05+00:00",
   "city": "Chicago",
   "state": "IL"
  },
@@ -413,6 +423,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "eli-and-fur-zey-zey-miami-presents-dance-therapy": {
+  "checked_at": "2026-09-18T04:47:05+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "eli-brown-factory-town-florida-miami-september-26-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -714,6 +729,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "jeulz-san-francisc-midway-california": {
+  "checked_at": "2026-09-18T04:47:05+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "jigitz-monarch-sat-sep-26-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
@@ -813,6 +833,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "kaskade-radius-fri-nov-6-chicago": {
+  "checked_at": "2026-09-18T04:47:05+00:00",
+  "city": "Chicago",
+  "state": "IL"
  },
  "kaytranada-sleeping-on-gems-fest-discovery-meadow-sunday-sep-13-california": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -1009,6 +1034,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "mgmt-dj-set-san-francisco-public-works": {
+  "checked_at": "2026-09-18T04:47:05+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "michael-bibi-one-life-miami-basel-dec-5": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -1183,6 +1213,11 @@
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "San Francisco",
   "state": "CA"
+ },
+ "per-pleks-kntrlvrlst-domicile-miami-sept-19": {
+  "checked_at": "2026-09-18T04:47:05+00:00",
+  "city": "Miami",
+  "state": ""
  },
  "petit-biscuit-at-the-foundry-friday-oct-23-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",

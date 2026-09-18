@@ -1,0 +1,105 @@
+{
+ "event": {
+  "bid_all_in": [
+   77
+  ],
+  "bidders": [
+   1
+  ],
+  "fair": [
+   96.62
+  ],
+  "high": [
+   207
+  ],
+  "last_sale": [
+   88.0
+  ],
+  "listings": [
+   11
+  ],
+  "tickets": [
+   28
+  ]
+ },
+ "stamps": [
+  "2026-09-18T04:47:07+00:00"
+ ],
+ "types": {
+  "General Admission": {
+   "all_in": [
+    95
+   ],
+   "ask": [
+    92
+   ],
+   "ask_qty": [
+    2
+   ],
+   "bid": [
+    80
+   ],
+   "bid_qty": [
+    1
+   ],
+   "linked_count": 4,
+   "listings": [
+    11
+   ],
+   "qty": [
+    28
+   ],
+   "uqid": "4b668f61-0761-4197-a8c6-e582c5dd0f48"
+  },
+  "Stage Access": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "bc0e6016-59ba-4919-ab94-1a44de048afd"
+  },
+  "VIP / Backstage": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "4ee733c2-64b9-42bc-aaa0-ac0c93e57e66"
+  }
+ }
+}

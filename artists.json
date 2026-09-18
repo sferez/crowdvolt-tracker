@@ -140,6 +140,20 @@
   "slug": "armand-van-helden",
   "spotify": null
  },
+ "armin-van-buuren": {
+  "bio": "Armin van Buuren is a Dutch DJ and producer widely regarded as one of the most influential figures in trance music, with a career spanning over two decades. He's the force behind the legendary A State of Trance radio show and event series, which has connected millions of trance fans worldwide since 2001. A five-time winner of DJ Mag's #1 DJ ranking, Armin delivers euphoric, high-energy sets that blend classic trance anthems with progressive and mainstage sounds.",
+  "followers": 54924,
+  "genres": [
+   "trance",
+   "melodic techno"
+  ],
+  "img": "https://img.crowdvolt.com/870c59a4-6201-40cb-b5ad-185e3bd6a319.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Armin van Buuren",
+  "slug": "armin-van-buuren",
+  "spotify": null
+ },
  "arodes": {
   "bio": "Arodes is a dynamic DJ known for blending deep house grooves with infectious dancefloor energy. His sets weave melodic rhythms with unexpected drops, keeping the crowd fully engaged from start to finish. With a keen ear for both classic and cutting-edge tracks, Arodes delivers an unforgettable experience every time he performs.",
   "followers": null,
@@ -2564,6 +2578,21 @@
   "monthly_listeners": null,
   "name": "Yellow Claw",
   "slug": "yellow-claw",
+  "spotify": null
+ },
+ "yetep": {
+  "bio": "Yetep is a Los Angeles\u2013based DJ, producer, and vocalist known for his emotional melodic bass sound that blends uplifting electronic production with heartfelt songwriting. Rising through releases on labels such as Monstercat, Seeking Blue, and Proximity, Yetep has built a strong following for his atmospheric melodies, powerful drops, and collaborations with emerging vocalists. His music sits at the intersection of melodic bass and future bass, creating energetic yet emotionally driven performances.",
+  "followers": null,
+  "genres": [
+   "future bass",
+   "melodic bass",
+   "electronic"
+  ],
+  "img": "https://img.crowdvolt.com/80c62d7f-35d5-4163-b7fe-4f48cd17ec9f.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Yetep",
+  "slug": "yetep",
   "spotify": null
  },
  "zedd": {
