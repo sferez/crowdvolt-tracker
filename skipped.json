@@ -159,6 +159,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "beltran-sept-24-floyd-miami-florida": {
+  "checked_at": "2026-09-20T04:46:10+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "ben-bohmer-radius-fri-oct-2-chicago": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Chicago",
@@ -541,6 +546,11 @@
  },
  "francis-mercier-presents-soley-reframe-studios-outdoors-sat-sep-19-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "francis-mercier-sound-nightclub-los-angeles-california-sept-19-2026": {
+  "checked_at": "2026-09-20T04:46:10+00:00",
   "city": "Los Angeles",
   "state": "CA"
  },
