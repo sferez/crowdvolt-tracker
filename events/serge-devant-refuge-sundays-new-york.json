@@ -1,52 +1,82 @@
 {
  "event": {
   "bid_all_in": [
+   0,
+   0,
    0
   ],
   "bidders": [
+   0,
+   0,
    0
   ],
   "fair": [
+   null,
+   null,
    null
   ],
   "high": [
+   0,
+   0,
    0
   ],
   "last_sale": [
+   null,
+   null,
    null
   ],
   "listings": [
+   0,
+   0,
    0
   ],
   "tickets": [
+   0,
+   0,
    0
   ]
  },
  "stamps": [
-  "2026-09-20T04:49:59+00:00"
+  "2026-09-20T04:49:59+00:00",
+  "2026-09-20T06:36:32+00:00",
+  "2026-09-20T07:26:17+00:00"
  ],
  "types": {
   "GA (After 4AM)": {
    "all_in": [
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
     null
    ],
    "linked_count": 1,
    "listings": [
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
     0
    ],
    "uqid": "139bbf4e-c45c-489b-a012-4508d6081a7a"
