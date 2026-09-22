@@ -301,6 +301,21 @@
   "slug": "broken-hill",
   "spotify": null
  },
+ "brothers-macklovitch": {
+  "bio": "The Brothers Macklovitch is the duo of legendary turntablist A-Trak (Fool's Gold founder) and his brother Dave 1 of Chromeo, two Montreal-raised icons who each spent decades shaping DJ culture and electro-funk before officially joining forces. Their debut single \"Give Love to Get Some\" featuring Leven Kali dropped on Fool's Gold in 2020, setting the tone for their disco-leaning, sample-rich house sound. Their seasonal DJ mixes and joint sets have become cult favorites, blending impeccable selection with family chemistry.",
+  "followers": null,
+  "genres": [
+   "house",
+   "tech house",
+   "disco house"
+  ],
+  "img": "https://img.crowdvolt.com/ceaa6f91-83de-401c-bf85-fbb832db01c6.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Brothers Macklovitch",
+  "slug": "brothers-macklovitch",
+  "spotify": null
+ },
  "brunello": {
   "bio": "Brunello is an emerging electronic music producer and DJ associated with Mellow Circus Records, a label he launched that blends fresh house and electronic sounds with a creative, almost circus-inspired twist. He\u2019s gaining traction in the modern dance music scene with releases like \u201cThe Clown\u2019s Corridor,\u201d \u201cLost in the Mellow Circus,\u201d and \u201cIllusions,\u201d showcasing a groove-centric house and electronic style that\u2019s both inventive and dancefloor-ready.",
   "followers": null,
@@ -486,6 +501,20 @@
   "monthly_listeners": null,
   "name": "David Lindmer",
   "slug": "david-lindmer",
+  "spotify": null
+ },
+ "deep-dish": {
+  "bio": "Deep Dish is a Grammy Award-winning electronic music duo consisting of Iranian-American artists Ali \"Dubfire\" Shirazinia and Sharam Tayebi, who met in Washington, D.C. in 1991 and rose to global prominence with their groundbreaking 1998 debut album \"Junk Science\" and iconic remixes for artists like Madonna, Dido, and Michael Jackson. Founders of the influential Yoshitoshi label, they pioneered a genre-defying sound blending deep house, progressive, techno, and rock influences, consistently ranking among DJ Magazine's Top 100 DJs throughout the 2000s. After disbanding in 2006 to pursue acclaimed solo careers, with Dubfire becoming a leading figure in minimal techno, the duo permanently reunited in 2024 and continue to tour worldwide.",
+  "followers": 5915,
+  "genres": [
+   "progressive house",
+   "deep house"
+  ],
+  "img": "https://img.crowdvolt.com/5b551d70-8629-4efa-bee7-7e687274fe2f.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Deep Dish",
+  "slug": "deep-dish",
   "spotify": null
  },
  "devault-c7d91": {
@@ -1006,6 +1035,21 @@
   "monthly_listeners": null,
   "name": "Jamie Jones",
   "slug": "jamie-jones",
+  "spotify": null
+ },
+ "jeremy-olander-a8981": {
+  "bio": "Jeremy Olander is a Swedish DJ, producer, and label founder renowned for his deeply emotive and cinematic approach to electronic music. As the founder of Vivrant, he has built a platform that showcases forward-thinking sounds within the melodic house and techno space. Olander\u2019s productions are characterized by rich textures, atmospheric builds, and powerful, driving basslines, while his DJ sets take listeners on a journey\u2014balancing intensity with emotion. Having performed on some of the world\u2019s most respected stages, he continues to be a defining figure in the progressive and melodic electronic scene.",
+  "followers": null,
+  "genres": [
+   "melodic house",
+   "progressive house",
+   "melodic techno"
+  ],
+  "img": "https://img.crowdvolt.com/13911ee4-7956-40d2-bd9a-b4d069ebb03a.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Jeremy Olander",
+  "slug": "jeremy-olander-a8981",
   "spotify": null
  },
  "jigitz": {
@@ -1629,6 +1673,21 @@
   "slug": "massano-c9b39",
   "spotify": "https://open.spotify.com/artist/6htWLP8aiuf19FYMA4VQAZ"
  },
+ "mathame": {
+  "bio": "Mathame is an Italian DJ/producer duo known for their cinematic, emotionally charged take on melodic techno. Fusing deep atmospheres, hypnotic rhythms, and dramatic builds, their sound feels immersive and almost spiritual\u2014designed as much for listening as for the dancefloor. As key figures on Afterlife, Mathame are celebrated for transporting crowds into a dark, futuristic world where melody and intensity move in perfect balance.",
+  "followers": 189290,
+  "genres": [
+   "melodic techno",
+   "melodic house",
+   "techno"
+  ],
+  "img": "https://img.crowdvolt.com/f14f2672-d626-4502-8870-4f5ad224c2fc.png",
+  "instagram": "https://www.instagram.com/mathame_",
+  "monthly_listeners": null,
+  "name": "Mathame",
+  "slug": "mathame",
+  "spotify": "https://open.spotify.com/artist/6QSwQEz8CDMg8Rqk8dEkxS"
+ },
  "mau-p": {
   "bio": "Mau P is a Dutch DJ and producer who has rapidly risen as one of the most exciting forces in modern tech house. Known for groove-driven productions and high-impact club records, Mau P has captured global attention through chart-topping releases and electrifying performances across the world\u2019s biggest dance floors.",
   "followers": 241062,
@@ -1806,6 +1865,21 @@
   "monthly_listeners": null,
   "name": "Noizu",
   "slug": "noizu",
+  "spotify": null
+ },
+ "nora-en-pure": {
+  "bio": "Nora En Pure is a South African\u2013Swiss DJ and producer known for her signature \u201cpurified\u201d sound \u2014 a melodic blend of deep house, organic elements, and uplifting piano-driven progressions. With breakout tracks like Come With Me and performances at major festivals worldwide, she has built a global following through emotive, nature-inspired productions and elegant, groove-focused sets. She is also the founder of the Purified brand and label.",
+  "followers": 25628,
+  "genres": [
+   "deep house",
+   "melodic house",
+   "progressive house"
+  ],
+  "img": "https://img.crowdvolt.com/73585ba8-f202-4fff-a70a-33c5d36d438e.png",
+  "instagram": "https://www.instagram.com/noraenpure",
+  "monthly_listeners": null,
+  "name": "Nora En Pure",
+  "slug": "nora-en-pure",
   "spotify": null
  },
  "notre-dame": {
@@ -2178,6 +2252,20 @@
   "monthly_listeners": null,
   "name": "Silvie Loto",
   "slug": "silvie-loto",
+  "spotify": null
+ },
+ "skream": {
+  "bio": "Skream is a pioneering UK DJ and producer who helped shape the early sound of dubstep in the mid-2000s. Known for blending dubstep with house, techno, and disco, his sets range from deep bass-driven tracks to energetic club grooves. With releases on labels like Tempa and collaborations across the electronic scene, Skream remains a versatile force in global dance music.",
+  "followers": 29224,
+  "genres": [
+   "house",
+   "electronic"
+  ],
+  "img": "https://img.crowdvolt.com/2ecb5cef-3d64-4c69-b046-85ed7463517b.png",
+  "instagram": "https://www.instagram.com/skreamizm",
+  "monthly_listeners": null,
+  "name": "Skream",
+  "slug": "skream",
   "spotify": null
  },
  "skrillex": {
