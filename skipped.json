@@ -44,6 +44,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "ahmed-spins-castaways-sat-sep-26-chicago": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "alesso-liv-nightclub-fri-oct-19-miami": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Miami",
@@ -76,6 +81,11 @@
  },
  "amelie-lens-grand-park-sat-sep-26-los-angeles": {
   "checked_at": "2026-09-09T03:07:33+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "angrybaby-academy-nighclub-fri-nov-13-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
   "city": "Los Angeles",
   "state": "CA"
  },
@@ -154,6 +164,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "bear-grillz-rude-service-takeover-academy-nightclub-fri-sep-25-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "bedouin-saga-miami-little-river-studios-dec-4-basel": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Miami",
@@ -229,6 +244,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "boombox-cartel-academy-nightclub-fri-oct-16-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "boys-noize-888-garage-sat-sep-26-san-francisco": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "San Francisco",
@@ -253,6 +273,11 @@
   "checked_at": "2026-09-15T04:47:43+00:00",
   "city": "San Francisco",
   "state": "CA"
+ },
+ "caiiro-falyn-sable-miami-florida-miami-september-25-2026": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "camelphat-and-volkoder-club-space-miami-florida-october-31-2026": {
   "checked_at": "2026-09-10T04:46:39+00:00",
@@ -353,6 +378,11 @@
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "cosmic-gate-academy-nightclub-sat-sep-26-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
  },
  "crankdat-liv-nightclub-sat-sep-26-miami": {
   "checked_at": "2026-09-09T03:07:33+00:00",
@@ -549,6 +579,11 @@
   "city": "Los Angeles",
   "state": ""
  },
+ "fahlberg-the-spotlight-sat-sep-26-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "faster-horses-and-kyle-starkey-floyd-florida-miami-november-1-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -659,6 +694,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "groove-armada-the-great-northern-sat-sep-26-san-francisco": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "groove-armada-the-great-northern-sun-sep-27-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
@@ -723,6 +763,11 @@
   "checked_at": "2026-09-12T04:45:54+00:00",
   "city": "Chicago",
   "state": " IL"
+ },
+ "horsegiirl-friends-weplay-studios-inglewood-sat-sep-26-california": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Inglewood",
+  "state": "California"
  },
  "horsegiirl-portola-week-the-midway-sun-sep-27-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -818,6 +863,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "jay-de-lys-greg-99-vin-de-syrah-september-27-2026": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Chicago",
+  "state": "United States"
  },
  "jazzy-sound-nightclub-california-los-angeles-october-17-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -974,6 +1024,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "kolsch-613-imperial-st-saturday-oct-10-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Los Angeles",
+  "state": "California"
+ },
  "konstantin-sibold-halcyon-california-san-francisco-october-25-2026": {
   "checked_at": "2026-09-15T04:47:43+00:00",
   "city": "San Francisco",
@@ -1038,6 +1093,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "liva-k-malive-613-imperial-st-saturday-oct-10-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Los Angeles",
+  "state": "California"
  },
  "locky-floyd-florida-miami-september-12-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -1107,6 +1167,11 @@
  "marc-rebillet-franc-moody-chromeo-block-party-the-midway-sat-oct-24-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
+  "state": "CA"
+ },
+ "marco-strous-academy-nighclub-fri-oct-23-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  },
  "marco-strous-serum-prysm-fri-sep-18-chicago": {
@@ -1184,6 +1249,11 @@
   "city": "Pasadena",
   "state": "CA"
  },
+ "morten-academy-nightclub-sat-oct-31-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "moscoman-and-red-axes-and-whitesquare-floyd-miami-florida-october-16-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -1239,6 +1309,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "nicky-romero-academy-nighclub-fri-oct-2-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "nicole-moudaber-club-space-miami-florida-october-24-2026": {
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "Miami",
@@ -1264,6 +1339,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "oceanway-festival-santa-monica-pier-sep-26-27-california": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Santa Monica",
+  "state": "CA"
+ },
  "odd-mob-floyd-florida-miami-october-17-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -1282,6 +1362,11 @@
  "oppidan-1015-folsom-thu-oct-15-california": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "San Francisco",
+  "state": "CA"
+ },
+ "oppidan-academy-nightclub-sat-oct-17-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  },
  "oskar-med-k-radius-illinois-chicago-september-12-2026": {
@@ -1439,6 +1524,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "rebuke-academy-nightclub-sat-oct-3-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "riordan-1015-folsom-san-francisco-oct-9": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
@@ -1491,6 +1581,11 @@
  },
  "salute-open-to-close-at-space-550-saturday-sep-12-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "sam-alfred-portola-2026-monarch-friday-sep-25-san-francisco": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
   "city": "San Francisco",
   "state": "CA"
  },
@@ -1629,6 +1724,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "snakehips-academy-nightclub-fri-nov-6-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "snow-strippers-miami-factory-town-sept-19": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -1681,6 +1781,11 @@
  },
  "sparrow-and-kasango-sound-nightclub-california-los-angeles-september-26-2026": {
   "checked_at": "2026-09-14T04:49:26+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "steve-aoki-academy-nightclub-thu-oct-29-los-angeles": {
+  "checked_at": "2026-09-23T04:48:03+00:00",
   "city": "Los Angeles",
   "state": "CA"
  },

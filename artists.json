@@ -1806,6 +1806,20 @@
   "slug": "mph",
   "spotify": null
  },
+ "murda-beatz": {
+  "bio": "Born Shane Lindstrom in Ontario, Canada, Murda Beatz began producing music as a teenager before relocating to Chicago and later Atlanta, where he quickly became a key figure in modern trap music. His production credits include chart-topping hits like \u201cNice For What\u201d (Drake), \u201cMotorSport\u201d (Migos, Cardi B & Nicki Minaj), \u201cButterfly Effect\u201d (Travis Scott), and \u201cLook Alive\u201d (BlocBoy JB ft. Drake). In addition to producing platinum records, Murda Beatz has built a reputation as a DJ, bringing hip-hop, trap, and festival energy to clubs and major events around the world",
+  "followers": null,
+  "genres": [
+   "Hip Hop",
+   "Trap"
+  ],
+  "img": "https://img.crowdvolt.com/assets/ea92aa10-2be9-4291-87e0-9e4f2ca4aa0c/rehost-ea92aa10-2be9-4291-87e0-9e4f2ca4aa0c-e101795f.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Murda Beatz",
+  "slug": "murda-beatz",
+  "spotify": null
+ },
  "nic-fanciulli": {
   "bio": "Nic Fanciulli is a renowned British DJ and producer, celebrated for his masterful blend of house and techno. With a career spanning over two decades, he\u2019s known for delivering deeply melodic yet driving sets that balance underground credibility with broad dancefloor appeal. Fanciulli\u2019s productions are polished and emotive, often weaving hypnotic grooves with dynamic rhythms, making him a favorite at top clubs and festivals worldwide. His performances are immersive journeys that keep crowds moving while showcasing his signature sonic sophistication.",
   "followers": 15814,
@@ -2013,6 +2027,20 @@
   "slug": "peggy-gou",
   "spotify": "https://open.spotify.com/artist/2mLA48B366zkELXYx7hcDN"
  },
+ "peterblue": {
+  "bio": "Peterblue is a DJ and producer known for his dynamic sets and polished productions within the underground dance scene. He has been building recognition through club performances and a consistent stream of releases that showcase his evolving sound. With a focus on groove and atmosphere, he continues to grow his presence among emerging electronic artists.",
+  "followers": null,
+  "genres": [
+   "house",
+   "tech-house"
+  ],
+  "img": "https://img.crowdvolt.com/39c10e14-3421-4716-ad26-0474157fbc36.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Peterblue",
+  "slug": "peterblue",
+  "spotify": null
+ },
  "prospa-b0119": {
   "bio": "Prospa is a UK electronic duo known for blending classic rave energy with modern house and breakbeat production. Their sound pulls from \u201890s UK hardcore and trance influences while delivering polished, high-impact club records built for peak-time sets. With releases on labels like CircoLoco Records and performances at major festivals and underground venues, Prospa have become a staple in the new wave of UK dance music.",
   "followers": null,
@@ -2146,6 +2174,23 @@
   "monthly_listeners": null,
   "name": "Sasha",
   "slug": "sasha",
+  "spotify": null
+ },
+ "sasha-digweed": {
+  "bio": "Sasha first rose to prominence in the early 1990s through his residency at Shelley\u2019s Laserdome before becoming one half of the legendary duo Sasha & John Digweed. Together, they revolutionized DJ culture with iconic mix compilations like Renaissance: The Mix Collection and Northern Exposure, while their marathon residencies at New York\u2019s Twilo became legendary for their storytelling and technical precision. Rather than treating DJing as a sequence of tracks, Sasha helped establish the idea of the DJ set as a carefully crafted musical journey.",
+  "followers": 26163,
+  "genres": [
+   "Progressive House",
+   "Pregressive breaks",
+   "Deep house",
+   "Electronica",
+   "Melodic techno"
+  ],
+  "img": "https://img.crowdvolt.com/assets/20577475-61c5-458e-869b-cc87f677b7f9/resident_advisor-15-44c5d195.jpg",
+  "instagram": "https://www.instagram.com/djsashaofficial",
+  "monthly_listeners": null,
+  "name": "Sasha Digweed",
+  "slug": "sasha-digweed",
   "spotify": null
  },
  "sasha-john-digweed": {
@@ -2310,6 +2355,21 @@
   "monthly_listeners": null,
   "name": "Sofi Tukker",
   "slug": "sofi-tukker",
+  "spotify": null
+ },
+ "somewhen": {
+  "bio": "Somewhen is a Berlin-based DJ and producer known for his intense, forward-driving techno sound. Blending industrial textures with hypnotic rhythms, he has become a standout figure in the underground scene, delivering powerful, high-impact sets across major clubs and festivals.",
+  "followers": null,
+  "genres": [
+   "techno",
+   "industrial techno",
+   "hard techno"
+  ],
+  "img": "https://img.crowdvolt.com/assets/44a33a7d-fad5-44f3-a14e-3c5b0d877e49/rehost-44a33a7d-fad5-44f3-a14e-3c5b0d877e49-e101795f.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Somewhen",
+  "slug": "somewhen",
   "spotify": null
  },
  "sonny-fodera": {
