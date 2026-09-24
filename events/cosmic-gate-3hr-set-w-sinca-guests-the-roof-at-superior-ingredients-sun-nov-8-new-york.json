@@ -1,0 +1,205 @@
+{
+ "event": {
+  "bid_all_in": [
+   0
+  ],
+  "bidders": [
+   0
+  ],
+  "fair": [
+   null
+  ],
+  "high": [
+   11
+  ],
+  "last_sale": [
+   null
+  ],
+  "listings": [
+   1
+  ],
+  "tickets": [
+   1
+  ]
+ },
+ "stamps": [
+  "2026-09-24T04:48:08+00:00"
+ ],
+ "types": {
+  "Artist\u2019s Guest": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "f1187458-5896-4f6c-995d-6d91f990ddba"
+  },
+  "Express Pass": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 2,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "a6637c42-2eca-4633-9223-4c8d7f57888a"
+  },
+  "GA (After 8PM)": {
+   "all_in": [
+    11
+   ],
+   "ask": [
+    10
+   ],
+   "ask_qty": [
+    1
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    1
+   ],
+   "qty": [
+    1
+   ],
+   "uqid": "e10babfd-646c-43e3-8c98-4a780520bd9f"
+  },
+  "GA (Before 3:30PM)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "9b8c6e6c-4404-4794-a468-d5a60386e45c"
+  },
+  "GA (Before 5PM)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 2,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "7c25fa0c-3546-4823-b2e0-fa2fdf224784"
+  },
+  "General Admission": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 4,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "0f8bec71-46ed-49e2-8dc6-4365ef89827f"
+  },
+  "VIP": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "caa69631-399e-40c1-90d7-f38115895c4e"
+  }
+ }
+}

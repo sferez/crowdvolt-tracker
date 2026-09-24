@@ -287,6 +287,20 @@
   "slug": "bob-moses",
   "spotify": null
  },
+ "bob-sinclar": {
+  "bio": "Bob Sinclair is a French DJ and producer who rose to international fame in the 2000s with feel-good, chart-topping hits that blended house music with funk, disco, and world music influences. Born Christophe Le Friant in Paris, he became one of the most recognizable names in mainstream electronic music with anthems like \"World, Hold On\" and \"Love Generation,\" bringing a sunny, euphoric energy to dancefloors around the globe. A resident of Ibiza and a longtime fixture on the international party circuit, he remains a beloved ambassador of feel-good house music.",
+  "followers": null,
+  "genres": [
+   "house",
+   "electro house"
+  ],
+  "img": "https://img.crowdvolt.com/b1273a2b-1b61-4817-a0de-ef9ebf28447d.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Bob Sinclar",
+  "slug": "bob-sinclar",
+  "spotify": null
+ },
  "broken-hill": {
   "bio": "Broken Hill is a Southern California\u2013based DJ, producer, and audio engineer whose immersive blend of indie dance, house, and techno has rapidly gained global support from tastemakers like Solomun, Adam Ten, and Four Tet. His dancefloor-ready productions and dynamic sets showcase intricate rhythms, lush melodies, and rolling basslines, earning chart success on Beatport and extensive play across clubs and festivals. With a sharp technical edge and relentless creative drive, Broken Hill continues to push electronic music forward.",
   "followers": null,
@@ -458,6 +472,21 @@
   "monthly_listeners": null,
   "name": "Coco Prosecco",
   "slug": "coco-prosecco",
+  "spotify": null
+ },
+ "cosmic-gate-ceade": {
+  "bio": "Cosmic Gate is a German DJ and production duo renowned for their uplifting, melodic sound and long-standing influence in the global trance scene. With a career spanning decades, they have consistently delivered emotionally charged tracks that blend euphoric melodies with powerful, driving beats. Known for iconic releases and collaborations, Cosmic Gate has built a loyal international following and continues to headline major festivals and clubs worldwide. Their sets are immersive and uplifting, taking listeners on a journey through soaring highs and energetic drops.",
+  "followers": null,
+  "genres": [
+   "trance",
+   "progressive trance",
+   "progressive house"
+  ],
+  "img": "https://img.crowdvolt.com/4c2aac5a-6c62-41de-aa3a-c3fa0bf5ca27.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Cosmic Gate",
+  "slug": "cosmic-gate-ceade",
   "spotify": null
  },
  "crankdat": {
@@ -1359,6 +1388,20 @@
   "slug": "krol",
   "spotify": null
  },
+ "kshmr": {
+  "bio": "KSHMR is an American DJ and producer known for his cinematic approach to big-room and progressive house. Blending orchestral elements, world instruments, and dramatic storytelling into festival-sized drops, he carved out a distinct identity in the EDM scene with tracks like \u201cSecrets\u201d and \u201cPower.\u201d Beyond his own releases, KSHMR is also a respected sound designer and educator, widely recognized for his production sample packs and influence behind the scenes in modern dance music.",
+  "followers": null,
+  "genres": [
+   "electro house",
+   "edm"
+  ],
+  "img": "https://img.crowdvolt.com/0f352dc8-4c97-4c2d-b94c-1cc8a8f0b3b0.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "KSHMR",
+  "slug": "kshmr",
+  "spotify": null
+ },
  "kuko": {
   "bio": "Kuko is a forward-thinking electronic artist known for sleek, high-energy sets that blend underground house and techno with a modern edge. Drawing influence from late-night warehouse culture and festival-ready grooves, Kuko delivers driving rhythms, sharp builds, and crowd-locking drops. Whether in an intimate club or on a big stage, Kuko\u2019s sound is designed to keep the dancefloor moving from start to finish.",
   "followers": null,
@@ -1433,6 +1476,21 @@
   "monthly_listeners": null,
   "name": "Lee Foss",
   "slug": "lee-foss",
+  "spotify": null
+ },
+ "levi": {
+  "bio": "Levi is an electronic DJ and producer known for high-energy sets that blend groovy house rhythms with darker underground textures. His sound pulls from both club-driven basslines and melodic progressions, making his tracks equally fit for late-night dance floors and festival stages. With a growing international presence, Levi continues to build momentum through dynamic releases and immersive live performances.",
+  "followers": null,
+  "genres": [
+   "tech house",
+   "house",
+   "afro house"
+  ],
+  "img": "https://img.crowdvolt.com/8afacccb-ae71-41cb-b0e0-89f5ea19ee26.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Levi",
+  "slug": "levi",
   "spotify": null
  },
  "levity": {
@@ -2145,6 +2203,20 @@
   "slug": "rossi",
   "spotify": null
  },
+ "roy-rosenfeld": {
+  "bio": "Roy Rosenfeld is an Israeli DJ and producer celebrated for his deeply hypnotic and organic approach to electronic music, blending elements of deep house, techno, and world music into something distinctly his own. Based out of Tel Aviv, a city renowned for its thriving club culture, he has released music on respected labels and built a loyal following through his meditative, groove-driven sets. His sound is often described as earthy and soulful, setting him apart from more industrial or aggressive strains of electronic music.",
+  "followers": 4423,
+  "genres": [
+   "progressive house",
+   "organic house"
+  ],
+  "img": "https://img.crowdvolt.com/assets/caabc9fb-120e-4df8-aa4b-ab401f8b290b/resident_advisor-14547-44c5d195.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Roy Rosenfeld",
+  "slug": "roy-rosenfeld",
+  "spotify": null
+ },
  "san-pacho": {
   "bio": "San Pacho is a Croatian DJ and producer known for his infectious fusion of tech house, Latin rhythms, and club-ready grooves. Since 2019, he has released tracks on top labels like Confession, Dim Mak, and Hau5trap, earning international recognition with hits like La Pasion and Oye. His high-energy sets have made him a standout on festival stages and club lineups worldwide.",
   "followers": 80802,
@@ -2269,6 +2341,21 @@
   "name": "Sextile",
   "slug": "sextile",
   "spotify": null
+ },
+ "sidepiece": {
+  "bio": "Sidepiece is a high-energy house duo known for cheeky lyrics, infectious basslines, and club-ready drops that thrive on dancefloor chaos. Blending tech house with pop-leaning hooks, their tracks are built to be fun, flirty, and relentlessly catchy. From viral hits to packed festival sets, Sidepiece delivers feel-good house that doesn\u2019t take itself too seriously\u2014but still hits hard.",
+  "followers": 140252,
+  "genres": [
+   "tech house",
+   "edm",
+   "house"
+  ],
+  "img": "https://img.crowdvolt.com/assets/b360be86-adb8-455c-b430-52bc2ced9a38/spotify-5czbzNZZfWpyFgZyfT3Mkk-63972d1d.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Sidepiece",
+  "slug": "sidepiece",
+  "spotify": "https://open.spotify.com/artist/5czbzNZZfWpyFgZyfT3Mkk"
  },
  "silva-bumpa": {
   "bio": "Silva Bumpa is a UK-based producer known for his high-energy, bass-driven tracks that blend UK garage, house, and rave influences. His music is playful and punchy, often featuring chopped vocals, bouncy rhythms, and nostalgic nods to classic UK club sounds while still feeling fresh and modern. With a growing presence in the underground scene, he\u2019s become recognized for producing tracks that hit hard in both club and festival settings.",
@@ -2546,6 +2633,21 @@
   "monthly_listeners": null,
   "name": "TOBEHONEST",
   "slug": "tobehonest-34ba2",
+  "spotify": null
+ },
+ "tommy-phillips": {
+  "bio": "Tommy Phillips is an electronic music DJ known for delivering high-energy sets that blend house and tech house with crowd-driven momentum. His performances focus on driving basslines, rhythmic percussion, and smooth transitions that keep dance floors moving from start to finish. Whether playing clubs or festival stages, Tommy Phillips brings a polished sound and infectious energy that connects instantly with the crowd.",
+  "followers": null,
+  "genres": [
+   "minimal",
+   "house",
+   "tech house"
+  ],
+  "img": "https://img.crowdvolt.com/6763212e-27e1-4989-bde4-d38e21d4f487.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Tommy Phillips",
+  "slug": "tommy-phillips",
   "spotify": null
  },
  "trikk": {

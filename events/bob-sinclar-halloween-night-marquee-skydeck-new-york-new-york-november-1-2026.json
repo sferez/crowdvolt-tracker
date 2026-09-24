@@ -1,0 +1,80 @@
+{
+ "event": {
+  "bid_all_in": [
+   0
+  ],
+  "bidders": [
+   0
+  ],
+  "fair": [
+   null
+  ],
+  "high": [
+   124
+  ],
+  "last_sale": [
+   null
+  ],
+  "listings": [
+   1
+  ],
+  "tickets": [
+   4
+  ]
+ },
+ "stamps": [
+  "2026-09-24T04:48:06+00:00"
+ ],
+ "types": {
+  "GA (Fast Pass)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "47bdface-0d25-4724-b4b1-3c8828655dd7"
+  },
+  "General Admission": {
+   "all_in": [
+    124
+   ],
+   "ask": [
+    120
+   ],
+   "ask_qty": [
+    4
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 2,
+   "listings": [
+    1
+   ],
+   "qty": [
+    4
+   ],
+   "uqid": "e4a47878-4e9c-4988-aaf0-6ae40327f723"
+  }
+ }
+}

@@ -59,6 +59,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "altego-presented-by-palm-tree-club-sat-oct-24-miami": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "aluna-floyd-florida-miami-october-25-2026": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Miami",
@@ -194,8 +199,18 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "ben-ufo-kiku-room-sat-sep-26-california": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
  "benny-benassi-academy-nightclub-sat-nov-28-los-angeles": {
   "checked_at": "2026-09-22T04:47:28+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "betical-the-spotlight-fri-oct-2-los-angeles": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
   "city": "Los Angeles",
   "state": "CA"
  },
@@ -223,6 +238,16 @@
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "San Francisco",
   "state": "CA"
+ },
+ "blondish-presented-by-palm-tree-club-sat-oct-31-miami": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
+ "bob-moses-presented-by-palm-tree-club-sat-nov-14-miami": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "boiler-room-tba-la-sat-sep-26-los-angeles": {
   "checked_at": "2026-09-09T03:07:33+00:00",
@@ -394,6 +419,11 @@
   "city": "San DIego",
   "state": "CA"
  },
+ "cyclops-cove-sunset-cove-ampitheater-fri-sat-sun-4-5-6-florida": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "d-dan-1015-folsom-thu-sep-10-san-francisco": {
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "San Francisco",
@@ -478,6 +508,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "don-diablo-x-spin-magazine-sound-nightclub-california-los-angeles-september-25-2026": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
  },
  "dr-gabba-narciss-dazegxd-public-works-sat-nov-7-san-francisco": {
   "checked_at": "2026-09-22T04:47:28+00:00",
@@ -1079,6 +1114,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "level-up-nova-sd-fri-sep-25-california": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
  "lil-texas-sept-12-domicile-miami": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -1101,6 +1141,11 @@
  },
  "locky-floyd-florida-miami-september-12-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
+ "loud-luxury-presented-by-palm-tree-club-sat-sep-26-miami": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
   "city": "Miami",
   "state": "FL"
  },
@@ -1179,6 +1224,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "marrn-smoke-mirrors-illinois-chicago-september-26-2026": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "marsolo-and-silvie-loto-floyd-florida-miami-october-18-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -1207,6 +1257,11 @@
  "mele-halcyon-sf-fri-oct-9-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
+  "state": "CA"
+ },
+ "mestiza-presents-sacro-gloria-molina-grand-park-sat-nov-14-los-angeles": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  },
  "mgmt-dj-set-san-francisco-public-works": {
@@ -1839,6 +1894,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "teletech-club-space-fri-nov-27-miami": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "teletech-pier-80-warehouse-sat-jan-san-francisco": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "San Francisco",
@@ -1894,6 +1954,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "tommy-phillips-cam-stockman-sound-nightclub-fri-dec-18-los-angeles": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "turnstile-the-never-enough-tour-factory-town-sun-sep-20-miami": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -1914,6 +1979,11 @@
   "city": "Hollywood",
   "state": "CA"
  },
+ "twofaced-smoke-mirrors-sat-nov-28-chicago": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "unreal-13-nov-factory-town-miami": {
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "Miami",
@@ -1923,6 +1993,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "vavo-ricky-retro-presented-by-palm-tree-club-sat-nov-7-miami": {
+  "checked_at": "2026-09-24T04:47:56+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "victor-ruiz-halcyon-california-san-francisco-october-24-2026": {
   "checked_at": "2026-09-15T04:47:43+00:00",
