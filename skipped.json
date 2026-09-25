@@ -224,6 +224,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "black-coffee-east-end-plaza-navy-pier-sun-oct-18-chicago": {
+  "checked_at": "2026-09-25T04:49:07+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "blomqvist-cermark-hall-sat-oct-17-chicago": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Chicago",
@@ -691,6 +696,11 @@
  },
  "frank-storm-and-blaise-bracic-floyd-florida-miami-october-26-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
+ "frank-walker-presented-by-palm-tree-club-sat-dec-12-miami": {
+  "checked_at": "2026-09-25T04:49:07+00:00",
   "city": "Miami",
   "state": "FL"
  },
