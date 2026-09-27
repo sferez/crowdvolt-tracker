@@ -784,6 +784,11 @@
   "city": "Indio",
   "state": "CA"
  },
+ "hello-sundays-w-dennis-quin-alhambra-palace-patio-illinois-chicago-september-27-2026": {
+  "checked_at": "2026-09-27T04:48:29+00:00",
+  "city": "Chicago",
+  "state": "Illinois"
+ },
  "hocus-pocus-2026-factory-town-friday-oct-30-miami": {
   "checked_at": "2026-09-15T04:47:43+00:00",
   "city": "Miami",
@@ -936,6 +941,11 @@
  },
  "jimi-jules-open-to-close-gin-ling-way-california-los-angeles-september-27-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "jimi-jules-sound-nightclub-sat-sept-26-los-angeles": {
+  "checked_at": "2026-09-27T04:48:29+00:00",
   "city": "Los Angeles",
   "state": "CA"
  },
