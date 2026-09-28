@@ -19,6 +19,11 @@
   "city": "Pioneertown",
   "state": " CA"
  },
+ "adam-sellouk-crssd-festival-rich-sun-sep-27-los-angeles": {
+  "checked_at": "2026-09-28T04:53:32+00:00",
+  "city": "San Diego",
+  "state": "California"
+ },
  "adriatique-insmoniac-the-midway-fri-nov-6-san-francisco": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "San Francisco",
@@ -356,6 +361,11 @@
  },
  "chasewest-b2b-discip-ragie-ban-dan-molinari-stixx-satellite-zeyzey-thu-oct-15-miami": {
   "checked_at": "2026-09-09T03:07:33+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
+ "chris-lorenzo-club-space-florida-miami-november-21-2026": {
+  "checked_at": "2026-09-28T04:53:32+00:00",
   "city": "Miami",
   "state": "FL"
  },
@@ -709,6 +719,16 @@
   "city": "Miami",
   "state": "FL"
  },
+ "frost-children-radius-thu-nov-12-chicago": {
+  "checked_at": "2026-09-28T04:53:32+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
+ "genesi-kasst-the-brass-rail-sun-sep-27-california": {
+  "checked_at": "2026-09-28T04:53:32+00:00",
+  "city": "San Diego",
+  "state": "California"
+ },
  "ghengar-hvdes-kenjoy-studio-60-sat-sep-12-miami": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -779,6 +799,16 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "hamdi-fc-san-francisco-bay-area-oct-2": {
+  "checked_at": "2026-09-28T04:53:32+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "hamdi-fc-san-francisco-bay-area-oct-3": {
+  "checked_at": "2026-09-28T04:53:32+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "head-trip-2026-empire-polo-club-california-indio-october-10-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Indio",
@@ -836,6 +866,11 @@
  },
  "ian-asher-radius-sat-sep-26-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
+ "idemi-smoke-mirrors-illinois-chicago-november-8-2026": {
+  "checked_at": "2026-09-28T04:53:32+00:00",
   "city": "Chicago",
   "state": "IL"
  },
@@ -1659,6 +1694,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "sam-alfred-crssd-festival-fall-waterfront-park-sat-sep-26-california": {
+  "checked_at": "2026-09-28T04:53:32+00:00",
+  "city": "San DIego",
+  "state": "CA"
+ },
  "sam-alfred-portola-2026-monarch-friday-sep-25-san-francisco": {
   "checked_at": "2026-09-23T04:48:03+00:00",
   "city": "San Francisco",
@@ -1929,6 +1969,11 @@
   "city": "Los Angeles",
   "state": "California"
  },
+ "third-party-presented-by-palm-tree-club-sat-oct-3-miami": {
+  "checked_at": "2026-09-28T04:53:32+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "throttle-dj-stingray-1015-folsom-thu-nov-19-california": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "San Francisco",
@@ -1978,6 +2023,11 @@
   "checked_at": "2026-09-24T04:47:56+00:00",
   "city": "Los Angeles",
   "state": "CA"
+ },
+ "trinity-presents-samuel-moriero-1720-los-angeles-october-18-2026": {
+  "checked_at": "2026-09-28T04:53:32+00:00",
+  "city": "Los Angeles",
+  "state": ""
  },
  "turnstile-the-never-enough-tour-factory-town-sun-sep-20-miami": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -2061,6 +2111,11 @@
  },
  "wonkywilla-the-foundry-fri-oct-30-san-francisco": {
   "checked_at": "2026-09-10T04:46:39+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "woo-york-the-great-northern-fri-oct-9-san-francisco": {
+  "checked_at": "2026-09-28T04:53:32+00:00",
   "city": "San Francisco",
   "state": "CA"
  },
