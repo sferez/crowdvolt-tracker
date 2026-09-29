@@ -119,6 +119,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "arden-jones-presented-by-palm-tree-club-sat-oct-17-miami": {
+  "checked_at": "2026-09-29T04:50:01+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "armand-van-helden-sun-sep-27-state-historic-park-los-angeles": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Los Angeles",
@@ -429,6 +434,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "cristobal-pesce-domicile-miami-miami-october-10-2026": {
+  "checked_at": "2026-09-29T04:50:01+00:00",
+  "city": "Miami",
+  "state": ""
+ },
  "crssd-fest-san-diego-california-september-26-2026": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "San DIego",
@@ -453,6 +463,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
   "state": " IL"
+ },
+ "day-trip-festival-norcal-discovery-meadow-sat-oct-17-california": {
+  "checked_at": "2026-09-29T04:50:01+00:00",
+  "city": "San Jose",
+  "state": "CA"
  },
  "deadmau5-east-end-plaza-navy-pier-sat-oct-17-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -549,6 +564,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "dvs1-domicile-miami-miami-october-9-2026": {
+  "checked_at": "2026-09-29T04:50:01+00:00",
+  "city": "Miami",
+  "state": ""
+ },
  "dxnby-smoke-and-mirrors-illinois-chicago-september-20-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
@@ -632,6 +652,16 @@
  "fahlberg-the-spotlight-sat-sep-26-los-angeles": {
   "checked_at": "2026-09-23T04:48:03+00:00",
   "city": "Los Angeles",
+  "state": "CA"
+ },
+ "fakemink-a-terrible-beauty-the-tour-hollywood-palladium-wed-oct-21-california": {
+  "checked_at": "2026-09-29T04:50:01+00:00",
+  "city": "Hollywood",
+  "state": "CA"
+ },
+ "fakemink-a-terrible-beauty-the-tour-part-2-hollywood-palladium-thu-oct-22-california": {
+  "checked_at": "2026-09-29T04:50:01+00:00",
+  "city": "Hollywood",
   "state": "CA"
  },
  "faster-horses-and-kyle-starkey-floyd-florida-miami-november-1-2026": {
@@ -1109,6 +1139,11 @@
   "city": "Inglewood",
   "state": "California"
  },
+ "klingande-presented-by-palm-tree-club-sat-nov-21-miami": {
+  "checked_at": "2026-09-29T04:50:01+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "knight-club-floyd-florida-miami-september-28-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -1314,6 +1349,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "meow-wolf-presents-desert-hearts-x-justin-martin-all-night-long-academy-nightclub-sat-nov-14-los-angeles": {
+  "checked_at": "2026-09-29T04:50:01+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "mestiza-presents-sacro-gloria-molina-grand-park-sat-nov-14-los-angeles": {
   "checked_at": "2026-09-24T04:47:56+00:00",
   "city": "Los Angeles",
@@ -1357,6 +1397,11 @@
  "moby-underworld-brookside-sat-nov-7-california": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Pasadena",
+  "state": "CA"
+ },
+ "moon-boots-the-spotlight-sat-oct-17-los-angeles": {
+  "checked_at": "2026-09-29T04:50:01+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  },
  "morten-academy-nightclub-sat-oct-31-los-angeles": {
@@ -1568,6 +1613,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "pnk-party-the-foundry-sat-oct-10-san-francisco": {
+  "checked_at": "2026-09-29T04:50:01+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "polo-pan-americas-tour-block-party-midwaysf-sat-oct-10-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -2089,6 +2139,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "welker-studio-60-miami-fl-oct-3": {
+  "checked_at": "2026-09-29T04:50:01+00:00",
+  "city": "Miami",
+  "state": ""
+ },
  "westend-1015-folsom-fri-nov-20-california": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "San Francisco",
@@ -2112,6 +2167,11 @@
  "wonkywilla-the-foundry-fri-oct-30-san-francisco": {
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "San Francisco",
+  "state": "CA"
+ },
+ "woo-york-live-community-berlin-sat-oct-10-los-angeles": {
+  "checked_at": "2026-09-29T04:50:01+00:00",
+  "city": " Los Angeles",
   "state": "CA"
  },
  "woo-york-the-great-northern-fri-oct-9-san-francisco": {
