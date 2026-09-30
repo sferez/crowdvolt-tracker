@@ -174,9 +174,19 @@
   "city": "Chicago",
   "state": " IL"
  },
+ "basel-afterjam-jolene-sound-room-florida-miami-december-4-2026": {
+  "checked_at": "2026-09-30T04:50:48+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "bassfluff-tiffany-day-los-angeles-california-sept-12": {
   "checked_at": "2026-09-11T04:46:27+00:00",
   "city": "Los Angeles",
+  "state": "CA"
+ },
+ "bassrush-presents-virtual-riot-blanke-hollywood-palladium-fri-dec-11-california": {
+  "checked_at": "2026-09-30T04:50:48+00:00",
+  "city": "Hollywood",
   "state": "CA"
  },
  "bear-grillz-rude-service-takeover-academy-nightclub-fri-sep-25-los-angeles": {
@@ -369,10 +379,20 @@
   "city": "Miami",
   "state": "FL"
  },
+ "chasewest-fngrs-crssd-fit-social-sat-nov-14-san-diego": {
+  "checked_at": "2026-09-30T04:50:48+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
  "chris-lorenzo-club-space-florida-miami-november-21-2026": {
   "checked_at": "2026-09-28T04:53:32+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "chris-stassy-petco-park-sat-oct-31-san-diego": {
+  "checked_at": "2026-09-30T04:50:48+00:00",
+  "city": "San Diego",
+  "state": "California"
  },
  "chris-stussy-rawhide-event-center-friday-oct-30": {
   "checked_at": "2026-09-09T03:07:33+00:00",
@@ -433,6 +453,11 @@
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "crankdat-zingara-petco-park-fri-nov-13-san-diego": {
+  "checked_at": "2026-09-30T04:50:48+00:00",
+  "city": "San Diego",
+  "state": "California"
  },
  "cristobal-pesce-domicile-miami-miami-october-10-2026": {
   "checked_at": "2026-09-29T04:50:01+00:00",
@@ -754,6 +779,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "frost-children-the-castro-theatre-tue-dec-8-san-francisco": {
+  "checked_at": "2026-09-30T04:50:48+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "genesi-kasst-the-brass-rail-sun-sep-27-california": {
   "checked_at": "2026-09-28T04:53:32+00:00",
   "city": "San Diego",
@@ -809,10 +839,20 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "guy-gerber-rumors-miami-art-week-2026-little-river-studios-florida-miami-december-2-2026": {
+  "checked_at": "2026-09-30T04:50:48+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "guy-j-public-works-fri-dec-4-san-francisco": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "San Francisco",
   "state": "CA"
+ },
+ "halloweek-halloween-night-club-space-florida-miami-november-1-2026": {
+  "checked_at": "2026-09-30T04:50:48+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "halloweek-pass-club-space-florida-miami-october-31-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -1334,6 +1374,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "max-styler-petco-park-sat-nov-28-san-diego": {
+  "checked_at": "2026-09-30T04:50:48+00:00",
+  "city": "San Diego",
+  "state": "California"
+ },
  "max-styler-shrine-expo-hall-los-angeles-california-october-3-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Los Angeles",
@@ -1494,6 +1539,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "obskur-fngrs-crssd-fit-social-sun-nov-8-san-diego": {
+  "checked_at": "2026-09-30T04:50:48+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
  "oceanway-festival-santa-monica-pier-sep-26-27-california": {
   "checked_at": "2026-09-23T04:48:03+00:00",
   "city": "Santa Monica",
@@ -1614,6 +1664,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "playgrnd-series-nyc-the-melrose-ballroom-new-queens-october-3-2026": {
+  "checked_at": "2026-09-30T04:50:48+00:00",
+  "city": "New York",
+  "state": "New"
+ },
  "pnk-party-the-foundry-sat-oct-10-san-francisco": {
   "checked_at": "2026-09-29T04:50:01+00:00",
   "city": "San Francisco",
@@ -1638,6 +1693,11 @@
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "prospa-fngrs-crssd-fit-social-sun-nov-8-san-diego": {
+  "checked_at": "2026-09-30T04:50:48+00:00",
+  "city": "San Diego",
+  "state": "CA"
  },
  "prospa-present-prophecy-radius-fri-nov-20-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -1698,6 +1758,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "riordan-fngrs-crssd-quartyard-sat-oct-10-san-diego": {
+  "checked_at": "2026-09-30T04:50:48+00:00",
+  "city": "San Diego",
+  "state": "CA"
  },
  "ritmo-celestial-the-ground-florida-miami-september-13-2026": {
   "checked_at": "2026-09-12T04:45:54+00:00",

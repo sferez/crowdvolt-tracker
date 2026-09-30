@@ -532,6 +532,20 @@
   "slug": "dan-ghenacia",
   "spotify": null
  },
+ "danny-tenaglia": {
+  "bio": "Danny Tenaglia is a legendary American DJ and producer celebrated for his deep, driving blend of house and techno and his marathon, all-night sets. Rising from New York\u2019s underground club scene, he helped shape modern dance music through decades of influential releases and iconic performances. Renowned for masterful track selection and long-form storytelling, Danny Tenaglia remains a cornerstone of global club culture.",
+  "followers": 10828,
+  "genres": [
+   "house",
+   "tech house"
+  ],
+  "img": "https://img.crowdvolt.com/assets/efbac14c-fe7e-4d42-b8a7-9ac66275dd48/resident_advisor-24-44c5d195.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Danny Tenaglia",
+  "slug": "danny-tenaglia",
+  "spotify": null
+ },
  "david-lindmer": {
   "bio": "David Lindmer is a British producer and DJ based in Brooklyn, and the co-founder of melodic techno label Running Clouds alongside Andrea Vizzarro. His sound leans on raw analog basslines and cinematic, melody-driven leads, with releases on Afterlife, Purified, Atlant and Oddity, and support from Tale Of Us, Mind Against, Kevin de Vries and Nora En Pure. In 2022 he co-founded Chromia Sounds with Massano and Un:said, and his tracks have been played at ADE Awakenings and Afterlife Tulum.",
   "followers": null,
@@ -2561,6 +2575,21 @@
   "name": "SORAYA",
   "slug": "soraya",
   "spotify": "https://open.spotify.com/artist/3FOgzF7M25ZYbsEb7FpWxR"
+ },
+ "sosa": {
+  "bio": "SOSA is a UK DJ and electronic music producer from Liverpool, known for his deep, minimal, and tech\u2011house sound. He has released tracks on labels like Sola Records and Black Book Records, gaining international support from top DJs. SOSA also runs his own imprint, COCO Records, and performs at clubs and festivals worldwide, energizing dancefloors with his dynamic sets.",
+  "followers": null,
+  "genres": [
+   "tech house",
+   "minimal",
+   "house"
+  ],
+  "img": "https://img.crowdvolt.com/3d65a346-3193-4f31-9925-b74e1ad27134.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Sosa",
+  "slug": "sosa",
+  "spotify": null
  },
  "steve-aoki": {
   "bio": "Steve Aoki is a globally renowned DJ, producer, and entrepreneur known for his high-energy performances and genre-blending sound. Founder of Dim Mak Records, he\u2019s collaborated with major artists across EDM, hip-hop, and pop, and is famous for his electrifying shows and crowd-hyping stage presence.",
