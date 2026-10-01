@@ -1,0 +1,80 @@
+{
+ "event": {
+  "bid_all_in": [
+   0
+  ],
+  "bidders": [
+   0
+  ],
+  "fair": [
+   null
+  ],
+  "high": [
+   124
+  ],
+  "last_sale": [
+   null
+  ],
+  "listings": [
+   5
+  ],
+  "tickets": [
+   17
+  ]
+ },
+ "stamps": [
+  "2026-10-01T04:54:52+00:00"
+ ],
+ "types": {
+  "General Admission": {
+   "all_in": [
+    50
+   ],
+   "ask": [
+    48
+   ],
+   "ask_qty": [
+    2
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    5
+   ],
+   "qty": [
+    17
+   ],
+   "uqid": "ada7b6f6-7945-4faa-b26b-55bc511f1b67"
+  },
+  "Premium Pass": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "11099219-3f9f-4cd2-8817-45f9a8e2f5fe"
+  }
+ }
+}
