@@ -1895,6 +1895,21 @@
   "slug": "mestiza",
   "spotify": null
  },
+ "mita-gami": {
+  "bio": "Mita Gami is a genre-blurring electronic artist and DJ known for deep, hypnotic grooves that sit at the intersection of melodic techno, indie dance, and underground house. His sound is moody and driving, built on rolling basslines, textured synths, and subtle emotional tension that unfolds slowly on the dancefloor. Whether in dark club rooms or open-air settings, Mita Gami\u2019s sets are immersive and forward-leaning\u2014designed to pull listeners into a steady, late-night flow rather than chase big drops. He\u2019s become a staple in underground lineups for crowds that want something refined, psychedelic, and relentlessly rhythmic.",
+  "followers": 29443,
+  "genres": [
+   "indie dance",
+   "melodic house",
+   "melodic techno"
+  ],
+  "img": "https://img.crowdvolt.com/8771b351-e7d4-4b3a-8d54-14d81ead846d.png",
+  "instagram": "https://www.instagram.com/mita_gami",
+  "monthly_listeners": null,
+  "name": "Mita Gami",
+  "slug": "mita-gami",
+  "spotify": "https://open.spotify.com/artist/6Y9N9gdo5jpzGsExWDymS8"
+ },
  "mochakk": {
   "bio": "Mochakk is a Brazilian DJ and producer known for his high-energy, groove-driven house sound that blends classic influences with a modern edge. He\u2019s built a global following through infectious basslines, playful rhythms, and an unmistakable stage presence. His sets are feel-good, dancefloor-focused, and designed to keep crowds moving from start to finish.",
   "followers": 556066,
@@ -2215,6 +2230,20 @@
   "monthly_listeners": null,
   "name": "Prospa",
   "slug": "prospa-b0119",
+  "spotify": null
+ },
+ "prunk": {
+  "bio": "Prunk is a Dutch DJ, producer, and founder of PIV Records, whose warm, soulful sound draws on deep house roots and influences from artists like Kerri Chandler, Mark Farina, and Moodymann, shaped by a childhood steeped in Motown and classic house courtesy of his soul-singer mother and record-collecting older brother. With releases on labels including Defected, Nervous Records, and King Street Sounds, he has become a resident at Straf_Werk and a regular at major festivals like Awakenings, DGTL, and Loveland, while also performing internationally from S\u00e3o Paulo's D.EDGE to Bali's Jenja. His close creative partnership with Chris Stussy and his dedication to cultivating new talent through PIV Records have made him one of the most respected figures in the Dutch underground house scene.",
+  "followers": 6896,
+  "genres": [
+   "deep house",
+   "tech house"
+  ],
+  "img": "https://img.crowdvolt.com/ffc1c948-1f9b-44af-ba4c-76d570f245bd.png",
+  "instagram": "https://www.instagram.com/officialprunk",
+  "monthly_listeners": null,
+  "name": "Prunk",
+  "slug": "prunk",
   "spotify": null
  },
  "purple-disco-machine": {
