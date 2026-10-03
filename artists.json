@@ -228,6 +228,21 @@
   "slug": "basement-jaxx",
   "spotify": null
  },
+ "bedouin": {
+  "bio": "Bedouin is an American-based music production & DJ duo consisting of Tamer Malki & Rami Abousabe. They share a broad sonic vision that pulls from their diverse influences owing to their Middle Eastern heritage, Western upbringing, & world travels.",
+  "followers": 126114,
+  "genres": [
+   "organic house",
+   "tribal house",
+   "melodic house"
+  ],
+  "img": "https://img.crowdvolt.com/a7424dd7-e809-4a53-8755-431bceee3ccb.png",
+  "instagram": "https://www.instagram.com/bedouin_official",
+  "monthly_listeners": null,
+  "name": "Bedouin",
+  "slug": "bedouin",
+  "spotify": "https://open.spotify.com/artist/5bKdC6382t97Qnpvs81Rqx"
+ },
  "beltran": {
   "bio": "Beltran is a Brazilian DJ and producer recognized for his groove-driven approach to tech house, combining punchy basslines with minimalist precision. Known for club-focused records and high-energy performances, Beltran has quickly become a staple across international dance floors.",
   "followers": 120022,
@@ -1893,6 +1908,21 @@
   "monthly_listeners": null,
   "name": "Mestiza",
   "slug": "mestiza",
+  "spotify": null
+ },
+ "miguelle-tons-47de0": {
+  "bio": "Miguelle & Tons are a Venezuelan DJ and producer duo\u2014Miguelle Castillo and Alejandro Belandria\u2014based in Miami. Known for their groovy blend of house, minimal, and Latin-influenced rhythms, they\u2019ve built a strong presence in the global underground scene with residencies at Miami\u2019s iconic Club Space and performances at major venues and festivals worldwide. They also run the label and party series Two and a Half Cats, which showcases cutting-edge house music talent.",
+  "followers": null,
+  "genres": [
+   "minimal house",
+   "tech house",
+   "latin house"
+  ],
+  "img": "https://img.crowdvolt.com/assets/6276fc59-5e08-4881-a921-2dcb60964ccf/dice-53501-b96575cd.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Miguelle & Tons",
+  "slug": "miguelle-tons-47de0",
   "spotify": null
  },
  "mita-gami": {
