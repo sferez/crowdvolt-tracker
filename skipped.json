@@ -169,6 +169,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "ayybo-shrine-expo-hall-california-los-angeles-january-30-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "ayybo-the-brass-rail-sat-sep-26-san-diego": {
   "checked_at": "2026-09-17T04:47:45+00:00",
   "city": "San Diego",
@@ -188,6 +193,11 @@
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Chicago",
   "state": " IL"
+ },
+ "bart-skills-tba-los-angeles-fri-oct-9": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "California",
+  "state": ""
  },
  "basel-afterjam-jolene-sound-room-florida-miami-december-4-2026": {
   "checked_at": "2026-09-30T04:50:48+00:00",
@@ -209,6 +219,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "bedouin-presents-saga-reframe-studios-indoors-california-los-angeles-december-13-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "bedouin-saga-miami-little-river-studios-dec-4-basel": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Miami",
@@ -218,6 +233,11 @@
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "beltran-pier-48s-shed-a-january-1-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "beltran-sept-24-floyd-miami-florida": {
   "checked_at": "2026-09-20T04:46:10+00:00",
@@ -261,6 +281,11 @@
  },
  "biscits-sound-nightclub-thu-oct-1-los-angeles": {
   "checked_at": "2026-09-09T03:07:33+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "black-book-records-presents-untitled-reframe-studios-indoors-california-los-angeles-december-11-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "Los Angeles",
   "state": "CA"
  },
@@ -319,6 +344,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "boost-mija-mrd-crush3d-b2b-eera-cermak-hall-illinois-chicago-november-28-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "boys-noize-888-garage-sat-sep-26-san-francisco": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "San Francisco",
@@ -374,6 +404,16 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "carlita-reframe-studios-indoors-california-los-angeles-february-20-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "cassian-reframe-studios-indoors-california-los-angeles-january-30-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "channel-tres-enigma-tour-ramova-theatre-chicago": {
   "checked_at": "2026-09-18T04:47:05+00:00",
   "city": "Chicago",
@@ -407,6 +447,11 @@
  "chasewest-fngrs-crssd-fit-social-sat-nov-14-san-diego": {
   "checked_at": "2026-09-30T04:50:48+00:00",
   "city": "San Diego",
+  "state": "CA"
+ },
+ "chasewest-reframe-studios-indoors-california-los-angeles-january-2-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  },
  "chris-lorenzo-club-space-florida-miami-november-21-2026": {
@@ -524,6 +569,11 @@
   "city": "San Jose",
   "state": "CA"
  },
+ "deadmau5-birthday-celebration-reframe-studios-indoors-california-los-angeles-january-10-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "deadmau5-east-end-plaza-navy-pier-sat-oct-17-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
@@ -551,6 +601,11 @@
  },
  "deep-dish-sound-night-club-fri-oct-30-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "dennis-cruz-reframe-studios-indoors-california-los-angeles-january-24-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "Los Angeles",
   "state": "CA"
  },
@@ -609,10 +664,20 @@
   "city": "Long Beach",
   "state": "California"
  },
+ "drumcode-la-reframe-studios-indoors-california-los-angeles-december-12-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "dublon-floyd-florida-miami-october-4-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "duke-dumont-nye-reframe-studios-indoors-california-los-angeles-january-1-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
  },
  "dusky-serum-prysm-sat-oct-10-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -764,6 +829,11 @@
   "city": "Miami",
   "state": ""
  },
+ "framework-long-feng-present-lny-damian-lazarus-reframe-studios-indoors-california-los-angeles-february-21-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "framework-presents-solomun-hollywood-blvd-los-angeles-november-28-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Los Angeles",
@@ -809,6 +879,21 @@
   "city": "Miami",
   "state": "FL"
  },
+ "frost-children-3rd-show-added-fonda-theatre-california-los-angeles-december-10-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "frost-children-kuru-fonda-theatre-california-los-angeles-december-10-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "frost-children-kuru-fonda-theatre-california-los-angeles-december-11-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "frost-children-radius-thu-nov-12-chicago": {
   "checked_at": "2026-09-28T04:53:32+00:00",
   "city": "Chicago",
@@ -853,6 +938,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "green-velvet-reframe-studios-indoors-california-los-angeles-january-3-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
  },
  "greg-99-and-pedroz-sound-nightclub-california-los-angeles-december-12-2026": {
   "checked_at": "2026-09-14T04:49:26+00:00",
@@ -969,6 +1059,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "hot-since-82-reframe-studios-indoors-california-los-angeles-february-6-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "house-calls-ranger-trucco-chicago-oct-31": {
   "checked_at": "2026-10-01T04:50:50+00:00",
   "city": "Chicago",
@@ -1019,6 +1114,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "illenium-bill-graham-civic-auditorium-california-san-francisco-december-31-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "indo-warehouse-cermark-hall-fri-oct-2-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
@@ -1026,6 +1126,11 @@
  },
  "indo-warehouse-sound-nightclub-fri-nov-6-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "innellea-rafael-cerato-avalon-hollywood-fri-nov-6-los-angeles": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "Los Angeles",
   "state": "CA"
  },
@@ -1068,6 +1173,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "jamie-xx-honey-dijon-3kelves-dylan-c-greene-pier-48s-shed-a-december-31-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "jantsen-presented-by-vexra-public-works-sat-oct-3-san-francisco": {
   "checked_at": "2026-09-22T04:47:28+00:00",
@@ -1209,10 +1319,20 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "jungle-uc-berkely-san-francisco-wednesday": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Berkeley",
+  "state": "CA"
+ },
  "jungle-world-tour-2026-united-center-illinois-chicago-september-10-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
   "state": " IL"
+ },
+ "justice-dj-set-club-darc-season-2-nye-week-pier-48-california-san-francisco-december-31-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "kaskade-miami-sept-18-factory-town": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -1304,6 +1424,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "layton-giordani-extended-4-hour-set-reframe-studios-indoors-california-los-angeles-january-23-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "layton-giordani-spin-sat-sep-26-san-diego": {
   "checked_at": "2026-09-17T04:47:45+00:00",
   "city": "San Diego",
@@ -1313,6 +1438,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
   "state": "CA"
+ },
+ "level-up-cyclops-cove-pre-party-kemistry-united-states-florida-33312-december-3-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Miami",
+  "state": "United States"
  },
  "level-up-nova-sd-fri-sep-25-california": {
   "checked_at": "2026-09-24T04:47:56+00:00",
@@ -1398,6 +1528,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "mahmut-orhan-reframe-studios-indoors-california-los-angeles-january-31-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
  },
  "main-phase-smoke-and-mirrors-illinois-chicago-october-17-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -1519,6 +1654,11 @@
   "city": "Pasadena",
   "state": "CA"
  },
+ "monolink-the-blaze-mindchatter-pier-48s-shed-a-october-30-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "moon-boots-the-spotlight-sat-oct-17-los-angeles": {
   "checked_at": "2026-09-29T04:50:01+00:00",
   "city": "Los Angeles",
@@ -1533,6 +1673,16 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "mph-cermak-hall-illinois-chicago-january-29-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
+ "mph-the-regency-ballroom-california-san-francisco-january-15-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "mpire-of-the-sun-ask-that-petco-park-wed-oct-7-san-diego-california": {
   "checked_at": "2026-10-01T04:50:50+00:00",
@@ -1579,6 +1729,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "nic-fanciulli-paco-osuna-reframe-studios-indoors-california-los-angeles-january-16-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "nick-warren-castaways-illinois-chicago-september-20-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
@@ -1604,6 +1759,16 @@
   "city": "Miami",
   "state": "FL"
  },
+ "nimino-location-tba-los-angeles-california-los-angeles-december-19-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "ninajirachi-mgna-crrrta-the-regency-ballroom-california-san-francisco-november-19-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "ninajirachi-thu-nov-12-fonda-theatre-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Los Angeles",
@@ -1617,6 +1782,11 @@
  "nonstop-presents-vintage-culture-affairs-the-rady-shell-at-jacobs-park-california-san-diego-november-13-2026": {
   "checked_at": "2026-10-01T04:50:50+00:00",
   "city": "San Diego",
+  "state": "CA"
+ },
+ "nora-en-pure-reframe-studios-indoors-california-los-angeles-december-20-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  },
  "nu-sonido-floyd-florida-miami-september-13-2026": {
@@ -1834,6 +2004,21 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "reframe-february-pass-reframe-studios-indoors-california-los-angeles-february-2-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "reframe-january-pass-reframe-studios-indoors-california-los-angeles-january-2-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "rio-kosta-greek-theatre-berkeley-october-6-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Berkeley",
+  "state": "CA"
+ },
  "riordan-1015-folsom-san-francisco-oct-9": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
@@ -1878,6 +2063,11 @@
   "checked_at": "2026-09-17T04:47:45+00:00",
   "city": "San Diego",
   "state": "California"
+ },
+ "rufus-du-sol-dj-set-pier-80-warehouse-sunday-jan-3-2027-san-francisco": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "rupaul-radius-sat-oct-3-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -1924,6 +2114,11 @@
   "city": "Daly City",
   "state": "CA"
  },
+ "samuel-moriero-red-line-presents-chicago": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "san-holo-fri-sep-25-radius-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
@@ -1942,6 +2137,11 @@
  "sara-landry-alt8-sim0ne-miss-crafty-pier-48s-shed-a-november-14-2026": {
   "checked_at": "2026-10-05T05:13:16+00:00",
   "city": "San Francisco",
+  "state": "CA"
+ },
+ "sasha-john-digweed-reframe-studios-indoors-california-los-angeles-january-9-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  },
  "satellite-33-hour-iii-points-closing-party-club-space-at-the-ground-miami-miami-october-18-2026": {
@@ -2114,6 +2314,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "space-yacht-big-bass-ting-academy-nightclub-fri-oct-9-los-angeles": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "sparrow-and-kasango-sound-nightclub-california-los-angeles-september-26-2026": {
   "checked_at": "2026-09-14T04:49:26+00:00",
   "city": "Los Angeles",
@@ -2167,6 +2372,21 @@
  "sun-soaked-hunting-town-state-beach-sat-sep-12-ca": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Huntington Beach",
+  "state": "CA"
+ },
+ "teedee-floyd-florida-miami-january-23-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
+ "teedee-halcyon-california-san-francisco-january-31-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "teedee-sound-nightclub-california-los-angeles-january-30-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  },
  "teletech-27th-sep-venue-tba-los-angeles-boiler-room": {
@@ -2344,6 +2564,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "whomadewho-hybrid-dj-set-reframe-studios-indoors-california-los-angeles-february-7-2027": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "will-clarke-halcyon-sf-sat-sep-26-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
@@ -2361,6 +2586,11 @@
  },
  "woo-york-the-great-northern-fri-oct-9-san-francisco": {
   "checked_at": "2026-09-28T04:53:32+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "work-presents-bart-skils-4-hour-set-fun2bjane-the-san-francisco-mint-san-francisco-october-10-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "San Francisco",
   "state": "CA"
  },
@@ -2412,6 +2642,16 @@
  "zhu-on-the-move-halloween-sat-oct-31-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San francisco",
+  "state": "CA"
+ },
+ "zhu-reframe-studios-indoors-california-los-angeles-december-5-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "zhu-second-date-reframe-studios-indoors-california-los-angeles-december-6-2026": {
+  "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  }
 }

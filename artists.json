@@ -590,6 +590,21 @@
   "slug": "danny-tenaglia",
   "spotify": null
  },
+ "darco": {
+  "bio": "Darco is an emerging DJ and producer known for delivering high-energy sets that fuse underground house with bass-driven elements. With a sound rooted in groove, rhythm, and club-focused energy, Darco blends modern tech house influences with darker, more driving textures. His performances are dynamic and crowd-focused, building momentum through infectious beats and sharp transitions. As a rising name in the scene, Darco continues to develop a distinct sound that balances underground edge with broad dancefloor appeal.",
+  "followers": null,
+  "genres": [
+   "tech house",
+   "house",
+   "bass house"
+  ],
+  "img": "https://img.crowdvolt.com/43838cf6-83f6-4c9e-b15d-e18e672dccaa.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Darco",
+  "slug": "darco",
+  "spotify": null
+ },
  "david-lindmer": {
   "bio": "David Lindmer is a British producer and DJ based in Brooklyn, and the co-founder of melodic techno label Running Clouds alongside Andrea Vizzarro. His sound leans on raw analog basslines and cinematic, melody-driven leads, with releases on Afterlife, Purified, Atlant and Oddity, and support from Tale Of Us, Mind Against, Kevin de Vries and Nora En Pure. In 2022 he co-founded Chromia Sounds with Massano and Un:said, and his tracks have been played at ADE Awakenings and Afterlife Tulum.",
   "followers": null,
@@ -1044,6 +1059,20 @@
   "monthly_listeners": null,
   "name": "HILLS",
   "slug": "hills",
+  "spotify": null
+ },
+ "hntr": {
+  "bio": "HNTR is a Toronto-based DJ and producer known for his dark, driving blend of techno and house. His sound combines heavy basslines, hypnotic grooves, and warehouse-ready energy that has gained traction on global dance floors. HNTR is also the founder of No Neon, a label and event brand that has helped shape the underground electronic scene in Canada.",
+  "followers": null,
+  "genres": [
+   "melodic techno",
+   "techno"
+  ],
+  "img": "https://img.crowdvolt.com/53937aaf-ffe9-495a-ab3c-6e4d777be444.jpg",
+  "instagram": "https://www.instagram.com/hntrnet",
+  "monthly_listeners": null,
+  "name": "HNTR",
+  "slug": "hntr",
   "spotify": null
  },
  "honeyluv": {
@@ -1641,6 +1670,19 @@
   "monthly_listeners": null,
   "name": "Lip Critic",
   "slug": "lip-critic",
+  "spotify": null
+ },
+ "liva-k": {
+  "bio": "Liva K is a Greek DJ and producer known for his melodic house and Afro house sound, blending deep grooves with emotional melodies and global rhythms. His productions and remixes are frequently played in underground clubs and festivals, gaining support from major DJs across the electronic music scene. With releases on respected dance labels and a growing international following, Liva K has become a rising name in melodic and organic house music.",
+  "followers": null,
+  "genres": [
+   "afro house"
+  ],
+  "img": "https://img.crowdvolt.com/1fc9a4e6-526b-4af1-8594-e556e672ab39.png",
+  "instagram": "https://www.instagram.com/livakofficial",
+  "monthly_listeners": null,
+  "name": "Liva K",
+  "slug": "liva-k",
   "spotify": null
  },
  "loud-luxury": {
@@ -2393,6 +2435,20 @@
   "slug": "rampa",
   "spotify": null
  },
+ "rana-iravani": {
+  "bio": "Rana Iravani is a DJ and electronic music curator known for blending melodic house, deep house, and progressive sounds into emotive, atmospheric sets. Her style focuses on hypnotic grooves and melodic builds that balance underground energy with elegant, dance floor-driven storytelling. Through both club performances and curated mixes, she brings a refined, global perspective to contemporary electronic music.",
+  "followers": null,
+  "genres": [
+   "house",
+   "deep house"
+  ],
+  "img": "https://img.crowdvolt.com/c53ee91d-2514-4626-97b2-ef4fdc4b1672.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Rana Iravani",
+  "slug": "rana-iravani",
+  "spotify": null
+ },
  "ren-g": {
   "bio": "Ren G first gained attention through self-released music that mixed rap, pop, and electronic influences with deeply personal lyrics. Projects like Miss 24/7 and Hello! showcase her ability to shift effortlessly between melodic hooks, spoken-word flows, and futuristic production, creating a sound that feels equally inspired by internet culture and UK club music. \n\nHer genre-fluid style has earned her a growing fanbase and collaborations across the alternative music scene. Whether performing alongside artists like horsegiirL or releasing emotionally raw singles, Ren G continues to push beyond traditional pop and rap boundaries. ",
   "followers": null,
@@ -3092,6 +3148,20 @@
   "monthly_listeners": null,
   "name": "x3butterfly",
   "slug": "x3butterfly",
+  "spotify": null
+ },
+ "yamagucci": {
+  "bio": "Yamagucci is a Tokyo-born, Berlin-based DJ and producer known for bending house and techno into something playful, psychedelic, and deeply groovy. Blending crisp drum programming with trippy synths and tongue-in-cheek samples, his sets feel unpredictable yet effortless, bouncing between club-ready heat and left-field experimentation. A mainstay on labels like Toy Tonics and Public Possession, Yamagucci brings a sharp sense of humor and serious dancefloor instinct wherever he plays.",
+  "followers": 1386,
+  "genres": [
+   "indie dance",
+   "deep house"
+  ],
+  "img": "https://img.crowdvolt.com/2e81b873-d892-410e-aebc-769627d28281.png",
+  "instagram": "https://www.instagram.com/yamagucci_music",
+  "monthly_listeners": null,
+  "name": "Yamagucci",
+  "slug": "yamagucci",
   "spotify": null
  },
  "yellow-claw": {
