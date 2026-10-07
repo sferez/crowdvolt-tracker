@@ -212,7 +212,8 @@
    "idemi-jolene-sound-room-florida-miami-november-1-2026",
    "satellite-jolene-sound-room-florida-miami-october-18-2026",
    "satellite-sunday-jolene-sound-room-florida-miami-october-19-2026",
-   "satellite-thursday-jolene-sound-room-florida-miami-october-16-2026"
+   "satellite-thursday-jolene-sound-room-florida-miami-october-16-2026",
+   "thursday-october-8-jolene-sound-room-florida-miami-october-9-2026"
   ],
   "kia-forum": [],
   "kimpton-epic-hotel": [],
@@ -264,7 +265,9 @@
    "hntr-marquee-skydeck-new-york-new-york-october-10-2026",
    "murda-beatz-marquee-skydeck-sat-oct-10-new-york"
   ],
-  "midline": [],
+  "midline": [
+   "dj-habibeats-midline-sat-oct-31-miami"
+  ],
   "montauk-beach-house": [],
   "national-hotel": [
    "hugel-presents-make-the-girls-dance-on-the-beach-national-hotel-florida-miami-december-3-2026"
@@ -321,7 +324,8 @@
   ],
   "prysm": [],
   "public-records": [
-   "frank-and-tony-roman-fluegel-public-records-new-york-brooklyn-october-11-2026"
+   "frank-and-tony-roman-fluegel-public-records-new-york-brooklyn-october-11-2026",
+   "pretty-girl-dj-set-public-records-new-york-brooklyn-october-9-2026"
   ],
   "public-works": [
    "christian-loffler-public-works-sat-oct-31-san-francisco",
@@ -331,6 +335,7 @@
    "guy-j-public-works-fri-dec-4-san-francisco",
    "halloween-w-lost-miracle-sebastien-leger-roy-rosenfeld-public-works-fri-oct-30-san-francisco",
    "ivy-lab-public-works-sat-oct-25-san-francisco",
+   "jungle-afters-public-works-oct-7",
    "skream-public-works-fri-nov-27-san-francisco",
    "sufi-sessions-public-works-sunday-oct-11-san-francisco",
    "work-presents-bart-skils-4-hour-set-fun2bjane-the-san-francisco-mint-san-francisco-october-10-2026"
@@ -375,15 +380,16 @@
    "haai-refuge-sunday-sunday-oct-18-new-york",
    "jeremy-olander-refuge-fri-nov-13-new-york",
    "joss-dean-refuge-new-york-brooklyn-november-7-2026",
-   "kyle-watson-and-guests-superior-ingredients-new-york-brooklyn-september-27-2026",
    "nicole-moudaber-purgatory-saturday-night-at-refuge-sat-oct-31-new-york",
    "notre-dame-refuge-daytime-saturday-oct-17-new-york",
    "purgatory-saturday-all-day-w-victor-calderone-anthony-middleton-refuge-sat-oct-31-new-york",
+   "rony-seikaly-dj-vibe-dimatteo-b2b-michelangelo-refuge-sat-oct-17-new-york",
    "skream-open-to-close-refuge-friday-dec-4-new-york"
   ],
   "rock-bar": [],
   "rumi": [],
   "sable-miami": [
+   "2mrw-frqnc-moji-presents-loofy-sable-miami-florida-miami-october-8-2026",
    "green-velvet-cajmere-vinyl-sable-fri-oct-23-miami"
   ],
   "selva": [],
@@ -541,6 +547,7 @@
   ],
   "westlight-at-the-william-vale": [
    "alex-wann-fri-oct-16-westlight-rooftop-new-york",
+   "kimonos-strange-frequencies-westlight-at-the-william-vale-new-york-brooklyn-october-30-2026",
    "liva-k-friends-in-high-places-westlight-at-the-william-vale-new-york-brooklyn-october-9-2026"
   ],
   "wintrust-arena": [],
@@ -555,7 +562,7 @@
  },
  "venues": {
   "1-hotel-brooklyn-bridge": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7022571,
@@ -565,7 +572,7 @@
    "state": "NY"
   },
   "1015-folsom": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.7780411,
@@ -575,7 +582,7 @@
    "state": "CA"
   },
   "620-jones": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.7871812,
@@ -585,7 +592,7 @@
    "state": "CA"
   },
   "99-scott": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7104957,
@@ -595,7 +602,7 @@
    "state": "NY"
   },
   "academy-la-0dfbb": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Los Angeles",
    "in_area": false,
    "lat": 34.1017426,
@@ -605,7 +612,7 @@
    "state": "CA"
   },
   "aracely": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.8277487,
@@ -615,7 +622,7 @@
    "state": " CA"
   },
   "arlo-williamsburg": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.72135,
@@ -625,7 +632,7 @@
    "state": "NY"
   },
   "artspace-c1fed": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.7230653,
@@ -635,7 +642,7 @@
    "state": "NY"
   },
   "atlantic-aviation": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Thermal",
    "in_area": false,
    "lat": 25.9081,
@@ -645,7 +652,7 @@
    "state": "CA"
   },
   "audio-nightclub": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.7713709,
@@ -655,7 +662,7 @@
    "state": "CA"
   },
   "bill-graham-civic-auditorium": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.7780501,
@@ -665,7 +672,7 @@
    "state": "CA"
   },
   "bk-backyard": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7240783,
@@ -675,7 +682,7 @@
    "state": ""
   },
   "bogart-house": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.711663,
@@ -685,7 +692,7 @@
    "state": "NY"
   },
   "bonbonniere": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Tulum",
    "in_area": false,
    "lat": 20.1533051,
@@ -695,7 +702,7 @@
    "state": "Quintana Roo"
   },
   "bowery-ballroom": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.7204449,
@@ -705,7 +712,7 @@
    "state": "NY"
   },
   "brooklyn-army-terminal-4ff48": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.6448601,
@@ -715,7 +722,7 @@
    "state": "NY"
   },
   "brooklyn-hangar-dfcff": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.649866,
@@ -725,7 +732,7 @@
    "state": "NY"
   },
   "brooklyn-paramount": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.676105,
@@ -735,7 +742,7 @@
    "state": "NY"
   },
   "brooklyn-steel": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.719358,
@@ -745,7 +752,7 @@
    "state": "NY"
   },
   "brooklyn-storehouse": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7,
@@ -755,7 +762,7 @@
    "state": "NY"
   },
   "byline-bank-aragon-ballroom": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.9694312,
@@ -765,7 +772,7 @@
    "state": "IL"
   },
   "capitale-2fa40": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.7189318,
@@ -775,7 +782,7 @@
    "state": "NY"
   },
   "car-park-66e52": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7120728,
@@ -785,7 +792,7 @@
    "state": "NY"
   },
   "castaways": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.914957,
@@ -795,7 +802,7 @@
    "state": "IL"
   },
   "cermak-hall": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.8532824,
@@ -805,7 +812,7 @@
    "state": "IL"
   },
   "chase-center": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.7679001,
@@ -815,7 +822,7 @@
    "state": "CA"
   },
   "circle-line-cruises": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.758889,
@@ -825,7 +832,7 @@
    "state": "NY"
   },
   "club-space": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.7845551,
@@ -835,7 +842,7 @@
    "state": "FL"
   },
   "concord-music-hall": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.9185577,
@@ -845,7 +852,7 @@
    "state": "IL"
   },
   "dead-letter-no-9": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 41,
@@ -855,7 +862,7 @@
    "state": "NY"
   },
   "do-not-sit-on-the-furniture": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami Beach",
    "in_area": false,
    "lat": 25.789215,
@@ -865,7 +872,7 @@
    "state": "FL"
   },
   "east-end-studios": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Woodside",
    "in_area": true,
    "lat": 40.7384854,
@@ -875,7 +882,7 @@
    "state": "NY"
   },
   "eden": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.7483075,
@@ -885,7 +892,7 @@
    "state": "NY"
   },
   "edge-at-hudson-yards": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.7539277,
@@ -895,7 +902,7 @@
    "state": "NY"
   },
   "elsewhere": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.70967,
@@ -905,7 +912,7 @@
    "state": "NY"
   },
   "elsewhere-rooftop": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.70967,
@@ -915,7 +922,7 @@
    "state": "NY"
   },
   "exchange-la": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Los Angeles",
    "in_area": false,
    "lat": 34.0453545,
@@ -925,7 +932,7 @@
    "state": "CA"
   },
   "factory-town": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.817497,
@@ -935,7 +942,7 @@
    "state": "FL"
   },
   "floyd": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.7845551,
@@ -945,7 +952,7 @@
    "state": "FL"
   },
   "forest-hills-stadium-e477e": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Forest Hills",
    "in_area": true,
    "lat": 40.719597,
@@ -955,7 +962,7 @@
    "state": "NY"
   },
   "gin-ling-way": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Los Angeles",
    "in_area": false,
    "lat": 34.0656626,
@@ -965,7 +972,7 @@
    "state": "CA"
   },
   "good-room": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.726945,
@@ -975,7 +982,7 @@
    "state": "NY"
   },
   "grand-park-b5751": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Los Angeles ",
    "in_area": false,
    "lat": 34.0542089,
@@ -985,7 +992,7 @@
    "state": "California"
   },
   "greek-theater": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Berkeley",
    "in_area": false,
    "lat": 37.8736749,
@@ -995,7 +1002,7 @@
    "state": "CA"
   },
   "h0l0": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Queens",
    "in_area": true,
    "lat": 40.6942754,
@@ -1005,7 +1012,7 @@
    "state": "NY"
   },
   "halcyon": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.771445,
@@ -1015,7 +1022,7 @@
    "state": "CA"
   },
   "hotel-via": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.7793416,
@@ -1025,7 +1032,7 @@
    "state": "CA"
   },
   "house-of-yes-8b3cc": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7067833,
@@ -1035,7 +1042,7 @@
    "state": "NY"
   },
   "industry-city": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.6566266,
@@ -1045,7 +1052,7 @@
    "state": "NY"
   },
   "jolene-sound-room": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.7741496,
@@ -1055,7 +1062,7 @@
    "state": "FL"
   },
   "kia-forum": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Inglewood",
    "in_area": false,
    "lat": 33.9582157,
@@ -1065,7 +1072,7 @@
    "state": "California"
   },
   "kimpton-epic-hotel": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.7705337,
@@ -1075,7 +1082,7 @@
    "state": "FL"
   },
   "knockdown-center-f852b": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Queens",
    "in_area": true,
    "lat": 40.715679,
@@ -1085,7 +1092,7 @@
    "state": "NY"
   },
   "laissez-faire": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.685614,
@@ -1095,7 +1102,7 @@
    "state": "NY"
   },
   "little-river-studios": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.8400094,
@@ -1105,7 +1112,7 @@
    "state": "FL"
   },
   "liv-nightclub-miami": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami Beach",
    "in_area": false,
    "lat": 25.817972,
@@ -1115,7 +1122,7 @@
    "state": "FL"
   },
   "m2-miami": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami Beach",
    "in_area": false,
    "lat": 25.7836769,
@@ -1125,7 +1132,7 @@
    "state": "FL"
   },
   "mad-club-live": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 26,
@@ -1135,7 +1142,7 @@
    "state": "FL"
   },
   "madison-square-garden": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.7505129,
@@ -1145,7 +1152,7 @@
    "state": "NY"
   },
   "mana-wynwood": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.798221,
@@ -1155,7 +1162,7 @@
    "state": "FL"
   },
   "marquee": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.7499614,
@@ -1165,7 +1172,7 @@
    "state": "NY"
   },
   "marquee-skydeck": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.7499614,
@@ -1175,7 +1182,7 @@
    "state": "NY"
   },
   "midline": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.798394,
@@ -1185,7 +1192,7 @@
    "state": "FL"
   },
   "montauk-beach-house": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Montauk",
    "in_area": false,
    "lat": 41.0340293,
@@ -1195,7 +1202,7 @@
    "state": "NY"
   },
   "national-hotel": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.7918005,
@@ -1205,7 +1212,7 @@
    "state": "FL"
   },
   "navy-pier": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.8917999,
@@ -1215,7 +1222,7 @@
    "state": "IL"
   },
   "nebula": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.7547872,
@@ -1225,7 +1232,7 @@
    "state": "NY"
   },
   "nowadays": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Ridgewood",
    "in_area": true,
    "lat": 40.692462,
@@ -1235,7 +1242,7 @@
    "state": "NY"
   },
   "outset": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.9126991,
@@ -1245,7 +1252,7 @@
    "state": "IL"
   },
   "pacha": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7104,
@@ -1255,7 +1262,7 @@
    "state": "NY"
   },
   "palm-tree-club": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "North Bay Village",
    "in_area": false,
    "lat": 25.8490383,
@@ -1265,7 +1272,7 @@
    "state": "FL"
   },
   "pier-48": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.7764373,
@@ -1275,7 +1282,7 @@
    "state": "CA"
   },
   "pier-80": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.7503893,
@@ -1285,7 +1292,7 @@
    "state": "CA"
   },
   "prysm": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.9093892,
@@ -1295,7 +1302,7 @@
    "state": "IL"
   },
   "public-records": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.6821674,
@@ -1305,7 +1312,7 @@
    "state": "NY"
   },
   "public-works": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.7688931,
@@ -1315,7 +1322,7 @@
    "state": "CA"
   },
   "radius": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.8532824,
@@ -1325,7 +1332,7 @@
    "state": "IL"
   },
   "rainbow-ballroom": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Fresno",
    "in_area": false,
    "lat": 36.7402816,
@@ -1335,7 +1342,7 @@
    "state": "CA"
   },
   "rawhide-event-center": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chandler",
    "in_area": false,
    "lat": 33.2697786,
@@ -1345,7 +1352,7 @@
    "state": "AZ"
   },
   "reframe-studios-indoors": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Los Angeles",
    "in_area": false,
    "lat": 34.1446594,
@@ -1355,7 +1362,7 @@
    "state": "CA"
   },
   "refuge": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7116588,
@@ -1365,7 +1372,7 @@
    "state": "NY"
   },
   "rock-bar": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": " Fort Lauderdale",
    "in_area": false,
    "lat": 26.1318507,
@@ -1375,7 +1382,7 @@
    "state": "FL"
   },
   "rumi": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.747998,
@@ -1385,7 +1392,7 @@
    "state": "NY"
   },
   "sable-miami": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.7984373,
@@ -1395,7 +1402,7 @@
    "state": "FL"
   },
   "selva": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.7659326,
@@ -1405,7 +1412,7 @@
    "state": "FL"
   },
   "shrine-expo-hall": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Los Angeles",
    "in_area": false,
    "lat": 34.024233,
@@ -1415,7 +1422,7 @@
    "state": "CA"
   },
   "signal": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7101356,
@@ -1425,7 +1432,7 @@
    "state": "NY"
   },
   "silo": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7106984,
@@ -1435,7 +1442,7 @@
    "state": "NY"
   },
   "smartbar": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.9497837,
@@ -1445,7 +1452,7 @@
    "state": " IL"
   },
   "smoke-mirrors": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.9183545,
@@ -1455,7 +1462,7 @@
    "state": "IL"
   },
   "social-sacramento": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Sacramento",
    "in_area": false,
    "lat": 38.5789067,
@@ -1465,7 +1472,7 @@
    "state": " CA"
   },
   "sound-bar-b0e17": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.893406,
@@ -1475,7 +1482,7 @@
    "state": "IL"
   },
   "sound-nightclub": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Los Angeles",
    "in_area": false,
    "lat": 34.1010034,
@@ -1485,7 +1492,7 @@
    "state": "CA"
   },
   "spring-place": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.721105,
@@ -1495,7 +1502,7 @@
    "state": "NY"
   },
   "spybar": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.8937345,
@@ -1505,7 +1512,7 @@
    "state": "IL"
   },
   "substance-skatepark": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.709191,
@@ -1515,7 +1522,7 @@
    "state": "NY"
   },
   "summer-club": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Long Island City",
    "in_area": true,
    "lat": 40.7537892,
@@ -1525,7 +1532,7 @@
    "state": "NY"
   },
   "summer-stage-in-central-park": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.77256712192033,
@@ -1535,7 +1542,7 @@
    "state": "NY"
   },
   "sunset-park-rooftop": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.6261931,
@@ -1545,7 +1552,7 @@
    "state": "NY"
   },
   "superior-ingredients": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.722319,
@@ -1555,7 +1562,7 @@
    "state": "NY"
   },
   "tao-chicago": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.8934805,
@@ -1565,7 +1572,7 @@
    "state": "IL"
   },
   "terminal-5": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.76978,
@@ -1575,7 +1582,7 @@
    "state": "NY"
   },
   "the-brooklyn-monarch": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.71098,
@@ -1585,7 +1592,7 @@
    "state": "NY"
   },
   "the-castro-theatre": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.7619914,
@@ -1595,7 +1602,7 @@
    "state": "CA"
   },
   "the-chocolate-factory": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 41,
@@ -1605,7 +1612,7 @@
    "state": "NY"
   },
   "the-glass-house": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Pomona",
    "in_area": false,
    "lat": 34.0575001,
@@ -1625,7 +1632,7 @@
    "state": "NY"
   },
   "the-great-northern": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.7676612,
@@ -1635,7 +1642,7 @@
    "state": "CA"
   },
   "the-ground-8cf3e": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.784476,
@@ -1645,7 +1652,7 @@
    "state": "FL"
   },
   "the-meadows": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7108853,
@@ -1655,7 +1662,7 @@
    "state": "NY"
   },
   "the-midway": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.7495304,
@@ -1665,7 +1672,7 @@
    "state": "CA"
   },
   "the-regency-ballroom": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.7878176,
@@ -1675,7 +1682,7 @@
    "state": "CA"
   },
   "the-roof-at-superior-ingredients": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7222161,
@@ -1685,7 +1692,7 @@
    "state": "NY"
   },
   "the-rooftop-at-pier-17": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.7051819,
@@ -1695,7 +1702,7 @@
    "state": "NY"
   },
   "the-room-at-clubhouse": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "East Hampton",
    "in_area": false,
    "lat": 40.9602436,
@@ -1705,7 +1712,7 @@
    "state": "NY"
   },
   "the-ruins": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Queens",
    "in_area": true,
    "lat": 40.7152855,
@@ -1715,7 +1722,7 @@
    "state": "NY"
   },
   "the-ruins-american-canyon": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "American Canyon",
    "in_area": false,
    "lat": null,
@@ -1725,7 +1732,7 @@
    "state": "CA"
   },
   "the-sagamore-hotel": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami Beach",
    "in_area": false,
    "lat": 25.791616,
@@ -1735,7 +1742,7 @@
    "state": "FL"
   },
   "the-salt-shed": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.906736,
@@ -1745,7 +1752,7 @@
    "state": "IL"
   },
   "the-spotlight": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Los Angeles",
    "in_area": false,
    "lat": 34.0999178,
@@ -1755,7 +1762,7 @@
    "state": "CA"
   },
   "the-sultan-room": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.705586,
@@ -1765,7 +1772,7 @@
    "state": "NY"
   },
   "the-surf-lodge": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Montauk",
    "in_area": false,
    "lat": 41.0441803,
@@ -1775,7 +1782,7 @@
    "state": "NY"
   },
   "toe-jam-backlot": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.7966106,
@@ -1785,7 +1792,7 @@
    "state": "FL"
   },
   "toe-jam-xl": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.7966106,
@@ -1795,7 +1802,7 @@
    "state": "FL"
   },
   "treasure-island": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "San Francisco",
    "in_area": false,
    "lat": 37.8282634,
@@ -1805,7 +1812,7 @@
    "state": "CA"
   },
   "under-the-k-bridge": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7255577,
@@ -1815,7 +1822,7 @@
    "state": "NY"
   },
   "unveiled": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7224218,
@@ -1825,7 +1832,7 @@
    "state": "NY"
   },
   "vagalume": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Tulum",
    "in_area": false,
    "lat": 20.1517764,
@@ -1835,7 +1842,7 @@
    "state": "Mexico"
   },
   "webster-hall-5ccfd": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "New York",
    "in_area": true,
    "lat": 40.731768,
@@ -1845,7 +1852,7 @@
    "state": "NY"
   },
   "westlight-at-the-william-vale": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Brooklyn",
    "in_area": true,
    "lat": 40.7224118,
@@ -1855,7 +1862,7 @@
    "state": "NY"
   },
   "wintrust-arena": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Chicago",
    "in_area": false,
    "lat": 41.8536992,
@@ -1865,7 +1872,7 @@
    "state": "Illinois"
   },
   "wynwood-marketplace": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.798618,
@@ -1875,7 +1882,7 @@
    "state": "FL"
   },
   "zeyzey": {
-   "checked_at": "2026-10-06T04:50:53+00:00",
+   "checked_at": "2026-10-07T04:51:58+00:00",
    "city": "Miami",
    "in_area": false,
    "lat": 25.832755,

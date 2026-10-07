@@ -1462,6 +1462,20 @@
   "slug": "kilopatrah-jones-8e5cf",
   "spotify": null
  },
+ "kimonos": {
+  "bio": "Kimonos are a high-energy electronic duo known for blending house grooves with playful, genre-bending production. Their sets mix club-ready rhythms with unexpected edits, creating a fun and unpredictable dancefloor experience. With a style that balances humor and serious DJ skill, Kimonos bring a unique personality to every performance.",
+  "followers": 237,
+  "genres": [
+   "deep house",
+   "indie dance"
+  ],
+  "img": "https://img.crowdvolt.com/b132b706-5a17-4b71-804a-7a2f1d2bc52d.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Kimonos",
+  "slug": "kimonos",
+  "spotify": null
+ },
  "klangkuenstler": {
   "bio": "Klangkuenstler is a Berlin-based DJ and producer known for his driving, high-impact take on modern techno. Blending hard-hitting percussion with rave-inspired melodies and industrial textures, his sound channels raw warehouse energy with precision and power. A mainstay on Europe\u2019s biggest stages and festivals, Klangkuenstler has built a global following through relentless sets, standout releases, and a signature style that pushes peak-time techno to its limits.",
   "followers": 28426,
@@ -2476,6 +2490,21 @@
   "monthly_listeners": null,
   "name": "Rohaan",
   "slug": "rohaan",
+  "spotify": null
+ },
+ "rony-seikaly": {
+  "bio": "Rony Seikaly is a pioneering figure in house music, blending deep, soulful grooves with hypnotic, marathon-ready energy. Known for his rich, emotional sound and seamless storytelling behind the decks, he delivers sets that are both uplifting and immersive. From underground clubs to major festivals, Seikaly\u2019s refined take on deep house has earned him a devoted global following and long-standing respect in the scene.",
+  "followers": 1891,
+  "genres": [
+   "deep house",
+   "afro house",
+   "melodic house"
+  ],
+  "img": "https://img.crowdvolt.com/2791bc49-730c-4381-b62a-297ef2dc2a81.png",
+  "instagram": "https://www.instagram.com/ronyseikaly",
+  "monthly_listeners": null,
+  "name": "Rony Seikaly",
+  "slug": "rony-seikaly",
   "spotify": null
  },
  "rossi": {
