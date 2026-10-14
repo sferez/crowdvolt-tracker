@@ -1174,6 +1174,11 @@
   "city": "Chicago",
   "state": "Illinois"
  },
+ "house-of-shadows-ft-altgo-vesper-new-brooklyn-october-31-2026": {
+  "checked_at": "2026-10-14T04:49:40+00:00",
+  "city": "New York",
+  "state": "New"
+ },
  "hugel-east-end-plaza-navy-pier-sun-sep-13-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
@@ -1839,6 +1844,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "mind-enterprises-october-15-2026": {
+  "checked_at": "2026-10-14T04:49:40+00:00",
+  "city": "Miami",
+  "state": ""
+ },
  "moby-underworld-brookside-sat-nov-7-california": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Pasadena",
@@ -1993,6 +2003,11 @@
   "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "Los Angeles",
   "state": "CA"
+ },
+ "notion-the-ground-florida-miami-november-14-2026": {
+  "checked_at": "2026-10-14T04:49:40+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "nu-sonido-floyd-florida-miami-september-13-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -2214,6 +2229,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "raw-cuts-los-angeles-november-21-2026": {
+  "checked_at": "2026-10-14T04:49:40+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "rebuke-academy-nightclub-sat-oct-3-los-angeles": {
   "checked_at": "2026-09-23T04:48:03+00:00",
   "city": "Los Angeles",
@@ -2228,6 +2248,11 @@
   "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "Los Angeles",
   "state": "CA"
+ },
+ "resistance-opening-party-miss-monique-m2-miami-florida-miami-beach-november-8-2026": {
+  "checked_at": "2026-10-14T04:49:40+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "rio-kosta-greek-theatre-berkeley-october-6-2026": {
   "checked_at": "2026-10-06T04:50:53+00:00",
@@ -2429,6 +2454,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "satellite-the-pickle-x-iii-points-the-pickle-october-19-2026": {
+  "checked_at": "2026-10-14T04:49:40+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "satellite-thursday-jolene-sound-room-florida-miami-october-16-2026": {
   "checked_at": "2026-10-05T05:13:16+00:00",
   "city": "Miami",
@@ -2534,6 +2564,11 @@
   "city": " Los Angeles",
   "state": "CA"
  },
+ "sofi-tukker-kito-cow-palace-california-daly-city-october-24-2026": {
+  "checked_at": "2026-10-14T04:49:40+00:00",
+  "city": "Daly City",
+  "state": "CA"
+ },
  "solmates-season-opener-ft-fahlberg-orsay-more-zeyzey-fri-oct-9-miami": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
@@ -2632,6 +2667,11 @@
  "sun-soaked-hunting-town-state-beach-sat-sep-12-ca": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Huntington Beach",
+  "state": "CA"
+ },
+ "system-error-ivy-lab-final-la-show-the-vermont-hollywood-california-los-angeles-october-24-2026": {
+  "checked_at": "2026-10-14T04:49:40+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  },
  "teedee-floyd-florida-miami-january-23-2027": {
