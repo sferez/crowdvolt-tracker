@@ -39,6 +39,11 @@
   "city": "San Diego",
   "state": "California"
  },
+ "adrian-mills-los-angeles-nov-13-la": {
+  "checked_at": "2026-10-15T04:48:15+00:00",
+  "city": " Los Angeles",
+  "state": "CA"
+ },
  "adriatique-insmoniac-the-midway-fri-nov-6-san-francisco": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "San Francisco",
@@ -678,6 +683,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "distant-matter-the-salt-shed-illinois-chicago-october-16-2026": {
+  "checked_at": "2026-10-15T04:48:15+00:00",
+  "city": "Chicago",
+  "state": "IL"
  },
  "dixon-b2b-jimi-jules-and-whomadewho-club-space-miami-florida-november-2-2026": {
   "checked_at": "2026-09-10T04:46:39+00:00",

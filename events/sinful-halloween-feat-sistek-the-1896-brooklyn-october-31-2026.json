@@ -1,0 +1,80 @@
+{
+ "event": {
+  "bid_all_in": [
+   0
+  ],
+  "bidders": [
+   0
+  ],
+  "fair": [
+   null
+  ],
+  "high": [
+   64
+  ],
+  "last_sale": [
+   null
+  ],
+  "listings": [
+   1
+  ],
+  "tickets": [
+   2
+  ]
+ },
+ "stamps": [
+  "2026-10-15T04:48:25+00:00"
+ ],
+ "types": {
+  "GA (Before 10:15PM)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "c634edf9-e254-4d54-b8d4-9a18e10a60d2"
+  },
+  "General Admission": {
+   "all_in": [
+    64
+   ],
+   "ask": [
+    62
+   ],
+   "ask_qty": [
+    2
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 4,
+   "listings": [
+    1
+   ],
+   "qty": [
+    2
+   ],
+   "uqid": "7e206ba4-04ab-4963-bdc8-128ccf8a6e03"
+  }
+ }
+}
