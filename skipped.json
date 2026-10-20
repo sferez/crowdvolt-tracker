@@ -244,6 +244,16 @@
   "city": "Hollywood",
   "state": "CA"
  },
+ "bassvictim-thoom-cermak-hall-illinois-chicago-october-22-2026": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
+ "bassvictim-thoom-cermak-hall-illinois-chicago-october-23-2026": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "bear-grillz-rude-service-takeover-academy-nightclub-fri-sep-25-los-angeles": {
   "checked_at": "2026-09-23T04:48:03+00:00",
   "city": "Los Angeles",
@@ -564,6 +574,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "countdown-new-years-eve-nos-event-center-thu-fri-dec-31-jan-1-2027-california": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "San Bernadino",
+  "state": "CA"
+ },
  "crankdat-liv-nightclub-sat-sep-26-miami": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Miami",
@@ -648,6 +663,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Los Angeles",
   "state": "CA"
+ },
+ "dennis-cruz-moodymann-b2b-carl-craig-club-space-florida-miami-november-7-2026": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "dennis-cruz-reframe-studios-indoors-california-los-angeles-january-24-2027": {
   "checked_at": "2026-10-06T04:50:53+00:00",
@@ -866,6 +886,11 @@
  },
  "factory-basel-2026-friday-pass-factory-town-florida-miami-december-5-2026": {
   "checked_at": "2026-10-16T04:48:56+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
+ "factory-basel-2026-thursday-pass-factory-town-florida-miami-december-4-2026": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
   "city": "Miami",
   "state": "FL"
  },
@@ -1138,6 +1163,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "halloween-night-ft-iglesias-spybar-illinois-chicago-november-1-2026": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "Chicago",
+  "state": "IL"
  },
  "halloween-w-lost-miracle-sebastien-leger-roy-rosenfeld-public-works-fri-oct-30-san-francisco": {
   "checked_at": "2026-09-22T04:47:28+00:00",
@@ -2019,6 +2049,16 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "ninajirachi-i-love-my-computer-and-it-loves-me-tour-the-regency-ballroom-california-san-francisco-november-18-2026": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "ninajirachi-mgna-crrrta-the-regency-ballroom-california-san-francisco-november-18-2026": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "ninajirachi-mgna-crrrta-the-regency-ballroom-california-san-francisco-november-19-2026": {
   "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "San Francisco",
@@ -2083,6 +2123,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "only-fire-origin-california-los-angeles-november-14-2026": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "Chicago",
+  "state": "IL"
  },
  "oppidan-1015-folsom-thu-oct-15-california": {
   "checked_at": "2026-09-22T04:47:28+00:00",
@@ -2253,6 +2298,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
   "state": "CA"
+ },
+ "race-to-space-club-space-florida-miami-october-24-2026": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "race-to-space-clubspace-miami-september-19-2026": {
   "checked_at": "2026-09-19T04:45:46+00:00",
@@ -2714,6 +2764,21 @@
   "city": "Huntington Beach",
   "state": "CA"
  },
+ "swimming-paul-north-america-tour-2027-radius-illinois-chicago-february-6-2027": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
+ "swimming-paul-north-america-tour-2027-the-regency-ballroom-california-san-francisco-january-23-2027": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "swimming-paul-shrine-expo-hall-california-los-angeles-january-24-2027": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "system-error-ivy-lab-final-la-show-the-vermont-hollywood-california-los-angeles-october-24-2026": {
   "checked_at": "2026-10-14T04:49:40+00:00",
   "city": "Los Angeles",
@@ -2733,6 +2798,11 @@
   "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "Los Angeles",
   "state": "CA"
+ },
+ "teedee-spybar-illinois-chicago-february-6-2027": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "Chicago",
+  "state": "IL"
  },
  "teletech-27th-sep-venue-tba-los-angeles-boiler-room": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -2804,6 +2874,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "tobiahs-concord-music-hall-illinois-chicago-november-14-2026": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "tom-and-collins-sound-nightclub-california-los-angeles-november-21-2026": {
   "checked_at": "2026-09-14T04:49:26+00:00",
   "city": "Los Angeles",
@@ -2868,6 +2943,11 @@
   "checked_at": "2026-09-15T04:47:43+00:00",
   "city": "San Francisco",
   "state": "CA"
+ },
+ "vito-uk-spybar-illinois-chicago-october-24-2026": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "Chicago",
+  "state": "IL"
  },
  "vladimir-dubyshkin-peterblue-noise-mafia-eulalia-sian-cermak-hall-illinois-chicago-october-3-2026": {
   "checked_at": "2026-10-01T04:50:50+00:00",
@@ -3014,6 +3094,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "zhu-after-party-space-550-sat-oct-31-san-francisco": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "zhu-on-the-move-halloween-sat-oct-31-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San francisco",
@@ -3026,6 +3111,11 @@
  },
  "zhu-second-date-reframe-studios-indoors-california-los-angeles-december-6-2026": {
   "checked_at": "2026-10-06T04:50:53+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "zulan-shrine-expo-hall-california-los-angeles-november-7-2026": {
+  "checked_at": "2026-10-20T04:48:51+00:00",
   "city": "Los Angeles",
   "state": "CA"
  }
