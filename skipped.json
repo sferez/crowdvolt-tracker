@@ -389,6 +389,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "boots-halloween-tba-cermak-hall-illinois-chicago-october-30-2026": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "boys-noize-888-garage-sat-sep-26-san-francisco": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "San Francisco",
@@ -414,10 +419,20 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "brutalismus-3000-eurohead-oza-ali-rq-debasement-shrine-expo-hall-california-los-angeles-november-19-2026": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "brutalismus-3000-harmony-us-tour-2026-radius-illinois-chicago-november-15-2026": {
   "checked_at": "2026-10-10T04:50:27+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "brutalismus-3000-harmony-us-tour-2026-the-warfield-california-san-francisco-november-21-2026": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "caiiro-falyn-sable-miami-florida-miami-september-25-2026": {
   "checked_at": "2026-09-23T04:48:03+00:00",
@@ -463,6 +478,11 @@
   "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "Los Angeles",
   "state": "CA"
+ },
+ "cera-khin-myna-domnrob-studio-60-miami-october-23-2026": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "Miami",
+  "state": ""
  },
  "channel-tres-enigma-tour-ramova-theatre-chicago": {
   "checked_at": "2026-09-18T04:47:05+00:00",
@@ -523,6 +543,11 @@
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Chandler",
   "state": "AZ"
+ },
+ "christian-loffler-613-imperial-st-thu-nov-5-los-angeles": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "Los Angeles",
+  "state": "California"
  },
  "christian-loffler-public-works-sat-oct-31-san-francisco": {
   "checked_at": "2026-09-22T04:47:28+00:00",
@@ -638,6 +663,16 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "deadmau5-red-rocks-amphitheatre-october-30-2026": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "Morrison",
+  "state": "CO"
+ },
+ "deadmau5-red-rocks-amphitheatre-october-31-2026": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "Morrison",
+  "state": "CO"
  },
  "dean-turnley-3oz-dive-club-sat-sep-26-san-diego": {
   "checked_at": "2026-09-17T04:47:45+00:00",
@@ -794,6 +829,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "eelke-kleijn-613-imperial-st-fri-dec-18-los-angeles": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "Los Angeles",
+  "state": "California"
+ },
  "eli-and-fur-1015-folsom-fri-nov-13-california": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "San Francisco",
@@ -943,6 +983,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
   "state": "CA"
+ },
+ "fideles-rampue-613-imperial-st-fri-oct-30-los-angeles": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "Los Angeles",
+  "state": "California"
  },
  "fisher-factory-town-sept-26-miami-florida": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -1174,6 +1219,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "halloween-w-lost-miracle-sebastien-leger-roy-rosenfeld-satori-la-sat-oct-31-los-angeles": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "hamdi-fc-radius-sat-oct-10-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
@@ -1268,6 +1318,11 @@
   "checked_at": "2026-10-03T04:49:10+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "hydefm-halloween-the-equation-acemo-swami-sound-the-foundry-california-san-francisco-november-1-2026": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "i-have-a-secret-to-share-with-you-mercer-labs-new-new-york-city-october-31-2026": {
   "checked_at": "2026-10-13T04:56:42+00:00",
@@ -1378,6 +1433,16 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "james-hype-hills-club-space-florida-miami-november-14-2026": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
+ "james-hype-the-midway-california-san-francisco-november-21-2026": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "jamie-xx-honey-dijon-3kelves-dylan-c-greene-pier-48s-shed-a-december-31-2026": {
   "checked_at": "2026-10-06T04:50:53+00:00",
@@ -1619,6 +1684,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "krewella-midline-miami-november-14-2026": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "kybba-kybbaholic-tour-sat-sep-19-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisc",
@@ -1688,6 +1758,11 @@
   "checked_at": "2026-10-09T04:53:40+00:00",
   "city": "Hollywood",
   "state": "CA"
+ },
+ "lights-down-low-rave-to-the-grave-la-tba-california-october-31-2026": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "California",
+  "state": ""
  },
  "lil-texas-sept-12-domicile-miami": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -1923,6 +1998,11 @@
   "checked_at": "2026-10-14T04:49:40+00:00",
   "city": "Miami",
   "state": ""
+ },
+ "mira-mxgpu-613-imperial-st-sat-nov-7-los-angles": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "Los Angeles",
+  "state": "California"
  },
  "moby-underworld-brookside-sat-nov-7-california": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -2273,6 +2353,11 @@
   "checked_at": "2026-09-30T04:50:48+00:00",
   "city": "San Diego",
   "state": "CA"
+ },
+ "prospa-liv-nightclub-thu-dec-3-miami": {
+  "checked_at": "2026-10-21T04:49:46+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "prospa-present-prophecy-radius-fri-nov-20-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
