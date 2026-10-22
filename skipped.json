@@ -124,6 +124,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "andre-power-the-spotlight-california-los-angeles-november-22-2026": {
+  "checked_at": "2026-10-22T04:49:37+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "andy-stott-carrier-the-ground-florida-miami-october-3-2026": {
   "checked_at": "2026-10-02T04:50:21+00:00",
   "city": "Miami",
@@ -192,6 +197,11 @@
  "atrip-b2b-dj-boring-the-foundry-friday-sep-18-san-francisco": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "San Francisco",
+  "state": "CA"
+ },
+ "awen-the-spotlight-california-los-angeles-december-12-2026": {
+  "checked_at": "2026-10-22T04:49:37+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  },
  "ayybo-shrine-expo-hall-california-los-angeles-january-30-2027": {
@@ -301,6 +311,11 @@
  },
  "benny-benassi-academy-nightclub-sat-nov-28-los-angeles": {
   "checked_at": "2026-09-22T04:47:28+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "bensy-the-spotlight-california-los-angeles-november-21-2026": {
+  "checked_at": "2026-10-22T04:49:37+00:00",
   "city": "Los Angeles",
   "state": "CA"
  },
@@ -1209,6 +1224,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "halloween-at-arlo-soho-three-room-takeover-oct-31-arlo-soho-new-new-york-city-october-31-2026": {
+  "checked_at": "2026-10-22T04:49:37+00:00",
+  "city": "New York",
+  "state": "New"
+ },
  "halloween-night-ft-iglesias-spybar-illinois-chicago-november-1-2026": {
   "checked_at": "2026-10-20T04:48:51+00:00",
   "city": "Chicago",
@@ -1754,6 +1774,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "libretto-jazz-the-spotlight-california-los-angeles-november-12-2026": {
+  "checked_at": "2026-10-22T04:49:37+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "lights-down-low-feat-ben-ufo-downtown-los-angeles-october-10-2026": {
   "checked_at": "2026-10-09T04:53:40+00:00",
   "city": "Hollywood",
@@ -1788,6 +1813,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "loud-luxury-academy-la-fri-jan-1-los-angeles": {
+  "checked_at": "2026-10-22T04:49:37+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
  },
  "loud-luxury-presented-by-palm-tree-club-sat-sep-26-miami": {
   "checked_at": "2026-09-24T04:47:56+00:00",
@@ -2004,9 +2034,19 @@
   "city": "Los Angeles",
   "state": "California"
  },
+ "mishell-the-spotlight-california-los-angeles-november-29-2026": {
+  "checked_at": "2026-10-22T04:49:37+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "moby-underworld-brookside-sat-nov-7-california": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Pasadena",
+  "state": "CA"
+ },
+ "moeaike-the-spotlight-california-los-angeles-december-5-2026": {
+  "checked_at": "2026-10-22T04:49:37+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  },
  "monolink-the-blaze-mindchatter-pier-48s-shed-a-october-30-2026": {
@@ -2314,6 +2354,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "playgrnd-series": {
+  "checked_at": "2026-10-22T04:49:37+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "playgrnd-series-nyc-the-melrose-ballroom-new-queens-october-3-2026": {
   "checked_at": "2026-09-30T04:50:48+00:00",
   "city": "New York",
@@ -2461,6 +2506,11 @@
  },
  "rivo-soundnight-club-thu-oct-29-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "rl-grime-academy-la-thu-dec-31-los-angeles": {
+  "checked_at": "2026-10-22T04:49:37+00:00",
   "city": "Los Angeles",
   "state": "CA"
  },
@@ -2649,6 +2699,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "scenarios-sound-nightclub-california-los-angeles-november-27-2026": {
+  "checked_at": "2026-10-22T04:49:37+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "sg-lewis-the-great-northern-sunday-sep-27-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
@@ -2696,6 +2751,11 @@
  },
  "silva-bumpa-sound-nightclub-fri-sep-11-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "simon-says-radio-slave-the-spotlight-california-los-angeles-november-15-2026": {
+  "checked_at": "2026-10-22T04:49:37+00:00",
   "city": "Los Angeles",
   "state": "CA"
  },
@@ -3148,6 +3208,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "yung-bae-613-imperial-st-fri-oct-23-los-angeles": {
+  "checked_at": "2026-10-22T04:49:37+00:00",
+  "city": " Los Angeles",
+  "state": " CA"
  },
  "zeds-dead-afters-eschange-la-sat-oct-3-los-angeles": {
   "checked_at": "2026-10-02T04:50:21+00:00",

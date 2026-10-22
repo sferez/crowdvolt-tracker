@@ -23,9 +23,17 @@
    0,
    0,
    0,
+   0,
+   0,
+   0,
+   0,
    0
   ],
   "bidders": [
+   0,
+   0,
+   0,
+   0,
    0,
    0,
    0,
@@ -73,6 +81,10 @@
    null,
    null,
    null,
+   null,
+   null,
+   null,
+   null,
    null
   ],
   "high": [
@@ -97,6 +109,10 @@
    81,
    81,
    81,
+   0,
+   0,
+   0,
+   0,
    0,
    0
   ],
@@ -123,6 +139,10 @@
    null,
    null,
    81.0,
+   81.0,
+   81.0,
+   81.0,
+   81.0,
    81.0
   ],
   "listings": [
@@ -148,6 +168,10 @@
    1,
    1,
    0,
+   0,
+   0,
+   0,
+   0,
    0
   ],
   "tickets": [
@@ -172,6 +196,10 @@
    2,
    2,
    2,
+   0,
+   0,
+   0,
+   0,
    0,
    0
   ]
@@ -199,11 +227,19 @@
   "2026-10-21T00:56:11+00:00",
   "2026-10-21T02:35:02+00:00",
   "2026-10-21T03:29:47+00:00",
-  "2026-10-21T04:30:14+00:00"
+  "2026-10-21T04:30:14+00:00",
+  "2026-10-21T05:26:06+00:00",
+  "2026-10-21T06:40:11+00:00",
+  "2026-10-21T07:32:41+00:00",
+  "2026-10-21T08:34:02+00:00"
  ],
  "types": {
   "Backstage": {
    "all_in": [
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -251,9 +287,17 @@
     null,
     null,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -301,9 +345,17 @@
     null,
     null,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -352,9 +404,17 @@
     0,
     0,
     0,
+    0,
+    0,
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
+    0,
+    0,
     0,
     0,
     0,
@@ -405,9 +465,17 @@
     null,
     null,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -455,6 +523,10 @@
     null,
     null,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "bid": [
@@ -480,9 +552,17 @@
     null,
     null,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -531,9 +611,17 @@
     0,
     0,
     0,
+    0,
+    0,
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
+    0,
+    0,
     0,
     0,
     0,
@@ -584,6 +672,10 @@
     81,
     81,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "ask": [
@@ -608,6 +700,10 @@
     78,
     78,
     78,
+    null,
+    null,
+    null,
+    null,
     null,
     null
    ],
@@ -634,6 +730,10 @@
     2,
     2,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "bid": [
@@ -659,9 +759,17 @@
     null,
     null,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -710,6 +818,10 @@
     1,
     1,
     0,
+    0,
+    0,
+    0,
+    0,
     0
    ],
    "qty": [
@@ -734,6 +846,10 @@
     2,
     2,
     2,
+    0,
+    0,
+    0,
+    0,
     0,
     0
    ],
