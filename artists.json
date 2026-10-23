@@ -444,6 +444,21 @@
   "slug": "caiiro-f466b",
   "spotify": null
  },
+ "calvin-harris": {
+  "bio": "Calvin Harris is a Scottish DJ and producer who became one of the world's biggest electronic music artists, known for blending house, EDM, and pop into massive, dancefloor-ready anthems. Born Adam Wiles in Dumfries, Scotland, he shot to fame with his 2007 debut before racking up a string of global hits alongside artists like Rihanna, Dua Lipa, and Pharrell Williams. With legendary Las Vegas residencies and record-breaking singles to his name, Harris is one of the most electrifying live acts in the game.",
+  "followers": null,
+  "genres": [
+   "progressive house",
+   "edm",
+   "dance pop"
+  ],
+  "img": "https://img.crowdvolt.com/0b95c2d3-dbd5-4cfc-a761-19303b81aee3.jpg",
+  "instagram": "https://www.instagram.com/calvinharris",
+  "monthly_listeners": null,
+  "name": "Calvin Harris",
+  "slug": "calvin-harris",
+  "spotify": null
+ },
  "camelphat": {
   "bio": "CamelPhat are a Grammy-nominated DJ and production duo known for shaping modern house and melodic techno with emotionally driven, club-ready records. Renowned for their immersive sound and global headline performances, CamelPhat remain a defining force on the world\u2019s biggest dance floors.",
   "followers": 536600,
@@ -590,6 +605,21 @@
   "monthly_listeners": null,
   "name": "Coco Prosecco",
   "slug": "coco-prosecco",
+  "spotify": null
+ },
+ "conducta-5c8f1": {
+  "bio": "Conducta is a British DJ, producer, and label founder known for helping drive the modern revival of UK garage. Based in London, he gained recognition through energetic productions and DJ sets that combine classic garage rhythms with modern club energy. As the founder of Kiwi Rekords, Conducta has played an important role in supporting emerging artists and pushing the next wave of UK garage music onto global dance floors.",
+  "followers": null,
+  "genres": [
+   "UK garage",
+   "house",
+   "bass music"
+  ],
+  "img": "https://img.crowdvolt.com/assets/42d5b157-4800-44f5-bf29-07dfc85665ac/dice-8507-b96575cd.jpg",
+  "instagram": "https://www.instagram.com/conductauk",
+  "monthly_listeners": null,
+  "name": "Conducta",
+  "slug": "conducta-5c8f1",
   "spotify": null
  },
  "cosmic-gate-ceade": {
@@ -1133,6 +1163,19 @@
   "name": "Hannah Laing",
   "slug": "hannah-laing-d7dad",
   "spotify": "https://open.spotify.com/artist/1QEd635szhierW6gzRiS1o"
+ },
+ "harriet-jaxxon": {
+  "bio": "Harriet Jaxxon is a UK drum & bass DJ known for her high-energy sets that blend jump-up, rollers, and heavier dancefloor tracks. She quickly gained recognition in the DnB scene through viral mixes and performances at major festivals and clubs across the UK and Europe. With powerful selections and sharp mixing, Harriet Jaxxon has become one of the rising names in modern drum & bass.",
+  "followers": 412,
+  "genres": [
+   "drum & bass"
+  ],
+  "img": "https://img.crowdvolt.com/assets/e2295874-717a-44ea-b3f3-b67e50170397/resident_advisor-63401-44c5d195.jpg",
+  "instagram": "https://www.instagram.com/harrietjaxxon",
+  "monthly_listeners": null,
+  "name": "Harriet Jaxxon",
+  "slug": "harriet-jaxxon",
+  "spotify": null
  },
  "hills": {
   "bio": "Hills is an emerging DJ known for crafting immersive, groove-forward sets that blend deep rhythms with high-energy moments. With a sound rooted in underground house and evolving electronic influences, Hills brings a refined yet dynamic style to every performance. Seamlessly moving between melodic elements and driving basslines, their sets create an atmosphere that builds tension, releases energy, and keeps crowds locked in from start to finish. As a rising name in the scene, Hills continues to develop a distinct sonic identity shaped by both global dance trends and underground culture.",

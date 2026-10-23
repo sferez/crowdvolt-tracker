@@ -74,6 +74,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "agua-de-rosas-smoke-mirrors-illinois-chicago-october-23-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "ahmed-spins-castaways-sat-sep-26-chicago": {
   "checked_at": "2026-09-23T04:48:03+00:00",
   "city": "Chicago",
@@ -224,6 +229,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "baltra-smoke-mirrors-illinois-chicago-october-24-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "bambounou-madeline-liquid-city-motors-smartbar-sat-sep-12-chicago": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Chicago",
@@ -314,6 +324,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "bensy-halcyon-california-san-francisco-november-28-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "bensy-the-spotlight-california-los-angeles-november-21-2026": {
   "checked_at": "2026-10-22T04:49:37+00:00",
   "city": "Los Angeles",
@@ -394,6 +409,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "bontan-halcyon-california-san-francisco-november-14-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "boombox-cartel-academy-nightclub-fri-oct-16-los-angeles": {
   "checked_at": "2026-09-23T04:48:03+00:00",
   "city": "Los Angeles",
@@ -458,6 +478,11 @@
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "cameron-jack-halcyon-california-san-francisco-december-6-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "carl-cox-carlita-nov-14-miami-club-space": {
   "checked_at": "2026-09-22T04:47:28+00:00",
@@ -707,6 +732,11 @@
  "deborah-de-luca-exchange-la-fri-sep-11-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Los Angeles",
+  "state": "CA"
+ },
+ "deborah-de-luca-halcyon-california-san-francisco-november-15-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
   "state": "CA"
  },
  "deep-dish-sound-night-club-fri-oct-30-los-angeles": {
@@ -1019,6 +1049,16 @@
   "city": "Miami",
   "state": ""
  },
+ "fngrs-crssd-presents-josh-baker-palms-beach-club-sun-nov-22-los-angeles": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
+ "fovos-halcyon-california-san-francisco-november-8-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "framework-long-feng-present-lny-damian-lazarus-reframe-studios-indoors-california-los-angeles-february-21-2027": {
   "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "Los Angeles",
@@ -1314,6 +1354,11 @@
   "city": "Chicago",
   "state": "Illinois"
  },
+ "house-calls-w-alisha-artifact-illinois-chicago-october-30-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "Chicago",
+  "state": "Illinois"
+ },
  "house-of-shadows-ft-altgo-vesper-new-brooklyn-october-31-2026": {
   "checked_at": "2026-10-14T04:49:40+00:00",
   "city": "New York",
@@ -1363,6 +1408,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "ida-engberg-b2b-onyvaa-jolene-sound-room-florida-miami-october-25-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "idemi-jolene-sound-room-florida-miami-november-1-2026": {
   "checked_at": "2026-10-01T04:50:50+00:00",
@@ -1524,6 +1574,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "joa-halcyon-california-san-francisco-november-21-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "john-summit-ctrl-escape-tour-los-angeles-california": {
   "checked_at": "2026-10-10T04:50:27+00:00",
   "city": "Los Angeles",
@@ -1649,6 +1704,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "kaufmann-halcyon-california-san-francisco-november-22-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "kaytranada-sleeping-on-gems-fest-discovery-meadow-sunday-sep-13-california": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Jose",
@@ -1728,6 +1788,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "lake-effect-feat-musclecars-dj-heather-smartbar-il-chicago-october-23-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "Chicago",
+  "state": " IL"
  },
  "laolu-and-karaba-floyd-miami-florida-october-10-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -1814,6 +1879,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "locky-halcyon-california-san-francisco-december-19-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "loud-luxury-academy-la-fri-jan-1-los-angeles": {
   "checked_at": "2026-10-22T04:49:37+00:00",
   "city": "Los Angeles",
@@ -1864,6 +1934,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "maddy-oneal-thought-process-the-foundry-sat-nov-21-san-francisco": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "madeon-presents-victory-shrine-expo-hall-sat-oct-4-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Los Angeles",
@@ -1898,6 +1973,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "malone-morez-halcyon-california-san-francisco-december-12-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "mandragora-halcyon-california-san-francisco-november-29-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -2269,6 +2349,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "out-abt-sf-halloween-dance-party200-channels-monarch-california-san-francisco-october-24-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "overmono-dj-set-ben-ufo-public-works-sun-sep-27-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
@@ -2334,6 +2419,11 @@
   "city": "Miami",
   "state": ""
  },
+ "pete-tong-halcyon-california-san-francisco-november-7-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "pete-tong-the-spotlight-california-los-angeles-november-8-2026": {
   "checked_at": "2026-10-10T04:50:27+00:00",
   "city": "Los Angeles",
@@ -2376,6 +2466,11 @@
  },
  "portola-music-festival-sat-sep-26-pier-80-sf": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "pretzels-presents-supernova-open-to-close-the-foundry-california-san-francisco-october-30-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
   "city": "San Francisco",
   "state": "CA"
  },
@@ -2549,6 +2644,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "sacha-robotti-halcyon-california-san-francisco-november-1-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "salute-music-box-sat-sep-26-san-diego": {
   "checked_at": "2026-09-17T04:47:45+00:00",
   "city": "San Diego",
@@ -2597,6 +2697,11 @@
  "sammy-virji-cow-palace-daly-city-nov-13-california": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Daly City",
+  "state": "CA"
+ },
+ "samson-afro-tech-house-at-madarae-madarae-california-san-francisco-october-25-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
   "state": "CA"
  },
  "samuel-moriero-red-line-presents-chicago": {
@@ -2809,10 +2914,20 @@
   "city": "Daly City",
   "state": "CA"
  },
+ "solardo-halcyon-california-san-francisco-december-5-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "solmates-season-opener-ft-fahlberg-orsay-more-zeyzey-fri-oct-9-miami": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "sorley-halcyon-california-san-francisco-december-20-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "soul-wax-los-angeles-california-sept-17": {
   "checked_at": "2026-09-16T04:47:28+00:00",
@@ -2929,6 +3044,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "t78-halcyon-california-san-francisco-december-13-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "teedee-floyd-florida-miami-january-23-2027": {
   "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "Miami",
@@ -2961,6 +3081,16 @@
  },
  "teletech-pier-80-warehouse-sat-jan-san-francisco": {
   "checked_at": "2026-09-22T04:47:28+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "texture-summit-pres-jex-opolis-tba-san-francisco-october-24-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "",
+  "state": ""
+ },
+ "the-foundry-bouncesf-presents-mija-thu-dec-3-san-francisco": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
   "city": "San Francisco",
   "state": "CA"
  },
@@ -3013,6 +3143,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
   "state": "CA"
+ },
+ "tinzo-jojo-dj-lady-d-smartbar-il-chicago-november-6-2026": {
+  "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "Chicago",
+  "state": " IL"
  },
  "tobehonest-gabss-b2b-moontalk-inntraw-academy-la-sat-oct-10-los-angeles": {
   "checked_at": "2026-09-11T04:46:27+00:00",
