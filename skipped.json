@@ -1,4 +1,9 @@
 {
+ "1-hotel-haunted-lounge-halloween-1031-harriets-lounge-1-hotel-new-brooklyn-october-31-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "New York",
+  "state": "New"
+ },
  "2manydjs-1015-Folsom-fri-sep-25-san-francisco": {
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "San Francisco",
@@ -64,6 +69,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "adriatique-liv-nightclub-thu-dec-31-miami": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "adriatique-reframe-studios-outdoors-sat-nov-7-los-angeles": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Los Angeles",
@@ -73,6 +83,11 @@
   "checked_at": "2026-09-15T04:47:43+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "aerea-at-cermak-hall-radius-illinois-chicago-november-20-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Chicago",
+  "state": "IL"
  },
  "afrodesi-new-york-the-melrose-ballroom-new-queens-october-16-2026": {
   "checked_at": "2026-10-10T04:50:27+00:00",
@@ -234,6 +249,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "ayybo-extended-set-radius-illinois-chicago-january-30-2027": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "ayybo-shrine-expo-hall-california-los-angeles-january-30-2027": {
   "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "Los Angeles",
@@ -334,6 +354,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "ben-klock-photon-cermak-hall-illinois-chicago-november-27-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "ben-sterling-afters-sound-nightclub-sept-12": {
   "checked_at": "2026-09-13T04:45:32+00:00",
   "city": "Los Angeles",
@@ -377,6 +402,16 @@
  "biscits-sound-nightclub-thu-oct-1-los-angeles": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Los Angeles",
+  "state": "CA"
+ },
+ "bl-presents-rave-busters-irvine-dave-busters-chicago-illinois-rosemont-october-30-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Irvine",
+  "state": "CA"
+ },
+ "bl-presents-rave-busters-irvine-halloween-dave-busters-chicago-illinois-rosemont-october-31-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Irvine",
   "state": "CA"
  },
  "black-book-records-presents-untitled-reframe-studios-indoors-california-los-angeles-december-11-2026": {
@@ -428,6 +463,11 @@
   "checked_at": "2026-09-11T04:46:27+00:00",
   "city": "Hollywood",
   "state": "CA"
+ },
+ "bolo-liv-nightclub-thu-nov-12-miami": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "bonobo-radius-wed-nov-25-chicago": {
   "checked_at": "2026-09-09T03:07:33+00:00",
@@ -814,6 +854,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "deep-dish-liv-nightclub-sat-nov-28-miami": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "deep-dish-sound-night-club-fri-oct-30-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Los Angeles",
@@ -854,6 +899,11 @@
   "city": "Hollywood",
   "state": "CA"
  },
+ "devault-the-regency-ballroom-california-san-francisco-november-29-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "dillon-francis-on-halloween-night-exchange-la-california-los-angeles-october-31-2026": {
   "checked_at": "2026-10-24T04:47:42+00:00",
   "city": "Los Angeles",
@@ -879,6 +929,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "dixon-prysm-illinois-chicago-october-30-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "dj-boring-atrip-serum-prysm-sat-sep-19-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
@@ -889,10 +944,30 @@
   "city": "Miami",
   "state": "FL"
  },
+ "dj-mandy-fonda-theatre-california-los-angeles-october-30-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "dj-mandy-presents-the-raveyard-the-castro-theatre-california-san-francisco-october-31-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "dj-pauly-d-halloween-weekend-daer-nightclub-fri-oct-30-florida": {
   "checked_at": "2026-10-07T04:51:58+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "dod-liv-nightclub-sat-nov-21-miami": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
+ "dod-radius-illinois-chicago-december-31-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Chicago",
+  "state": "IL"
  },
  "dom-dolla-b2b-disclosure-club-darc-season-2-pier-48-california-san-francisco-october-18-2026": {
   "checked_at": "2026-10-09T04:53:40+00:00",
@@ -1023,6 +1098,11 @@
   "checked_at": "2026-10-01T04:50:50+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "enrico-sangiuliano-prysm-illinois-chicago-november-21-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Chicago",
+  "state": "IL"
  },
  "eric-prydz-fall-2026-shed-a-pier-48-sat-oct-31-san-francisco": {
   "checked_at": "2026-09-10T04:46:39+00:00",
@@ -1504,6 +1584,11 @@
   "city": "Chicago",
   "state": "Illinois"
  },
+ "house-calls-w-arapu-868-illinois-chicago-december-11-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Chicago",
+  "state": "Illinois"
+ },
  "house-calls-w-caleb-jackson-b2b-d-stone-868-illinois-chicago-november-14-2026": {
   "checked_at": "2026-10-27T04:50:55+00:00",
   "city": "Chicago",
@@ -1544,6 +1629,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "hugel-presents-make-the-girls-dance-the-rady-shell-at-jacobs-park-california-san-diego-november-6-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
  "hydefm-halloween-the-equation-acemo-swami-sound-the-foundry-california-san-francisco-november-1-2026": {
   "checked_at": "2026-10-21T04:49:46+00:00",
   "city": "San Francisco",
@@ -1563,6 +1653,11 @@
   "checked_at": "2026-10-01T04:50:50+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "ian-asher-liv-nightclub-sat-nov-14-miami": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "ian-asher-radius-sat-sep-26-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -2219,6 +2314,16 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "martin-garrix-liv-nightclub-sat-nov-7-miami": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
+ "mashbit-el-rey-theatre-california-los-angeles-november-14-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "max-styler-audio-nightclub-sat-sep-26-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
@@ -2413,6 +2518,11 @@
   "checked_at": "2026-10-27T04:50:55+00:00",
   "city": "Chicago",
   "state": " IL"
+ },
+ "natalia-roth-prysm-illinois-chicago-november-20-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Chicago",
+  "state": "IL"
  },
  "natte-visstick-hhunter-cermark-hall-fri-sep-11-chicago": {
   "checked_at": "2026-09-10T04:46:39+00:00",
@@ -2624,6 +2734,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "pawsa-liv-nightclub-fri-dec-4-miami": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "pawsa-the-rio-vista-lot-the-historic-sears-building-california-los-angeles-october-17-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Los Angeles",
@@ -2789,6 +2904,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "ragie-ban-braydon-terzo-clowver-prysm-illinois-chicago-november-14-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "ranger-trucco-the-great-northern-fri-sep-25-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
@@ -2854,6 +2974,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "riordan-radius-illinois-chicago-february-13-2027": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "ritmo-celestial-the-ground-florida-miami-september-13-2026": {
   "checked_at": "2026-09-12T04:45:54+00:00",
   "city": "Miami",
@@ -2883,6 +3008,11 @@
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "San Francisco",
   "state": "CA"
+ },
+ "rossi-at-cermak-hall-radius-illinois-chicago-november-6-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Chicago",
+  "state": "IL"
  },
  "rossi-richs-sat-sep-26-san-diego": {
   "checked_at": "2026-09-17T04:47:45+00:00",
@@ -3191,6 +3321,11 @@
  },
  "solmates-season-opener-ft-fahlberg-orsay-more-zeyzey-fri-oct-9-miami": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
+ "sonny-fodera-liv-nightclub-sat-dec-12-miami": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
   "city": "Miami",
   "state": "FL"
  },
@@ -3613,6 +3748,16 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "wuki-beats-i-cant-release-mixtape-vol-3-the-midway-california-san-francisco-november-21-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "wuki-party-pupils-goshfather-the-bellwether-november-6-2026": {
+  "checked_at": "2026-10-28T04:43:35+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
  },
  "x-club-sound-nightclub-california-los-angeles-october-24-2026": {
   "checked_at": "2026-09-14T04:49:26+00:00",
