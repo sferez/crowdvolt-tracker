@@ -239,6 +239,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "atliens-red-rocks-amphitheatre-november-7-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Morrison",
+  "state": "CO"
+ },
  "atrip-b2b-dj-boring-the-foundry-friday-sep-18-san-francisco": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "San Francisco",
@@ -468,6 +473,11 @@
   "checked_at": "2026-10-28T04:43:35+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "bonobo-mission-ballroom-november-19-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Denver",
+  "state": "CO"
  },
  "bonobo-radius-wed-nov-25-chicago": {
   "checked_at": "2026-09-09T03:07:33+00:00",
@@ -739,6 +749,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "cloonee-red-rocks-amphitheatre-colorado-morrison-may-1-2027": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Morrison",
+  "state": "CO"
+ },
  "club-de-combat-all-night-long-sound-nightclub-sat-oct-24-los-angeles": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "Los Angeles",
@@ -788,6 +803,11 @@
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "San Francisco",
   "state": "CA"
+ },
+ "dabin-red-rocks-amphitheatre-november-6-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Morrison",
+  "state": "CO"
  },
  "dam-swindle-spybar-illinois-chicago-september-26-2026": {
   "checked_at": "2026-09-09T03:07:33+00:00",
@@ -1039,6 +1059,11 @@
   "city": "Los Angeles",
   "state": "California"
  },
+ "elderbrook-red-rocks-amphitheatre-colorado-morrison-april-3-2027": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Morrison",
+  "state": "CO"
+ },
  "eli-and-fur-1015-folsom-fri-nov-13-california": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "San Francisco",
@@ -1108,6 +1133,11 @@
   "checked_at": "2026-09-10T04:46:39+00:00",
   "city": "San Francisco",
   "state": "CA"
+ },
+ "eric-prydz-mission-ballroom-november-27-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Denver",
+  "state": "CO"
  },
  "eric-prydz-radius-sat-december-5-chicago": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -1304,6 +1334,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "freaky-halloween-night-le-klown-domicile-miami-miami-october-31-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Miami",
+  "state": ""
+ },
  "friday-iiipoints-after-party-hhunter-domicile-miami-miami-october-16-2026": {
   "checked_at": "2026-10-09T04:53:40+00:00",
   "city": "Miami",
@@ -1379,6 +1414,11 @@
   "city": "Miami",
   "state": ""
  },
+ "ghengar-rebirth-tour-888-garage-sat-nov-7-san-francisco": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "ghost-palace-halloween-electroluxx-the-palace-of-fine-arts-fri-oct-30-san-francisco": {
   "checked_at": "2026-10-16T04:48:56+00:00",
   "city": " San Francisco",
@@ -1444,6 +1484,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "gryffin-oliver-heldens-arco-red-rocks-amphitheatre-november-13-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Morrison",
+  "state": "CO"
+ },
  "guy-gerber-rumors-miami-art-week-2026-little-river-studios-florida-miami-december-2-2026": {
   "checked_at": "2026-09-30T04:50:48+00:00",
   "city": "Miami",
@@ -1473,6 +1518,11 @@
   "checked_at": "2026-10-22T04:49:37+00:00",
   "city": "New York",
   "state": "New"
+ },
+ "halloween-blood-rave-domicile-miami-miami-october-30-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Miami",
+  "state": ""
  },
  "halloween-night-ft-iglesias-spybar-illinois-chicago-november-1-2026": {
   "checked_at": "2026-10-20T04:48:51+00:00",
@@ -1899,6 +1949,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "josh-baker-mission-ballroom-colorado-denver-november-25-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Denver",
+  "state": "CO"
+ },
  "josh-baker-radius-fri-nov-27-chicago": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "Chicago",
@@ -2119,6 +2174,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "level-up-modal-nodes-blossm-mythm-ancestyr-mission-ballroom-november-20-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Denver",
+  "state": "CO"
+ },
  "level-up-nova-sd-fri-sep-25-california": {
   "checked_at": "2026-09-24T04:47:56+00:00",
   "city": "San Diego",
@@ -2234,6 +2294,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "lyny-nero-rohaan-lizzy-jane-mission-ballroom-december-12-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Denver",
+  "state": "CO"
+ },
  "maceo-plex-the-great-northern-fri-nov-13-san-francisco": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "San Francisco",
@@ -2272,6 +2337,11 @@
  "mahmut-orhan-reframe-studios-indoors-california-los-angeles-january-31-2027": {
   "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "Los Angeles",
+  "state": "CA"
+ },
+ "main-phase-1015-folsom-fri-nov-6-san-francisco": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "San Francisco",
   "state": "CA"
  },
  "main-phase-smoke-and-mirrors-illinois-chicago-october-17-2026": {
@@ -2333,6 +2403,11 @@
   "checked_at": "2026-10-28T04:43:35+00:00",
   "city": "Los Angeles",
   "state": "CA"
+ },
+ "matroda-mission-ballroom-october-31-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Denver",
+  "state": "CO"
  },
  "max-styler-audio-nightclub-sat-sep-26-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
@@ -2428,6 +2503,11 @@
   "checked_at": "2026-10-14T04:49:40+00:00",
   "city": "Miami",
   "state": ""
+ },
+ "mira-1015-folsom-fri-nov6-san-francisco": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "mira-do-not-sit-on-the-furniture-florida-miami-beach-october-30-2026": {
   "checked_at": "2026-10-24T04:47:42+00:00",
@@ -2589,6 +2669,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "nimino-mission-ballroom-december-11-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Denver",
+  "state": "CO"
+ },
  "ninajirachi-i-love-my-computer-and-it-loves-me-tour-the-regency-ballroom-california-san-francisco-november-18-2026": {
   "checked_at": "2026-10-20T04:48:51+00:00",
   "city": "San Francisco",
@@ -2623,6 +2708,11 @@
   "checked_at": "2026-10-01T04:50:50+00:00",
   "city": "San Diego",
   "state": "CA"
+ },
+ "nora-en-pure-presents-purified-red-rocks-red-rocks-amphitheatre-colorado-morrison-april-2-2027": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Morrison",
+  "state": "CO"
  },
  "nora-en-pure-reframe-studios-indoors-california-los-angeles-december-20-2026": {
   "checked_at": "2026-10-06T04:50:53+00:00",
@@ -3254,6 +3344,11 @@
   "city": "Los Angeles",
   "state": "California"
  },
+ "sidepiece-x-ship-wrek-red-rocks-amphitheatre-colorado-morrison-march-27-2027": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Morrison",
+  "state": "CO"
+ },
  "silva-bumpa-monarch-sun-sep-27-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
@@ -3292,6 +3387,11 @@
  "slayyyter-the-regency-ballroom-tue-sep-8-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "San Francisco",
+  "state": "CA"
+ },
+ "smd-derrick-carter-kim-ann-foxman-tba-downtown-los-angeles-california-hollywood-october-31-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Hollywood",
   "state": "CA"
  },
  "smokey-bubblin-b-smoke-mirrors-illinois-chicago-november-14-2026": {
@@ -3659,6 +3759,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "valley-of-darkness-svdden-death-voyd-set-the-masquerade-space-wizard-hamro-vanfleet-red-rocks-amphitheatre-april-9-2027": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Morrison",
+  "state": "CO"
+ },
  "vavo-ricky-retro-presented-by-palm-tree-club-sat-nov-7-miami": {
   "checked_at": "2026-09-24T04:47:56+00:00",
   "city": "Miami",
@@ -3728,6 +3833,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Los Angeles",
   "state": "CA"
+ },
+ "whethan-warehousewavs-tour-360-show-mission-ballroom-colorado-denver-october-31-2026": {
+  "checked_at": "2026-10-30T04:43:21+00:00",
+  "city": "Denver",
+  "state": "CO"
  },
  "whomadewho-hybrid-dj-set-reframe-studios-indoors-california-los-angeles-february-7-2027": {
   "checked_at": "2026-10-06T04:50:53+00:00",
