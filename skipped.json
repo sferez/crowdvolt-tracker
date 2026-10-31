@@ -859,6 +859,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "death-by-disco-chicagos-biggest-halloween-party-838-w-kinzie-st-fri-oct-30-chicago": {
+  "checked_at": "2026-10-31T04:43:48+00:00",
+  "city": "Chicago",
+  "state": "IL"
+ },
  "deathpact-from-darkness-comes-light-eclipsed-public-works-sat-nov-21-san-francisco": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "San Francisco",
@@ -3626,6 +3631,16 @@
  },
  "the-maze-halloween-arts-district-block-party-sat-oct-31-arts-district-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Los Angeles",
+  "state": "California"
+ },
+ "the-maze-halloween-official-afterparty-origin-california-los-angeles-november-1-2026": {
+  "checked_at": "2026-10-31T04:43:48+00:00",
+  "city": "Los Angeles",
+  "state": "California"
+ },
+ "the-pool-opening-night-official-mayan-warrior-afterparty-the-pool-by-stranger-than-california-los-angeles-october-31-2026": {
+  "checked_at": "2026-10-31T04:43:48+00:00",
   "city": "Los Angeles",
   "state": "California"
  },
