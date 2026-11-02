@@ -23,7 +23,11 @@
    0,
    0,
    0,
-   0
+   0,
+   0,
+   0,
+   0,
+   66
   ],
   "bidders": [
    0,
@@ -48,9 +52,17 @@
    0,
    0,
    0,
-   0
+   0,
+   0,
+   0,
+   0,
+   1
   ],
   "fair": [
+   null,
+   null,
+   null,
+   null,
    null,
    null,
    null,
@@ -98,6 +110,10 @@
    0,
    0,
    0,
+   0,
+   0,
+   0,
+   0,
    0
   ],
   "last_sale": [
@@ -123,9 +139,17 @@
    null,
    null,
    null,
-   null
+   null,
+   null,
+   null,
+   null,
+   104.0
   ],
   "listings": [
+   0,
+   0,
+   0,
+   0,
    0,
    0,
    0,
@@ -151,6 +175,10 @@
    0
   ],
   "tickets": [
+   0,
+   0,
+   0,
+   0,
    0,
    0,
    0,
@@ -199,11 +227,19 @@
   "2026-11-01T00:42:09+00:00",
   "2026-11-01T02:20:02+00:00",
   "2026-11-01T03:19:28+00:00",
-  "2026-11-01T04:17:06+00:00"
+  "2026-11-01T04:17:06+00:00",
+  "2026-11-01T05:14:38+00:00",
+  "2026-11-01T06:22:26+00:00",
+  "2026-11-01T07:15:03+00:00",
+  "2026-11-01T08:17:39+00:00"
  ],
  "types": {
   "GA (After 4AM)": {
    "all_in": [
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -251,9 +287,17 @@
     null,
     null,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -301,7 +345,11 @@
     null,
     null,
     null,
-    null
+    null,
+    null,
+    null,
+    null,
+    70
    ],
    "bid_qty": [
     null,
@@ -326,7 +374,11 @@
     null,
     null,
     null,
-    null
+    null,
+    null,
+    null,
+    null,
+    1
    ],
    "linked_count": 1,
    "listings": [
@@ -352,9 +404,17 @@
     0,
     0,
     0,
+    0,
+    0,
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
+    0,
+    0,
     0,
     0,
     0,
