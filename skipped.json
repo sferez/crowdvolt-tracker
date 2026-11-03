@@ -2684,9 +2684,19 @@
   "city": "Denver",
   "state": "CO"
  },
+ "ninajirachi-fonda-theatre-california-los-angeles-november-15-2026": {
+  "checked_at": "2026-11-03T04:43:20+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "ninajirachi-i-love-my-computer-and-it-loves-me-tour-the-regency-ballroom-california-san-francisco-november-18-2026": {
   "checked_at": "2026-10-20T04:48:51+00:00",
   "city": "San Francisco",
+  "state": "CA"
+ },
+ "ninajirachi-mgna-crrrta-fonda-theatre-california-los-angeles-november-13-2026": {
+  "checked_at": "2026-11-03T04:43:20+00:00",
+  "city": "Los Angeles",
   "state": "CA"
  },
  "ninajirachi-mgna-crrrta-the-regency-ballroom-california-san-francisco-november-18-2026": {
@@ -2921,6 +2931,16 @@
  },
  "polo-pan-americas-tour-block-party-midwaysf-sat-oct-10-san-francisco": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "porter-robinson-b2b-ninajirachi-club-darc-season-2-pier-48-california-san-francisco-november-28-2026": {
+  "checked_at": "2026-11-03T04:43:20+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "porter-robinson-ninajirachi-dylan-brady-of-100-gecs-doss-nina-las-vegas-clearcast-pier-48s-shed-a-november-28-2026": {
+  "checked_at": "2026-11-03T04:43:20+00:00",
   "city": "San Francisco",
   "state": "CA"
  },
