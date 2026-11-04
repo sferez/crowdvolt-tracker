@@ -429,6 +429,20 @@
   "slug": "brutalismus-3000",
   "spotify": null
  },
+ "bunt": {
+  "bio": "BUNT is an electronic DJ and producer known for euphoric, feel-good dance music that blends melodic house with indie and pop influences. Their high-energy live sets and emotionally charged tracks have earned them a global following and made them a standout on festival and club stages worldwide.",
+  "followers": 329063,
+  "genres": [
+   "stutter house",
+   "house"
+  ],
+  "img": "https://img.crowdvolt.com/assets/9b73e987-621e-473d-aa12-67e0375a6682/spotify-2CpLIMBoE2ZzyY3ZBCRZ7j-63972d1d.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "BUNT.",
+  "slug": "bunt",
+  "spotify": "https://open.spotify.com/artist/2CpLIMBoE2ZzyY3ZBCRZ7j"
+ },
  "caiiro-f466b": {
   "bio": "Caiiro is a South African DJ and producer known for his deep, spiritual take on Afro house. With rich percussion, atmospheric melodies, and global influences, he has become a standout figure in the international dance scene, performing at major festivals and releasing on top-tier labels.",
   "followers": 5721,
@@ -651,6 +665,21 @@
   "name": "Crankdat",
   "slug": "crankdat",
   "spotify": "https://open.spotify.com/artist/5lCekoJW9jNq01B1wiqdAb"
+ },
+ "damian-lazarus": {
+  "bio": "Few artists have shaped modern underground dance music quite like Damian Lazarus. After beginning his career in London\u2019s record industry, he founded Crosstown Rebels in 2004, a label that helped launch the careers of artists including Jamie Jones, Maceo Plex, and Art Department while becoming one of the defining imprints in house and techno. Beyond the label, Lazarus has built a reputation as a curator and cultural architect through events like Get Lost, Rebel Rave, and the legendary Day Zero festival in Tulum.",
+  "followers": 17856,
+  "genres": [
+   "deep house",
+   "afro house",
+   "melodic house"
+  ],
+  "img": "https://img.crowdvolt.com/763f976f-51f4-49bb-8f5a-78badb535ae8.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Damian Lazarus",
+  "slug": "damian-lazarus",
+  "spotify": null
  },
  "dan-ghenacia": {
   "bio": "Dan Ghenacia is a French DJ and producer known for his deep, minimal house sound and long, hypnotic sets. A key figure in the Paris underground scene, he was a founding member of the trio Apollonia alongside Dyed Soundorom and Shonky. Ghenacia is respected worldwide for his refined selections and groove-focused approach to house and minimal music.",
@@ -2330,6 +2359,19 @@
   "slug": "miguelle-tons-47de0",
   "spotify": null
  },
+ "mija-9ca94": {
+  "bio": "Mija is an American DJ, producer, and vocalist known for blending house, techno, indie dance, and bass music into emotionally driven sets. She first gained widespread attention after performing alongside Skrillex at Bonnaroo Music and Arts Festival, which helped launch her career in the electronic scene. Mija is also known for her \u201cFk a Genre\u201d approach, embracing multiple styles and pushing creative boundaries in her music.",
+  "followers": null,
+  "genres": [
+   "techno"
+  ],
+  "img": "https://img.crowdvolt.com/fcedf157-4e88-493c-b930-d3b1a40ca41e.png",
+  "instagram": "https://www.instagram.com/hi_mija",
+  "monthly_listeners": null,
+  "name": "Mija",
+  "slug": "mija-9ca94",
+  "spotify": null
+ },
  "mira": {
   "bio": "Over nearly three decades, Mira has performed everywhere from intimate Berlin clubs to Burning Man, Fusion Festival, Garbicz, and Wonderfruit. Her sets are known for unfolding slowly, weaving deep grooves, emotional melodies, and hypnotic rhythms into long-form musical journeys.",
   "followers": 4629,
@@ -3506,6 +3548,21 @@
   "name": "VTSS",
   "slug": "vtss-0e62c",
   "spotify": null
+ },
+ "whomadewho": {
+  "bio": "WhoMadeWho is the Danish trio celebrated for their genre-blending sound that fuses indie rock, electronic, and dance music. With infectious grooves, catchy hooks, and hypnotic rhythms, they create music that\u2019s both thoughtful and irresistibly danceable. Known for electrifying live performances and innovative productions, WhoMadeWho has become a staple for fans seeking a smart, energetic, and genre-defying experience on the dance floor.",
+  "followers": 39579,
+  "genres": [
+   "electronic",
+   "disco",
+   "nu-disco"
+  ],
+  "img": "https://img.crowdvolt.com/c097a873-cec5-4b89-a13a-5fdab9c2689d.png",
+  "instagram": "https://www.instagram.com/whomadewhoofficial",
+  "monthly_listeners": null,
+  "name": "WhoMadeWho",
+  "slug": "whomadewho",
+  "spotify": "https://open.spotify.com/artist/50Lr1puweM1hFsF1LpIZLM"
  },
  "william-kiss": {
   "bio": "William Kiss is a Melbourne-born DJ and producer with a percussion-rooted sound built on rumbling basslines, groove-heavy undertones, and main-floor strength across house and techno. He's released on Peggy Gou's Gudu, Rekids, UNCAGE, and Carl Cox's 23rd Century, racking up over 5 million streams and earning support from Laurent Garnier, Carl Cox, Honey Dijon, and Pete Tong \u2014 with BBC Radio 1 tapping him as a 2025 \"Future Dance Star.\" He also co-runs the Not Without Friends label and party collective with Luke Alessi and Jordan Brando, and teamed up with house legends Todd Terry and Roland Clark on his Gudu debut \"House Machine.\"",
