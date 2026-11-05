@@ -1,77 +1,253 @@
 {
  "event": {
   "bid_all_in": [
-   125
+   125,
+   125,
+   125,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
   ],
   "bidders": [
-   1
+   1,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
   ],
   "fair": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
    null
   ],
   "high": [
+   0,
+   140,
+   140,
+   0,
+   0,
+   0,
+   0,
+   0,
    0
   ],
   "last_sale": [
-   null
+   null,
+   null,
+   null,
+   140.0,
+   140.0,
+   140.0,
+   140.0,
+   140.0,
+   140.0
   ],
   "listings": [
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
    0
   ],
   "tickets": [
+   0,
+   6,
+   6,
+   0,
+   0,
+   0,
+   0,
+   0,
    0
   ]
  },
  "stamps": [
-  "2026-11-04T04:47:39+00:00"
+  "2026-11-04T04:47:39+00:00",
+  "2026-11-04T06:23:44+00:00",
+  "2026-11-04T07:15:24+00:00",
+  "2026-11-04T08:18:58+00:00",
+  "2026-11-04T09:15:14+00:00",
+  "2026-11-04T10:16:18+00:00",
+  "2026-11-04T11:14:26+00:00",
+  "2026-11-04T12:19:46+00:00",
+  "2026-11-04T13:13:59+00:00"
  ],
  "types": {
   "GA (Bowl)": {
    "all_in": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "bid": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "linked_count": 1,
    "listings": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
     0
    ],
    "uqid": "f9d459f6-d469-4076-924f-8b642df693de"
   },
   "GA (Floor)": {
    "all_in": [
+    null,
+    140,
+    140,
+    null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "ask": [
+    null,
+    135,
+    135,
+    null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    6,
+    6,
+    null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "bid": [
-    130
+    130,
+    130,
+    130,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
    ],
    "bid_qty": [
-    1
+    1,
+    1,
+    1,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
    ],
    "linked_count": 1,
    "listings": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    6,
+    6,
+    0,
+    0,
+    0,
+    0,
+    0,
     0
    ],
    "uqid": "20b704ba-03f6-43d5-9ce1-52b5c449553e"
