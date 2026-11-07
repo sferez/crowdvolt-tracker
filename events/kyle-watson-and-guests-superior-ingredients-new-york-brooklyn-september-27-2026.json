@@ -470,9 +470,11 @@
    0,
    0,
    0,
+   0,
    0
   ],
   "bidders": [
+   0,
    0,
    0,
    0,
@@ -1414,6 +1416,7 @@
    null,
    null,
    null,
+   null,
    null
   ],
   "high": [
@@ -1880,9 +1883,10 @@
    0,
    0,
    0,
+   26,
+   26,
    0,
-   26,
-   26,
+   0,
    0,
    0,
    0,
@@ -2354,7 +2358,8 @@
    null,
    null,
    null,
-   null,
+   26.0,
+   26.0,
    26.0,
    26.0,
    26.0,
@@ -2824,9 +2829,10 @@
    0,
    0,
    0,
+   1,
+   1,
    0,
-   1,
-   1,
+   0,
    0,
    0,
    0,
@@ -3296,9 +3302,10 @@
    0,
    0,
    0,
+   2,
+   2,
    0,
-   2,
-   2,
+   0,
    0,
    0,
    0,
@@ -3459,7 +3466,6 @@
   "2026-10-22T10:24:19+00:00",
   "2026-10-22T16:28:36+00:00",
   "2026-10-22T23:22:00+00:00",
-  "2026-10-23T04:27:28+00:00",
   "2026-10-23T05:23:49+00:00",
   "2026-10-23T06:37:49+00:00",
   "2026-10-23T07:29:47+00:00",
@@ -3775,11 +3781,14 @@
   "2026-11-06T00:36:15+00:00",
   "2026-11-06T02:20:52+00:00",
   "2026-11-06T03:18:30+00:00",
-  "2026-11-06T04:18:32+00:00"
+  "2026-11-06T04:18:32+00:00",
+  "2026-11-06T05:16:05+00:00",
+  "2026-11-06T06:25:35+00:00"
  ],
  "types": {
   "All-In Pass (VIP)": {
    "all_in": [
+    null,
     null,
     null,
     null,
@@ -4721,9 +4730,11 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
     null,
     null,
     null,
@@ -5665,9 +5676,11 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
     null,
     null,
     null,
@@ -6610,9 +6623,11 @@
     0,
     0,
     0,
+    0,
     0
    ],
    "qty": [
+    0,
     0,
     0,
     0,
@@ -7557,9 +7572,11 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "ask": [
+    null,
     null,
     null,
     null,
@@ -8501,6 +8518,7 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "bid": [
@@ -8973,9 +8991,11 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
     null,
     null,
     null,
@@ -9918,9 +9938,11 @@
     0,
     0,
     0,
+    0,
     0
    ],
    "qty": [
+    0,
     0,
     0,
     0,
@@ -10865,9 +10887,11 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "ask": [
+    null,
     null,
     null,
     null,
@@ -11809,6 +11833,7 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "bid": [
@@ -12281,9 +12306,11 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
     null,
     null,
     null,
@@ -13226,9 +13253,11 @@
     0,
     0,
     0,
+    0,
     0
    ],
    "qty": [
+    0,
     0,
     0,
     0,
@@ -14173,9 +14202,11 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "ask": [
+    null,
     null,
     null,
     null,
@@ -15117,6 +15148,7 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "bid": [
@@ -15589,9 +15621,11 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
     null,
     null,
     null,
@@ -16534,9 +16568,11 @@
     0,
     0,
     0,
+    0,
     0
    ],
    "qty": [
+    0,
     0,
     0,
     0,
@@ -17481,9 +17517,11 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "ask": [
+    null,
     null,
     null,
     null,
@@ -18425,6 +18463,7 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "bid": [
@@ -18897,9 +18936,11 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
     null,
     null,
     null,
@@ -19842,6 +19883,7 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "qty": [
@@ -19908,6 +19950,7 @@
     0,
     0,
     0,
+    null,
     null,
     null,
     null,
@@ -20783,9 +20826,10 @@
     null,
     null,
     null,
+    26,
+    26,
     null,
-    26,
-    26,
+    null,
     null,
     null,
     null,
@@ -21255,9 +21299,10 @@
     null,
     null,
     null,
+    25,
+    25,
     null,
-    25,
-    25,
+    null,
     null,
     null,
     null,
@@ -21727,9 +21772,10 @@
     null,
     null,
     null,
+    2,
+    2,
     null,
-    2,
-    2,
+    null,
     null,
     null,
     null,
@@ -22205,9 +22251,11 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
     null,
     null,
     null,
@@ -23144,9 +23192,10 @@
     0,
     0,
     0,
+    1,
+    1,
     0,
-    1,
-    1,
+    0,
     0,
     0,
     0,
@@ -23616,9 +23665,10 @@
     0,
     0,
     0,
+    2,
+    2,
     0,
-    2,
-    2,
+    0,
     0,
     0,
     0,
@@ -23628,6 +23678,7 @@
   },
   "VIP": {
    "all_in": [
+    null,
     null,
     null,
     null,
@@ -24569,9 +24620,11 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
     null,
     null,
     null,
@@ -25513,9 +25566,11 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
     null,
     null,
     null,
@@ -26458,9 +26513,11 @@
     0,
     0,
     0,
+    0,
     0
    ],
    "qty": [
+    0,
     0,
     0,
     0,

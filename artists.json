@@ -3461,6 +3461,20 @@
   "slug": "the-martinez-brothers",
   "spotify": null
  },
+ "tiga": {
+  "bio": "Tiga is a true pioneer of electronic music, blending sharp electro, techno, and new wave influences into a sound that\u2019s both iconic and forward-thinking. As the founder of Turbo Recordings, he\u2019s played a major role in shaping underground dance culture while consistently pushing boundaries as a producer and DJ. Known for his bold style and charismatic presence behind the decks, Tiga delivers high-energy, genre-bending sets that feel as fresh today as they did decades ago.",
+  "followers": 28946,
+  "genres": [
+   "melodic techno",
+   "tech house"
+  ],
+  "img": "https://img.crowdvolt.com/56b00898-346b-4f9e-8ffe-cdd35cb9b704.png",
+  "instagram": "https://www.instagram.com/tiga",
+  "monthly_listeners": null,
+  "name": "Tiga",
+  "slug": "tiga",
+  "spotify": "https://open.spotify.com/artist/5l9wiTZVfqQTfMDOt0HtwC"
+ },
  "timmy-trumpet": {
   "bio": "Timmy Trumpet is an Australian DJ and live trumpeter known for explosive, high-energy performances that fuse EDM with live instrumentation. He rose to global prominence with the viral anthem \u201cNarco,\u201d a stadium-ready track that became synonymous with walkout moments and massive crowd hype. Blending big-room drops, hard dance, and jazz-infused trumpet lines, Timmy Trumpet is celebrated for wildly interactive sets built for maximum impact.",
   "followers": null,
@@ -3652,6 +3666,20 @@
   "name": "Vintage Culture",
   "slug": "vintage-culture",
   "spotify": null
+ },
+ "volkoder": {
+  "bio": "Brazilian DJ and producer Volkoder has spent two decades shaping a sound rooted in house music: driving basslines, chopped vocals and the kind of 90s-inspired grooves that keep a dance floor locked in. Hailing from Salto, S\u00e3o Paulo, he\u2019s built a catalog of 200+ releases and more than 50 million streams, with tracks regularly played by Solomun, Keinemusik, Peggy Gou, Jamie Jones, Carl Cox and CamelPhat.",
+  "followers": null,
+  "genres": [
+   "house",
+   "melodic techno"
+  ],
+  "img": "https://img.crowdvolt.com/ad24d6c1-ef80-450a-8b92-91279be92122.jpg",
+  "instagram": "https://www.instagram.com/volkoder",
+  "monthly_listeners": null,
+  "name": "Volkoder",
+  "slug": "volkoder",
+  "spotify": "https://open.spotify.com/artist/5SwGFGfUlV6Dan4ygjF5CU"
  },
  "vtss-0e62c": {
   "bio": "VTSS is the Warsaw-born, London-based DJ and producer Martyna Maja, one of the central figures in the late-2010s \"fast and hard\" techno wave that pulled trance, EBM, hardcore and industrial back onto the same dancefloor. She came up through the Bruta\u017c parties and her home club Jasna 1 in Warsaw after dropping out of law school for sound engineering, then broke internationally with sharp releases on Repitch and Intrepid Skin that earned her residencies at Berghain and slots at Dekmantel, Awakenings and Berlin Atonal. More recently she has expanded the project to include her own vocals and songwriting on releases for Ninja Tune's Technicolour imprint, turning what started as a pure-club operation into a fuller artistic identity.",
