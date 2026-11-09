@@ -69,6 +69,11 @@
   "city": "Pioneertown",
   "state": " CA"
  },
+ "adam-port-zamna-sun-jan-10-2027-tulum": {
+  "checked_at": "2026-11-09T04:43:30+00:00",
+  "city": "Tulum",
+  "state": "Quintana Roo"
+ },
  "adam-sellouk-crssd-festival-rich-sun-sep-27-los-angeles": {
   "checked_at": "2026-09-28T04:53:32+00:00",
   "city": "San Diego",
@@ -103,6 +108,11 @@
   "checked_at": "2026-09-15T04:47:43+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "adriatique-zamna-fri-jan-8-2027-tulum": {
+  "checked_at": "2026-11-09T04:43:30+00:00",
+  "city": "Tulum",
+  "state": "Quintana Roo"
  },
  "aerea-at-cermak-hall-radius-illinois-chicago-november-20-2026": {
   "checked_at": "2026-10-28T04:43:35+00:00",
@@ -143,6 +153,11 @@
   "checked_at": "2026-10-01T04:50:50+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "alisha-sound-nightclub-california-los-angeles-december-4-2026": {
+  "checked_at": "2026-11-09T04:43:30+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
  },
  "all-building-hallo-queen-smartbar-il-chicago-november-1-2026": {
   "checked_at": "2026-10-27T04:50:55+00:00",
@@ -228,6 +243,11 @@
   "checked_at": "2026-09-15T04:47:43+00:00",
   "city": "San Francisco",
   "state": "CA"
+ },
+ "anyma-the-lost-temple-tulum-mon-jan-4-2027": {
+  "checked_at": "2026-11-09T04:43:30+00:00",
+  "city": "Tulum",
+  "state": "Quintana Roo"
  },
  "arden-jones-presented-by-palm-tree-club-sat-oct-17-miami": {
   "checked_at": "2026-09-29T04:50:01+00:00",
@@ -984,6 +1004,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "dansyn-sound-nightclub-california-los-angeles-december-5-2026": {
+  "checked_at": "2026-11-09T04:43:30+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "daphni-chicago-sept-19-smart-bar": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
@@ -993,6 +1018,11 @@
   "checked_at": "2026-09-29T04:50:01+00:00",
   "city": "San Jose",
   "state": "CA"
+ },
+ "day-zero-tulum-sat-jan-9-2027": {
+  "checked_at": "2026-11-09T04:43:30+00:00",
+  "city": "Tulum",
+  "state": "MEX"
  },
  "deadmau5-birthday-celebration-reframe-studios-indoors-california-los-angeles-january-10-2027": {
   "checked_at": "2026-10-06T04:50:53+00:00",
@@ -1534,6 +1564,11 @@
   "city": "Chicago",
   "state": " IL"
  },
+ "four-tet-pier-48s-shed-a-january-2-2027": {
+  "checked_at": "2026-11-09T04:43:30+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "fovos-halcyon-california-san-francisco-november-8-2026": {
   "checked_at": "2026-10-23T04:49:54+00:00",
   "city": "San Francisco",
@@ -1773,6 +1808,11 @@
   "checked_at": "2026-10-30T04:43:21+00:00",
   "city": "Morrison",
   "state": "CO"
+ },
+ "gudfella-sound-nightclub-california-los-angeles-december-12-2026": {
+  "checked_at": "2026-11-09T04:43:30+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
  },
  "guy-gerber-rumors-miami-art-week-2026-little-river-studios-florida-miami-december-2-2026": {
   "checked_at": "2026-09-30T04:50:48+00:00",
@@ -3249,6 +3289,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "omnom-shrine-expo-hall-california-los-angeles-february-5-2027": {
+  "checked_at": "2026-11-09T04:43:30+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "only-fire-origin-california-los-angeles-november-14-2026": {
   "checked_at": "2026-10-20T04:48:51+00:00",
   "city": "Chicago",
@@ -3594,6 +3639,11 @@
   "city": "Los Angeles",
   "state": "CA"
  },
+ "renaissance-zamna-tulum-thu-dec-31-mexico": {
+  "checked_at": "2026-11-09T04:43:30+00:00",
+  "city": "Tulum",
+  "state": "Quintana Roo"
+ },
  "resistance-opening-party-miss-monique-m2-miami-florida-miami-beach-november-8-2026": {
   "checked_at": "2026-10-14T04:49:40+00:00",
   "city": "Miami",
@@ -3656,6 +3706,11 @@
  },
  "roddy-lima-sound-nightclub-fri-oct-9-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "romain-garcia-sound-nightclub-california-los-angeles-february-26-2027": {
+  "checked_at": "2026-11-09T04:43:30+00:00",
   "city": "Los Angeles",
   "state": "CA"
  },
