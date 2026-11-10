@@ -1,4 +1,18 @@
 {
+ "3ballmty": {
+  "bio": "3BallMTY is a DJ and production group from Monterrey, Mexico, credited with taking tribal guarachero\u2014a high-energy fusion of pre-Hispanic rhythms, cumbia, and electronic dance music\u2014from local parties to the global stage. They broke out with the massive hit \u201cInt\u00e9ntalo\u201d featuring El Bebeto and Am\u00e9rica Sierra, which topped Latin charts and earned them a Latin Grammy nomination for Best New Artist. Their sets are loud, festive, and impossible to stand still to, packed with pounding tribal percussion and Latin flavor that turn any room into a full-on celebration.",
+  "followers": null,
+  "genres": [
+   "tribal guarachero",
+   "latin house"
+  ],
+  "img": "https://img.crowdvolt.com/5f1adefb-5e46-433e-bd08-acf19d79dd59.jpg",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "3BallMTY",
+  "slug": "3ballmty",
+  "spotify": null
+ },
  "999999999": {
   "bio": "999999999 is an Italian techno duo known for their raw, high-energy approach to acid and hard techno. Their performances often feature fast-paced, improvised live sets built around pounding drums and relentless acid lines. With a gritty underground sound and intense club energy, 999999999 have become staples of the global rave and warehouse scene.",
   "followers": 172092,
@@ -738,6 +752,17 @@
   "slug": "dan-molinari-cec96",
   "spotify": "https://open.spotify.com/artist/2LXI2TTxPC81l79b2ZGWRE"
  },
+ "daniel-dutts": {
+  "bio": "Daniel Dutts is a New York City-based DJ and producer known for his groove-driven house and minimal selections. A regular on the city\u2019s underground circuit, his sets blend deep rhythms with energetic dancefloor tracks, earning him a reputation as a rising name in NYC\u2019s electronic music scene.",
+  "followers": null,
+  "genres": [],
+  "img": "https://img.crowdvolt.com/1c102367-e2af-4cda-880d-9204e091e149.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Daniel Dutts",
+  "slug": "daniel-dutts",
+  "spotify": null
+ },
  "danny-avila": {
   "bio": "Danny Avila is a high-energy Spanish DJ and producer known for blending big room, tech house, and bass-driven grooves into explosive festival sets. Breaking out as a teenager with support from artists like Ti\u00ebsto, he\u2019s evolved into a versatile selector who can move seamlessly between massive main stages and underground club rooms. His sound is punchy, playful, and built to keep crowds locked in from the first drop to the last beat.",
   "followers": 4085,
@@ -751,6 +776,19 @@
   "name": "Danny Avila",
   "slug": "danny-avila",
   "spotify": null
+ },
+ "danny-daze": {
+  "bio": "Danny Daze is a Brooklyn-based DJ and producer known for his energetic fusion of house, techno, and electronic music with a raw, underground edge. He has gained recognition through releases on respected labels like Dirtybird Records and high-profile festival appearances around the world. Danny Daze\u2019s sets are celebrated for their driving grooves, playful samples, and nonstop dancefloor energy.",
+  "followers": 8902,
+  "genres": [
+   "house"
+  ],
+  "img": "https://img.crowdvolt.com/2bcc8998-1c7a-4103-93ff-5ef7db6c0c18.jpg",
+  "instagram": "https://www.instagram.com/dannydaze",
+  "monthly_listeners": null,
+  "name": "Danny Daze",
+  "slug": "danny-daze",
+  "spotify": "https://open.spotify.com/artist/6xYBrFTJUOzyzMvhUiFHuB"
  },
  "danny-tenaglia": {
   "bio": "Danny Tenaglia is a legendary American DJ and producer celebrated for his deep, driving blend of house and techno and his marathon, all-night sets. Rising from New York\u2019s underground club scene, he helped shape modern dance music through decades of influential releases and iconic performances. Renowned for masterful track selection and long-form storytelling, Danny Tenaglia remains a cornerstone of global club culture.",
@@ -986,6 +1024,21 @@
   "monthly_listeners": null,
   "name": "DVS1",
   "slug": "dvs1-b31f3",
+  "spotify": null
+ },
+ "dyed-soundorom": {
+  "bio": "Dyed Soundorom is a French DJ and producer known for his deep, groove-driven style within the underground house scene. Originally from Paris and later based in Berlin, he became widely respected through his long-standing involvement with the influential Apollonia collective alongside Dan Ghenacia and Shonky. His sets and productions emphasize minimal grooves, hypnotic rhythms, and sophisticated club energy, making him a staple in underground house music.",
+  "followers": null,
+  "genres": [
+   "minimal house",
+   "deep house",
+   "tech house"
+  ],
+  "img": "https://img.crowdvolt.com/c58fdffb-3056-493c-978b-06f8c234ef43.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Dyed Soundorom",
+  "slug": "dyed-soundorom",
   "spotify": null
  },
  "dylan-brady": {
@@ -3211,6 +3264,20 @@
   "monthly_listeners": null,
   "name": "Sextile",
   "slug": "sextile",
+  "spotify": null
+ },
+ "shermanology": {
+  "bio": "Shermanology is a brother-and-sister duo from Cura\u00e7ao consisting of Andy and Dorothy Sherman, who blend their Caribbean-Dutch heritage with old-school house, 90s nostalgia, and funk to create a vibrant, soulful sound. With over 250 million Spotify streams and releases on labels like Defected, Hot Creations, and Cuttin Headz, their breakout single \"Boyz N Da Club\" was crowned \"Hottest Record in the World\" by Annie Mac on BBC Radio One, and they have collaborated with artists including FISHER and Boyz II Men. Coming from a musical family whose father and uncles found success in the 70s and 80s, they have carried that legacy onto the world's biggest stages, performing at Kappa Futur Festival, Elrow Ibiza, EDC Mexico, and beyond.",
+  "followers": 10127,
+  "genres": [
+   "tech house",
+   "soulful house"
+  ],
+  "img": "https://img.crowdvolt.com/df276fca-fcd5-45b6-9d0d-366e2abe0fe6.png",
+  "instagram": "https://www.instagram.com/shermanology",
+  "monthly_listeners": null,
+  "name": "Shermanology",
+  "slug": "shermanology",
   "spotify": null
  },
  "shimza-fce33": {
