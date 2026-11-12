@@ -319,6 +319,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "awen-live-audio-sf-december-5-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "awen-the-spotlight-california-los-angeles-december-12-2026": {
   "checked_at": "2026-10-22T04:49:37+00:00",
   "city": "Los Angeles",
@@ -398,6 +403,11 @@
   "checked_at": "2026-11-05T04:43:17+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "basel-week-friday-paolo-ferrara-us-debut-domicile-miami-miami-december-4-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "Miami",
+  "state": ""
  },
  "bashkka-jolene-sound-room-florida-miami-november-6-2026": {
   "checked_at": "2026-11-05T04:43:17+00:00",
@@ -1014,6 +1024,11 @@
   "city": "Miami",
   "state": ""
  },
+ "cristoph-audio-sf-december-18-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "crssd-fest-san-diego-california-september-26-2026": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "San DIego",
@@ -1058,6 +1073,11 @@
   "checked_at": "2026-11-04T04:43:50+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "dansyn-audio-sf-december-5-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "dansyn-sound-nightclub-california-los-angeles-december-5-2026": {
   "checked_at": "2026-11-09T04:43:30+00:00",
@@ -1319,9 +1339,19 @@
   "city": "Miami",
   "state": "FL"
  },
+ "domicile-presents-on-the-hhunt-basel-week-closing-party-domicile-miami-miami-december-5-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "Miami",
+  "state": ""
+ },
  "don-diablo-x-spin-magazine-sound-nightclub-california-los-angeles-september-25-2026": {
   "checked_at": "2026-09-24T04:47:56+00:00",
   "city": "Los Angeles",
+  "state": "CA"
+ },
+ "dosem-audiosf-audio-sf-november-20-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "San Francisco",
   "state": "CA"
  },
  "dr-gabba-narciss-dazegxd-public-works-sat-nov-7-san-francisco": {
@@ -1357,6 +1387,11 @@
  "duke-dumont-nye-reframe-studios-indoors-california-los-angeles-january-1-2027": {
   "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "Los Angeles",
+  "state": "CA"
+ },
+ "dusky-audio-sf-december-11-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "San Francisco",
   "state": "CA"
  },
  "dusky-serum-prysm-sat-oct-10-chicago": {
@@ -1629,6 +1664,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "flamingosis-audio-sf-november-15-2026-san-francisco": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "flosstradamus-at-sound-bar-illinois-chicago-december-26-2026": {
   "checked_at": "2026-11-11T04:43:47+00:00",
   "city": "Chicago",
@@ -1842,6 +1882,11 @@
  "giegling-the-halloween-special-sat-oct-31-los-angeles": {
   "checked_at": "2026-10-10T04:50:27+00:00",
   "city": "Hollywood",
+  "state": "CA"
+ },
+ "gioli-assia-audio-sf-december-19-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "San Francisco",
   "state": "CA"
  },
  "golfos-miami-73-west-flagler-dec-6": {
@@ -2809,6 +2854,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "luke-alexander-audio-sf-november-21-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "luke-alexander-spybar-illinois-chicago-november-21-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
@@ -2936,6 +2986,16 @@
  },
  "marsolo-san-francisco-california-nov-20": {
   "checked_at": "2026-09-09T03:10:18+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "marten-lou-hotel-via-california-san-francisco-december-13-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
+ "marten-lou-rooftop-hotel-via-california-san-francisco-december-13-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
   "city": "San Francisco",
   "state": "CA"
  },
@@ -3117,6 +3177,11 @@
  "mont-rouge-613-imperial-st-sat-nov-21-los-angeles": {
   "checked_at": "2026-11-05T04:43:17+00:00",
   "city": "Los Angeles",
+  "state": "CA"
+ },
+ "monuments-palace-of-fine-arts-sat-nov-14-san-francisco": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": " San Francisco",
   "state": "CA"
  },
  "moon-boots-the-spotlight-sat-oct-17-los-angeles": {
@@ -3334,6 +3399,11 @@
   "city": "San Diego",
   "state": "CA"
  },
+ "nora-en-pure-audio-sf-november-14-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "nora-en-pure-presents-purified-red-rocks-red-rocks-amphitheatre-colorado-morrison-april-2-2027": {
   "checked_at": "2026-10-30T04:43:21+00:00",
   "city": "Morrison",
@@ -3358,6 +3428,11 @@
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "nye-2027-with-snakehips-audio-sf-december-31-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "San Francisco",
+  "state": "CA"
  },
  "nye-dennis-cruz-dj-harvey-the-martinez-brothers-club-space-florida-miami-december-31-2026": {
   "checked_at": "2026-11-05T04:43:17+00:00",
@@ -3543,6 +3618,11 @@
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "peggy-gou-in-the-sand-national-hotel-florida-miami-december-5-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "pendulum-1015-folsom-fri-sap-11-san-francisco": {
   "checked_at": "2026-09-10T04:46:39+00:00",
@@ -3819,6 +3899,11 @@
   "city": "Miami",
   "state": "FL"
  },
+ "rinzen-audio-sf-november-27-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "San Francisco",
+  "state": "CA"
+ },
  "rio-kosta-greek-theatre-berkeley-october-6-2026": {
   "checked_at": "2026-10-06T04:50:53+00:00",
   "city": "Berkeley",
@@ -3877,6 +3962,11 @@
  "roddy-lima-sound-nightclub-fri-oct-9-los-angeles": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Los Angeles",
+  "state": "CA"
+ },
+ "romain-garcia-audio-sf-february-27-2027": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "San Francisco",
   "state": "CA"
  },
  "romain-garcia-sound-nightclub-california-los-angeles-february-26-2027": {
@@ -4758,6 +4848,16 @@
   "checked_at": "2026-10-10T04:50:27+00:00",
   "city": "Los Angeles",
   "state": "CA"
+ },
+ "unkommon-art-week-2026-4-day-pass-little-river-studios-florida-miami-december-2-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
+ "unkommon-events-framework-present-two-day-pass-watson-island-park-florida-miami-december-4-2026": {
+  "checked_at": "2026-11-12T04:43:46+00:00",
+  "city": "Miami",
+  "state": "FL"
  },
  "unreal-13-nov-factory-town-miami": {
   "checked_at": "2026-09-10T04:46:39+00:00",
