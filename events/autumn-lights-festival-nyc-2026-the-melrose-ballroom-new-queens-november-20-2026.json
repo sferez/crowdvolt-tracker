@@ -1,0 +1,180 @@
+{
+ "event": {
+  "bid_all_in": [
+   0
+  ],
+  "bidders": [
+   0
+  ],
+  "fair": [
+   null
+  ],
+  "high": [
+   115
+  ],
+  "last_sale": [
+   null
+  ],
+  "listings": [
+   4
+  ],
+  "tickets": [
+   6
+  ]
+ },
+ "stamps": [
+  "2026-11-14T04:43:20+00:00"
+ ],
+ "types": {
+  "2 Day Pass": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 2,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "a0554577-cdf3-4108-a877-f9f2554724b0"
+  },
+  "2-Day Pass (Before 9PM)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "804ed02b-f153-4323-80de-37debcfdccfb"
+  },
+  "Friday Pass": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 3,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "9cf105df-4d52-41b6-aaf4-595443bffce2"
+  },
+  "Friday Pass (Before 9PM)": {
+   "all_in": [
+    63
+   ],
+   "ask": [
+    61
+   ],
+   "ask_qty": [
+    2
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    2
+   ],
+   "qty": [
+    3
+   ],
+   "uqid": "5cae2cc5-f558-4adc-8631-788bf68f1fba"
+  },
+  "Saturday Pass": {
+   "all_in": [
+    88
+   ],
+   "ask": [
+    85
+   ],
+   "ask_qty": [
+    2
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 3,
+   "listings": [
+    2
+   ],
+   "qty": [
+    3
+   ],
+   "uqid": "f9c5dde3-0b17-4c70-83dc-8649a058f665"
+  },
+  "Saturday Pass (Before 9PM)": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "6c79bcb7-a515-46a2-936b-74feb0618bcf"
+  }
+ }
+}
