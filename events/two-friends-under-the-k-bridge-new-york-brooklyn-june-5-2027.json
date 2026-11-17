@@ -1,0 +1,130 @@
+{
+ "event": {
+  "bid_all_in": [
+   0
+  ],
+  "bidders": [
+   0
+  ],
+  "fair": [
+   null
+  ],
+  "high": [
+   114
+  ],
+  "last_sale": [
+   null
+  ],
+  "listings": [
+   2
+  ],
+  "tickets": [
+   10
+  ]
+ },
+ "stamps": [
+  "2026-11-17T04:44:58+00:00"
+ ],
+ "types": {
+  "Friends with Benefits VIP": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "d56a2313-cb81-48bc-b4f4-c2af553d7760"
+  },
+  "General Admission": {
+   "all_in": [
+    85
+   ],
+   "ask": [
+    82
+   ],
+   "ask_qty": [
+    4
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    2
+   ],
+   "qty": [
+    10
+   ],
+   "uqid": "b72ef6f3-5d42-4ec7-ac8d-24cf5e010165"
+  },
+  "In The Mix VIP": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "fd67ee10-7088-4d07-834f-3bc31f1b6fda"
+  },
+  "Third Friend VIP": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 1,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "38efc254-d789-4643-9637-5a95661a73a6"
+  }
+ }
+}
