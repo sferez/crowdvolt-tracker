@@ -100,6 +100,21 @@
   "slug": "airrica",
   "spotify": null
  },
+ "aj-christou": {
+  "bio": "AJ Christou is a UK-based DJ and producer known for his groove-heavy tech house sound, rolling basslines, and refined underground style. As the founder of Celesta Recordings, he has built a strong reputation in the global house scene through dance-floor-focused productions and performances at respected clubs and festivals across Europe and beyond.",
+  "followers": 1269,
+  "genres": [
+   "tech house",
+   "deep tech",
+   "house"
+  ],
+  "img": "https://img.crowdvolt.com/assets/8d6e0efe-000e-4519-adc2-0cd0419c4ad0/resident_advisor-26465-44c5d195.jpg",
+  "instagram": "https://www.instagram.com/ajchristou",
+  "monthly_listeners": null,
+  "name": "AJ Christou",
+  "slug": "aj-christou",
+  "spotify": null
+ },
  "alex-wann": {
   "bio": "Alex Wann is a Paris\u2011based DJ and electronic music producer known for his infectious blend of Afro house, melodic house, and rhythmic groove\u2011driven dance music that resonates on both underground and mainstream stages. He broke through globally with his standout rework of Kelis\u2019 \u201cMilkshake,\u201d topped Beatport charts, and has released music on major labels like Defected and Positiva, while earning support from top tastemakers in the scene.",
   "followers": 3724,
@@ -196,6 +211,20 @@
   "monthly_listeners": null,
   "name": "Armin van Buuren",
   "slug": "armin-van-buuren",
+  "spotify": null
+ },
+ "armnhmr": {
+  "bio": "ARMNHMR is a Los Angeles\u2013based DJ and producer duo known for blending melodic bass, future bass, and emotional electronic anthems. Their music combines soaring vocals, cinematic builds, and powerful drops that create an immersive festival-ready sound. With releases on major labels and performances at top venues and festivals, they\u2019ve built a dedicated global fanbase in the melodic electronic scene.",
+  "followers": null,
+  "genres": [
+   "melodic bass",
+   "future bass"
+  ],
+  "img": "https://img.crowdvolt.com/64176d3e-6589-43a0-995f-8ae80eba339d.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "ARMNHMR",
+  "slug": "armnhmr",
   "spotify": null
  },
  "arodes": {
@@ -619,6 +648,21 @@
   "slug": "chris-lake-2879b",
   "spotify": null
  },
+ "chus-ceballos": {
+  "bio": "Chus & Ceballos are a Madrid-born DJ and production duo consisting of Jes\u00fas \"DJ Chus\" Esteban and Pablo Ceballos, who have been one of house music's most in-demand partnerships since joining forces in 2000, pioneering what they coined the \"Iberican Sound,\" a percussion-driven blend of tribal house and techno. Together they founded Stereo Productions in 2001, building it into a globally recognized label, while their production credits include official remixes for artists as iconic as Madonna and releases across more than 20 compilations in Spain and Portugal alone. Known for their marathon DJ sets that seamlessly move from house to techno with drums always at the center, they have performed at clubs and festivals worldwide, from their longtime residency at Madrid's Teatro Kapital to stages across Ibiza, New York, Colombia, and beyond.",
+  "followers": null,
+  "genres": [
+   "house",
+   "tech house",
+   "tribal house"
+  ],
+  "img": "https://img.crowdvolt.com/b8054cb3-4c28-4207-bf81-6d5ca635ab2b.png",
+  "instagram": null,
+  "monthly_listeners": null,
+  "name": "Chus & Ceballos",
+  "slug": "chus-ceballos",
+  "spotify": null
+ },
  "cid": {
   "bio": "CID is a Grammy Award\u2013winning DJ and producer known for his infectious house sound and high-energy sets. With releases on top labels and support from major names across the electronic scene, CID blends groove-driven basslines with polished production, delivering a sound that resonates from underground clubs to global festival stages.",
   "followers": null,
@@ -1040,6 +1084,21 @@
   "slug": "dreya-v",
   "spotify": null
  },
+ "dubfire": {
+  "bio": "Dubfire is a Grammy-winning DJ, producer, and former member of the legendary duo Deep Dish, widely recognized for his dark, futuristic sound and innovative approach to techno. Known for pushing boundaries through immersive audiovisual performances and underground club culture, he has become one of the most respected names in global electronic music.",
+  "followers": 25598,
+  "genres": [
+   "techno",
+   "minimal techno",
+   "progressive house"
+  ],
+  "img": "https://img.crowdvolt.com/56159585-e920-43ab-9b47-aa7c56662857.png",
+  "instagram": "https://www.instagram.com/dubfire",
+  "monthly_listeners": null,
+  "name": "DUBFIRE",
+  "slug": "dubfire",
+  "spotify": null
+ },
  "dvs1-b31f3": {
   "bio": "DVS1 is an emerging electronic artist known for crafting high-energy, immersive sets that blend underground textures with festival-ready sounds. With a style rooted in rhythmic intensity and melodic layering, DSV1 has been building momentum through dynamic live performances and a growing presence in the electronic scene.",
   "followers": null,
@@ -1308,6 +1367,20 @@
   "name": "Gabss",
   "slug": "gabss",
   "spotify": null
+ },
+ "gareth-emery": {
+  "bio": "Gareth Emery, a renowned British musician, DJ, and record producer, is celebrated for his unique sound in dance music. Known for his self-composed albums like 'THE LASERS', 'Northern Lights', 'Drive', and '100 Reasons To Live', all of which have topped iTunes dance charts globally, Emery showcases a distinct return to his band roots in 'THE LASERS'. This fourth album, released in 2020, marks a significant shift as Emery wrote every song himself, stepping away from traditional DJ collaborations. He continues to captivate audiences with innovative stage productions, building on the success of his famed Laserface shows.",
+  "followers": 167377,
+  "genres": [
+   "trance",
+   "progressive house"
+  ],
+  "img": "https://img.crowdvolt.com/543b5040-4aa5-4550-9386-db73af32107c.png",
+  "instagram": "https://www.instagram.com/garethemery/",
+  "monthly_listeners": null,
+  "name": "Gareth Emery",
+  "slug": "gareth-emery",
+  "spotify": "https://open.spotify.com/artist/0hprEC0nsWuQPSHag1O2Vi"
  },
  "genesi": {
   "bio": "Genesi is an electronic DJ and producer known for hypnotic, groove-driven records that balance depth with dance-floor power. Blending refined rhythms with a modern club sensibility, Genesi crafts music designed to move crowds while maintaining a sleek, forward-thinking edge.",
@@ -3005,6 +3078,21 @@
   "name": "Peace Control",
   "slug": "peace-control",
   "spotify": "https://open.spotify.com/artist/3rzbheJbLKamFWE8v9fPRh"
+ },
+ "pegassi-8be95": {
+  "bio": "Pegassi, the alias of Belgian DJ and producer Sam Huybrecht, is an emerging figure in the European electronic music scene known for his driving, energetic sets rooted in techno and house. Based in Belgium \u2014 a country with a rich rave and club culture \u2014 he has been building a reputation across the continent's underground circuit. His project reflects the gritty, dancefloor-focused sound that Belgium has long been known for producing.",
+  "followers": null,
+  "genres": [
+   "eurodance",
+   "trance",
+   "techno"
+  ],
+  "img": "https://img.crowdvolt.com/assets/1f1ce62d-ad85-4456-ac09-df6610c97321/dice-51646-e101795f.jpg",
+  "instagram": "https://www.instagram.com/pegassimusic",
+  "monthly_listeners": null,
+  "name": "Pegassi",
+  "slug": "pegassi-8be95",
+  "spotify": "https://open.spotify.com/artist/2A4uiWrfuBpVFugyvxAt4c"
  },
  "peggy-gou": {
   "bio": "Peggy Gou is a South Korean DJ, producer, and fashion icon who has become one of the most recognizable figures in the global electronic music scene. Known for her eclectic blend of house, techno, and disco-influenced sounds, she has headlined major festivals like Coachella and Glastonbury while releasing music on acclaimed labels including Ninja Tune and her own imprint Gudu Records. Beyond her music, she's equally celebrated for her bold personal style and has crossed over into fashion and pop culture in a way few DJs have managed.",
