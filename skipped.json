@@ -34,6 +34,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "3ballmty-nova-sd-california-san-diego-february-5-2022": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
  "3ballmty-the-midway-california-san-francisco": {
   "checked_at": "2026-11-10T04:43:32+00:00",
   "city": "San Francisco",
@@ -337,6 +342,11 @@
  "atrip-b2b-dj-boring-the-foundry-friday-sep-18-san-francisco": {
   "checked_at": "2026-09-09T03:07:33+00:00",
   "city": "San Francisco",
+  "state": "CA"
+ },
+ "avello-music-box-california-san-diego-december-2-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
   "state": "CA"
  },
  "awen-live-audio-sf-december-5-2026": {
@@ -784,6 +794,11 @@
   "city": "Orlando",
   "state": "FL"
  },
+ "bunt-san-jose-warehouse-1230-the-warehouse-california-los-angeles-december-30-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Jose",
+  "state": "CA"
+ },
  "cadence-seb-wildblood-with-delacour-secret-bowery-location-united-new-york-10002-november-14-2026": {
   "checked_at": "2026-11-08T04:43:19+00:00",
   "city": "New York",
@@ -1189,6 +1204,11 @@
   "city": "Chicago",
   "state": " IL"
  },
+ "darude-hype-tour-la-otra-wynwood-florida-miami-november-20-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "Miami",
+  "state": "fl"
+ },
  "davi-bedrock-recordscrosstown-rebels-do-not-sit-on-the-furniture-florida-miami-beach-december-11-2026": {
   "checked_at": "2026-11-10T04:43:32+00:00",
   "city": "Miami",
@@ -1247,6 +1267,11 @@
  "deathpact-from-darkness-comes-light-eclipsed-public-works-sat-nov-21-san-francisco": {
   "checked_at": "2026-09-22T04:47:28+00:00",
   "city": "San Francisco",
+  "state": "CA"
+ },
+ "deathpact-nova-sd-california-san-diego-february-5-2022": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
   "state": "CA"
  },
  "deborah-de-luca-exchange-la-fri-sep-11-los-angeles": {
@@ -1824,8 +1849,28 @@
   "city": "Miami",
   "state": ""
  },
+ "fngrs-crssd-presents-gudfella-at-spin-nightclub-spin-nightclub-california-san-diego-december-5-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
  "fngrs-crssd-presents-josh-baker-palms-beach-club-sun-nov-22-los-angeles": {
   "checked_at": "2026-10-23T04:49:54+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
+ "fngrs-crssd-presents-mk-bensy-at-palms-beach-club-fit-social-california-san-diego-december-6-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
+ "fngrs-crssd-presents-rossi-at-palms-beach-club-fit-social-california-san-diego-december-13-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
+ "fngrs-crssd-presents-whomadewho-hybrid-dj-set-at-palms-beach-club-fit-social-california-san-diego-february-7-2027": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
   "city": "San Diego",
   "state": "CA"
  },
@@ -2173,6 +2218,11 @@
   "checked_at": "2026-10-01T04:50:50+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "hags-fest-presents-eli-fur-at-fit-social-3125-ocean-front-walk-california-san-diego-november-21-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
+  "state": "CA"
  },
  "halloweek-halloween-night-club-space-florida-miami-november-1-2026": {
   "checked_at": "2026-09-30T04:50:48+00:00",
@@ -2669,6 +2719,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "joezi-selva-miami-florida-miami-november-21-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "john-summit-ctrl-escape-tour-los-angeles-california": {
   "checked_at": "2026-10-10T04:50:27+00:00",
   "city": "Los Angeles",
@@ -3003,6 +3058,31 @@
   "checked_at": "2026-11-04T04:43:50+00:00",
   "city": "Chicago",
   "state": "IL"
+ },
+ "led-presents-baby-jane-at-eq-eq-san-diego-december-19-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
+ "led-presents-effin-nikita-the-wicked-at-music-box-music-box-california-san-diego-january-24-2027": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
+ "led-presents-kompany-in-the-round-at-music-box-music-box-california-san-diego-december-19-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
+ "led-presents-mashbit-at-spin-nightclub-spin-nightclub-california-san-diego-december-12-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
+ "led-presents-twin-diplomacy-at-quartyard-quartyard-california-san-diego-february-19-2027": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
+  "state": "CA"
  },
  "lens-nyc-debut-the-woodshop-ny-brooklyn-december-10-2026": {
   "checked_at": "2026-11-17T04:43:38+00:00",
@@ -3939,6 +4019,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "origin-presents-sabo-apache-origin-california-los-angeles-december-12-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
  "oskar-med-k-radius-illinois-chicago-september-12-2026": {
   "checked_at": "2026-09-09T03:10:18+00:00",
   "city": "Chicago",
@@ -4464,6 +4549,11 @@
   "city": "San Francisco",
   "state": "CA"
  },
+ "roni-size-kemistry-florida-florida-33312-november-20-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "Miami",
+  "state": "FL"
+ },
  "rooleh-halcyon-california-san-francisco-february-6-2027": {
   "checked_at": "2026-11-10T04:43:32+00:00",
   "city": "San Francisco",
@@ -4508,6 +4598,16 @@
   "checked_at": "2026-10-27T04:50:55+00:00",
   "city": "Miami",
   "state": "FL"
+ },
+ "rz-se-est-haciendo-tarde-the-novo-california-los-angeles-november-22-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "rz-the-novo-california-los-angeles-november-21-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
  },
  "sabai-hoang-second-chance-tour-concord-music-fri-oct-9-chicago": {
   "checked_at": "2026-10-09T04:53:40+00:00",
@@ -5069,6 +5169,11 @@
   "city": "Huntington Beach",
   "state": "CA"
  },
+ "sunlight-social-w-mont-rouge-spin-nightclub-california-san-diego-november-22-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
  "super-flu-do-not-sit-on-the-furniture-florida-miami-beach-january-23-2027": {
   "checked_at": "2026-11-20T04:43:37+00:00",
   "city": "Miami",
@@ -5449,6 +5554,11 @@
   "city": "Chicago",
   "state": "IL"
  },
+ "valentino-khan-nova-sd-california-san-diego-february-5-2022": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "San Diego",
+  "state": "CA"
+ },
  "valentino-khan-the-midway-fri-nov-13-san-fran-francisco": {
   "checked_at": "2026-11-04T04:43:50+00:00",
   "city": "San Francisco",
@@ -5543,6 +5653,11 @@
   "checked_at": "2026-11-06T04:43:28+00:00",
   "city": "Los Angeles",
   "state": "CA"
+ },
+ "wenzday-spybar-illinois-chicago-december-12-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
+  "city": "Chicago",
+  "state": "IL"
  },
  "westend-1015-folsom-fri-nov-20-california": {
   "checked_at": "2026-09-22T04:47:28+00:00",
@@ -5641,6 +5756,11 @@
  },
  "x-club-sound-nightclub-california-los-angeles-october-24-2026": {
   "checked_at": "2026-09-14T04:49:26+00:00",
+  "city": "Los Angeles",
+  "state": "CA"
+ },
+ "x-ivy-party-shirt-sound-nightclub-december-19-2026": {
+  "checked_at": "2026-11-21T04:43:23+00:00",
   "city": "Los Angeles",
   "state": "CA"
  },

@@ -1,0 +1,105 @@
+{
+ "event": {
+  "bid_all_in": [
+   0
+  ],
+  "bidders": [
+   0
+  ],
+  "fair": [
+   null
+  ],
+  "high": [
+   94
+  ],
+  "last_sale": [
+   null
+  ],
+  "listings": [
+   4
+  ],
+  "tickets": [
+   6
+  ]
+ },
+ "stamps": [
+  "2026-11-21T04:47:40+00:00"
+ ],
+ "types": {
+  "Express Pass": {
+   "all_in": [
+    82
+   ],
+   "ask": [
+    79
+   ],
+   "ask_qty": [
+    2
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 2,
+   "listings": [
+    2
+   ],
+   "qty": [
+    3
+   ],
+   "uqid": "200dfce8-cabd-4ebb-9373-1d3bcdb99b5f"
+  },
+  "General Admission": {
+   "all_in": [
+    63
+   ],
+   "ask": [
+    61
+   ],
+   "ask_qty": [
+    2
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 3,
+   "listings": [
+    2
+   ],
+   "qty": [
+    3
+   ],
+   "uqid": "edf150c3-c1ce-4127-a9ff-e42f66307324"
+  },
+  "VIP": {
+   "all_in": [
+    null
+   ],
+   "ask": [
+    null
+   ],
+   "ask_qty": [
+    null
+   ],
+   "bid": [
+    null
+   ],
+   "bid_qty": [
+    null
+   ],
+   "linked_count": 2,
+   "listings": [
+    0
+   ],
+   "qty": [
+    0
+   ],
+   "uqid": "19d65234-f21d-448e-82e6-548026d891fe"
+  }
+ }
+}
