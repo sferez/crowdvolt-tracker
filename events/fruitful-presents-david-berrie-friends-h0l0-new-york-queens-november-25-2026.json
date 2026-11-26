@@ -91,9 +91,17 @@
    0,
    0,
    0,
+   0,
+   0,
+   0,
+   0,
    0
   ],
   "bidders": [
+   0,
+   0,
+   0,
+   0,
    0,
    0,
    0,
@@ -277,6 +285,10 @@
    null,
    null,
    null,
+   null,
+   null,
+   null,
+   null,
    null
   ],
   "high": [
@@ -370,9 +382,17 @@
    23,
    23,
    0,
+   0,
+   0,
+   0,
+   0,
    0
   ],
   "last_sale": [
+   null,
+   null,
+   null,
+   null,
    null,
    null,
    null,
@@ -556,6 +576,10 @@
    2,
    2,
    0,
+   0,
+   0,
+   0,
+   0,
    0
   ],
   "tickets": [
@@ -648,6 +672,10 @@
    3,
    3,
    3,
+   0,
+   0,
+   0,
+   0,
    0,
    0
   ]
@@ -743,11 +771,19 @@
   "2026-11-25T00:36:37+00:00",
   "2026-11-25T02:21:39+00:00",
   "2026-11-25T03:19:20+00:00",
-  "2026-11-25T04:18:24+00:00"
+  "2026-11-25T04:18:24+00:00",
+  "2026-11-25T05:16:53+00:00",
+  "2026-11-25T06:25:49+00:00",
+  "2026-11-25T07:18:01+00:00",
+  "2026-11-25T08:20:25+00:00"
  ],
  "types": {
   "GA (Before 12AM)": {
    "all_in": [
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -931,9 +967,17 @@
     null,
     null,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "ask_qty": [
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -1117,9 +1161,17 @@
     null,
     null,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -1304,9 +1356,17 @@
     0,
     0,
     0,
+    0,
+    0,
+    0,
+    0,
     0
    ],
    "qty": [
+    0,
+    0,
+    0,
+    0,
     0,
     0,
     0,
@@ -1493,6 +1553,10 @@
     20,
     20,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "ask": [
@@ -1585,6 +1649,10 @@
     19,
     19,
     19,
+    null,
+    null,
+    null,
+    null,
     null,
     null
    ],
@@ -1679,6 +1747,10 @@
     2,
     2,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "bid": [
@@ -1772,9 +1844,17 @@
     null,
     null,
     null,
+    null,
+    null,
+    null,
+    null,
     null
    ],
    "bid_qty": [
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -1959,6 +2039,10 @@
     2,
     2,
     0,
+    0,
+    0,
+    0,
+    0,
     0
    ],
    "qty": [
@@ -2051,6 +2135,10 @@
     3,
     3,
     3,
+    0,
+    0,
+    0,
+    0,
     0,
     0
    ],
